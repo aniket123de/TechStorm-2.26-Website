@@ -17,12 +17,12 @@ const About = () => {
                                 <img src={experienceImg} alt="Experience Years" />
                                 <span>{'10'}</span>
                             </div>
-                            <img src={features1} alt="About Image" />
+                            <img src={features1} alt="About section" />
                             <div className="about-image2 wow fadeInUp" data-wow-delay=".4s">
-                                <img src={features2} alt="About Image" />
+                                <img src={features2} alt="Gaming feature" />
                             </div>
                             <div className="about-image3 wow fadeInUp" data-wow-delay=".6s">
-                                <img src={features3} alt="About Image" />
+                                <img src={features3} alt="Gaming feature" />
                             </div>
                         </div>
                     </div>
