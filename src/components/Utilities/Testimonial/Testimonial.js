@@ -11,26 +11,26 @@ const testimonial = [
     {
         id: '1',
         qt: quote,
-        description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        description: 'TechStorm events are always next level! The coding competitions pushed my skills to new heights. Can not wait for TechStorm 2026 - the Retro Arcade theme sounds amazing!',
         avatar: avatar1,
-        name: 'Eity Akhter',
-        deg: 'Gamer',
+        name: '[Participant Name]',
+        deg: 'Past Winner',
     },
     {
         id: '2',
         qt: quote,
-        description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        description: 'The robotics arena at TechStorm is legendary. Our team learned so much from competing. The organizing committee creates an incredible experience every year!',
         avatar: avatar2,
-        name: 'Birdie Stehnans',
-        deg: 'Gamer',
+        name: '[Participant Name]',
+        deg: 'Robo League Finalist',
     },
     {
         id: '3',
         qt: quote,
-        description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        description: 'From gaming tournaments to hackathons, TechStorm has something for everyone. The prizes are great, but the real win is the experience and connections you make!',
         avatar: avatar1,
-        name: 'Alicia Wolfe',
-        deg: 'Gamer',
+        name: '[Participant Name]',
+        deg: 'Gaming Champion',
     },
 ]
 
@@ -53,8 +53,8 @@ const Testimonial = () => {
                     <div className="col-lg-12">
                         {/* section title */}
                         <SectionTitle
-                            titlefirst='Testimo'
-                            titleSec='nial'
+                            titlefirst='What They'
+                            titleSec='Say'
                             className='text-center' />
                     </div>
 

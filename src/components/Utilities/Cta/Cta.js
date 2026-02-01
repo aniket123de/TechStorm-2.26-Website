@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 import bgImg from '../../../assets/img/bg/divider-bg.png';
 const ctaData = {
     bg: bgImg,
-    title: 'Join Us As a Super Fans and Get all the Benefits',
-    description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    btn: 'Join Now',
+    title: 'Ready to Press Start? Register Now for TechStorm 2026!',
+    description: 'Join thousands of tech enthusiasts, gamers, and innovators at the most electrifying technical fest of the year. Limited slots available for each event. Early bird registrations get exclusive retro arcade merchandise!',
+    btn: 'Register Now',
 }
 const Cta = () => {
     const { bg, title, description, btn } = ctaData;

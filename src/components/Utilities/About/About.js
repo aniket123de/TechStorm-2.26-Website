@@ -15,33 +15,33 @@ const About = () => {
                         <div className="s-about-img p-relative wow fadeInLeft" data-wow-delay=".4s">
                             <div className="experience-years wow fadeInDown" data-wow-delay=".4s">
                                 <img src={experienceImg} alt="Experience Years" />
-                                <span>{'10'}</span>
+                                <span>{'1st'}</span>
                             </div>
-                            <img src={features1} alt="About section" />
+                            <img src={features1} alt="TechStorm fest" />
                             <div className="about-image2 wow fadeInUp" data-wow-delay=".4s">
-                                <img src={features2} alt="Gaming feature" />
+                                <img src={features2} alt="Retro arcade" />
                             </div>
                             <div className="about-image3 wow fadeInUp" data-wow-delay=".6s">
-                                <img src={features3} alt="Gaming feature" />
+                                <img src={features3} alt="Tech competition" />
                             </div>
                         </div>
                     </div>
                     <div className="col-lg-6 col-md-12 col-sm-12">
                         <div className="about-content s-about-content wow fadeInRight" data-wow-delay=".4s">
                             <SectionTitle
-                                titlefirst={'We’re the best Gaming'}
-                                titleSec={'Company'}
+                                titlefirst={'About TechStorm'}
+                                titleSec={'2026'}
                                 className={'about-title second-title'}
                             />
-                            <p><b>Lpsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</b></p>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                            <p><b>Welcome to TechStorm 2026 - where pixels meet passion and classic gaming culture collides with cutting-edge innovation.</b></p>
+                            <p>TechStorm is the flagship annual technical fest of [Your College Name], designed to ignite creativity, challenge intellects, and celebrate the spirit of technology. This year, we take you on a nostalgic journey through the golden era of computing and arcade gaming.</p>
                             <div className="about-content3 mt-30">
                                 <div className="row">
                                     <div className="col-md-12">
                                         <ul className="green">
-                                            <li>{'Suspe ndisse suscipit sagittis leo.'}</li>
-                                            <li>{'Entum estibulum dignissim posuere.'}</li>
-                                            <li>{'If you are going to use a passage'}</li>
+                                            <li>{'15+ Technical and Creative Events'}</li>
+                                            <li>{'Robotics, Coding and Gaming Competitions'}</li>
+                                            <li>{'Prizes Worth [AMOUNT]+'}</li>
                                         </ul>
                                     </div>
                                 </div>

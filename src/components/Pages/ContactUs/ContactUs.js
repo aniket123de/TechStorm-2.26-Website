@@ -9,18 +9,18 @@ import { Link } from "react-router-dom";
 
 const branceAddress = [
     {
-        branceName: 'Colourbar U.S.A',
-        location: 'Dhaka In Twin Tower Concord Shopping Complex',
-        openingTime: 'Open Closes 8:30PM',
-        email: 'yourinfo@gmail.com',
-        phone: '(1200)-0989-568-331'
+        branceName: 'Main Venue',
+        location: '[Your College Name], [Address]',
+        openingTime: 'Event Date: [Date] 2026',
+        email: 'techstorm@college.edu',
+        phone: '+91 XXXXX XXXXX'
     },
     {
-        branceName: 'USA Exchanger',
-        location: 'Dhaka In Twin Tower Concord Shopping Complex',
-        openingTime: 'Open Closes 8:30PM',
-        email: 'yourinfo@gmail.com',
-        phone: '(1200)-0989-568-331'
+        branceName: 'Registration Desk',
+        location: '[Building Name], [Your College Name]',
+        openingTime: 'Open: 8:00 AM - 6:00 PM',
+        email: 'register@techstorm.in',
+        phone: '+91 XXXXX XXXXX'
     },
 ]
 
@@ -66,9 +66,9 @@ const ContactUs = () => {
                             <div className="contact-info wow fadeInLeft animated" data-animation="fadeInRight" data-delay=".4s">
                                 <div className="section-title center-align">
                                     <h2>
-                                        {'Address'} <br /> <span>{'information'}</span>
+                                        {'Venue'} <br /> <span>{'Information'}</span>
                                     </h2>
-                                    <p>{'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}</p>
+                                    <p>{'TechStorm 2026 will be held at [Your College Name]. Find us at the main campus for all event activities, registration, and prize distribution. Reach out for any queries!'}</p>
                                 </div>
                                 <div className="row mt-50">
                                     {
@@ -93,9 +93,9 @@ const ContactUs = () => {
                             <div className="contact-bg02 wow fadeInRight animated">
                                 <div className="section-title center-align">
                                     <h2>
-                                        {'Get in Touch'}<br /> <span>{'Inform Us'} </span>
+                                        {'Have Questions?'}<br /> <span>{'Reach Out!'} </span>
                                     </h2>
-                                    <p>{'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}</p>
+                                    <p>{'Got questions about events, registration, or participation? Drop us a message and our team will get back to you within 24 hours. We are here to help you level up!'}</p>
                                 </div>
                                 <Form />
                             </div>

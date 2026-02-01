@@ -14,33 +14,33 @@ const Matches = () => {
     const matches = [
         {
             logoTeamOne: team1,
-            teamTag1: 'Blue',
-            teamName1: 'Samurai',
-            time: '11:30',
-            date: '1st  October 2021',
+            teamTag1: 'Coding',
+            teamName1: 'Code-Bee',
+            time: '[TIME]',
+            date: '[DATE] 2026',
             logoTeamTwo: team2,
-            teamTag2: '',
-            teamName2: 'Assasin',
+            teamTag2: 'Hackathon',
+            teamName2: 'Hack Storm',
         },
         {
             logoTeamOne: team3,
-            teamTag1: 'Ninja',
-            teamName1: 'Assassin',
-            time: '11:30',
-            date: '1st  October 2021',
+            teamTag1: 'Robotics',
+            teamName1: 'Ro-Combat',
+            time: '[TIME]',
+            date: '[DATE] 2026',
             logoTeamTwo: team4,
-            teamTag2: 'The',
-            teamName2: 'Ninja',
+            teamTag2: 'Robotics',
+            teamName2: 'Ro-Soccer',
         },
         {
             logoTeamOne: team5,
-            teamTag1: '',
-            teamName1: 'Ninjax',
-            time: '11:30',
-            date: '1st  October 2021',
+            teamTag1: 'Gaming',
+            teamName1: 'Forza Horizon',
+            time: '[TIME]',
+            date: '[DATE] 2026',
             logoTeamTwo: team6,
             teamTag2: 'Gaming',
-            teamName2: 'Shinobi',
+            teamName2: 'FIFA Mobile',
         },
     ]
 
@@ -49,7 +49,7 @@ const Matches = () => {
             <div className="container">
                 <div className="row align-items-center">
                     <div className="col-lg-12">
-                        <SectionTitle titlefirst='Upcoming' titleSec='Matches' />
+                        <SectionTitle titlefirst='Featured' titleSec='Events' />
                     </div>
                 </div>
                 {

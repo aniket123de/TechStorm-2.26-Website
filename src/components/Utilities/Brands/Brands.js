@@ -53,6 +53,7 @@ const Brands = () => {
     return (
         <section className="brand-area pt-120 pb-120" style={{ background: `url(${brandbg}) no-repeat` }}>
             <div className="container">
+                <h2 className="text-center mb-5" style={{color: '#fff', fontFamily: "'Press Start 2P', cursive", fontSize: '1.5rem'}}>Our Sponsors</h2>
                 <div className="row brand-active">
                     <div className="col-12" >
                         <Slider {...settings}>
@@ -61,7 +62,7 @@ const Brands = () => {
                                     return (
                                         <div className="single-brand" key={data.id}>
                                             <Link to={'#'}>
-                                                <img src={data.brandLogo} alt={'Brand Logo'} />
+                                                <img src={data.brandLogo} alt={'Sponsor Logo'} />
                                             </Link>
                                         </div>
 

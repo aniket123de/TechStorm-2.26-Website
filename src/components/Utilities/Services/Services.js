@@ -3,18 +3,18 @@ import ServiceItem from './service';
 const services = [
     {
         icon: 'flaticon-degrees',
-        title: 'Live Streaming',
-        description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse .'
+        title: 'Coding Arena',
+        description: 'Battle it out in Code-Bee, Hack Storm & TechnoMania. Debug, develop, dominate!'
     },
     {
         icon: 'flaticon-archery',
-        title: 'Gaming News',
-        description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse .'
+        title: 'Robo League',
+        description: 'Ro-Navigator, Ro-Combat, Ro-Soccer, Ro-Terrance & Aqua-Race await your machines.'
     },
     {
         icon: 'flaticon-competition',
-        title: 'Composition',
-        description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse .'
+        title: 'Gaming Zone',
+        description: 'Forza Horizon racing wheels, FIFA Mobile tournaments & classic arcade showdowns.'
     },
 ]
 

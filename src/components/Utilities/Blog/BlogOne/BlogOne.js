@@ -9,26 +9,26 @@ const blogData = [
     {
         id: '1',
         thumb: blogImg1,
-        title: 'The Walking Dead Season',
-        admin: 'Admin',
-        date: '24th March 2021',
-        excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.'
+        title: 'Registrations Now Open!',
+        admin: 'TechStorm Team',
+        date: '[Date] 2026',
+        excerpt: 'Early bird registrations for TechStorm 2026 are now live! Grab your spot in the most exciting technical fest of the year. Limited seats for all events - register now!'
     },
     {
         id: '2',
         thumb: blogImg2,
-        title: 'The Walking Dead Season',
-        admin: 'Admin',
-        date: '24th March 2021',
-        excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.'
+        title: 'Meet Our Sponsors',
+        admin: 'TechStorm Team',
+        date: '[Date] 2026',
+        excerpt: 'We are thrilled to announce our amazing sponsors for TechStorm 2026! Stay tuned for exclusive prizes, workshops, and goodies from our partners.'
     },
     {
         id: '3',
         thumb: blogImg3,
-        title: 'The Walking Dead Season',
-        admin: 'Admin',
-        date: '24th March 2021',
-        excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.'
+        title: 'Event Schedule Released',
+        admin: 'TechStorm Team',
+        date: '[Date] 2026',
+        excerpt: 'The complete event schedule for TechStorm 2026 is here! Plan your day across Coding Arena, Robo League, and Gaming Zone. Download the schedule now.'
     },
 ];
 const BlogOne = () => {

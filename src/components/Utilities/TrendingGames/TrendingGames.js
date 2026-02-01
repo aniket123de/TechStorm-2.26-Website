@@ -8,23 +8,23 @@ const TrendingData = [
     {
         id: '1',
         thumb: img1,
-        tag: 'Origin',
-        label: 'Bunny Officer',
-        description: 'Duis aute irure dolor'
+        tag: 'Coding',
+        label: 'Hack Storm',
+        description: '24-hr Hackathon'
     },
     {
         id: '2',
         thumb: img2,
-        tag: 'New',
-        label: 'Wonderland',
-        description: 'Duis aute irure dolor'
+        tag: 'Robotics',
+        label: 'Ro-Combat',
+        description: 'Robot Battle Arena'
     },
     {
         id: '3',
         thumb: img3,
-        tag: 'Origin',
-        label: 'Wraith',
-        description: 'Duis aute irure dolor'
+        tag: 'Gaming',
+        label: 'Forza Horizon',
+        description: 'Racing Championship'
     },
 ]
 
@@ -36,8 +36,8 @@ const TrendingGames = () => {
                     <div className="col-lg-12">
                         {/* Section title */}
                         <SectionTitle
-                            titlefirst={'Trending'}
-                            titleSec={'Games'}
+                            titlefirst={'Popular'}
+                            titleSec={'Events'}
                             className={'text-center'} />
                     </div>
 

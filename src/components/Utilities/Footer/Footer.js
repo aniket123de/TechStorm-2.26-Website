@@ -16,19 +16,19 @@ const Footer = () => {
                                         <Logo logo={logo} />
                                     </Link>
                                 </div>
-                                <div className="footer-link">{'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore'}</div>
+                                <div className="footer-link">{'TechStorm 2026 - Play the Past, Build the Future. The flagship technical fest celebrating retro arcade culture and modern innovation.'}</div>
                                 <div className="f-contact mt-20">
                                     <ul>
                                         <li>
                                             <i className="icon fal fa-map-marker-alt"></i>
-                                            <span>{'Address :66 Broklyn Street,  United States of America'}</span>
+                                            <span>{'Address: [Your College Name], [City], [State]'}</span>
                                         </li>
                                         <li>
                                             <i className="icon far fa-clock"></i>
                                             <span>
                                                 Phone : 
-                                                <Link to={'#callto:+12345678900'}>
-                                                    {'+123 456 78900'}
+                                                <Link to={'#callto:+91XXXXXXXXXX'}>
+                                                    {'+91 XXXXX XXXXX'}
                                                     </Link>
                                                     </span>
                                         </li>
@@ -36,8 +36,8 @@ const Footer = () => {
                                             <i className="icon dripicons-mail"></i>
                                             <span>
                                                 {'Email :'} 
-                                                <Link to={'mailto:info@examplecom'}>
-                                                    {'info@example.com'}
+                                                <Link to={'mailto:techstorm@college.edu'}>
+                                                    {'techstorm@college.edu'}
                                                 </Link>
                                             </span>
                                         </li>
@@ -69,19 +69,19 @@ const Footer = () => {
                         <div className="col-xl-2 col-lg-2 col-sm-6">
                             <div className="footer-widget mb-30">
                                 <div className="f-widget-title">
-                                    <h2>{'Our Services'}</h2>
+                                    <h2>{'Events'}</h2>
                                 </div>
                                 <div className="footer-link">
                                     <ul>
+                                        <li><Link to={'#'}>{'Coding Arena'}</Link>
+                                        </li>
+                                        <li><Link to={'#'}>{'Robo League'}</Link>
+                                        </li>
+                                        <li><Link to={'#'}>{'Gaming Zone'}</Link>
+                                        </li>
                                         <li><Link to={'/faq'}>{'FAQ'}</Link>
                                         </li>
-                                        <li><Link to={'#'}>{'Support'}</Link>
-                                        </li>
-                                        <li><Link to={'#'}>{'About Story'}</Link>
-                                        </li>
-                                        <li><Link to={'#'}>{'Privercy'}</Link>
-                                        </li>
-                                        <li><Link to={'#'}>{'Term & Conditions'}</Link>
+                                        <li><Link to={'#'}>{'Rules & Guidelines'}</Link>
                                         </li>
                                     </ul>
                                 </div>
@@ -113,7 +113,7 @@ const Footer = () => {
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-6">
-                            {'Copyright © 2021'} <span>{'eoorox'}</span> {'All Rights Reserved.'}
+                            {'Copyright © 2026'} <span>{'TechStorm | [Your College Name]'}</span> {'All Rights Reserved.'}
                         </div>
                         <div className="col-lg-6 text-right text-xl-right"></div>
                     </div>

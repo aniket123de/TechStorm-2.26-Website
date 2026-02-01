@@ -5,16 +5,16 @@ import AccordionItem from '../../Utilities/AccordionItem/AccordionItem';
 
 const faqData = [
     {
-        title: 'Breaking The Rules Using SQLite To Demo Web?',
-        bodyText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip'
+        title: 'How do I register for TechStorm 2026?',
+        bodyText: 'You can register for TechStorm 2026 through our official website. Click on the "Register Now" button, fill in your details, select your events, and complete the payment. Early bird discounts are available for limited time!'
     },
     {
-        title: 'Monthly Web Development Update Pragmatic Releasing?',
-        bodyText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip'
+        title: 'Can I participate in multiple events?',
+        bodyText: 'Yes! You can participate in multiple events across Coding Arena, Robo League, and Gaming Zone. Just make sure the event timings do not overlap. Check our schedule page for complete event timings.'
     },
     {
-        title: 'How To Use Underlined Text To Improve User Experience?',
-        bodyText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip'
+        title: 'What are the eligibility criteria for participation?',
+        bodyText: 'TechStorm 2026 is open to all college students with a valid college ID. Some events may have specific team size requirements. Inter-college participation is welcome for most events.'
     },
 ]
 
@@ -29,8 +29,8 @@ const Faqs = () => {
                     <div className="row">
                         <div className="col-lg-6 col-md-6">
                             <div className="faq-wrap">
-                                <h4 className="mb-30">{'Cavalier Studios has been creating'}</h4>
-                                <p>{'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}</p>
+                                <h4 className="mb-30">{'General Questions about TechStorm 2026'}</h4>
+                                <p>{'Got questions about registration, events, or participation? Find answers to the most frequently asked questions below. Still have doubts? Reach out to us through the Contact page!'}</p>
                             </div>
                         </div>
                         <div className="col-lg-6 col-md-6">
@@ -55,13 +55,13 @@ const Faqs = () => {
                     <div className="row mt-50">
                         <div className="col-lg-6 col-md-6">
                             <div className="faq-wrap">
-                                <h4 className="mb-30">{'Cavalier Studios has been creating'}</h4>
-                                <p>{'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}</p>
+                                <h4 className="mb-30">{'Event & Prize Information'}</h4>
+                                <p>{'TechStorm 2026 features exciting prizes, certificates, and exclusive merchandise. Winners will be announced on the same day, with prizes distributed at the closing ceremony.'}</p>
                             </div>
                         </div>
                         <div className="col-lg-6 col-md-6">
                             <div className="faq-wrap">
-                                <Accordion className="accordion" id="accordionExample" defaultActiveKey="0">
+                                <Accordion className="accordion" id="accordionExample2" defaultActiveKey="0">
                                     {
                                         faqData.map((data, index) => {
                                             const { title, bodyText } = data;

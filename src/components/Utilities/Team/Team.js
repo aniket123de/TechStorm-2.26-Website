@@ -11,38 +11,38 @@ const teamData = [
     {
         id: '1',
         avatar: team1,
-        name: 'Nashid Martines',
-        deg: 'Founder'
+        name: '[Name]',
+        deg: 'Convenor'
     },
     {
         id: '2',
         avatar: team2,
-        name: 'Konne Backfield',
-        deg: 'CEO'
+        name: '[Name]',
+        deg: 'Co-Convenor'
     },
     {
         id: '3',
         avatar: team3,
-        name: 'Hackson Willing',
-        deg: 'Developer'
+        name: '[Name]',
+        deg: 'Technical Head'
     },
     {
         id: '4',
         avatar: team4,
-        name: 'Rosalina D. William',
-        deg: 'Developer'
+        name: '[Name]',
+        deg: 'Creative Head'
     },
     {
         id: '5',
         avatar: team5,
-        name: 'Bobby Ballard',
-        deg: 'Developer'
+        name: '[Name]',
+        deg: 'Sponsorship Head'
     },
     {
         id: '6',
         avatar: team6,
-        name: 'Steven Cortez',
-        deg: 'Developer'
+        name: '[Name]',
+        deg: 'PR Head'
     },
 ]
 
@@ -52,7 +52,7 @@ const Team = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12 p-relative">
-                        <SectionTitle titlefirst='Our Experts' titleSec='Team' />
+                        <SectionTitle titlefirst='Organizing' titleSec='Committee' />
                     </div>
                 </div>
                 <div className="row ">

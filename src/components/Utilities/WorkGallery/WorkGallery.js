@@ -16,34 +16,34 @@ const galleryItems = [
     {
         id: '1',
         img: workImg1,
-        tag: 'Origin',
-        label: 'Bunny Officer',
-        description: 'Duis aute irure dolor i',
-        cat: 'Origin',
+        tag: 'Coding',
+        label: 'Code-Bee',
+        description: 'Speed coding competition',
+        cat: 'Coding',
     },
     {
         id: '2',
         img: workImg2,
-        tag: 'New',
-        label: 'Wonderland',
-        description: 'Duis aute irure dolor i',
-        cat: 'Playstation',
+        tag: 'Hackathon',
+        label: 'Hack Storm',
+        description: '24-hour innovation sprint',
+        cat: 'Coding',
     },
     {
         id: '3',
         img: workImg3,
-        tag: 'New',
-        label: 'Apex Legends',
-        description: 'Duis aute irure dolor i',
-        cat: 'Uplay',
+        tag: 'Robotics',
+        label: 'Ro-Combat',
+        description: 'Robot battle arena',
+        cat: 'Robotics',
     },
     {
         id: '4',
         img: workImg4,
-        tag: 'Origin',
-        label: 'Wraith',
-        description: 'Duis aute irure dolor i',
-        cat: 'Steam',
+        tag: 'Gaming',
+        label: 'Forza Horizon',
+        description: 'Racing wheel setup',
+        cat: 'Gaming',
     },
 ]
 
@@ -66,24 +66,21 @@ const WorkGallery = () => {
                     <div className="row align-items-center mb-30 wow fadeInUp animated" data-animation="fadeInRight" data-delay=".4s">
                         <div className="col-lg-12">
                             <SectionTitle
-                                titlefirst='Trending'
-                                titleSec='Games' />
+                                titlefirst='All'
+                                titleSec='Events' />
                         </div>
                         <div className="col-lg-12">
                             <div className="my-masonry wow fadeInDown animated" data-animation="fadeInRight" data-delay=".4s">
                                 <div className="button-group filter-button-group ">
                                     <button className="active" onClick={() => setItems(galleryItems)}>All</button>
-                                    <button onClick={() => fliterItem('Origin')}>
-                                        {'Origin'}
+                                    <button onClick={() => fliterItem('Coding')}>
+                                        {'Coding'}
                                     </button>
-                                    <button onClick={() => fliterItem('Playstation')}>
-                                        {'Playstation 4'}
+                                    <button onClick={() => fliterItem('Robotics')}>
+                                        {'Robotics'}
                                     </button>
-                                    <button onClick={() => fliterItem('Steam')}>
-                                        {'Steam'}
-                                    </button>
-                                    <button onClick={() => fliterItem(['Uplay'])}>
-                                        {'Uplay'}
+                                    <button onClick={() => fliterItem('Gaming')}>
+                                        {'Gaming'}
                                     </button>
                                 </div>
                             </div>

@@ -11,30 +11,30 @@ const gameData = [
     {
         id: '1',
         thumb: gameImg1,
-        tag: 'Origin',
-        label: 'Bunny Officer',
-        date: 'Oct  21 - 25, 2021'
+        tag: 'Coding',
+        label: 'TechnoMania',
+        date: '[Date] 2026'
     },
     {
         id: '2',
         thumb: gameImg2,
-        tag: 'Origin',
-        label: 'Bunny Officer',
-        date: 'Oct  21 - 25, 2021'
+        tag: 'Robotics',
+        label: 'Ro-Navigator',
+        date: '[Date] 2026'
     },
     {
         id: '3',
         thumb: gameImg3,
-        tag: 'Origin',
-        label: 'Bunny Officer',
-        date: 'Oct  21 - 25, 2021'
+        tag: 'Creative',
+        label: 'Creative Canvas',
+        date: '[Date] 2026'
     },
     {
         id: '4',
         thumb: gameImg4,
-        tag: 'Origin',
-        label: 'Bunny Officer',
-        date: 'Oct  21 - 25, 2021'
+        tag: 'Fun',
+        label: 'Tech Hunt',
+        date: '[Date] 2026'
     },
 ]
 
@@ -45,7 +45,7 @@ const UpComingGameTwo = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12 p-relative">
-                        <SectionTitle titlefirst='Upcoming' titleSec='Games' />
+                        <SectionTitle titlefirst='Event' titleSec='Highlights' />
                     </div>
                 </div>
                 <div className="row">

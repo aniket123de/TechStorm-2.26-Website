@@ -322,7 +322,7 @@ nav a {
 .slider-bg {
 	max-width: none !important;
 	width: 100% !important;
-	min-height: 1000px !important;
+	min-height: 600px !important;
 }
 
 /* Make slider content visible */
@@ -1428,14 +1428,11 @@ label {
 }
 
 .slider-four .slider-img {
-	margin-left: 0;
-	margin-top : 50px;
-	float      : right;
+	display: none !important;
 }
 
 .slider-four .slider-img img {
-	position: relative;
-	z-index : 1;
+	display: none !important;
 }
 
 .slider-four .slider-bg .text2 h5 {
