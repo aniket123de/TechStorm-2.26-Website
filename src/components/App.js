@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-route
 import Header from './Utilities/Header/Header';
 import PillNav from './Utilities/PillNav/PillNav';
 import collegelogo from '../assets/img/logo/college-logo.png';
-import IIC_logo from '../assets/img/logo/IIC_logo.jpeg';
+import IIC_logo from '../assets/img/logo/IIC_logo.png';
 import Abhiyantran_logo from '../assets/img/logo/Abhiyantran-logo.png';
 import Home from './Pages/Home/HomeMain/HomeMain';
 import HomeTwo from './Pages/Home/HomeTwo/HomeTwo';
