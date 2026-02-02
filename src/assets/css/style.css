@@ -26,82 +26,18 @@
 /* 1. Theme default css */
 
 /* Custom Font Classes */
-.pixelify-sans-regular {
-	font-family: "Pixelify Sans", sans-serif;
-	font-optical-sizing: auto;
-	font-weight: 400;
-	font-style: normal;
-}
-
-.pixelify-sans-medium {
-	font-family: "Pixelify Sans", sans-serif;
-	font-optical-sizing: auto;
-	font-weight: 500;
-	font-style: normal;
-}
-
-.pixelify-sans-semibold {
-	font-family: "Pixelify Sans", sans-serif;
-	font-optical-sizing: auto;
-	font-weight: 600;
-	font-style: normal;
-}
-
-.pixelify-sans-bold {
-	font-family: "Pixelify Sans", sans-serif;
-	font-optical-sizing: auto;
-	font-weight: 700;
-	font-style: normal;
-}
-
 .press-start-2p-regular {
 	font-family: "Press Start 2P", system-ui;
 	font-weight: 400;
 	font-style: normal;
 }
 
-.handjet-light {
-	font-family: "Handjet", sans-serif;
-	font-optical-sizing: auto;
-	font-weight: 300;
-	font-style: normal;
-	font-variation-settings: "ELGR" 1, "ELSH" 2;
-}
-
-.handjet-regular {
-	font-family: "Handjet", sans-serif;
-	font-optical-sizing: auto;
-	font-weight: 400;
-	font-style: normal;
-	font-variation-settings: "ELGR" 1, "ELSH" 2;
-}
-
-.handjet-medium {
-	font-family: "Handjet", sans-serif;
-	font-optical-sizing: auto;
-	font-weight: 500;
-	font-style: normal;
-	font-variation-settings: "ELGR" 1, "ELSH" 2;
-}
-
-.handjet-semibold {
-	font-family: "Handjet", sans-serif;
-	font-optical-sizing: auto;
-	font-weight: 600;
-	font-style: normal;
-	font-variation-settings: "ELGR" 1, "ELSH" 2;
-}
-
-.handjet-bold {
-	font-family: "Handjet", sans-serif;
-	font-optical-sizing: auto;
-	font-weight: 700;
-	font-style: normal;
-	font-variation-settings: "ELGR" 1, "ELSH" 2;
+.font-minecraft {
+	font-family: "Minecraft", monospace;
 }
 
 body {
-	font-family: "Handjet", sans-serif;
+	font-family: "Minecraft", monospace;
 	font-size  : 15px !important;
 	font-weight: 500;
 	color      : #ffffffc7 !important;
@@ -748,7 +684,7 @@ label {
 	display           : inline-block;
 	font-size         : 16px;
 	font-weight       : 600;
-	font-family       : 'Handjet', sans-serif;
+	font-family       : 'Minecraft', monospace;
 	letter-spacing    : 0;
 	line-height       : 1;
 	margin-bottom     : 0;
@@ -1137,7 +1073,7 @@ label {
 
 .slider-price h3 {
 	color: #fff;
-	font-family: 'Handjet', sans-serif;
+	font-family: 'Minecraft', monospace;
 	font-weight: 600;
 }
 
@@ -1145,7 +1081,7 @@ label {
 	color         : #ffc010;
 	font-size     : 32px;
 	font-weight   : 600;
-	font-family   : 'Handjet', sans-serif;
+	font-family   : 'Minecraft', monospace;
 	letter-spacing: 0.5px;
 	line-height   : 1.4;
 }
@@ -1592,7 +1528,7 @@ label {
 	color        : #fff;
 	margin-top   : 140px;
 	position     : relative;
-	font-family  : 'Handjet', sans-serif;
+	font-family  : 'Minecraft', monospace;
 	font-weight  : 700;
 }
 
@@ -2284,7 +2220,7 @@ label {
 	opacity    : .05;
 	-ms-filter : "progid:DXImageTransform.Microsoft.Alpha(Opacity=5)";
 	margin     : 0;
-	font-family: 'Playfair Display', serif;
+	font-family: 'Minecraft', monospace;
 	font-weight: 500;
 	font-style : italic;
 	top        : -35px;
@@ -2355,7 +2291,7 @@ label {
 .signature-text {
 	font-size  : 22px;
 	color      : #ffc010;
-	font-family: 'Playfair Display', serif;
+	font-family: 'Minecraft', monospace;
 	font-weight: 600;
 }
 
@@ -2378,7 +2314,7 @@ label {
 .ab-coutner .single-counter p {
 	margin-top : 15px;
 	color      : #4f4f4f;
-	font-family: 'Playfair Display', serif;
+	font-family: 'Minecraft', monospace;
 	font-size  : 20px;
 	font-weight: 600;
 }
@@ -2423,14 +2359,14 @@ label {
 
 .section-title span {
 	color: #ffc010;
-	font-family: 'Handjet', sans-serif;
+	font-family: 'Minecraft', monospace;
 	font-weight: 600;
 }
 
 .section-title h5 {
 	color        : #ffc010;
 	margin-bottom: 15px;
-	font-family  : 'Handjet', sans-serif;
+	font-family  : 'Minecraft', monospace;
 	font-weight  : 600;
 }
 
@@ -6198,7 +6134,7 @@ section:hover .section-title h2:before {
 	font-size   : 14px;
 	color       : #fff;
 	font-weight : 500;
-	font-family : 'Playfair Display', serif;
+	font-family : 'Minecraft', monospace;
 	display     : inline-block;
 	margin-right: 20px;
 }
@@ -8504,7 +8440,7 @@ img {
 	text-transform    : uppercase;
 	font-size         : 16px;
 	font-weight       : 600;
-	font-family       : "Poppins", sans-serif;
+	font-family       : "Minecraft", monospace;
 	-webkit-transition: .3s;
 	transition        : .3s;
 	letter-spacing    : 1px;
@@ -11154,7 +11090,7 @@ p.checkout-coupon input[type="text"] {
 
 .widget__banner-overly h3 span {
 	display    : block;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Minecraft', monospace;
 	font-size  : 30px;
 	font-weight: 300;
 }
@@ -12483,4 +12419,5 @@ div.single-cta:last-child {
         font-size: 11px !important;
     }
 }
+
 
