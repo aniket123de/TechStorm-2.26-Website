@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
 
 import Header from './Utilities/Header/Header';
+import collegelogo from '../assets/img/logo/college-logo.png';
 import PillNav from './Utilities/PillNav/PillNav';
 import Home from './Pages/Home/HomeMain/HomeMain';
 import HomeTwo from './Pages/Home/HomeTwo/HomeTwo';

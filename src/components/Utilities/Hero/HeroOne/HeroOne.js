@@ -1,4 +1,4 @@
-import heroVideo from '../../../../assets/img/HERO.mp4';
+import herobg from '../../../../assets/img/herobg.png';
 import iplogo from '../../../../assets/img/logo/iplogo.png';
 import Button8bit from '../../Button/Button8bit';
 
@@ -13,7 +13,7 @@ const { titleTag, title, btnText } = heroInformation;
 const HeroOne = () => {
     return (
         <section id="home" className="slider-area slider-four fix p-relative" style={{ position: 'relative', minHeight: '600px' }}>
-            {/* Video Background */}
+            {/* Background Image */}
             <div style={{ 
                 position: 'absolute', 
                 top: 0, 
@@ -23,20 +23,16 @@ const HeroOne = () => {
                 zIndex: 1,
                 overflow: 'hidden'
             }}>
-                <video 
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline
+                <img 
+                    src={herobg}
+                    alt="Hero Background"
                     style={{
                         width: '100%',
                         height: '100%',
                         objectFit: 'cover',
-                        opacity: 0.7
+                        opacity: 1
                     }}
-                >
-                    <source src={heroVideo} type="video/mp4" />
-                </video>
+                />
             </div>
             <div className="slider-active" style={{ position: 'relative', zIndex: 2 }}>
                 <div className="single-slider slider-bg d-flex align-items-center" style={{ background: 'transparent' }}>
