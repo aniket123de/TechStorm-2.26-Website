@@ -5,7 +5,6 @@ import bgImg from '../../../assets/img/bg/trendiang-bg.png';
 
 
 import SectionTitle from '../SectionTitle/SectionTitle';
-import LiveStreamingVideo from '../LiveStreamingVideo/LiveStreamingVideo';
 import RetroCard from '../RetroCard/RetroCard';
 import AnimateOnScroll from '../ScrollAnimation/AnimateOnScroll';
 
@@ -390,7 +389,6 @@ const WorkGallery = () => {
                         }
                     </div>
                 </div>
-                <LiveStreamingVideo />
             </div>
         </section>
     );

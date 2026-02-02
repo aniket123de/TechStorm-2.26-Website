@@ -1,0 +1,315 @@
+/* 8-bit Carousel Component Styles */
+
+.carousel-8bit-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-8bit-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.carousel-8bit-container {
+    position: relative;
+    width: 100%;
+    background: #ffc010;
+    /* Enhanced 8-bit pixelated border effect with more layers */
+    box-shadow: 
+        /* Multiple border layers for authentic pixel effect */
+        0 0 0 3px #ffc010,
+        0 0 0 6px #ffc010,
+        0 0 0 9px #ffc010,
+        0 0 0 12px #ffc010,
+        0 0 0 15px #ffc010,
+        /* Outer glow */
+        0 0 40px rgba(255, 192, 16, 0.5),
+        /* Inner shadow for depth */
+        inset 0 0 40px rgba(0, 0, 0, 0.9);
+    /* Enhanced pixelated corners effect */
+    clip-path: polygon(
+        0 12px, 4px 12px, 4px 8px, 8px 8px, 8px 4px, 12px 4px, 12px 0,
+        calc(100% - 12px) 0, calc(100% - 12px) 4px, calc(100% - 8px) 4px, 
+        calc(100% - 8px) 8px, calc(100% - 4px) 8px, calc(100% - 4px) 12px, 100% 12px,
+        100% calc(100% - 12px), calc(100% - 4px) calc(100% - 12px), 
+        calc(100% - 4px) calc(100% - 8px), calc(100% - 8px) calc(100% - 8px),
+        calc(100% - 8px) calc(100% - 4px), calc(100% - 12px) calc(100% - 4px), 
+        calc(100% - 12px) 100%,
+        12px 100%, 12px calc(100% - 4px), 8px calc(100% - 4px), 
+        8px calc(100% - 8px), 4px calc(100% - 8px), 4px calc(100% - 12px), 0 calc(100% - 12px)
+    );
+    overflow: hidden;
+    padding: 12px;
+}
+
+/* Slider container */
+.carousel-8bit-container .slick-slider {
+    position: relative;
+}
+
+.carousel-8bit-slide {
+    outline: none;
+}
+
+.carousel-8bit-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: #000;
+    min-height: 500px;
+}
+
+.carousel-8bit-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 8-bit style arrow buttons */
+.carousel-8bit-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ffc010;
+    border: none;
+    width: 56px;
+    height: 56px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 24px;
+    color: #000;
+    transition: all 0.2s ease;
+    opacity: 1 !important;
+    /* Enhanced pixelated button shape */
+    clip-path: polygon(
+        0 10px, 4px 10px, 4px 6px, 6px 6px, 6px 4px, 10px 4px, 10px 0,
+        calc(100% - 10px) 0, calc(100% - 10px) 4px, calc(100% - 6px) 4px, 
+        calc(100% - 6px) 6px, calc(100% - 4px) 6px, calc(100% - 4px) 10px, 100% 10px,
+        100% calc(100% - 10px), calc(100% - 4px) calc(100% - 10px), 
+        calc(100% - 4px) calc(100% - 6px), calc(100% - 6px) calc(100% - 6px),
+        calc(100% - 6px) calc(100% - 4px), calc(100% - 10px) calc(100% - 4px), 
+        calc(100% - 10px) 100%,
+        10px 100%, 10px calc(100% - 4px), 6px calc(100% - 4px), 
+        6px calc(100% - 6px), 4px calc(100% - 6px), 4px calc(100% - 10px), 0 calc(100% - 10px)
+    );
+    box-shadow: 
+        0 0 0 2px #ffc010,
+        0 0 0 4px #ffc010,
+        4px 4px 0 4px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-8bit-arrow:hover {
+    background: #fff;
+    transform: translateY(-50%) scale(1.08);
+    box-shadow: 
+        0 0 0 2px #ffc010,
+        0 0 0 4px #ffc010,
+        0 0 25px rgba(255, 192, 16, 0.9),
+        4px 4px 0 4px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-8bit-arrow:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-8bit-arrow.slick-disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed;
+}
+
+.carousel-8bit-prev {
+    left: 20px;
+}
+
+.carousel-8bit-next {
+    right: 20px;
+}
+
+.arrow-icon {
+    display: block;
+    line-height: 1;
+    margin-top: -4px;
+}
+
+/* Custom dots styling */
+.carousel-8bit-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex !important;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 50;
+}
+
+.carousel-8bit-dots li {
+    margin: 0;
+    padding: 0;
+}
+
+.carousel-8bit-dots li button {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    background: #1a0e22;
+    border: 3px solid #ffc010;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0;
+    /* Enhanced pixelated square shape */
+    clip-path: polygon(
+        0 5px, 3px 5px, 3px 3px, 5px 3px, 5px 0,
+        calc(100% - 5px) 0, calc(100% - 5px) 3px, calc(100% - 3px) 3px, calc(100% - 3px) 5px, 100% 5px,
+        100% calc(100% - 5px), calc(100% - 3px) calc(100% - 5px), 
+        calc(100% - 3px) calc(100% - 3px), calc(100% - 5px) calc(100% - 3px), 
+        calc(100% - 5px) 100%,
+        5px 100%, 5px calc(100% - 3px), 3px calc(100% - 3px), 
+        3px calc(100% - 5px), 0 calc(100% - 5px)
+    );
+}
+
+.carousel-8bit-dots li button:hover {
+    background: #2a1e32;
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(255, 192, 16, 0.5);
+}
+
+.carousel-8bit-dots li.slick-active button {
+    background: #ffc010;
+    box-shadow: 0 0 15px rgba(255, 192, 16, 0.8);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .carousel-8bit-prev {
+        left: 20px;
+    }
+    
+    .carousel-8bit-next {
+        right: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-8bit-arrow {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+    
+    .carousel-8bit-prev {
+        left: 10px;
+    }
+    
+    .carousel-8bit-next {
+        right: 10px;
+    }
+    
+    .carousel-8bit-dots {
+        bottom: -40px;
+        gap: 10px;
+    }
+    
+    .carousel-8bit-dots li button {
+        width: 16px;
+        height: 16px;
+        border: 2px solid #ffc010;
+    }
+    
+    .carousel-8bit-container {
+        padding: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-8bit-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+    }
+    
+    .carousel-8bit-prev {
+        left: 5px;
+    }
+    
+    .carousel-8bit-next {
+        right: 5px;
+    }
+    
+    .carousel-8bit-container {
+        box-shadow: 
+            0 0 0 2px #ffc010,
+            0 0 0 4px #ffc010,
+            0 0 0 6px #ffc010,
+            0 0 20px rgba(255, 192, 16, 0.3),
+            inset 0 0 20px rgba(0, 0, 0, 0.9);
+        padding: 4px;
+    }
+    
+    .carousel-8bit-dots li button {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+/* Add scanline effect for extra retro feel */
+.carousel-8bit-image-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15) 0px,
+        rgba(0, 0, 0, 0.15) 2px,
+        transparent 2px,
+        transparent 4px
+    );
+    pointer-events: none;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+/* Pixelated glow effect on hover */
+.carousel-8bit-container:hover {
+    box-shadow: 
+        0 0 0 3px #ffc010,
+        0 0 0 6px #ffc010,
+        0 0 0 9px #ffc010,
+        0 0 0 12px #ffc010,
+        0 0 0 15px #ffc010,
+        0 0 50px rgba(255, 192, 16, 0.8),
+        inset 0 0 40px rgba(0, 0, 0, 0.9);
+}
+
+/* Hide default slick arrows */
+.carousel-8bit-container .slick-arrow {
+    z-index: 100;
+}
+
+.carousel-8bit-container .slick-prev:before,
+.carousel-8bit-container .slick-next:before {
+    display: none;
+}
+
+/* Slick slider adjustments */
+.carousel-8bit-container .slick-list {
+    overflow: hidden;
+}
+
+.carousel-8bit-container .slick-track {
+    display: flex;
+    align-items: center;
+}
+

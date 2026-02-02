@@ -6,6 +6,7 @@ import Cta from '../../../Utilities/Cta/Cta';
 import BlogOne from '../../../Utilities/Blog/BlogOne/BlogOne';
 import HeroOne from '../../../Utilities/Hero/HeroOne/HeroOne';
 import WorkGallery from '../../../Utilities/WorkGallery/WorkGallery';
+import Carousel8bit from '../../../Utilities/LiveStreamingVideo/Carousel8bit/Carousel8bit';
 
 
 const Home = () => {
@@ -24,6 +25,9 @@ const Home = () => {
 
             {/* Gallery Component */}
             <WorkGallery/>
+
+            {/* 8-bit Carousel Component */}
+            <Carousel8bit />
 
             {/* Cta Component */}
             <Cta />
