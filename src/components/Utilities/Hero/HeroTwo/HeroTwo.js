@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import heroImg from '../../../../assets/img/slider/slider_img01.png';
 import sliderImg from '../../../../assets/img/slider/slider_img05.png';
 import Button8bit from '../../Button/Button8bit';

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import bgImg from '../../../assets/img/bg/divider-bg.png';
 import Button8bit from '../Button/Button8bit';
 const ctaData = {

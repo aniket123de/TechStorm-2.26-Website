@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import aboutBgImg from '../../../assets/img/bg/about-bg.png';
 import Button8bit from '../Button/Button8bit';
 import experienceImg from '../../../assets/img/features/experience-years.png';

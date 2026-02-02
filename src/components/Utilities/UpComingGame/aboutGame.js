@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import aboutShape from '../../../assets/img/features/about-shape.png';
 import about4 from '../../../assets/img/features/about-img4.jpg';
 import SectionTitle from '../SectionTitle/SectionTitle';

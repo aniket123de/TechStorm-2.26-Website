@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import heroVideo from '../../../../assets/img/HERO.mp4';
 import iplogo from '../../../../assets/img/logo/iplogo.png';
 import Button8bit from '../../Button/Button8bit';

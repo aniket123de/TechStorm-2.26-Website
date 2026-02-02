@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import errorImg from '../../../assets/img/bg/error-bg.png';
 import errorHdImg from '../../../assets/img/bg/about-hd.png';
 import Button8bit from '../../Utilities/Button/Button8bit';
