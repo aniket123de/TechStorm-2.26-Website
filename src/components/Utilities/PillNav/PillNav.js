@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { gsap } from 'gsap';
 import './PillNav.css';
 
@@ -21,6 +21,7 @@ const PillNav = ({
   const mobileMenuRef = useRef(null);
   const navItemsRef = useRef(null);
   const logoRef = useRef(null);
+  const history = useHistory();
 
   useEffect(() => {
     const menu = mobileMenuRef.current;
@@ -105,11 +106,35 @@ const PillNav = ({
 
   const handleHashClick = (e, href) => {
     e.preventDefault();
-    const hash = href.includes('#') ? href.split('#')[1] : '';
+    
+    // Extract path and hash from href (e.g., "/#about" -> path="/", hash="about")
+    const [path, hash] = href.split('#');
+    
     if (hash) {
-      const element = document.getElementById(hash);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // If we're not on the target path, navigate first
+      if (path && window.location.pathname !== path) {
+        history.push(path);
+        // Wait for navigation and scroll
+        setTimeout(() => {
+          if (hash === 'home') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            const element = document.getElementById(hash);
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+        }, 100);
+      } else {
+        // Already on the right page, just scroll
+        if (hash === 'home') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
       }
     }
   };

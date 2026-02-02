@@ -23,8 +23,8 @@ import SinglePost from './Pages/SinglePost/SinglePost';
 import Events from './Pages/Events/Events';
 
 const navItems = [
-    { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
+    { label: 'Home', href: '/#home' },
+    { label: 'About', href: '/#about' },
     { label: 'Events', href: '/events' },
     { label: 'Gallery', href: '/gallery' },
     { label: 'Schedule', href: '/schedule' },
