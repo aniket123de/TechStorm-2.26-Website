@@ -1385,10 +1385,10 @@ label {
 	width          : 100%;
 	padding-top    : 15px;
 	padding-bottom : 15px;
-	background     : rgba(15, 8, 25, 0.98);
-	border-bottom  : 1px solid rgba(255, 192, 16, 0.1);
-	transition     : padding 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-	will-change    : padding;
+	background     : transparent;
+	border-bottom  : none;
+	transition     : padding 0.25s cubic-bezier(0.4, 0, 0.2, 1), background 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+	will-change    : padding, background;
 	transform      : translateZ(0);
 	-webkit-transform: translateZ(0);
 }
@@ -1396,6 +1396,9 @@ label {
 .header-three .menu-area.scrolled {
 	padding-top    : 8px;
 	padding-bottom : 8px;
+	background     : rgba(0, 0, 0, 0.95);
+	border-bottom  : 1px solid rgba(255, 192, 16, 0.1);
+	box-shadow     : 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .header-three .menu-area.scrolled .logo img {
@@ -12519,8 +12522,9 @@ body.header-scrolled .pill-nav-container {
 	.header-three .menu-area {
 		padding-top: 12px !important;
 		padding-bottom: 12px !important;
-		transition: padding 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
-		will-change: padding !important;
+		background: transparent !important;
+		transition: padding 0.25s cubic-bezier(0.4, 0, 0.2, 1), background 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+		will-change: padding, background !important;
 		transform: translateZ(0) !important;
 		-webkit-transform: translateZ(0) !important;
 	}
@@ -12528,6 +12532,9 @@ body.header-scrolled .pill-nav-container {
 	.header-three .menu-area.scrolled {
 		padding-top: 6px !important;
 		padding-bottom: 6px !important;
+		background: rgba(0, 0, 0, 0.95) !important;
+		border-bottom: 1px solid rgba(255, 192, 16, 0.1) !important;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
 	}
 	
 	.header-three .logo {

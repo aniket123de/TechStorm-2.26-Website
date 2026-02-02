@@ -8,8 +8,28 @@ import AnimateOnScroll from '../ScrollAnimation/AnimateOnScroll';
 
 const About = () => {
     return (
-        <section id="about" className="about-area about-p pt-70 pb-140 p-relative" style={{ background: `url(${aboutBgImg}) no-repeat center center / cover` }}>
-            <div className="container">
+        <section id="about" className="about-area about-p pt-70 pb-140 p-relative" style={{ position: 'relative' }}>
+            <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: `url(${aboutBgImg}) no-repeat center center / cover`,
+                opacity: 0.6,
+                zIndex: 0
+            }}></div>
+            {/* Gradient overlay at top for blending with hero */}
+            <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                height: '150px',
+                background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, transparent 100%)',
+                zIndex: 1
+            }}></div>
+            <div className="container" style={{ position: 'relative', zIndex: 2 }}>
                 <div className="row">
                     <div className="col-lg-6 col-md-12 col-sm-12">
                         <AnimateOnScroll animation="slide-in-left">

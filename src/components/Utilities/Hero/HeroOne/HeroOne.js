@@ -41,9 +41,20 @@ const HeroOne = () => {
                         objectFit: 'cover',
                         objectPosition: 'center',
                         display: 'block',
-                        transform: 'translateZ(0)'
+                        transform: 'translateZ(0)',
+                        opacity: 0.6
                     }}
                 />
+                {/* Gradient overlay at bottom for blending */}
+                <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height: '200px',
+                    background: 'linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.8) 100%)',
+                    zIndex: 1
+                }}></div>
             </div>
             {/* Background Image - Mobile */}
             <div className="d-lg-none" style={{ 
@@ -66,9 +77,20 @@ const HeroOne = () => {
                         objectFit: 'cover',
                         objectPosition: 'center',
                         display: 'block',
-                        transform: 'translateZ(0)'
+                        transform: 'translateZ(0)',
+                        opacity: 0.6
                     }}
                 />
+                {/* Gradient overlay at bottom for blending */}
+                <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height: '150px',
+                    background: 'linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.8) 100%)',
+                    zIndex: 1
+                }}></div>
             </div>
             <div className="slider-active" style={{ position: 'relative', zIndex: 1 }}>
                 <div className="single-slider slider-bg d-flex align-items-center" style={{ background: 'transparent', minHeight: '100vh' }}>
