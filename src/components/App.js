@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
 
 import Header from './Utilities/Header/Header';
+import collegelogo from '../assets/img/logo/college-logo.png';
 import PillNav from './Utilities/PillNav/PillNav';
 import Home from './Pages/Home/HomeMain/HomeMain';
 import HomeTwo from './Pages/Home/HomeTwo/HomeTwo';
@@ -23,7 +24,8 @@ import Events from './Pages/Events/Events';
 
 const navItems = [
     { label: 'Home', href: '/' },
-    { label: 'Events', href: '/about' },
+    { label: 'About', href: '/about' },
+    { label: 'Events', href: '/events' },
     { label: 'Gallery', href: '/gallery' },
     { label: 'Schedule', href: '/schedule' },
     { label: 'Team', href: '/team' }
@@ -41,7 +43,7 @@ const AppContent = () => {
       {/* PillNav - Desktop Only */}
       <PillNav
           logo={collegelogo}
-          logoAlt="ICC Cell Logo"
+          logoAlt="College Logo"
           items={navItems}
           activeHref={location.pathname}
           baseColor="#ffc010"

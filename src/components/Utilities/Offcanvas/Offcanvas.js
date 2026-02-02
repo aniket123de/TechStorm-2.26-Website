@@ -21,6 +21,21 @@ const Offcanvas = ({ onOpne, onClose }) => {
                             <Link to={'/'}>{'Home'}</Link>
                         </li>
                         <li className="menu-item menu-item-type-custom menu-item-object-custom">
+                            <a 
+                                href="#about" 
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    const element = document.getElementById('about');
+                                    if (element) {
+                                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                        onClose(!onOpne);
+                                    }
+                                }}
+                            >
+                                {'About'}
+                            </a>
+                        </li>
+                        <li className="menu-item menu-item-type-custom menu-item-object-custom">
                             <Link to={'/events'}>{'Events'}</Link>
                         </li>
                         <li className="menu-item menu-item-type-custom menu-item-object-custom">

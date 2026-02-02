@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 
 import MobileMenu from './MobileMenu/MobileMenu';
 import Logo from '../Logo/Logo';
-import IIC_logo from '../../../assets/img/logo/IIC_logo.jpeg';
 import Abhiyantran_logo from '../../../assets/img/logo/Abhiyantran-logo.png';
-import collegelogo from '../../../assets/img/logo/college-logo.png';
+
 import toggolIcon from '../../../assets/img/bg/toggle-menu.png';
 import Offcanvas from '../Offcanvas/Offcanvas';
 

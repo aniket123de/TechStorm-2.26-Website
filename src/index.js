@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 
-import 'pixel-retroui/dist/fonts.css';
+// import 'pixel-retroui/dist/fonts.css'; // Commented out - path doesn't exist in pixel-retroui package
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/animate.min.css';
 import './assets/css/dripicons.css';
