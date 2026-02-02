@@ -5,7 +5,7 @@ import Logo from '../Logo/Logo';
 import collegelogo from '../../../assets/img/logo/college-logo.png';
 import IIC_logo from '../../../assets/img/logo/IIC_logo.png';
 import Abhiyantran_logo from '../../../assets/img/logo/Abhiyantran-logo.png';
-import toggolIcon from '../../../assets/img/bg/toggle-menu.png';
+
 import Offcanvas from '../Offcanvas/Offcanvas';
 
 
