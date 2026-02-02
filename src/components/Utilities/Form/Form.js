@@ -1,3 +1,5 @@
+import Button8bit from '../Button/Button8bit';
+
 const Form = () => {
     return (
         <form method="post" className="contact-form mt-30">
@@ -23,7 +25,7 @@ const Form = () => {
                         <textarea name="message" id="message" cols="30" rows="10" placeholder="Write comments"></textarea>
                     </div>
                     <div className="slider-btn">
-                        <button className="btn ss-btn" data-animation="fadeInRight" data-delay=".8s">{'Submint Now'}</button>
+                        <Button8bit type="submit" variant="primary" size="large">{'Submit Now'}</Button8bit>
                     </div>
                 </div>
             </div>

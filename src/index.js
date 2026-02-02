@@ -14,5 +14,6 @@ import './assets/css/meanmenu.css';
 import './assets/css/default.css';
 import './assets/css/style.css';
 import './assets/css/responsive.css';
+import './components/Utilities/Button/Button8bit.css';
 
 ReactDOM.render(<App />,document.getElementById('root'));

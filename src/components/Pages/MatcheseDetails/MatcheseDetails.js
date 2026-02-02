@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Breadcrumb from "../../Utilities/Breadcrumb/Breadcrumb";
+import Button8bit from "../../Utilities/Button/Button8bit";
 
 import mathchImg from '../../../assets/img/bg/macthes-image.png';
 import thumb1 from '../../../assets/img/matches/m-11.png';
@@ -81,7 +82,7 @@ const MatcheseDetails = () => {
                             </div>
                             <p>{text}</p>
                             <div className="slider-btn2 mt-50">
-                                <Link to='/about' className="btn ss-btn">{'Join Now'}</Link>
+                                <Button8bit to='/about' variant="primary" size="large">{'Join Now'}</Button8bit>
                             </div>
                         </div>
                     </div>

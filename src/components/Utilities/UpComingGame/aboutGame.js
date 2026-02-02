@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import aboutShape from '../../../assets/img/features/about-shape.png';
 import about4 from '../../../assets/img/features/about-img4.jpg';
 import SectionTitle from '../SectionTitle/SectionTitle';
+import Button8bit from '../Button/Button8bit';
 
 const AboutGame = () => {
     return (
@@ -17,7 +18,7 @@ const AboutGame = () => {
                                 <SectionTitle titlefirst='We’re the best Gaming' titleSec='Company' />
                                 <p>{'Lpsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}</p>
                                 <div className="slider-btn2 mt-20">
-                                    <Link to={'/about'} className="btn ss-btn">{'Learn More'}</Link>
+                                    <Button8bit to={'/about'} variant="primary" size="medium">{'Learn More'}</Button8bit>
                                 </div>
                             </div>
                         </div>

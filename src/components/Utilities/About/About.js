@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import aboutBgImg from '../../../assets/img/bg/about-bg.png';
+import Button8bit from '../Button/Button8bit';
 import experienceImg from '../../../assets/img/features/experience-years.png';
 import features1 from '../../../assets/img/features/about-img1.jpg';
 import features2 from '../../../assets/img/features/about-img2.jpg';
@@ -47,7 +48,7 @@ const About = () => {
                                 </div>
                             </div>
                             <div className="slider-btn2 mt-30">
-                                <Link to={'/about'} className="btn ss-btn">{'Discover More'}</Link>
+                                <Button8bit to={'/about'} variant="primary" size="medium">{'Discover More'}</Button8bit>
                             </div>
                         </div>
                     </div>

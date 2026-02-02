@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import heroImg from '../../../../assets/img/slider/slider_img01.png';
 import sliderImg from '../../../../assets/img/slider/slider_img05.png';
+import Button8bit from '../../Button/Button8bit';
 const heroData = {
     bgImg: heroImg,
     titleTag: "#world class game",
@@ -22,9 +23,9 @@ const HeroTwo = () => {
                                     <h5 data-animation="fadeInDown" data-delay=".4s">{titleTag}</h5>
                                     <h2 data-animation="fadeInUp" data-delay=".4s">{title}</h2>
                                     <div className="slider-btn">
-                                        <Link to={'/about'} className="btn ss-btn mr-15">
+                                        <Button8bit to={'/about'} variant="primary" size="large">
                                             {btnText}
-                                        </Link>
+                                        </Button8bit>
                                     </div>
                                 </div>
                             </div>

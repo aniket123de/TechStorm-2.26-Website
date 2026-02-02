@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import errorImg from '../../../assets/img/bg/error-bg.png';
 import errorHdImg from '../../../assets/img/bg/about-hd.png';
+import Button8bit from '../../Utilities/Button/Button8bit';
 const Error404 = () => {
     return (
         <React.Fragment>
@@ -24,10 +25,10 @@ const Error404 = () => {
                                 </div>
                                 <div className="error-body">
                                     <p>{'Try using the button below to go to main page of the site'}</p>
-                                    <Link to={'/'} className="btn btn-primary solid blank">
+                                    <Button8bit to={'/'} variant="primary" size="medium">
                                         <i className="fa fa-arrow-circle-left">&nbsp;</i>
                                         {'Go to Home'}
-                                    </Link>
+                                    </Button8bit>
                                 </div>
                             </div>
                             <div className="error-img">

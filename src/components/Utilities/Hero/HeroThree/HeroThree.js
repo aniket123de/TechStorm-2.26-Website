@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import sliderBg from '../../../../assets/img/slider/slider_img02.png';
 import sliderImg from '../../../../assets/img/bg/before-header-img.png';
+import Button8bit from '../../Button/Button8bit';
 const HeroThree = () => {
     return (
         <section id="home" className="slider-area slider-four fix p-relative">
@@ -15,7 +16,7 @@ const HeroThree = () => {
                                 <div className="slider-content s-slider-content">
                                     <h2 data-animation="fadeInUp" data-delay=".4s">Are You ready For <br />your next Challenge ?</h2>
                                     <div className="slider-btn">
-                                        <Link to={'/about'} className="btn ss-btn mr-15">{'Read More'}</Link>
+                                        <Button8bit to={'/about'} variant="primary" size="large">{'Read More'}</Button8bit>
                                     </div>
                                 </div>
                             </div>

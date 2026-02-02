@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import bgImg from '../../../assets/img/bg/divider-bg.png';
+import Button8bit from '../Button/Button8bit';
 const ctaData = {
     bg: bgImg,
     title: 'Ready to Press Start? Register Now for TechStorm 2026!',
@@ -26,7 +27,7 @@ const Cta = () => {
                             </div>
                         </div>
                         <div className="slider-btn">
-                            <Link to={'/contact'} className="btn ss-btn mt-20 wow fadeInDown animated" data-animation="fadeInRight" data-delay=".4s">{btn}</Link>
+                            <Button8bit to={'/contact'} variant="primary" size="large" className="mt-20 wow fadeInDown animated">{btn}</Button8bit>
                         </div>
                     </div>
                 </div>

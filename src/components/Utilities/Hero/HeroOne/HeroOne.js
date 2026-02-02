@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import heroVideo from '../../../../assets/img/HERO.mp4';
 import iplogo from '../../../../assets/img/logo/iplogo.png';
+import Button8bit from '../../Button/Button8bit';
 
 const heroInformation = {
     id: "1",
@@ -65,13 +66,13 @@ const HeroOne = () => {
                                     <h5 data-animation="fadeInDown" data-delay=".4s">{titleTag}</h5>
                                     <h2 data-animation="fadeInUp" data-delay=".4s">{title}</h2>
                                     <p data-animation="fadeInUp" data-delay=".6s" style={{color: '#fff', fontSize: '18px', marginBottom: '30px'}}>{'INSERT COIN to begin your journey at the ultimate technical fest experience. Where retro meets revolution.'}</p>
-                                    <div className="slider-btn">
-                                        <Link to={'/contact'} className="btn ss-btn mr-15">
+                                    <div className="slider-btn btn-8bit-group">
+                                        <Button8bit to={'/contact'} variant="primary" size="large">
                                             {btnText}
-                                        </Link>
-                                        <Link to={'/about'} className="btn ss-btn" style={{background: 'transparent', border: '2px solid #ffc010'}}>
+                                        </Button8bit>
+                                        <Button8bit to={'/about'} variant="outline" size="large">
                                             {'Explore Events'}
-                                        </Link>
+                                        </Button8bit>
                                     </div>
                                 </div>
                             </div>
