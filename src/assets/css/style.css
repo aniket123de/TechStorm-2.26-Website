@@ -12445,4 +12445,33 @@ div.single-cta:last-child {
     }
 }
 
+/* Custom scrolled header styles */
+.header-three .menu-area.scrolled {
+    background: rgba(0, 0, 0, 0.85) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 9998 !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+    animation: slideDown 0.3s ease !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
 
+/* Adjust PillNav position when scrolled */
+body.header-scrolled .pill-nav-container {
+    top: 25px !important;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}

@@ -1,5 +1,9 @@
+import React, { useState } from 'react';
 import herobg from '../../../../assets/img/herobg.png';
+import heroph from '../../../../assets/img/heroph.png';
 import iplogo from '../../../../assets/img/logo/iplogo.png';
+import pcmain from '../../../../assets/img/pcmain.png';
+import pcstart from '../../../../assets/img/pcstart.png';
 import Button8bit from '../../Button/Button8bit';
 
 const heroInformation = {
@@ -11,10 +15,12 @@ const heroInformation = {
 const { titleTag, title, btnText } = heroInformation;
 
 const HeroOne = () => {
+    const [isHovered, setIsHovered] = useState(false);
+    
     return (
         <section id="home" className="slider-area slider-four fix p-relative" style={{ position: 'relative', minHeight: '600px' }}>
-            {/* Background Image */}
-            <div style={{ 
+            {/* Background Image - Desktop */}
+            <div className="d-none d-lg-block" style={{ 
                 position: 'absolute', 
                 top: 0, 
                 left: 0, 
@@ -34,18 +40,39 @@ const HeroOne = () => {
                     }}
                 />
             </div>
+            {/* Background Image - Mobile */}
+            <div className="d-lg-none" style={{ 
+                position: 'absolute', 
+                top: 0, 
+                left: 0, 
+                width: '100%', 
+                height: '100%', 
+                zIndex: 1,
+                overflow: 'hidden'
+            }}>
+                <img 
+                    src={heroph}
+                    alt="Hero Background Mobile"
+                    style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        opacity: 1
+                    }}
+                />
+            </div>
             <div className="slider-active" style={{ position: 'relative', zIndex: 2 }}>
                 <div className="single-slider slider-bg d-flex align-items-center" style={{ background: 'transparent' }}>
                     <div className="container" style={{ position: 'relative', zIndex: 3 }}>
                         <div className="row justify-content-center pt-50">
-                            <div className="col-lg-1 col-md-1"></div>
-                            <div className="col-lg-6 col-md-6">
+                            <div className="col-lg-1 col-md-1 d-none d-lg-block"></div>
+                            <div className="col-lg-6 col-md-6 col-12">
                                 <div className="slider-content s-slider-content">
-                                    {/* IP Logo - Most Important Element */}
+                                    {/* IP Logo */}
                                     <div style={{
                                         marginBottom: '40px',
                                         textAlign: 'left'
-                                    }}>
+                                    }} className="d-none d-lg-block">
                                         <img 
                                             src={iplogo} 
                                             alt="Event IP Logo" 
@@ -58,10 +85,48 @@ const HeroOne = () => {
                                             }}
                                         />
                                     </div>
-                                    <h5 data-animation="fadeInDown" data-delay=".4s">{titleTag}</h5>
-                                    <h2 data-animation="fadeInUp" data-delay=".4s">{title}</h2>
-                                    <p data-animation="fadeInUp" data-delay=".6s" style={{color: '#fff', fontSize: '18px', marginBottom: '30px'}}>{'INSERT COIN to begin your journey at the ultimate technical fest experience. Where retro meets revolution.'}</p>
-                                    <div className="slider-btn btn-8bit-group">
+                                    
+                                    {/* Mobile Logo */}
+                                    <div style={{
+                                        marginBottom: '30px',
+                                        textAlign: 'center'
+                                    }} className="d-lg-none">
+                                        <img 
+                                            src={iplogo} 
+                                            alt="Event IP Logo" 
+                                            style={{
+                                                width: '100%',
+                                                maxWidth: '350px',
+                                                height: 'auto',
+                                                filter: 'drop-shadow(0 0 20px rgba(255, 192, 16, 0.8))'
+                                            }}
+                                        />
+                                    </div>
+                                    
+                                    {/* Mobile PC Image */}
+                                    <div className="d-lg-none" style={{
+                                        textAlign: 'center',
+                                        marginBottom: '30px'
+                                    }}>
+                                        <img 
+                                            src={pcmain}
+                                            alt="PC"
+                                            style={{
+                                                width: '100%',
+                                                maxWidth: '300px',
+                                                height: 'auto',
+                                                filter: 'drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5))'
+                                            }}
+                                        />
+                                    </div>
+                                    
+                                    {/* Desktop Text Content */}
+                                    <h5 data-animation="fadeInDown" data-delay=".4s" className="d-none d-lg-block">{titleTag}</h5>
+                                    <h2 data-animation="fadeInUp" data-delay=".4s" className="d-none d-lg-block">{title}</h2>
+                                    <p data-animation="fadeInUp" data-delay=".6s" className="d-none d-lg-block" style={{color: '#fff', fontSize: '18px', marginBottom: '30px'}}>{'INSERT COIN to begin your journey at the ultimate technical fest experience. Where retro meets revolution.'}</p>
+                                    
+                                    {/* Desktop Buttons */}
+                                    <div className="slider-btn btn-8bit-group d-none d-lg-flex">
                                         <Button8bit to={'/contact'} variant="primary" size="large">
                                             {btnText}
                                         </Button8bit>
@@ -69,9 +134,75 @@ const HeroOne = () => {
                                             {'Explore Events'}
                                         </Button8bit>
                                     </div>
+                                    
+                                    {/* Mobile Buttons */}
+                                    <div className="d-lg-none" style={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        gap: '20px',
+                                        alignItems: 'center',
+                                        width: '100%',
+                                        padding: '0 20px'
+                                    }}>
+                                        <Button8bit to={'/contact'} variant="primary" size="large" style={{
+                                            width: '100%',
+                                            maxWidth: '300px'
+                                        }}>
+                                            {btnText}
+                                        </Button8bit>
+                                        <Button8bit to={'/about'} variant="primary" size="large" style={{
+                                            width: '100%',
+                                            maxWidth: '300px'
+                                        }}>
+                                            {'Explore Events'}
+                                        </Button8bit>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="col-lg-5 col-md-5"></div>
+                            <div className="col-lg-5 col-md-5 d-none d-lg-block">
+                                {/* PC Image with Hover Effect */}
+                                <div 
+                                    className="pc-container d-none d-lg-block"
+                                    onMouseEnter={() => setIsHovered(true)}
+                                    onMouseLeave={() => setIsHovered(false)}
+                                    style={{
+                                        position: 'relative',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        height: '100%',
+                                        paddingTop: '-50px',
+                                        marginTop: '-400px'
+                                    }}
+                                >
+                                    <img 
+                                        src={pcmain}
+                                        alt="PC Main"
+                                        style={{
+                                            width: '100%',
+                                            maxWidth: '500px',
+                                            height: 'auto',
+                                            filter: 'drop-shadow(0 10px 40px rgba(0, 0, 0, 0.5))',
+                                            transition: 'opacity 0.3s ease-in-out',
+                                            opacity: isHovered ? 0 : 1,
+                                            position: 'absolute'
+                                        }}
+                                    />
+                                    <img 
+                                        src={pcstart}
+                                        alt="PC Start"
+                                        style={{
+                                            width: '100%',
+                                            maxWidth: '500px',
+                                            height: 'auto',
+                                            filter: 'drop-shadow(0 10px 40px rgba(0, 0, 0, 0.5))',
+                                            transition: 'opacity 0.3s ease-in-out',
+                                            opacity: isHovered ? 1 : 0,
+                                            position: 'absolute'
+                                        }}
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

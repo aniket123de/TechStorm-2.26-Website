@@ -3,7 +3,8 @@
   top: 42px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 999;
+  z-index: 99999;
+  transition: top 0.3s ease;
 }
 
 @media (max-width: 991px) {
