@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Collapse } from 'react-bootstrap';
 import './MobileMenu.js';
 
 class MobileMenu extends Component {
@@ -26,8 +25,6 @@ class MobileMenu extends Component {
 
 
     render() {
-
-        const { isOpen } = this.state;
 
         return (
             <div>

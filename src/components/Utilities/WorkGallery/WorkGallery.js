@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from "react-router-dom";
 
 import bgImg from '../../../assets/img/bg/trendiang-bg.png';
-
+import './WorkGallery.css';
 
 import SectionTitle from '../SectionTitle/SectionTitle';
 import RetroCard from '../RetroCard/RetroCard';
@@ -143,7 +143,7 @@ const WorkGallery = () => {
     const [items, setItems] = useState(galleryItems);
     const [activeFilter, setActiveFilter] = useState('All');
     const [hoveredIndex, setHoveredIndex] = useState(null);
-    const scrollContainerRef = React.useRef(null);
+    const scrollContainerRef = useRef(null);
 
     const fliterItem = (cat) => {
         setActiveFilter(cat);
@@ -160,11 +160,17 @@ const WorkGallery = () => {
 
     const scroll = (direction) => {
         if (scrollContainerRef.current) {
-            const scrollAmount = 320; // card width + gap
-            scrollContainerRef.current.scrollBy({
-                left: direction === 'left' ? -scrollAmount : scrollAmount,
-                behavior: 'smooth'
-            });
+            const firstCard = scrollContainerRef.current.querySelector('.gallery-card-wrapper');
+            if (firstCard) {
+                const cardWidth = firstCard.offsetWidth;
+                const computedStyle = window.getComputedStyle(scrollContainerRef.current);
+                const gap = parseInt(computedStyle.gap) || 20; // Get actual gap from CSS
+                const scrollAmount = cardWidth + gap;
+                scrollContainerRef.current.scrollBy({
+                    left: direction === 'left' ? -scrollAmount : scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
         }
     }
 
@@ -172,18 +178,25 @@ const WorkGallery = () => {
         const interval = setInterval(() => {
             if (scrollContainerRef.current) {
                 const container = scrollContainerRef.current;
-                const maxScroll = container.scrollWidth - container.clientWidth;
-                const scrollAmount = 370 * 4; // 4 cards (350px width + 20px gap)
+                const firstCard = container.querySelector('.gallery-card-wrapper');
                 
-                // If we're at or near the end, scroll back to start
-                if (container.scrollLeft >= maxScroll - 10) {
-                    container.scrollTo({ left: 0, behavior: 'smooth' });
-                } else {
-                    // Scroll 4 cards at once
-                    container.scrollBy({
-                        left: scrollAmount,
-                        behavior: 'smooth'
-                    });
+                if (firstCard) {
+                    const maxScroll = container.scrollWidth - container.clientWidth;
+                    const cardWidth = firstCard.offsetWidth;
+                    const computedStyle = window.getComputedStyle(container);
+                    const gap = parseInt(computedStyle.gap) || 20; // Get actual gap from CSS
+                    const scrollAmount = cardWidth + gap; // 1 card width + gap
+                    
+                    // If we're at or near the end, scroll back to start
+                    if (container.scrollLeft >= maxScroll - 10) {
+                        container.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        // Scroll 1 card at a time
+                        container.scrollBy({
+                            left: scrollAmount,
+                            behavior: 'smooth'
+                        });
+                    }
                 }
             }
         }, 3000); // 3 seconds
@@ -203,9 +216,10 @@ const WorkGallery = () => {
                                     titlefirst='All Events'
                                     titleSec='' />
                             </AnimateOnScroll>
-                            <div style={{ display: 'flex', gap: '10px' }}>
+                            <div style={{ display: 'flex', gap: '10px' }} className="gallery-nav-buttons">
                                 <button 
                                     onClick={() => scroll('left')}
+                                    className="gallery-nav-btn"
                                     style={{
                                         background: '#ffc010',
                                         border: 'none',
@@ -227,6 +241,7 @@ const WorkGallery = () => {
                                 </button>
                                 <button 
                                     onClick={() => scroll('right')}
+                                    className="gallery-nav-btn"
                                     style={{
                                         background: '#ffc010',
                                         border: 'none',
@@ -300,8 +315,8 @@ const WorkGallery = () => {
                                         <div 
                                             className="grid-item gallery-card-wrapper" 
                                             style={{ 
-                                                minWidth: '350px', 
-                                                maxWidth: '350px', 
+                                                minWidth: 'clamp(280px, 90vw, 350px)', 
+                                                maxWidth: 'clamp(280px, 90vw, 350px)', 
                                                 flexShrink: 0 
                                             }}
                                         >

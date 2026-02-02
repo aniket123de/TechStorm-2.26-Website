@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -41,8 +41,8 @@ const NextArrow = ({ onClick }) => (
 );
 
 const Carousel8bit = () => {
-    const sliderRef = React.useRef(null);
-    const [currentSlide, setCurrentSlide] = React.useState(0);
+    const sliderRef = useRef(null);
+    const [currentSlide, setCurrentSlide] = useState(0);
     
     const settings = {
         dots: false,

@@ -211,49 +211,14 @@
 }
 
 @media (max-width: 768px) {
+    .carousel-8bit-section {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+    }
+    
     .carousel-8bit-arrow {
-        width: 44px;
-        height: 44px;
-        font-size: 18px;
-    }
-    
-    .carousel-8bit-prev {
-        left: 10px;
-    }
-    
-    .carousel-8bit-next {
-        right: 10px;
-    }
-    
-    .carousel-8bit-dots-container {
-        margin-top: 25px;
-    }
-    
-    .carousel-8bit-dots {
-        gap: 10px;
-    }
-    
-    .carousel-8bit-dots li button {
-        width: 16px;
-        height: 16px;
-        border: 2px solid #ffc010;
-    }
-    
-    .carousel-8bit-container {
-        padding: 6px;
-    }
-    
-    .carousel-8bit-image-wrapper {
-        height: auto;
-        max-height: none;
-        min-height: 300px;
-    }
-}
-
-@media (max-width: 480px) {
-    .carousel-8bit-arrow {
-        width: 38px;
-        height: 38px;
+        width: 40px;
+        height: 40px;
         font-size: 16px;
     }
     
@@ -263,6 +228,51 @@
     
     .carousel-8bit-next {
         right: 5px;
+    }
+    
+    .carousel-8bit-dots-container {
+        margin-top: 20px;
+    }
+    
+    .carousel-8bit-dots {
+        gap: 8px;
+    }
+    
+    .carousel-8bit-dots li button {
+        width: 14px;
+        height: 14px;
+        border: 2px solid #ffc010;
+    }
+    
+    .carousel-8bit-container {
+        padding: 6px;
+    }
+    
+    .carousel-8bit-image-wrapper {
+        height: auto;
+        max-height: 400px;
+        min-height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-8bit-section {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+    }
+    
+    .carousel-8bit-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+    
+    .carousel-8bit-prev {
+        left: 3px;
+    }
+    
+    .carousel-8bit-next {
+        right: 3px;
     }
     
     .carousel-8bit-container {
@@ -275,9 +285,19 @@
         padding: 4px;
     }
     
+    .carousel-8bit-dots-container {
+        margin-top: 15px;
+    }
+    
     .carousel-8bit-dots li button {
-        width: 14px;
-        height: 14px;
+        width: 12px;
+        height: 12px;
+    }
+    
+    .carousel-8bit-image-wrapper {
+        height: auto;
+        max-height: 300px;
+        min-height: 200px;
     }
 }
 

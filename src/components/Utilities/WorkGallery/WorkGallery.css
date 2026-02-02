@@ -1,0 +1,109 @@
+/* WorkGallery Component Styles */
+
+.gallery-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding-bottom: 20px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #ffc010 #1a0e22;
+}
+
+/* Custom scrollbar for webkit browsers */
+.gallery-scroll-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.gallery-scroll-container::-webkit-scrollbar-track {
+    background: #1a0e22;
+    border-radius: 4px;
+}
+
+.gallery-scroll-container::-webkit-scrollbar-thumb {
+    background: #ffc010;
+    border-radius: 4px;
+}
+
+.gallery-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #e6ad0e;
+}
+
+/* Gallery navigation buttons */
+.gallery-nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.gallery-nav-btn:hover {
+    background: #e6ad0e !important;
+    transform: scale(1.1);
+}
+
+.gallery-nav-btn:active {
+    transform: scale(0.95);
+}
+
+/* Gallery card wrapper */
+.gallery-card-wrapper {
+    transition: transform 0.3s ease;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+    .gallery-scroll-container {
+        gap: 15px;
+    }
+    
+    .gallery-card-wrapper {
+        min-width: clamp(280px, 85vw, 350px) !important;
+        max-width: clamp(280px, 85vw, 350px) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-nav-buttons {
+        display: none !important;
+    }
+    
+    .gallery-scroll-container {
+        gap: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .gallery-card-wrapper {
+        min-width: clamp(260px, 85vw, 320px) !important;
+        max-width: clamp(260px, 85vw, 320px) !important;
+    }
+    
+    .my-masonry {
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-scroll-container {
+        gap: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    
+    .gallery-card-wrapper {
+        min-width: clamp(240px, 90vw, 280px) !important;
+        max-width: clamp(240px, 90vw, 280px) !important;
+    }
+}
+
+/* Hide scrollbar on mobile for cleaner look */
+@media (max-width: 768px) {
+    .gallery-scroll-container::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .gallery-scroll-container {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+}
