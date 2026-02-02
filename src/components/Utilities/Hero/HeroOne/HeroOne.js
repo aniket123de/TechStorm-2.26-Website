@@ -125,35 +125,20 @@ const HeroOne = () => {
                                     <h2 data-animation="fadeInUp" data-delay=".4s" className="d-none d-lg-block">{title}</h2>
                                     <p data-animation="fadeInUp" data-delay=".6s" className="d-none d-lg-block" style={{color: '#fff', fontSize: '18px', marginBottom: '30px'}}>{'INSERT COIN to begin your journey at the ultimate technical fest experience. Where retro meets revolution.'}</p>
                                     
-                                    {/* Desktop Buttons */}
-                                    <div className="slider-btn btn-8bit-group d-none d-lg-flex">
+                                    {/* Buttons - Desktop horizontal, Mobile vertical centered */}
+                                    <div className="slider-btn btn-8bit-group" style={{
+                                        display: 'flex',
+                                        gap: '15px',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        width: '100%',
+                                        flexDirection: 'row',
+                                        flexWrap: 'wrap'
+                                    }}>
                                         <Button8bit to={'/contact'} variant="primary" size="large">
                                             {btnText}
                                         </Button8bit>
                                         <Button8bit to={'/about'} variant="outline" size="large">
-                                            {'Explore Events'}
-                                        </Button8bit>
-                                    </div>
-                                    
-                                    {/* Mobile Buttons */}
-                                    <div className="d-lg-none" style={{
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        gap: '20px',
-                                        alignItems: 'center',
-                                        width: '100%',
-                                        padding: '0 20px'
-                                    }}>
-                                        <Button8bit to={'/contact'} variant="primary" size="large" style={{
-                                            width: '100%',
-                                            maxWidth: '300px'
-                                        }}>
-                                            {btnText}
-                                        </Button8bit>
-                                        <Button8bit to={'/about'} variant="primary" size="large" style={{
-                                            width: '100%',
-                                            maxWidth: '300px'
-                                        }}>
                                             {'Explore Events'}
                                         </Button8bit>
                                     </div>
