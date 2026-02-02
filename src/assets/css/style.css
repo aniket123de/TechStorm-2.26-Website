@@ -488,7 +488,7 @@ button {
 }
 
 a:hover {
-	color: #ffc010;
+	color: #050208;
 }
 
 .box20 .title a {
@@ -1239,6 +1239,240 @@ label {
 	transition        : .5s;
 	-webkit-transform : translateX(100%);
 	transform         : translateX(100%);
+}
+
+/* Retro 8-bit Menu Theme - Mobile Only */
+@media (max-width: 768px) {
+	.offcanvas-menu.offcanvas-retro {
+		background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%) !important;
+		border-left: 8px solid #444 !important;
+		padding: 25px 15px !important;
+		width: 320px !important;
+		box-shadow: -8px 0 20px rgba(0, 0, 0, 0.8) !important;
+	}
+}
+
+@media (max-width: 768px) {
+	.retro-menu-header {
+		text-align: center;
+		margin-bottom: 40px;
+		padding: 30px 15px;
+		border: 4px solid #3a3a3a;
+		background: linear-gradient(180deg, #252525 0%, #151515 100%);
+		box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5), 
+		            0 4px 8px rgba(0, 0, 0, 0.6);
+		position: relative;
+	}
+
+	.retro-menu-header::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: repeating-linear-gradient(
+		    0deg,
+		    transparent,
+		    transparent 2px,
+		    rgba(0, 0, 0, 0.1) 2px,
+		    rgba(0, 0, 0, 0.1) 4px
+		);
+		pointer-events: none;
+	}
+
+	.retro-menu-title {
+		font-family: 'Press Start 2P', monospace;
+		font-size: 16px;
+		color: #ffffff;
+		margin-bottom: 15px;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		line-height: 1.6;
+		text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+		position: relative;
+		z-index: 1;
+	}
+
+	.retro-menu-subtitle {
+		font-family: 'Press Start 2P', monospace;
+		font-size: 10px;
+		color: #999;
+		margin: 0;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		line-height: 1.6;
+		position: relative;
+		z-index: 1;
+	}
+}
+
+@media (max-width: 768px) {
+	.retro-menu-container {
+		margin-top: 0 !important;
+	}
+
+	.retro-menu-list {
+		list-style: none !important;
+		padding: 0 !important;
+		margin: 0 !important;
+	}
+
+	.retro-menu-item {
+		margin-bottom: 20px !important;
+		border-bottom: none !important;
+	}
+
+	.retro-menu-button {
+		display: block !important;
+		width: 100% !important;
+		padding: 16px 20px !important;
+		background: linear-gradient(180deg, #f5f5f5 0%, #d8d8d8 50%, #c0c0c0 100%) !important;
+		border: 4px solid #fff !important;
+		border-bottom: 6px solid #4a4a4a !important;
+		border-right: 6px solid #4a4a4a !important;
+		box-shadow: inset 2px 2px 0 rgba(255,255,255,0.8), 
+		            inset -2px -2px 0 rgba(0,0,0,0.3),
+		            0 6px 0 #2a2a2a,
+		            0 8px 12px rgba(0, 0, 0, 0.5) !important;
+		color: #000 !important;
+		font-family: 'Press Start 2P', monospace !important;
+		font-size: 11px !important;
+		text-align: center !important;
+		text-transform: uppercase !important;
+		text-decoration: none !important;
+		cursor: pointer !important;
+		transition: all 0.1s ease !important;
+		image-rendering: pixelated !important;
+		letter-spacing: 1.5px !important;
+		line-height: 1.6 !important;
+		position: relative !important;
+		overflow: hidden !important;
+	}
+
+	.retro-menu-button::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: repeating-linear-gradient(
+		    0deg,
+		    transparent,
+		    transparent 2px,
+		    rgba(0, 0, 0, 0.03) 2px,
+		    rgba(0, 0, 0, 0.03) 4px
+		);
+		pointer-events: none;
+	}
+
+	.retro-menu-button:hover {
+		background: linear-gradient(180deg, #ffeb3b 0%, #ffc107 50%, #ff9800 100%) !important;
+		color: #000 !important;
+		transform: translateY(4px) !important;
+		border-bottom: 4px solid #4a4a4a !important;
+		border-right: 4px solid #4a4a4a !important;
+		box-shadow: inset 2px 2px 0 rgba(255,255,255,0.8), 
+		            inset -2px -2px 0 rgba(0,0,0,0.3),
+		            0 2px 0 #2a2a2a,
+		            0 4px 8px rgba(0, 0, 0, 0.5) !important;
+	}
+
+	.retro-menu-button:active {
+		background: linear-gradient(180deg, #c0c0c0 0%, #a0a0a0 100%) !important;
+		box-shadow: inset 3px 3px 6px rgba(0,0,0,0.6) !important;
+		transform: translateY(6px) !important;
+		border-bottom: 2px solid #4a4a4a !important;
+		border-right: 2px solid #4a4a4a !important;
+	}
+}
+
+/* Close button styling for retro theme - Mobile Only */
+@media (max-width: 768px) {
+	.offcanvas-retro .menu-close {
+		position: absolute !important;
+		top: 20px !important;
+		right: 20px !important;
+		z-index: 10 !important;
+		background: linear-gradient(180deg, #ff5555 0%, #cc0000 100%) !important;
+		border: 3px solid #fff !important;
+		border-radius: 0 !important;
+		width: 40px !important;
+		height: 40px !important;
+		display: flex !important;
+		align-items: center !important;
+		justify-content: center !important;
+		cursor: pointer !important;
+		box-shadow: inset 1px 1px 0 rgba(255,255,255,0.5),
+		            inset -1px -1px 0 rgba(0,0,0,0.3),
+		            0 4px 0 #8a0000,
+		            0 6px 8px rgba(0, 0, 0, 0.5) !important;
+		transition: all 0.1s ease !important;
+	}
+
+	.offcanvas-retro .menu-close i {
+		color: #fff !important;
+		font-size: 16px !important;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) !important;
+	}
+
+	.offcanvas-retro .menu-close:hover {
+		background: linear-gradient(180deg, #ff3333 0%, #aa0000 100%) !important;
+		transform: translateY(2px) !important;
+		box-shadow: inset 1px 1px 0 rgba(255,255,255,0.5),
+		            inset -1px -1px 0 rgba(0,0,0,0.3),
+		            0 2px 0 #8a0000,
+		            0 4px 6px rgba(0, 0, 0, 0.5) !important;
+	}
+
+	.offcanvas-retro .menu-close:active {
+		background: linear-gradient(180deg, #cc0000 0%, #880000 100%) !important;
+		transform: translateY(4px) !important;
+		box-shadow: inset 2px 2px 4px rgba(0,0,0,0.6) !important;
+	}
+
+	/* Add scanline effect to entire offcanvas - Mobile */
+	.offcanvas-menu.offcanvas-retro::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: repeating-linear-gradient(
+		    0deg,
+		    transparent,
+		    transparent 2px,
+		    rgba(0, 0, 0, 0.15) 2px,
+		    rgba(0, 0, 0, 0.15) 4px
+		);
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	.offcanvas-retro > * {
+		position: relative;
+		z-index: 1;
+	}
+
+	/* Override base offcanvas menu styles for retro theme */
+	.offcanvas-menu.offcanvas-retro ul {
+		margin-top: 0 !important;
+	}
+
+	.offcanvas-menu.offcanvas-retro ul li {
+		border-bottom: none !important;
+	}
+
+	.offcanvas-menu.offcanvas-retro ul li a {
+		padding: 0 !important;
+		font-size: inherit !important;
+	}
+
+	.offcanvas-menu.offcanvas-retro ul li:hover a {
+		color: #000 !important;
+	}
 }
 
 .offcanvas-menu.active {

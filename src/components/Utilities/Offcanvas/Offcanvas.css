@@ -1,0 +1,375 @@
+/* Base Offcanvas Styles - Desktop (Default) */
+.offcanvas-retro {
+    background: #2d2d2d;
+    padding: 20px;
+}
+
+.retro-menu-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.retro-menu-title {
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.retro-menu-subtitle {
+    font-size: 10px;
+    color: #888;
+    margin: 0;
+}
+
+.retro-menu-container {
+    margin-top: 0;
+}
+
+.retro-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.retro-menu-item {
+    margin-bottom: 15px;
+}
+
+.retro-menu-button {
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    background: #e8e8e8;
+    border: 2px solid #ccc;
+    color: #000;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.retro-menu-button:hover {
+    background: #ffd700;
+    color: #000;
+}
+
+.offcanvas-retro .menu-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+}
+
+/* Override any conflicting styles */
+.offcanvas-retro ul li {
+    border-bottom: none !important;
+}
+
+.offcanvas-retro ul li a {
+    color: #000 !important;
+}
+
+/* Retro 8-bit Offcanvas Menu Styling - MOBILE ONLY */
+@media (max-width: 768px) {
+    .offcanvas-retro {
+        background: #1a0e22 !important;
+        border-left: 8px solid #ffc010 !important;
+        padding: 25px 15px !important;
+        width: 320px !important;
+        box-shadow: -8px 0 30px rgba(255, 192, 16, 0.3),
+                    inset 0 0 80px rgba(0, 0, 0, 0.6) !important;
+        image-rendering: pixelated;
+        position: relative;
+    }
+
+    .offcanvas-retro::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 8px;
+        background: repeating-linear-gradient(
+            90deg,
+            #ffc010 0px,
+            #ffc010 8px,
+            transparent 8px,
+            transparent 16px
+        );
+        z-index: 2;
+    }
+
+    .retro-menu-header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 30px 15px;
+        background: #14142A;
+        position: relative;
+        clip-path: polygon(
+            0 8px, 8px 8px, 8px 0,
+            calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px,
+            100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px),
+            calc(100% - 8px) 100%, 8px 100%, 8px calc(100% - 8px),
+            0 calc(100% - 8px)
+        );
+        box-shadow: 
+            0 0 0 3px #ffc010,
+            0 8px 0 rgba(0, 0, 0, 0.3),
+            inset 0 0 30px rgba(255, 192, 16, 0.1);
+    }
+
+    .retro-menu-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 192, 16, 0.03) 2px,
+            rgba(255, 192, 16, 0.03) 4px
+        );
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .retro-menu-title {
+        font-family: 'Press Start 2P', monospace;
+        font-size: 16px;
+        color: #ffc010;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        line-height: 1.8;
+        text-shadow: 
+            3px 3px 0 rgba(0, 0, 0, 0.8),
+            0 0 20px rgba(255, 192, 16, 0.5);
+        position: relative;
+        z-index: 2;
+        animation: titleGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes titleGlow {
+        0%, 100% {
+            text-shadow: 
+                3px 3px 0 rgba(0, 0, 0, 0.8),
+                0 0 20px rgba(255, 192, 16, 0.5);
+        }
+        50% {
+            text-shadow: 
+                3px 3px 0 rgba(0, 0, 0, 0.8),
+                0 0 30px rgba(255, 192, 16, 0.8),
+                0 0 40px rgba(255, 192, 16, 0.4);
+        }
+    }
+
+    .retro-menu-subtitle {
+        font-family: 'Press Start 2P', monospace;
+        font-size: 9px;
+        color: #8a6fb0;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        line-height: 1.8;
+        position: relative;
+        z-index: 2;
+    }
+
+    .retro-menu-container {
+        margin-top: 0 !important;
+    }
+
+    .retro-menu-list {
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .retro-menu-item {
+        margin-bottom: 18px !important;
+        border-bottom: none !important;
+    }
+
+    .retro-menu-button {
+        display: block !important;
+        width: 100% !important;
+        padding: 16px 20px !important;
+        background: #14142A !important;
+        color: #ffc010 !important;
+        font-family: 'Press Start 2P', monospace !important;
+        font-size: 11px !important;
+        text-align: center !important;
+        text-transform: uppercase !important;
+        text-decoration: none !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+        image-rendering: pixelated !important;
+        letter-spacing: 1.5px !important;
+        line-height: 1.8 !important;
+        position: relative !important;
+        overflow: visible !important;
+        clip-path: polygon(
+            0 6px, 6px 6px, 6px 0,
+            calc(100% - 6px) 0, calc(100% - 6px) 6px, 100% 6px,
+            100% calc(100% - 6px), calc(100% - 6px) calc(100% - 6px),
+            calc(100% - 6px) 100%, 6px 100%, 6px calc(100% - 6px),
+            0 calc(100% - 6px)
+        );
+        box-shadow: 
+            0 0 0 2px transparent,
+            0 0 0 4px #ffc010,
+            0 0 0 6px transparent,
+            0 6px 0 rgba(0, 0, 0, 0.3) !important;
+    }
+
+    .retro-menu-button::before {
+        content: '►';
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #ffc010;
+        font-size: 10px;
+        opacity: 0;
+        transition: all 0.2s ease;
+    }
+
+    .retro-menu-button::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 192, 16, 0.03) 2px,
+            rgba(255, 192, 16, 0.03) 4px
+        );
+        pointer-events: none;
+    }
+
+    .retro-menu-button:hover {
+        background: #ffc010 !important;
+        color: #14142A !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 
+            0 0 0 2px transparent,
+            0 0 0 4px #ffc010,
+            0 0 0 6px transparent,
+            0 8px 0 rgba(0, 0, 0, 0.4),
+            0 0 20px rgba(255, 192, 16, 0.5) !important;
+    }
+
+    .retro-menu-button:hover::before {
+        opacity: 1;
+        left: 20px;
+    }
+
+    .retro-menu-button:active {
+        background: #ffb000 !important;
+        color: #14142A !important;
+        transform: translateY(2px) !important;
+        box-shadow: 
+            0 0 0 2px transparent,
+            0 0 0 4px #ffc010,
+            0 0 0 6px transparent,
+            0 2px 0 rgba(0, 0, 0, 0.4) !important;
+    }
+
+    /* Close button styling for retro theme - Mobile */
+    .offcanvas-retro .menu-close {
+        position: absolute !important;
+        top: 20px !important;
+        right: 20px !important;
+        z-index: 10 !important;
+        background: #ff3860 !important;
+        border: none !important;
+        border-radius: 0 !important;
+        width: 44px !important;
+        height: 44px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+        clip-path: polygon(
+            0 6px, 6px 6px, 6px 0,
+            calc(100% - 6px) 0, calc(100% - 6px) 6px, 100% 6px,
+            100% calc(100% - 6px), calc(100% - 6px) calc(100% - 6px),
+            calc(100% - 6px) 100%, 6px 100%, 6px calc(100% - 6px),
+            0 calc(100% - 6px)
+        );
+        box-shadow: 
+            0 0 0 2px transparent,
+            0 0 0 4px #ffc010,
+            0 0 0 6px transparent,
+            0 6px 0 rgba(0, 0, 0, 0.4) !important;
+    }
+
+    .offcanvas-retro .menu-close i {
+        color: #ffffff !important;
+        font-size: 18px !important;
+        text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5) !important;
+    }
+
+    .offcanvas-retro .menu-close:hover {
+        background: #ff1744 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 
+            0 0 0 2px transparent,
+            0 0 0 4px #ffc010,
+            0 0 0 6px transparent,
+            0 8px 0 rgba(0, 0, 0, 0.4),
+            0 0 20px rgba(255, 56, 96, 0.5) !important;
+    }
+
+    .offcanvas-retro .menu-close:active {
+        background: #d50032 !important;
+        transform: translateY(2px) !important;
+        box-shadow: 
+            0 0 0 2px transparent,
+            0 0 0 4px #ffc010,
+            0 0 0 6px transparent,
+            0 2px 0 rgba(0, 0, 0, 0.4) !important;
+    }
+
+    /* Add scanline effect to entire offcanvas - Mobile */
+    .offcanvas-retro::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.2) 2px,
+            rgba(0, 0, 0, 0.2) 4px
+        );
+        pointer-events: none;
+        z-index: 0;
+        animation: scanline 8s linear infinite;
+    }
+
+    @keyframes scanline {
+        0% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(4px);
+        }
+    }
+
+    .offcanvas-retro > * {
+        position: relative;
+        z-index: 1;
+    }
+}

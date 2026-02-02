@@ -1,0 +1,375 @@
+/* 8-Bit Retro Mobile Menu Styling */
+
+.mobile-menu {
+    visibility: hidden;
+    opacity: 0;
+    transform: scaleY(0) translateX(-50%);
+    transform-origin: top;
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: calc(100% - 10%);
+    background: #1a0e22;
+    border: 4px solid #ffc010;
+    box-shadow: 
+        0 0 0 2px #1a0e22,
+        0 8px 0 rgba(0, 0, 0, 0.4),
+        0 12px 30px rgba(255, 192, 16, 0.3),
+        inset 0 0 60px rgba(0, 0, 0, 0.5);
+    clip-path: polygon(
+        0 8px, 8px 8px, 8px 0,
+        calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px,
+        100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px),
+        calc(100% - 8px) 100%, 8px 100%, 8px calc(100% - 8px),
+        0 calc(100% - 8px)
+    );
+    z-index: 999;
+    image-rendering: pixelated;
+}
+
+/* Scanline effect overlay */
+.mobile-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.2) 2px,
+        rgba(0, 0, 0, 0.2) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+    animation: scanline 8s linear infinite;
+}
+
+@keyframes scanline {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(4px);
+    }
+}
+
+/* Pixel border decoration at top */
+.mobile-menu::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: repeating-linear-gradient(
+        90deg,
+        #ffc010 0px,
+        #ffc010 8px,
+        transparent 8px,
+        transparent 16px
+    );
+    z-index: 2;
+}
+
+.mobile-menu-active {
+    visibility: visible;
+    opacity: 1;
+    transform: scaleY(1) translateX(-50%);
+}
+
+/* Close button styling for retro theme - positioned above blur overlay */
+.mobile-menu-close {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    z-index: 1001;
+    background: #c93545;
+    border: none;
+    border-radius: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0.8);
+    clip-path: polygon(
+        0 6px, 6px 6px, 6px 0,
+        calc(100% - 6px) 0, calc(100% - 6px) 6px, 100% 6px,
+        100% calc(100% - 6px), calc(100% - 6px) calc(100% - 6px),
+        calc(100% - 6px) 100%, 6px 100%, 6px calc(100% - 6px),
+        0 calc(100% - 6px)
+    );
+    box-shadow: 
+        0 0 0 2px transparent,
+        0 0 0 4px #ffc010,
+        0 0 0 6px transparent,
+        0 6px 0 rgba(0, 0, 0, 0.4);
+}
+
+.mobile-menu-close.active {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.mobile-menu-close i {
+    color: #ffffff;
+    font-size: 20px;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.mobile-menu-close:hover {
+    background: #e03e4e;
+    transform: translateY(-2px) scale(1);
+    box-shadow: 
+        0 0 0 2px transparent,
+        0 0 0 4px #ffc010,
+        0 0 0 6px transparent,
+        0 8px 0 rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(255, 56, 96, 0.5);
+}
+
+.mobile-menu-close:active {
+    background: #a52a38;
+    transform: translateY(2px) scale(1);
+    box-shadow: 
+        0 0 0 2px transparent,
+        0 0 0 4px #ffc010,
+        0 0 0 6px transparent,
+        0 2px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* Mean Nav - Retro Menu List */
+.mean-nav {
+    background: transparent !important;
+    padding: 20px 15px;
+    list-style: none;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.mean-nav li {
+    padding: 0 !important;
+    margin-bottom: 15px !important;
+    position: relative;
+    border-bottom: none !important;
+}
+
+/* Retro Button Styling for Menu Items */
+.mean-nav li {
+    display: block;
+    width: 100%;
+}
+
+.mean-nav li a {
+    display: block;
+    width: 100%;
+    padding: 14px 20px;
+    background: #14142A;
+    color: #ffc010 !important;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    image-rendering: pixelated;
+    letter-spacing: 1.5px;
+    line-height: 1.8;
+    position: relative;
+    overflow: visible;
+    clip-path: polygon(
+        0 6px, 6px 6px, 6px 0,
+        calc(100% - 6px) 0, calc(100% - 6px) 6px, 100% 6px,
+        100% calc(100% - 6px), calc(100% - 6px) calc(100% - 6px),
+        calc(100% - 6px) 100%, 6px 100%, 6px calc(100% - 6px),
+        0 calc(100% - 6px)
+    );
+    box-shadow: 
+        0 0 0 2px transparent,
+        0 0 0 4px #ffc010,
+        0 0 0 6px transparent,
+        0 6px 0 rgba(0, 0, 0, 0.3);
+    border: none !important;
+}
+
+/* Scanline effect on buttons */
+.mean-nav li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 192, 16, 0.03) 2px,
+        rgba(255, 192, 16, 0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Arrow indicator */
+.mean-nav li a::after {
+    content: '►';
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ffc010;
+    font-size: 9px;
+    opacity: 0;
+    transition: all 0.2s ease;
+    z-index: 2;
+}
+
+.mean-nav li a:hover,
+.mean-nav li a:focus,
+.mean-nav li a:active {
+    background: #ffc010 !important;
+    color: #000000 !important;
+    transform: translateY(-2px);
+    box-shadow: 
+        0 0 0 2px transparent,
+        0 0 0 4px #ffc010,
+        0 0 0 6px transparent,
+        0 8px 0 rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(255, 192, 16, 0.5) !important;
+}
+
+.mean-nav li a:hover::after,
+.mean-nav li a:focus::after,
+.mean-nav li a:active::after {
+    opacity: 1;
+    left: 20px;
+    color: #000000;
+}
+
+/* Touch device support */
+@media (hover: none) and (pointer: coarse) {
+    .mean-nav li a:active {
+        background: #ffc010 !important;
+        color: #000000 !important;
+    }
+}
+
+/* Icon styling */
+.mean-nav li i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    font-size: 14px;
+    color: #ffc010 !important;
+    z-index: 2;
+    transition: all 0.2s ease;
+}
+
+.mean-nav li a:hover i,
+.mean-nav li a:focus i,
+.mean-nav li a:active i {
+    color: #000000 !important;
+}
+
+/* Submenu styling if needed */
+.mean-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+
+.mean-nav ul li {
+    margin-bottom: 10px;
+}
+
+.mean-nav ul li a {
+    font-size: 9px;
+    padding: 12px 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .mean-nav li,
+    .mean-nav li a {
+        font-size: 9px;
+        padding: 12px 15px;
+    }
+    
+    .mean-nav li i {
+        font-size: 12px;
+        right: 15px;
+    }
+}
+
+/* Animation for menu items */
+@keyframes menuItemFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mobile-menu-active .mean-nav li {
+    animation: menuItemFadeIn 0.3s ease-out forwards;
+}
+
+.mobile-menu-active .mean-nav li:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.mobile-menu-active .mean-nav li:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.mobile-menu-active .mean-nav li:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.mobile-menu-active .mean-nav li:nth-child(4) {
+    animation-delay: 0.25s;
+}
+
+.mobile-menu-active .mean-nav li:nth-child(5) {
+    animation-delay: 0.3s;
+}
+
+.mobile-menu-active .mean-nav li:nth-child(6) {
+    animation-delay: 0.35s;
+}
+
+/* Overlay backdrop for closing menu on outside click */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    z-index: 998;
+}
+
+.mobile-menu-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}

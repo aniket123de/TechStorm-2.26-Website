@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
+import './MobileMenu.css';
+
 class MobileMenu extends Component {
 
     state = {
@@ -27,11 +29,24 @@ class MobileMenu extends Component {
 
         return (
             <div>
+                {/* Overlay backdrop */}
+                <div 
+                    className={`mobile-menu-overlay ${this.props.toggleMenu ? 'active' : ''}`}
+                    onClick={() => this.props.onClose(false)}
+                />
+                
+                {/* Close button - above overlay */}
+                <span className={`mobile-menu-close ${this.props.toggleMenu ? 'active' : ''}`} onClick={() => this.props.onClose(false)}>
+                    <i className="fas fa-times"></i>
+                </span>
+                
                 <div className={`mobile-menu ${this.props.toggleMenu ? 'mobile-menu-active' : ''}`}>
                     <ul className="mean-nav">
-                        <li onClick={this.isDropDownOpenOne}>
-                            {'Home'}
-                            <i className="fa fa-angle-down"></i>
+                        <li>
+                            <Link onClick={() => this.props.onClose(false)}
+                                to={'/'}>
+                                {'Home'}
+                            </Link>
                         </li>
                         
                         <li>

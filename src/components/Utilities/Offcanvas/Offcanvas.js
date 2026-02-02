@@ -1,37 +1,44 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Offcanvas.css";
 
 const Offcanvas = ({ onOpne, onClose }) => {
 
     return (
         <React.Fragment>
-            <div className={`offcanvas-menu ${onOpne ? 'active' : ''}`}>
+            <div className={`offcanvas-menu offcanvas-retro ${onOpne ? 'active' : ''}`}>
                 <span className="menu-close" onClick={() => onClose(!onOpne)}>
                     <i className="fas fa-times"></i>
                 </span>
-                <form role="search" id="searchform" className="searchform">
-                    <input type="text" name="s" id="search" placeholder="Search" />
-                    <button>
-                        <i className="fa fa-search"></i>
-                    </button>
-                </form>
-                <div id="cssmenu3" className="menu-one-page-menu-container">
-                    <ul id="menu-one-page-menu-2" className="menu">
-                        <li className="menu-item menu-item-type-custom menu-item-object-custom">
+                
+                {/* Retro Menu Header */}
+                <div className="retro-menu-header">
+                    <h2 className="retro-menu-title">Main Menu</h2>
+                    <p className="retro-menu-subtitle">Retro 8-bit Quest</p>
+                </div>
+
+                <div id="cssmenu3" className="menu-one-page-menu-container retro-menu-container">
+                    <ul id="menu-one-page-menu-2" className="menu retro-menu-list">
+                        <li className="menu-item retro-menu-item">
                             <a 
                                 href="#home" 
+                                className="retro-menu-button"
                                 onClick={(e) => {
                                     e.preventDefault();
                                     window.scrollTo({ top: 0, behavior: 'smooth' });
                                     onClose(!onOpne);
                                 }}
                             >
-                                {'Home'}
+                                {'START GAME'}
                             </a>
                         </li>
-                        <li className="menu-item menu-item-type-custom menu-item-object-custom">
+                        <li className="menu-item retro-menu-item">
+                            <Link to={'/events'} className="retro-menu-button">{'EVENTS'}</Link>
+                        </li>
+                        <li className="menu-item retro-menu-item">
                             <a 
                                 href="#about" 
+                                className="retro-menu-button"
                                 onClick={(e) => {
                                     e.preventDefault();
                                     const element = document.getElementById('about');
@@ -41,32 +48,19 @@ const Offcanvas = ({ onOpne, onClose }) => {
                                     }
                                 }}
                             >
-                                {'About'}
+                                {'ABOUT'}
                             </a>
                         </li>
-                        <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                            <Link to={'/events'}>{'Events'}</Link>
+                        <li className="menu-item retro-menu-item">
+                            <Link to={'/gallery'} className="retro-menu-button">{'GALLERY'}</Link>
                         </li>
-                        <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                            <Link to={'/gallery'}>{'Gallery'}</Link>
+                        <li className="menu-item retro-menu-item">
+                            <Link to={'/schedule'} className="retro-menu-button">{'SCHEDULE'}</Link>
                         </li>
-                        <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                            <Link to={'/schedule'}>{'Schedule'}</Link>
-                        </li>
-                        <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                            <Link to={'/team'}>{'Team'}</Link>
+                        <li className="menu-item retro-menu-item">
+                            <Link to={'/team'} className="retro-menu-button">{'TEAM'}</Link>
                         </li>
                         
-                    </ul>
-                </div>
-                <div id="cssmenu2" className="menu-one-page-menu-container">
-                    <ul id="menu-one-page-menu-1" className="menu">
-                        <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                            <Link to={'#'}><span>{'+8 12 3456897'}</span></Link>
-                        </li>
-                        <li className="menu-item menu-item-type-custom menu-item-object-custom">
-                            <Link to={'#'}><span>{'bppimt.ac.in'}</span></Link>
-                        </li>
                     </ul>
                 </div>
             </div>
