@@ -5,6 +5,7 @@ import iplogo from '../../../../assets/img/logo/iplogo.png';
 import pcmain from '../../../../assets/img/pcmain.png';
 import pcstart from '../../../../assets/img/pcstart.png';
 import Button8bit from '../../Button/Button8bit';
+import AnimateOnScroll from '../../ScrollAnimation/AnimateOnScroll';
 
 const heroInformation = {
     id: "1",
@@ -69,39 +70,43 @@ const HeroOne = () => {
                             <div className="col-lg-6 col-md-6 col-12">
                                 <div className="slider-content s-slider-content">
                                     {/* IP Logo */}
-                                    <div style={{
-                                        marginBottom: '40px',
-                                        textAlign: 'left'
-                                    }} className="d-none d-lg-block">
-                                        <img 
-                                            src={iplogo} 
-                                            alt="Event IP Logo" 
-                                            style={{
-                                                width: '100%',
-                                                maxWidth: '650px',
-                                                height: 'auto',
-                                                filter: 'drop-shadow(0 0 30px rgba(255, 192, 16, 0.8))',
-                                                transform: 'scale(1.1)'
-                                            }}
-                                        />
-                                    </div>
+                                    <AnimateOnScroll animation="hero-title" className="d-none d-lg-block">
+                                        <div style={{
+                                            marginBottom: '40px',
+                                            textAlign: 'left'
+                                        }}>
+                                            <img 
+                                                src={iplogo} 
+                                                alt="Event IP Logo" 
+                                                style={{
+                                                    width: '100%',
+                                                    maxWidth: '650px',
+                                                    height: 'auto',
+                                                    filter: 'drop-shadow(0 0 30px rgba(255, 192, 16, 0.8))',
+                                                    transform: 'scale(1.1)'
+                                                }}
+                                            />
+                                        </div>
+                                    </AnimateOnScroll>
                                     
                                     {/* Mobile Logo */}
-                                    <div style={{
-                                        marginBottom: '30px',
-                                        textAlign: 'center'
-                                    }} className="d-lg-none">
-                                        <img 
-                                            src={iplogo} 
-                                            alt="Event IP Logo" 
-                                            style={{
-                                                width: '100%',
-                                                maxWidth: '350px',
-                                                height: 'auto',
-                                                filter: 'drop-shadow(0 0 20px rgba(255, 192, 16, 0.8))'
-                                            }}
-                                        />
-                                    </div>
+                                    <AnimateOnScroll animation="hero-title" className="d-lg-none">
+                                        <div style={{
+                                            marginBottom: '30px',
+                                            textAlign: 'center'
+                                        }}>
+                                            <img 
+                                                src={iplogo} 
+                                                alt="Event IP Logo" 
+                                                style={{
+                                                    width: '100%',
+                                                    maxWidth: '350px',
+                                                    height: 'auto',
+                                                    filter: 'drop-shadow(0 0 20px rgba(255, 192, 16, 0.8))'
+                                                }}
+                                            />
+                                        </div>
+                                    </AnimateOnScroll>
                                     
                                     {/* Mobile PC Image - Single pcmain only */}
                                     <div className="d-block d-lg-none" style={{
@@ -124,27 +129,35 @@ const HeroOne = () => {
                                     </div>
                                     
                                     {/* Desktop Text Content */}
-                                    <h5 data-animation="fadeInDown" data-delay=".4s" className="d-none d-lg-block">{titleTag}</h5>
-                                    <h2 data-animation="fadeInUp" data-delay=".4s" className="d-none d-lg-block">{title}</h2>
-                                    <p data-animation="fadeInUp" data-delay=".6s" className="d-none d-lg-block" style={{color: '#fff', fontSize: '18px', marginBottom: '30px'}}>{'INSERT COIN to begin your journey at the ultimate technical fest experience. Where retro meets revolution.'}</p>
+                                    <AnimateOnScroll animation="hero-subtitle" className="d-none d-lg-block">
+                                        <h5>{titleTag}</h5>
+                                    </AnimateOnScroll>
+                                    <AnimateOnScroll animation="hero-subtitle" delay={100} className="d-none d-lg-block">
+                                        <h2>{title}</h2>
+                                    </AnimateOnScroll>
+                                    <AnimateOnScroll animation="hero-subtitle" delay={200} className="d-none d-lg-block">
+                                        <p style={{color: '#fff', fontSize: '18px', marginBottom: '30px'}}>{'INSERT COIN to begin your journey at the ultimate technical fest experience. Where retro meets revolution.'}</p>
+                                    </AnimateOnScroll>
                                     
                                     {/* Buttons - Desktop horizontal, Mobile vertical centered */}
-                                    <div className="slider-btn btn-8bit-group" style={{
-                                        display: 'flex',
-                                        gap: '15px',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        width: '100%',
-                                        flexDirection: 'row',
-                                        flexWrap: 'wrap'
-                                    }}>
-                                        <Button8bit to={'/contact'} variant="primary" size="large">
-                                            {btnText}
-                                        </Button8bit>
-                                        <Button8bit to={'/about'} variant="outline" size="large">
-                                            {'Explore Events'}
-                                        </Button8bit>
-                                    </div>
+                                    <AnimateOnScroll animation="hero-cta">
+                                        <div className="slider-btn btn-8bit-group" style={{
+                                            display: 'flex',
+                                            gap: '15px',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            width: '100%',
+                                            flexDirection: 'row',
+                                            flexWrap: 'wrap'
+                                        }}>
+                                            <Button8bit to={'/contact'} variant="primary" size="large">
+                                                {btnText}
+                                            </Button8bit>
+                                            <Button8bit to={'/about'} variant="outline" size="large">
+                                                {'Explore Events'}
+                                            </Button8bit>
+                                        </div>
+                                    </AnimateOnScroll>
                                 </div>
                             </div>
                             <div className="col-lg-5 col-md-5 d-none d-lg-block">

@@ -25,11 +25,15 @@ const Services = () => {
                 <div className="row">
                     {
                         services.map((service, index) => {
-                            return <ServiceItem
-                                key={index}
-                                icon={service.icon}
-                                title={service.title}
-                                description={service.description} />
+                            const delay = index * 100;
+                            return (
+                                <ServiceItem
+                                    key={index}
+                                    icon={service.icon}
+                                    title={service.title}
+                                    description={service.description}
+                                    delay={delay} />
+                            )
                         })
                     }
                 </div>

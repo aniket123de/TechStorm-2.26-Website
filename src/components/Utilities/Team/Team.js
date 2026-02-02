@@ -6,6 +6,7 @@ import team4 from '../../../assets/img/team/team_img05.png';
 import team5 from '../../../assets/img/team/team_img06.png';
 import team6 from '../../../assets/img/team/team_img07.png';
 import Member from "./Member";
+import AnimateOnScroll from '../ScrollAnimation/AnimateOnScroll';
 
 const teamData = [
     {
@@ -52,7 +53,9 @@ const Team = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12 p-relative">
-                        <SectionTitle titlefirst='Organizing' titleSec='Committee' />
+                        <AnimateOnScroll animation="section-title-wrapper">
+                            <SectionTitle titlefirst='Organizing' titleSec='Committee' />
+                        </AnimateOnScroll>
                     </div>
                 </div>
                 <div className="row ">

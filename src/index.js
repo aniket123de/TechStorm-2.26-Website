@@ -16,5 +16,6 @@ import './assets/css/style.css';
 import './assets/css/responsive.css';
 import './components/Utilities/Button/Button8bit.css';
 import './assets/css/nes-custom.css';
+import './assets/css/scroll-animations.css';
 
 ReactDOM.render(<App />,document.getElementById('root'));

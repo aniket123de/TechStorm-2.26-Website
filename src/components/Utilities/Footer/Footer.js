@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
-import Logo from "../Logo/Logo";
-import logo from '../../../assets/img/logo/f_logo.png';
+import logo from '../../../assets/img/logo/iplogo.png';
 
 const Footer = () => {
     return (
@@ -12,21 +11,21 @@ const Footer = () => {
                         <div className="col-xl-4 col-lg-4 col-sm-6">
                             <div className="footer-widget mb-30">
                                 <div className="f-widget-title mb-20">
-                                    <Logo logo={logo} />
+                                    <img src={logo} alt="TechStorm Logo" style={{ maxWidth: '350px', height: 'auto' }} />
                                 </div>
                                 <div className="footer-link">{'TechStorm 2026 - Play the Past, Build the Future. The flagship technical fest celebrating retro arcade culture and modern innovation.'}</div>
                                 <div className="f-contact mt-20">
                                     <ul>
                                         <li>
                                             <i className="icon fal fa-map-marker-alt"></i>
-                                            <span>{'Address: [Your College Name], [City], [State]'}</span>
+                                            <span>{'Address : 137, VIP Rd, Mali Bagan, Poodar Vihar, Rajarhat, Kolkata, West Bengal 700052'}</span>
                                         </li>
                                         <li>
                                             <i className="icon far fa-clock"></i>
                                             <span>
                                                 Phone : 
                                                 <Link to={'#callto:+91XXXXXXXXXX'}>
-                                                    {'+91 XXXXX XXXXX'}
+                                                    {'+91 9038903850'}
                                                     </Link>
                                                     </span>
                                         </li>
@@ -100,7 +99,16 @@ const Footer = () => {
                                     <h2>{'Map'}</h2>
                                 </div>
                                 <div className="map-f">
-                                    <div className="map" id="map"></div>
+                                    <iframe 
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.8287896869886!2d88.47249007516844!3d22.63474097945438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89fa702ccbc2b%3A0x9e94acde66c43bb9!2sBP%20Poddar%20Institute%20of%20Management%20%26%20Technology!5e0!3m2!1sen!2sin!4v1738522844123!5m2!1sen!2sin"
+                                        width="100%" 
+                                        height="200" 
+                                        style={{ border: 0 }} 
+                                        allowFullScreen="" 
+                                        loading="lazy" 
+                                        referrerPolicy="no-referrer-when-downgrade"
+                                        title="BPPIMT Location"
+                                    ></iframe>
                                 </div>
                             </div>
                         </div>
@@ -111,7 +119,7 @@ const Footer = () => {
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-6">
-                            {'Copyright © 2026'} <span>{'TechStorm | [Your College Name]'}</span> {'All Rights Reserved.'}
+                            {'Copyright © 2026'} <span>{'TechStorm | BPPIMT'}</span> <p>{'All Rights Reserved.'}</p>
                         </div>
                         <div className="col-lg-6 text-right text-xl-right"></div>
                     </div>

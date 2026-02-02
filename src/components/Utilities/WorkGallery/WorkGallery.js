@@ -7,6 +7,7 @@ import bgImg from '../../../assets/img/bg/trendiang-bg.png';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import LiveStreamingVideo from '../LiveStreamingVideo/LiveStreamingVideo';
 import RetroCard from '../RetroCard/RetroCard';
+import AnimateOnScroll from '../ScrollAnimation/AnimateOnScroll';
 
 // Event Images
 import codebeeImg from '../../../assets/img/events/codebee.png';
@@ -196,11 +197,13 @@ const WorkGallery = () => {
         <section id="work" className="pt-120 pb-120" style={{ background: `url(${bgImg}) no-repeat` }}>
             <div className="container-fluid px-4">
                 <div className="portfolio ">
-                    <div className="row align-items-center mb-30 wow fadeInUp animated" data-animation="fadeInRight" data-delay=".4s">
+                    <div className="row align-items-center mb-30">
                         <div className="col-lg-12 d-flex justify-content-between align-items-center">
-                            <SectionTitle
-                                titlefirst='All Events'
-                                titleSec='' />
+                            <AnimateOnScroll animation="section-title-wrapper">
+                                <SectionTitle
+                                    titlefirst='All Events'
+                                    titleSec='' />
+                            </AnimateOnScroll>
                             <div style={{ display: 'flex', gap: '10px' }}>
                                 <button 
                                     onClick={() => scroll('left')}
@@ -247,8 +250,9 @@ const WorkGallery = () => {
                             </div>
                         </div>
                         <div className="col-lg-12">
-                            <div className="my-masonry wow fadeInDown animated" data-animation="fadeInRight" data-delay=".4s">
-                                <div className="button-group filter-button-group ">
+                            <AnimateOnScroll animation="fade-slide-up-subtle" delay={100}>
+                                <div className="my-masonry">
+                                    <div className="button-group filter-button-group ">
                                     <button className={activeFilter === 'All' ? 'active' : ''} onClick={showAllItems}>All</button>
                                     <button className={activeFilter === 'Coding' ? 'active' : ''} onClick={() => fliterItem('Coding')}>
                                         {'Coding'}
@@ -262,11 +266,12 @@ const WorkGallery = () => {
                                     <button className={activeFilter === 'Brain' ? 'active' : ''} onClick={() => fliterItem('Brain')}>
                                         {'Brain Teaser'}
                                     </button>
-                                    <button className={activeFilter === 'Creative' ? 'active' : ''} onClick={() => fliterItem('Creative')}>
-                                        {'Creative'}
-                                    </button>
+                                        <button className={activeFilter === 'Creative' ? 'active' : ''} onClick={() => fliterItem('Creative')}>
+                                            {'Creative'}
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
+                            </AnimateOnScroll>
                         </div>
                     </div>
                     <div 
@@ -286,16 +291,21 @@ const WorkGallery = () => {
                         {
                             items.map((item, index) => {
                                 const { id, img, tag, label, description } = item
+                                const delay = (index % 6) * 100;
                                 return (
-                                    <div 
-                                        className="grid-item gallery-card-wrapper" 
-                                        key={id} 
-                                        style={{ 
-                                            minWidth: '350px', 
-                                            maxWidth: '350px', 
-                                            flexShrink: 0 
-                                        }}
+                                    <AnimateOnScroll 
+                                        key={id}
+                                        animation="fade-scale" 
+                                        delay={delay}
                                     >
+                                        <div 
+                                            className="grid-item gallery-card-wrapper" 
+                                            style={{ 
+                                                minWidth: '350px', 
+                                                maxWidth: '350px', 
+                                                flexShrink: 0 
+                                            }}
+                                        >
                                         <RetroCard 
                                             bg={hoveredIndex === index ? '#1a3d3d' : '#1a0e22'}
                                             textColor={hoveredIndex === index ? '#00ffea' : '#ffffff'}
@@ -373,7 +383,8 @@ const WorkGallery = () => {
                                                 </div>
                                             </Link>
                                         </RetroCard>
-                                    </div>
+                                        </div>
+                                    </AnimateOnScroll>
                                 )
                             })
                         }

@@ -1,0 +1,286 @@
+/* ============================================
+   RETRO ARCADE SCROLL ANIMATIONS
+   Modern, clean, premium animations with nostalgic feel
+   ============================================ */
+
+/* Base setup for animated elements */
+.animate-on-scroll {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+}
+
+/* ============================================
+   FADE IN SLIDE UP - Primary Animation
+   Subtle 15px upward motion with soft elastic ease
+   ============================================ */
+
+.fade-slide-up {
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.fade-slide-up.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Subtle variant - minimal movement */
+.fade-slide-up-subtle {
+  transform: translateY(10px);
+  opacity: 0;
+}
+
+.fade-slide-up-subtle.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  transition: opacity 0.7s cubic-bezier(0.34, 1.3, 0.64, 1),
+              transform 0.7s cubic-bezier(0.34, 1.3, 0.64, 1);
+}
+
+/* ============================================
+   FADE IN - Pure opacity for headers
+   ============================================ */
+
+.fade-in {
+  opacity: 0;
+}
+
+.fade-in.is-visible {
+  opacity: 1;
+  transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================
+   FADE SCALE - For cards and posters
+   Gentle scale with fade, arcade cabinet feel
+   ============================================ */
+
+.fade-scale {
+  transform: scale(0.95);
+  opacity: 0;
+}
+
+.fade-scale.is-visible {
+  transform: scale(1);
+  opacity: 1;
+  transition: opacity 0.7s cubic-bezier(0.34, 1.4, 0.64, 1),
+              transform 0.7s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+/* ============================================
+   SLIDE FROM SIDES - For alternating content
+   ============================================ */
+
+.slide-in-left {
+  transform: translateX(-15px);
+  opacity: 0;
+}
+
+.slide-in-left.is-visible {
+  transform: translateX(0);
+  opacity: 1;
+  transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.slide-in-right {
+  transform: translateX(15px);
+  opacity: 0;
+}
+
+.slide-in-right.is-visible {
+  transform: translateX(0);
+  opacity: 1;
+  transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ============================================
+   STAGGER DELAYS - For sequential reveals
+   ============================================ */
+
+.animate-delay-100.is-visible {
+  transition-delay: 0.1s;
+}
+
+.animate-delay-200.is-visible {
+  transition-delay: 0.2s;
+}
+
+.animate-delay-300.is-visible {
+  transition-delay: 0.3s;
+}
+
+.animate-delay-400.is-visible {
+  transition-delay: 0.4s;
+}
+
+.animate-delay-500.is-visible {
+  transition-delay: 0.5s;
+}
+
+.animate-delay-600.is-visible {
+  transition-delay: 0.6s;
+}
+
+/* ============================================
+   HERO TEXT ANIMATIONS - Premium entrance
+   ============================================ */
+
+.hero-title {
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+.hero-title.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  transition: opacity 1s cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-subtitle {
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.hero-subtitle.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  transition: opacity 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s,
+              transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;
+}
+
+.hero-cta {
+  transform: translateY(15px);
+  opacity: 0;
+}
+
+.hero-cta.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s,
+              transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s;
+}
+
+/* ============================================
+   SECTION HEADERS - Clean entry
+   ============================================ */
+
+.section-title-wrapper {
+  transform: translateY(15px);
+  opacity: 0;
+}
+
+.section-title-wrapper.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  transition: opacity 0.8s cubic-bezier(0.34, 1.4, 0.64, 1),
+              transform 0.8s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+/* ============================================
+   EVENT CARDS - Grid items with stagger
+   ============================================ */
+
+.event-card {
+  transform: translateY(20px) scale(0.97);
+  opacity: 0;
+}
+
+.event-card.is-visible {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  transition: opacity 0.7s cubic-bezier(0.34, 1.4, 0.64, 1),
+              transform 0.7s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+/* ============================================
+   PIXEL ARCADE GLITCH EFFECT (Subtle)
+   Optional retro touch without being cartoonish
+   ============================================ */
+
+.pixel-reveal {
+  opacity: 0;
+  transform: translateY(15px);
+  filter: blur(2px);
+}
+
+.pixel-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+  transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+              filter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Reduce motion on mobile for better performance */
+  .animate-on-scroll.is-visible {
+    transition-duration: 0.5s;
+  }
+  
+  .fade-slide-up {
+    transform: translateY(10px);
+  }
+  
+  .hero-title {
+    transform: translateY(15px);
+  }
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   Respect user preferences
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .fade-slide-up,
+  .fade-slide-up-subtle,
+  .fade-in,
+  .fade-scale,
+  .slide-in-left,
+  .slide-in-right,
+  .hero-title,
+  .hero-subtitle,
+  .hero-cta,
+  .section-title-wrapper,
+  .event-card,
+  .pixel-reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+  
+  .animate-on-scroll.is-visible,
+  .fade-slide-up.is-visible,
+  .fade-slide-up-subtle.is-visible,
+  .fade-in.is-visible,
+  .fade-scale.is-visible,
+  .slide-in-left.is-visible,
+  .slide-in-right.is-visible,
+  .hero-title.is-visible,
+  .hero-subtitle.is-visible,
+  .hero-cta.is-visible,
+  .section-title-wrapper.is-visible,
+  .event-card.is-visible,
+  .pixel-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
