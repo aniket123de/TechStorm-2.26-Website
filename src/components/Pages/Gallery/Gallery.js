@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Breadcrumb from '../../Utilities/Breadcrumb/Breadcrumb';
 
+import bgImage from '../../../assets/img/bg/match-bg3.png';
+import SectionTitle from '../../Utilities/SectionTitle/SectionTitle';
 import img1 from '../../../assets/img/gallery/c1.jpeg';
 import img2 from '../../../assets/img/gallery/c2.jpeg';
 import img3 from '../../../assets/img/gallery/c3.jpeg';
@@ -78,14 +79,20 @@ const galleryImgs = [
 const Gallery = () => {
     return (
         <React.Fragment>
-
-            {/* Breadcrumb */}
-            <Breadcrumb pageTitle={'Gallery'} currentPage={'Gallery'} />
-
-            {/* Gallery */}
-            <section id="work" className="pb-90">
-                <div className="container">
-                    <div className="portfolio">
+            <div style={{ 
+                background: `url(${bgImage}) repeat`,
+                minHeight: '100vh',
+                paddingTop: '20px'
+            }}>
+                {/* Gallery */}
+                <section id="work" className="pt-60 pb-90">
+                    <div className="container">
+                        <div className="row align-items-center mb-30">
+                            <div className="col-lg-12">
+                                <SectionTitle titlefirst='Gallery' titleSec='' />
+                            </div>
+                        </div>
+                        <div className="portfolio">
                         <div className="grid col4">
                             {
                                 galleryImgs.map(data => {
@@ -108,7 +115,7 @@ const Gallery = () => {
                     </div>
                 </div>
             </section>
-
+            </div>
         </React.Fragment>
     );
 }
