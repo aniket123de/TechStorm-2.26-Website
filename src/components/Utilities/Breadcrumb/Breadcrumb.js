@@ -1,6 +1,7 @@
-import bg from '../../../assets/img/bg/about-hd.png'
+import defaultBg from '../../../assets/img/bg/about-hd.png'
 import { Link } from 'react-router-dom';
-const Breadcrumb = ({ pageTitle, currentPage})=>{
+const Breadcrumb = ({ pageTitle, currentPage, bgImage})=>{
+    const bg = bgImage || defaultBg;
     return(
         <section className="breadcrumb-area d-flex align-items-center" style={{background:`url(${bg}) no-repeat center center / cover`}}>
             <div className="container">

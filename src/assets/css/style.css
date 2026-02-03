@@ -1752,10 +1752,12 @@ label {
 /* breadcrumb */
 
 .breadcrumb-area {
+	background-image: url('../img/event_specific_pictures/codebee/codebee_8bit.gif');
 	background-size  : cover;
 	position         : relative;
 	min-height       : 552px;
 	background-repeat: no-repeat;
+	background-position: center center;
 }
 
 .breadcrumb {

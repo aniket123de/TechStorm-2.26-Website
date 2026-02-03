@@ -1,0 +1,610 @@
+/* Event Detail Page Styles - Clean Modern Layout */
+
+/* Add proper horizontal spacing for all sections */
+.event-name-section .container,
+.about-event-section .container,
+.event-rules-section .container,
+.coordinators-section .container {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+/* NES Container Custom Styling - Reduced Yellow Border Effect */
+.entry-content .nes-container {
+    border-color: rgba(255, 192, 16, 0.4) !important;
+    box-shadow: none !important;
+}
+
+.entry-content .nes-container.is-dark {
+    border-color: rgba(255, 192, 16, 0.5) !important;
+}
+
+.entry-content .nes-container::after {
+    box-shadow: none !important;
+}
+
+/* Event Name Section */
+.event-name-section {
+    background: linear-gradient(135deg, #1a0e22 0%, #2d1b3d 100%);
+    padding: 80px 0 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.event-name-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            rgba(255, 192, 16, 0.03) 0px,
+            transparent 1px,
+            transparent 2px,
+            rgba(255, 192, 16, 0.03) 3px
+        );
+    pointer-events: none;
+}
+
+.event-name-heading {
+    position: relative;
+    text-align: center;
+}
+
+.event-title-white,
+.event-title-gold {
+    font-family: 'Press Start 2P', cursive;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.event-title-white {
+    font-size: 96px;
+    letter-spacing: 3px;
+    color: #ffffff;
+    margin-right: 20px;
+    text-shadow: 
+        4px 4px 0 rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.event-title-gold {
+    font-size: 96px;
+    letter-spacing: 3px;
+    color: #ffc010;
+    text-shadow: 
+        4px 4px 0 rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(255, 192, 16, 0.7);
+}
+
+.event-name-heading .heading-brush {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 12px;
+    background: linear-gradient(90deg, #ffc010 0%, #ffb000 50%, #ffc010 100%);
+    box-shadow: 0 4px 15px rgba(255, 192, 16, 0.5);
+}
+
+/* About Event Section */
+.about-event-section {
+    background: linear-gradient(135deg, #0f0a1a 0%, #1a0e22 100%);
+    position: relative;
+}
+
+.pictures-scroll-container {
+    width: 100%;
+    height: 450px;
+    display: flex;
+    gap: 20px;
+    overflow-x: hidden;
+    position: relative;
+    background: rgba(0, 0, 0, 0.3);
+    border: 3px solid #ffc010;
+    box-shadow: 
+        0 0 20px rgba(255, 192, 16, 0.3),
+        inset 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.scroll-image-wrapper {
+    flex: 0 0 auto;
+    width: 350px;
+    height: 100%;
+    position: relative;
+}
+
+.scroll-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    image-rendering: pixelated;
+    filter: contrast(1.1) saturate(1.2);
+}
+
+.about-heading,
+.rules-heading,
+.entry-heading,
+.coordinator-heading {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.heading-white,
+.heading-gold {
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+    display: inline-block;
+}
+
+.heading-white {
+    font-size: 48px;
+    color: #ffffff;
+    text-shadow: 
+        4px 4px 0 rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(255, 255, 255, 0.3);
+    margin-right: 10px;
+}
+
+.heading-gold {
+    font-family: 'Minecraft', monospace;
+    font-size: 48px;
+    font-weight: 600;
+    color: #ffc010;
+    text-shadow: 
+        4px 4px 0 rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(255, 192, 16, 0.7);
+}
+
+.heading-brush {
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: #ffc010;
+    transition: width 0.3s;
+}
+
+.about-heading:hover .heading-brush,
+.rules-heading:hover .heading-brush,
+.entry-heading:hover .heading-brush,
+.coordinator-heading:hover .heading-brush {
+    width: 100px;
+}
+
+.about-content {
+    margin-top: 40px;
+    min-height: auto;
+}
+
+.about-content .about-text,
+.about-content p.about-text,
+p.about-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 11px;
+    line-height: 2.2;
+    color: #ffffff !important;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    background: transparent !important;
+    border: none;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+.event-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 20px;
+    background: rgba(255, 192, 16, 0.05);
+    border-left: 4px solid #ffc010;
+    transition: all 0.3s ease;
+}
+
+.meta-item:hover {
+    background: rgba(255, 192, 16, 0.1);
+    transform: translateX(5px);
+}
+
+.meta-icon {
+    font-size: 32px;
+    filter: drop-shadow(0 0 10px rgba(255, 192, 16, 0.5));
+}
+
+.meta-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.meta-label {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 9px;
+    color: #00ffea;
+    text-transform: uppercase;
+}
+
+.meta-value {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    color: #ffffff;
+}
+
+/* Event Rules Section */
+.event-rules-section {
+    background: linear-gradient(135deg, #1a0e22 0%, #0f0a1a 100%);
+    position: relative;
+}
+
+.entry-content {
+    margin-top: 30px;
+}
+
+.fee-amount {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+    background: linear-gradient(135deg, rgba(255, 192, 16, 0.1) 0%, rgba(255, 192, 16, 0.05) 100%);
+    border: 3px solid #ffc010;
+    box-shadow: 0 5px 20px rgba(255, 192, 16, 0.3);
+    margin-bottom: 30px;
+}
+
+.fee-icon {
+    font-size: 48px;
+    filter: none;
+}
+
+.fee-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+    color: #ffc010;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.qr-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.qr-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    color: #00ffea;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.qr-code-wrapper {
+    background: #ffffff;
+    padding: 20px;
+    display: inline-block;
+    border: 3px solid #ffc010;
+    box-shadow: 0 5px 20px rgba(255, 192, 16, 0.3);
+}
+
+.qr-code {
+    width: 180px;
+    height: 180px;
+    image-rendering: pixelated;
+}
+
+.payment-link-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.payment-button {
+    display: inline-block;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    color: #1a0e22;
+    background: #ffc010;
+    padding: 15px 30px;
+    border: 3px solid #1a0e22;
+    box-shadow: 5px 5px 0 #00ffea;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+}
+
+.payment-button:hover {
+    background: #00ffea;
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 #ffc010;
+    color: #1a0e22;
+    text-decoration: none;
+}
+
+.prizes-section {
+    margin-top: 30px;
+}
+
+.prizes-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    color: #ffc010;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.prizes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.prize-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    background: rgba(255, 192, 16, 0.05);
+    border-left: 3px solid #ffc010;
+}
+
+.prize-trophy {
+    font-size: 24px;
+    filter: drop-shadow(0 0 10px rgba(255, 192, 16, 0.6));
+}
+
+.prize-pos {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    color: #00ffea;
+    flex: 1;
+}
+
+.prize-amt {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    color: #ffc010;
+    font-weight: bold;
+}
+
+.rules-content {
+    margin-top: 30px;
+}
+
+.rules-list-new {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.rules-list-new li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed rgba(255, 192, 16, 0.2);
+}
+
+.rules-list-new li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.rule-bullet {
+    flex-shrink: 0;
+    font-size: 20px;
+    color: #ffc010;
+    margin-top: 5px;
+}
+
+.rule-text {
+    flex: 1;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    line-height: 2;
+    color: #ffffff;
+}
+
+/* Coordinators Section */
+.coordinators-section {
+    background: linear-gradient(135deg, #0f0a1a 0%, #1a0e22 100%);
+    position: relative;
+}
+
+.coordinator-heading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.coordinator-heading .heading-brush {
+    left: 50%;
+    transform: translateX(-50%) skewX(-5deg);
+}
+
+.coordinator-card {
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, rgba(26, 14, 34, 0.8) 0%, rgba(15, 10, 26, 0.9) 100%);
+    border: 3px solid #ffc010;
+    box-shadow: 0 5px 20px rgba(255, 192, 16, 0.2);
+    transition: all 0.3s ease;
+}
+
+.coordinator-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 192, 16, 0.4);
+    border-color: #00ffea;
+}
+
+.coordinator-avatar {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    border: 4px solid #ffc010;
+    box-shadow: 0 0 20px rgba(255, 192, 16, 0.4);
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.coordinator-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    image-rendering: pixelated;
+}
+
+.avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ffc010 0%, #ff8c00 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 36px;
+    color: #1a0e22;
+    font-weight: bold;
+}
+
+.coordinator-name {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    color: #ffc010;
+    margin: 15px 0 8px;
+    line-height: 1.6;
+}
+
+.coordinator-role {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 9px;
+    color: #00ffea;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.coordinator-contacts {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px solid rgba(255, 192, 16, 0.3);
+}
+
+.coord-phone,
+.coord-email {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 8px;
+    color: #ffffff;
+    margin: 8px 0;
+    line-height: 1.8;
+    word-break: break-all;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    .event-title-white,
+    .event-title-gold {
+        font-size: 42px;
+    }
+
+    .heading-white,
+    .heading-gold {
+        font-size: 36px;
+    }
+
+    .heading-brush {
+        width: 50px;
+        height: 3px;
+    }
+
+    .pictures-scroll-container {
+        height: 350px;
+    }
+
+    .scroll-image-wrapper {
+        width: 280px;
+    }
+}
+
+@media (max-width: 767px) {
+    .event-title-white,
+    .event-title-gold {
+        font-size: 28px;
+        display: block;
+        margin-right: 0;
+    }
+
+    .heading-white,
+    .heading-gold {
+        font-size: 28px;
+    }
+
+    .heading-brush {
+        width: 40px;
+        height: 3px;
+    }
+
+    .pictures-scroll-container {
+        height: 280px;
+    }
+
+    .scroll-image-wrapper {
+        width: 220px;
+    }
+
+    .about-text,
+    .rule-text {
+        font-size: 9px;
+    }
+
+    .meta-value,
+    .fee-text {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 575px) {
+    .event-title-white,
+    .event-title-gold {
+        font-size: 20px;
+    }
+
+    .heading-white,
+    .heading-gold {
+        font-size: 20px;
+        display: block;
+        margin-right: 0;
+    }
+
+    .heading-brush {
+        width: 35px;
+        height: 2px;
+    }
+
+    .pictures-scroll-container {
+        height: 220px;
+    }
+
+    .scroll-image-wrapper {
+        width: 180px;
+    }
+
+    .coordinator-card {
+        margin-bottom: 20px;
+    }
+}

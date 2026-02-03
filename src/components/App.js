@@ -20,6 +20,22 @@ import ContactUs from './Pages/ContactUs/ContactUs';
 import SinglePost from './Pages/SinglePost/SinglePost';
 import Events from './Pages/Events/Events';
 
+// Import Event Detail Pages
+import CodeBeeEvent from './Pages/EventDetail/CodeBee/CodeBeeEvent';
+import HackStormEvent from './Pages/EventDetail/HackStorm/HackStormEvent';
+import TechnomaniaEvent from './Pages/EventDetail/Technomania/TechnomaniaEvent';
+import OmegatrixEvent from './Pages/EventDetail/Omegatrix/OmegatrixEvent';
+import TechHuntEvent from './Pages/EventDetail/TechHunt/TechHuntEvent';
+import RoNavigatorEvent from './Pages/EventDetail/RoNavigator/RoNavigatorEvent';
+import RoCombatEvent from './Pages/EventDetail/RoCombat/RoCombatEvent';
+import RoSoccerEvent from './Pages/EventDetail/RoSoccer/RoSoccerEvent';
+import RoTerranceEvent from './Pages/EventDetail/RoTerrance/RoTerranceEvent';
+import CreativeCanvasEvent from './Pages/EventDetail/CreativeCanvas/CreativeCanvasEvent';
+import PassionWithReelsEvent from './Pages/EventDetail/PassionWithReels/PassionWithReelsEvent';
+import ForzaHorizonEvent from './Pages/EventDetail/ForzaHorizon/ForzaHorizonEvent';
+import FifaMobileEvent from './Pages/EventDetail/FifaMobile/FifaMobileEvent';
+import KhetEvent from './Pages/EventDetail/Khet/KhetEvent';
+
 const navItems = [
     { label: 'Home', href: '/#home' },
     { label: 'About', href: '/#about' },
@@ -90,6 +106,23 @@ const AppContent = () => {
         <Route exact path="/home-three" component={HomeThree} />
         <Route exact path="/about" component={AboutUs} />
         <Route exact path="/events" component={Events} />
+        
+        {/* Event Detail Routes */}
+        <Route exact path="/events/code-bee" component={CodeBeeEvent} />
+        <Route exact path="/events/hack-storm" component={HackStormEvent} />
+        <Route exact path="/events/technomania" component={TechnomaniaEvent} />
+        <Route exact path="/events/omegatrix" component={OmegatrixEvent} />
+        <Route exact path="/events/tech-hunt" component={TechHuntEvent} />
+        <Route exact path="/events/ro-navigator" component={RoNavigatorEvent} />
+        <Route exact path="/events/ro-combat" component={RoCombatEvent} />
+        <Route exact path="/events/ro-soccer" component={RoSoccerEvent} />
+        <Route exact path="/events/ro-terrance" component={RoTerranceEvent} />
+        <Route exact path="/events/creative-canvas" component={CreativeCanvasEvent} />
+        <Route exact path="/events/passion-with-reels" component={PassionWithReelsEvent} />
+        <Route exact path="/events/forza-horizon" component={ForzaHorizonEvent} />
+        <Route exact path="/events/fifa-mobile" component={FifaMobileEvent} />
+        <Route exact path="/events/khet" component={KhetEvent} />
+        
         <Route exact path="/gallery" component={Gallery} />
         <Route exact path="/team" component={Teams} />
         <Route exact path="/faq" component={Faqs} />
