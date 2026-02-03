@@ -63,8 +63,8 @@ const Matches = () => {
     const events = filteredEvents.length > 0 ? filteredEvents : allEvents;
 
     return (
-        <section id="match" className="match-area pt-60 pb-90" style={{ background: `url(${matchBgImg})` }}>
-            <div className="container">
+        <section id="match" className="match-area pt-60 pb-90" style={{ background: `url(${matchBgImg})`, overflow: 'visible' }}>
+            <div className="container" style={{ overflow: 'visible' }}>
                 <div className="row align-items-center mb-30">
                     <div className="col-lg-12">
                         <SectionTitle titlefirst='Featured' titleSec='Events' />
@@ -82,12 +82,12 @@ const Matches = () => {
                         </div>
                     </div>
                 </div>
-                <div className="row">
+                <div className="row" style={{ paddingTop: '20px', overflow: 'visible' }}>
                     {
                         events.map((event, index) => {
                             const { logo, name } = event;
                             return (
-                                <div key={index} className="col-lg-4 col-md-6 col-sm-6 mb-40 wow fadeInUp animated" data-animation="fadeInUp" data-delay={`${0.1 * index}s`}>
+                                <div key={index} className="col-lg-4 col-md-6 col-sm-6 mb-40 wow fadeInUp animated" data-animation="fadeInUp" data-delay={`${0.1 * index}s`} style={{ paddingTop: '10px' }}>
                                     <RetroCard 
                                         bg={hoveredIndex === index ? '#1a3d3d' : '#1a0e22'}
                                         textColor={hoveredIndex === index ? '#00ffea' : '#ffffff'}
