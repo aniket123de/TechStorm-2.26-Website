@@ -330,7 +330,7 @@ const WorkGallery = () => {
                                                 padding: '0',
                                                 overflow: 'hidden',
                                                 cursor: 'pointer',
-                                                transform: hoveredIndex === index ? 'translateY(-8px)' : 'translateY(0)',
+                                                transform: hoveredIndex === index ? 'scale(1.02)' : 'scale(1)',
                                             }}
                                             onMouseEnter={() => setHoveredIndex(index)}
                                             onMouseLeave={() => setHoveredIndex(null)}
