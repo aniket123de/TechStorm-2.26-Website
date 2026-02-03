@@ -1,21 +1,12 @@
 import React, { Fragment, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import RetroCard from '../../Utilities/RetroCard/RetroCard';
 import './EventDetail.css';
 
 const EventDetail = ({ eventData }) => {
     const { 
         name, 
-        logo, 
-        category, 
         description, 
         rules, 
-        prizes, 
-        teamSize, 
-        duration, 
-        venue,
         contact,
-        entryFee,
         qrCode,
         paymentLink,
         previousYearImages,
