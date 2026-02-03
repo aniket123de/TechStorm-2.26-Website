@@ -242,8 +242,8 @@ const EventDetail = ({ eventData }) => {
                             </div>
                             <div className="about-content">
                                 <p style={{ 
-                                    color: '#ffffff', 
-                                    fontSize: '18px',
+                                    color: '#fffacd', 
+                                    fontSize: '16px',
                                     lineHeight: '1.8',
                                     fontFamily: 'Minecraft, monospace',
                                     margin: 0,
@@ -252,6 +252,82 @@ const EventDetail = ({ eventData }) => {
                                 }}>
                                     {description}
                                 </p>
+                                <section className="message -right" style={{ marginTop: '25px' }}>
+                                    <div className="nes-balloon from-right" style={{ borderStyle: 'dashed' }}>
+                                        <p style={{ fontSize: '16px' }}>📅 <span style={{ color: '#00ffea' }}>Event Dates: </span>   9-10th April</p>
+                                    </div>
+                                    <i className="nes-bcrikko"></i>
+                                </section>
+                                
+                                <div className="event-rounds" style={{ marginTop: '30px' }}>
+                                    <div className="rounds-list">
+                                        <div className="round-item" style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            marginBottom: '15px',
+                                            gap: '15px'
+                                        }}>
+                                            <span style={{
+                                                color: '#ffc010',
+                                                fontSize: '24px',
+                                                flexShrink: 0
+                                            }}>✓</span>
+                                            <p style={{
+                                                color: '#e0e0e0',
+                                                fontSize: '14px',
+                                                fontFamily: 'Press Start 2P, monospace',
+                                                margin: 0,
+                                                textTransform: 'uppercase'
+                                            }}>
+                                                Round 1: Offline Prelims
+                                            </p>
+                                        </div>
+                                        
+                                        <div className="round-item" style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            marginBottom: '15px',
+                                            gap: '15px'
+                                        }}>
+                                            <span style={{
+                                                color: '#ffc010',
+                                                fontSize: '24px',
+                                                flexShrink: 0
+                                            }}>✓</span>
+                                            <p style={{
+                                                color: '#e0e0e0',
+                                                fontSize: '14px',
+                                                fontFamily: 'Press Start 2P, monospace',
+                                                margin: 0,
+                                                textTransform: 'uppercase'
+                                            }}>
+                                                Round 2: Semi-Finals
+                                            </p>
+                                        </div>
+                                        
+                                        <div className="round-item" style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            marginBottom: '15px',
+                                            gap: '15px'
+                                        }}>
+                                            <span style={{
+                                                color: '#ffc010',
+                                                fontSize: '24px',
+                                                flexShrink: 0
+                                            }}>✓</span>
+                                            <p style={{
+                                                color: '#e0e0e0',
+                                                fontSize: '14px',
+                                                fontFamily: 'Press Start 2P, monospace',
+                                                margin: 0,
+                                                textTransform: 'uppercase'
+                                            }}>
+                                                Final Round
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -316,7 +392,7 @@ const EventDetail = ({ eventData }) => {
                                         margin: '0 0 10px 0',
                                         fontFamily: 'Press Start 2P',
                                         lineHeight: '1.6',
-                                        color: '#ffc010'
+                                        color: '#d0d0d0'
                                     }}>
                                         Solo / Duo / Thrice
                                     </p>
@@ -376,8 +452,25 @@ const EventDetail = ({ eventData }) => {
                     <div className="row justify-content-center mt-40">
                         {coordinators && coordinators.length > 0 ? (
                             coordinators.map((coordinator, index) => (
-                                <div key={index} className="col-lg-3 col-md-4 col-sm-6 mb-30">
-                                    <div className="coordinator-card">
+                                <div key={index} className="col-lg-3 col-md-4 col-sm-6 mb-30" style={{ paddingTop: '10px' }}>
+                                    <div 
+                                        className="nes-container is-rounded" 
+                                        style={{ 
+                                            borderColor: '#555',
+                                            transition: 'all 0.4s ease-out',
+                                            cursor: 'pointer'
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
+                                            e.currentTarget.style.boxShadow = '0 5px 15px rgba(255, 215, 0, 0.2), 0 10px 30px rgba(255, 215, 0, 0.15), 0 20px 50px rgba(255, 215, 0, 0.1), 0 0 40px rgba(255, 215, 0, 0.3)';
+                                            e.currentTarget.style.borderColor = '#888';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                                            e.currentTarget.style.boxShadow = 'none';
+                                            e.currentTarget.style.borderColor = '#555';
+                                        }}
+                                    >
                                         <div className="coordinator-avatar">
                                             {coordinator.image ? (
                                                 <img src={coordinator.image} alt={coordinator.name} />
@@ -398,8 +491,25 @@ const EventDetail = ({ eventData }) => {
                             ))
                         ) : contact && contact.length > 0 ? (
                             contact.map((person, index) => (
-                                <div key={index} className="col-lg-3 col-md-4 col-sm-6 mb-30">
-                                    <div className="coordinator-card">
+                                <div key={index} className="col-lg-3 col-md-4 col-sm-6 mb-30" style={{ paddingTop: '10px' }}>
+                                    <div 
+                                        className="nes-container is-rounded" 
+                                        style={{ 
+                                            borderColor: '#555',
+                                            transition: 'all 0.4s ease-out',
+                                            cursor: 'pointer'
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
+                                            e.currentTarget.style.boxShadow = '0 5px 15px rgba(255, 215, 0, 0.2), 0 10px 30px rgba(255, 215, 0, 0.15), 0 20px 50px rgba(255, 215, 0, 0.1), 0 0 40px rgba(255, 215, 0, 0.3)';
+                                            e.currentTarget.style.borderColor = '#888';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                                            e.currentTarget.style.boxShadow = 'none';
+                                            e.currentTarget.style.borderColor = '#555';
+                                        }}
+                                    >
                                         <div className="coordinator-avatar">
                                             <div className="avatar-placeholder">
                                                 {person.name.charAt(0)}
