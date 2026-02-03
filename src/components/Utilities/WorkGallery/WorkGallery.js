@@ -315,8 +315,6 @@ const WorkGallery = () => {
                                         <div 
                                             className="grid-item gallery-card-wrapper" 
                                             style={{ 
-                                                minWidth: 'clamp(280px, 90vw, 350px)', 
-                                                maxWidth: 'clamp(280px, 90vw, 350px)', 
                                                 flexShrink: 0 
                                             }}
                                         >

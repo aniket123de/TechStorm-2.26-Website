@@ -2724,6 +2724,17 @@
         font-size: 24px !important;
     }
     
+    /* Position pixel emoji above Press START box in mobile view */
+    .about-nes-container .message.-right {
+        flex-direction: column-reverse !important;
+        align-items: flex-end !important;
+    }
+    
+    .about-nes-container .message.-right .nes-ash {
+        margin-bottom: 10px !important;
+        margin-right: 0 !important;
+    }
+    
     .about-content.s-about-content {
         padding-top: 30px !important;
     }

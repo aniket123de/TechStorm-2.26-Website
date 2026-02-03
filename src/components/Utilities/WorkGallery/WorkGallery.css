@@ -9,6 +9,7 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
     scrollbar-color: #ffc010 #1a0e22;
+    scroll-snap-type: x mandatory;
 }
 
 /* Custom scrollbar for webkit browsers */
@@ -48,6 +49,11 @@
 /* Gallery card wrapper */
 .gallery-card-wrapper {
     transition: transform 0.3s ease;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-width: 350px;
+    max-width: 350px;
+    flex-shrink: 0;
 }
 
 /* Responsive styles */
@@ -69,30 +75,68 @@
     
     .gallery-scroll-container {
         gap: 15px;
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        scroll-padding-left: 15px;
     }
     
     .gallery-card-wrapper {
-        min-width: clamp(260px, 85vw, 320px) !important;
-        max-width: clamp(260px, 85vw, 320px) !important;
+        min-width: 280px !important;
+        max-width: 280px !important;
+        flex-shrink: 0;
     }
     
     .my-masonry {
         padding: 0 10px;
     }
+    
+    /* Scale down card content for better visibility */
+    .gallery-card-wrapper .gallery-image-container {
+        padding-bottom: 75% !important;
+    }
+    
+    .gallery-card-wrapper h4 {
+        font-size: 11px !important;
+    }
+    
+    .gallery-card-wrapper p {
+        font-size: 9px !important;
+    }
+    
+    .gallery-card-wrapper span {
+        font-size: 8px !important;
+    }
 }
 
 @media (max-width: 480px) {
     .gallery-scroll-container {
-        gap: 10px;
-        padding-left: 5px;
-        padding-right: 5px;
+        gap: 12px;
+        padding-left: 12px;
+        padding-right: 12px;
+        scroll-padding-left: 12px;
     }
     
     .gallery-card-wrapper {
-        min-width: clamp(240px, 90vw, 280px) !important;
-        max-width: clamp(240px, 90vw, 280px) !important;
+        min-width: 260px !important;
+        max-width: 260px !important;
+        flex-shrink: 0;
+    }
+    
+    .gallery-card-wrapper .gallery-image-container {
+        padding-bottom: 70% !important;
+    }
+    
+    .gallery-card-wrapper h4 {
+        font-size: 10px !important;
+    }
+    
+    .gallery-card-wrapper p {
+        font-size: 8px !important;
+    }
+    
+    .gallery-card-wrapper span {
+        font-size: 7px !important;
+        padding: 3px 6px !important;
     }
 }
 
