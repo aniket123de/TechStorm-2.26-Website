@@ -139,13 +139,6 @@ const Gallery = () => {
                             <img src={thumb} alt="Gallery" />
                           </a>
                         </div>
-                        <a
-                          href={thumb}
-                          className="popup-image box-hover gallery-image-trigger"
-                          onClick={(e) => handleImageClick(e, thumb)}
-                        >
-                          <i className="fas fa-search" />
-                        </a>
                       </div>
                     );
                   })}
