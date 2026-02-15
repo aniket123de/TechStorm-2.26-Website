@@ -13,10 +13,6 @@ const ForzaHorizonEvent = () => {
         teamSize: '1 Member',
         duration: '4 Hours',
         venue: 'Gaming Zone A',
-        registerButton: {
-            text: 'Register Now',
-            link: 'https://forms.gle/your-registration-form-link'
-        },
         rules: [
             'Individual competition only',
             'Tournament format: Qualifying + Finals',
@@ -43,7 +39,11 @@ const ForzaHorizonEvent = () => {
                 phone: '+91 98765 43233',
                 email: 'racing@techstorm.com'
             }
-        ]
+        ],
+        registerButton: {
+            text: 'Register Now',
+            link: 'https://forms.gle/your-registration-form-link'
+        }
     };
 
     return <EventDetail eventData={eventData} />;

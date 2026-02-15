@@ -4,29 +4,49 @@ import passionWithReels from '../../../../assets/img/PIXELATED EVENT MASCOTS/PAS
 import passionWithReelsBanner from '../../../../assets/img/event_specific_pictures/creative/passion_with_reels.png';
 
 const PassionWithReelsEvent = () => {
+    // Convert themed rules array to plain strings for EventDetail.js rendering
+    const themedRules = [
+        'A movie making competition:',
+        'Are you a passionate storyteller who wants to showcase your creative storytelling skills? Join us for an exhilarating short movie making competition, ‘Passion with Reels.’ Imagine a canvas where imagination knows no bounds, and the art of storytelling comes alive through the magic of reels. “Passion with Reels” is where creativity meets innovation, and the passion for filmmaking ignites. This event promises a platform for participants to bring their cinematic vision to life. Let your passion for filmmaking shine through every frame, and get ready to mesmerize the world with your cinematic masterpiece!',
+        '',
+        'REGISTRATION FEES:',
+        '• For BPPIMT Students: ₹ 150/ team',
+        '• For other Colleges: ₹ 200/ team',
+        '🎬 RULES:',
+        '• Must be a short film with a story and title. Runtime should not exceed 10 minutes (including credits). No theme restriction.',
+        '• The short film must be original. No copied content, watermarks, templates, or video clippings allowed.',
+        '• Storytelling is not limited to sad or depressive emotions; use a balanced mix of emotions.',
+        '• Political, religious, or pornographic content will lead to disqualification. Avoid excessive violence.',
+        '• Each film should begin with a disclaimer, including the movie title and team name.',
+        '• Movies should be in 720p (HD) minimum. Format: MPED-V AVC (MP4) or MKV. Recommended ratios: 16:9.',
+        '• Films may be in any language, but must carry English subtitles. Subtitles, captions, and credits must be legible and within safe areas.',
+        '• Silent films must use captions to express meaning.',
+        '• Due credits must be given to cast and crew. One certificate per participant.',
+        '• Films once entered cannot be withdrawn. Multiple entries by the same team are not allowed.',
+        '• ONLY short films allowed. No documentaries, animations, or experimental art forms.',
+        '• All participants must be college students (UG or PG). Submission of college ID card is compulsory.',
+        '• Team size: 2-6 members (including cast).',
+        '• Judges’ decisions are final and binding.',
+        '• TECHSTORM 2.26 organisers reserve the right to change/modify/alter any rule or event at any time.',
+        '• TECHSTORM 2.26 will have non-exclusive perpetual rights to screen all film entries on any platform or future event.',
+        '• TECHSTORM 2.26 is not responsible for copyright or intellectual property violations. Entrants are liable for any litigation or penal action.',
+        '• Awarded films will be uploaded on TECHSTORM 2.26’s social media pages.',
+        '• Registration fees are non-refundable.'
+    ];
     const eventData = {
         name: 'Passion with Reels',
         logo: passionWithReels,
         category: 'Creative',
         breadcrumbBg: passionWithReelsBanner,
-        description: 'Passion with Reels is a short video creation competition perfect for the social media generation. Create engaging, creative short-form content that tells a story, spreads a message, or simply entertains. Whether it\'s comedy, drama, tech tips, or creative editing showcases - bring your passion and storytelling skills to create viral-worthy content!',
-        teamSize: '1-4 Members',
-        duration: '5 Hours',
+        description: `Are you a passionate storyteller who wants to showcase your creative storytelling skills? Join us for an exhilarating short movie making competition, ‘Passion with Reels.’ Imagine a canvas where imagination knows no bounds, and the art of storytelling comes alive through the magic of reels. “Passion with Reels” is where creativity meets innovation, and the passion for filmmaking ignites. This event promises a platform for participants to bring their cinematic vision to life. Let your passion for filmmaking shine through every frame, and get ready to mesmerize the world with your cinematic masterpiece!`,
+        teamSize: '2-6 Members',
+        duration: '10 Minutes (max)',
         venue: 'Media Lab & Campus',
         registerButton: {
             text: 'Register Now',
             link: 'https://forms.gle/your-registration-form-link'
         },
-        rules: [
-            'Video duration: 30-90 seconds',
-            'Vertical format (9:16) required',
-            'Content must be appropriate for all ages',
-            'Basic editing is mandatory',
-            'Can shoot anywhere on campus',
-            'Use of personal props allowed',
-            'Subtitle/caption usage encouraged',
-            'Submit in MP4 format, 1080x1920 resolution'
-        ],
+        rules: themedRules,
         prizes: [
             { position: '1st Prize', amount: '₹15,000' },
             { position: '2nd Prize', amount: '₹10,000' },

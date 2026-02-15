@@ -368,6 +368,7 @@ const EventDetail = ({ eventData }) => {
                                                     const isFaqQuestion = /\?$/.test(rule.trim()) && rule.trim().length < 60;
                                                     // Registration fee line detection (case-insensitive, contains 'registration fee' or starts with '₹')
                                                     const isRegistrationFee = /registration fee|registration fees|^₹/i.test(rule.trim());
+                                                    const isRegistrationFeeHeader = name === 'Passion with Reels' && rule.trim().toLowerCase() === 'registration fees:';
 
                                                     // Reduce space after description (first empty line)
                                                     if (isEmpty) {
@@ -440,6 +441,27 @@ const EventDetail = ({ eventData }) => {
                                                             </h3>
                                                         );
                                                     }
+                                                    // Registration fee header: larger font for Passion with Reels
+                                                    if (isRegistrationFeeHeader) {
+                                                        return (
+                                                            <div key={index} style={{
+                                                                display: 'flex',
+                                                                alignItems: 'center',
+                                                                background: 'rgba(255, 192, 16, 0.07)',
+                                                                color: '#e6b800',
+                                                                fontWeight: 500,
+                                                                fontFamily: 'Silkscreen, sans-serif',
+                                                                fontSize: 'clamp(15px, 3vw, 18px)',
+                                                                padding: '3px 10px',
+                                                                borderRadius: '4px',
+                                                                margin: '6px 0',
+                                                                boxShadow: 'none'
+                                                            }}>
+                                                                <span style={{ fontSize: '18px', marginRight: '8px', color: '#ffc010', lineHeight: 1 }}>💰</span>
+                                                                {rule}
+                                                            </div>
+                                                        );
+                                                    }
                                                     // Registration fee line: no bullet, subtle gold highlight
                                                     if (isRegistrationFee) {
                                                         return (
@@ -491,7 +513,57 @@ const EventDetail = ({ eventData }) => {
                                                             </div>
                                                         );
                                                     }
-                                                    // Regular rule with bullet
+                                                    // Remove only white bullets for Passion with Reels regular rules
+                                                    if (name === 'Passion with Reels') {
+                                                        // Section headers and special lines (blue/cyan/gold bullets) are handled above
+                                                        // Only remove bullets for regular rules (those starting with '• ')
+                                                        if (rule.startsWith('• ')) {
+                                                            // Highlight the 'ONLY short films allowed...' rule for Passion with Reels
+                                                            if (name === 'Passion with Reels' && rule.toUpperCase().includes('ONLY SHORT FILMS ALLOWED. NO DOCUMENTARIES, ANIMATIONS, OR EXPERIMENTAL ART FORMS.')) {
+                                                                return (
+                                                                    <div key={index} style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px', gap: '6px' }}>
+                                                                        <span style={{ color: '#00ffea', fontSize: '7px', flexShrink: 0, marginTop: '2px', fontFamily: 'monospace' }}>▶</span>
+                                                                        <span style={{ color: '#00ffea', fontSize: '13px', lineHeight: '1.6', fontFamily: 'Silkscreen, sans-serif', fontWeight: 'bold', textTransform: 'uppercase' }}>{rule.slice(2)}</span>
+                                                                    </div>
+                                                                );
+                                                            }
+                                                            // Highlight the 'TEAM SIZE: 2-6 MEMBERS (INCLUDING CAST).' rule for Passion with Reels
+                                                            if (name === 'Passion with Reels' && rule.toUpperCase().includes('TEAM SIZE: 2-6 MEMBERS (INCLUDING CAST).')) {
+                                                                return (
+                                                                    <div key={index} style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px', gap: '6px' }}>
+                                                                        <span style={{ color: '#00ffea', fontSize: '7px', flexShrink: 0, marginTop: '2px', fontFamily: 'monospace' }}>▶</span>
+                                                                        <span style={{ color: '#fffacd', fontSize: '13px', lineHeight: '1.6', fontFamily: 'Silkscreen, sans-serif', fontWeight: 'bold', textTransform: 'uppercase' }}>{rule.slice(2)}</span>
+                                                                    </div>
+                                                                );
+                                                            }
+                                                            return (
+                                                                <div key={index} style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px', gap: '6px' }}>
+                                                                    <span style={{ color: '#00ffea', fontSize: '7px', flexShrink: 0, marginTop: '2px', fontFamily: 'monospace' }}>▶</span>
+                                                                    <span style={{ color: '#e0e0e0', fontSize: '13px', lineHeight: '1.6', fontFamily: 'Silkscreen, sans-serif' }}>{rule.slice(2)}</span>
+                                                                </div>
+                                                            );
+                                                        }
+                                                        // Render yellow heading for Passion with Reels description section
+                                                        if (name === 'Passion with Reels' && rule.trim() === 'A movie making competition:') {
+                                                            return (
+                                                                <div key={index} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+                                                                    <span style={{ fontSize: '22px', marginRight: '10px', color: '#ffc010', lineHeight: 1 }}>🎥</span>
+                                                                    <h3 style={{
+                                                                        color: '#ffc010',
+                                                                        fontFamily: 'Press Start 2P',
+                                                                        fontSize: 'clamp(14px, 4vw, 20px)',
+                                                                        marginTop: '0',
+                                                                        marginBottom: '0',
+                                                                        lineHeight: '1.5',
+                                                                        textTransform: 'uppercase',
+                                                                        letterSpacing: '2px',
+                                                                    }}>{rule.replace(':', '')}</h3>
+                                                                </div>
+                                                            );
+                                                        }
+                                                        // For other lines, render as usual (section headers, registration, etc.)
+                                                    }
+                                                    // Regular rule with bullet for other events
                                                     return (
                                                         <div key={index} style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '12px', gap: '12px' }}>
                                                             <span style={{ color: '#00ffea', fontSize: '14px', flexShrink: 0, marginTop: '2px' }}>▸</span>
