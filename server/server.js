@@ -20,6 +20,13 @@ const { logger } = require('./middleware/logger');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const normalizeOrigin = (value = '') => value.trim().replace(/\/+$/, '');
+const allowedOrigins = (
+  process.env.CORS_ORIGINS || process.env.FRONTEND_URL || 'http://localhost:3000'
+)
+  .split(',')
+  .map(normalizeOrigin)
+  .filter(Boolean);
 
 // Security middleware
 app.use(helmet({
@@ -40,10 +47,25 @@ const limiter = rateLimit({
 app.use('/api/', limiter);
 
 // CORS configuration
-app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin) {
+      return callback(null, true);
+    }
+
+    const normalizedOrigin = normalizeOrigin(origin);
+
+    if (allowedOrigins.includes(normalizedOrigin)) {
+      return callback(null, true);
+    }
+
+    return callback(new Error(`CORS blocked for origin: ${origin}`));
+  },
   credentials: true
-}));
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 // Body parsing middleware
 app.use(express.json({ limit: '10mb' }));
@@ -51,6 +73,10 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Logging middleware
 app.use(logger);
+
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '1.1.1.1']);
+
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)
@@ -110,7 +136,8 @@ process.on('SIGINT', () => {
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`);
   console.log(`📊 Environment: ${process.env.NODE_ENV}`);
-  console.log(`🔗 Frontend URL: ${process.env.FRONTEND_URL}`);
+  console.log(`🔗 Allowed CORS origins: ${allowedOrigins.join(", ")}`);
 });
 
 module.exports = app;
+
