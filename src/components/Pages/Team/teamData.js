@@ -22,35 +22,35 @@ export const coreMembers = [
     { id: '4', avatar: team4, name: 'Debadrito Saha', deg: 'Event Joint Coordinator' },
     
     // PUBLIC RELATIONS MANAGEMENT TEAM
-    { id: '5', avatar: team5, name: 'Anik Paul', deg: 'PR Coordinator' },
-    { id: '6', avatar: team6, name: 'Pushkar Shaw', deg: 'PR Joint Coordinator' },
-    { id: '7', avatar: team7, name: 'Srijita Dutta', deg: 'PR Joint Coordinator' },
+    { id: '5', avatar: team5, name: 'Anik Paul', deg: 'PR Lead' },
+    { id: '6', avatar: team6, name: 'Pushkar Shaw', deg: 'PR Joint Lead' },
+    { id: '7', avatar: team7, name: 'Srijita Dutta', deg: 'PR Joint Lead' },
     { id: '8', avatar: team8, name: 'Soumili Saha', deg: 'PR Team Member' },
     { id: '9', avatar: team1, name: 'Soham Saha', deg: 'PR Team Member' },
     { id: '10', avatar: team2, name: 'Soumadeep Layek', deg: 'PR Team Member' },
     { id: '11', avatar: team3, name: 'Gourav Paul', deg: 'PR Team Member' },
     
     // SPONSORSHIP MANAGEMENT TEAM
-    { id: '12', avatar: team4, name: 'Pranay Chatterjee', deg: 'Sponsorship Coordinator' },
-    { id: '13', avatar: team5, name: 'Saptarshi Ghosh', deg: 'Sponsorship Joint Coordinator' },
-    { id: '14', avatar: team6, name: 'Harsh Singh', deg: 'Sponsorship Team Member' },
+    { id: '12', avatar: team4, name: 'Pranay Chatterjee', deg: 'Sponsorship Lead' },
+    { id: '13', avatar: team5, name: 'Saptarshi Ghosh', deg: 'Sponsorship Joint Lead' },
+    { id: '14', avatar: team6, name: 'Harsh Singh', deg: 'Sponsorship Joint Lead' },
     { id: '15', avatar: team7, name: 'Prantik Ghosh', deg: 'Sponsorship Team Member' },
     { id: '16', avatar: team8, name: 'Krishna Kali Sarkar', deg: 'Sponsorship Team Member' },
     { id: '17', avatar: team1, name: 'Ankita Aman', deg: 'Sponsorship Team Member' },
     
     // CREATIVE & SOCIAL MANAGEMENT TEAM
-    { id: '18', avatar: team2, name: 'Gaurav Chaudhary', deg: 'Social Coordinator' },
-    { id: '19', avatar: team3, name: 'Shreya Jha', deg: 'Creative Coordinator' },
+    { id: '18', avatar: team2, name: 'Gaurav Chaudhary', deg: 'Social Lead' },
+    { id: '19', avatar: team3, name: 'Shreya Jha', deg: 'Creative Lead' },
     { id: '20', avatar: team4, name: 'Sania Dhar', deg: 'Creative & Social Member' },
     { id: '21', avatar: team5, name: 'Olivia Sikder', deg: 'Creative & Social Member' },
     { id: '22', avatar: team6, name: 'Gourab Dey', deg: 'Creative & Social Member' },
     
     // DISCIPLINE & HOSPITALITY MANAGEMENT TEAM
-    { id: '23', avatar: team7, name: 'Souvik Dey', deg: 'Discipline & Hospitality Coordinator' },
-    { id: '24', avatar: team8, name: 'Shreya Saha', deg: 'Discipline & Hospitality Member' },
-    { id: '25', avatar: team1, name: 'Shivam Kumar', deg: 'Discipline & Hospitality Member' },
-    { id: '26', avatar: team2, name: 'Indrani Banik', deg: 'Discipline & Hospitality Member' },
-    { id: '27', avatar: team3, name: 'Aditya Choubey', deg: 'Discipline & Hospitality Member' },
+    { id: '23', avatar: team7, name: 'Souvik Dey', deg: 'Disc. & Hospitality Lead' },
+    { id: '24', avatar: team8, name: 'Shreya Saha', deg: 'Disc. & Hospitality Member'},
+    { id: '25', avatar: team1, name: 'Shivam Kumar', deg: 'Disc. & Hospitality Member' },
+    { id: '26', avatar: team2, name: 'Indrani Banik', deg: 'Disc. & Hospitality Member' },
+    { id: '27', avatar: team3, name: 'Aditya Choubey', deg: 'Disc. & Hospitality Member' },
 ];
 
 export const eventTeams = [
