@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import './AdminDashboard.css';
 
@@ -10,6 +10,12 @@ const AdminDashboard = () => {
 
   // Extract role from pathname (/admin/core/dashboard -> core)
   const role = location.pathname.split('/')[2];
+
+  const handleLogout = useCallback(() => {
+    localStorage.removeItem('adminToken');
+    localStorage.removeItem('adminUser');
+    history.push('/admin');
+  }, [history]);
 
   useEffect(() => {
     // Check authentication
@@ -32,13 +38,7 @@ const AdminDashboard = () => {
 
     setUser(parsedUser);
     setLoading(false);
-  }, [role, history]);
-
-  const handleLogout = () => {
-    localStorage.removeItem('adminToken');
-    localStorage.removeItem('adminUser');
-    history.push('/admin');
-  };
+  }, [role, history, handleLogout]);
 
   const roleConfig = {
     core: {
