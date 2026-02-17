@@ -2,16 +2,17 @@ import React from 'react';
 import EventDetail from '../EventDetail';
 import hackStorm from '../../../../assets/img/PIXELATED EVENT MASCOTS/HACKSTORM.png';
 import hackStormBanner from '../../../../assets/img/event_specific_pictures/hackstorm/hstorm.png';
+import { getCloudinaryUrl } from '../../../../config/cloudinary';
 
 const HackStormEvent = () => {
     const eventData = {
-                previousYearImages: [
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Hackstrom/DSC02934.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Hackstrom/DSC02938.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Hackstrom/DSC02946.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Hackstrom/DSC02947.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Hackstrom/IMG_8057.JPG',
-                ],
+        previousYearImages: [
+            getCloudinaryUrl('pictures_of_gallery/Hackstrom', 'DSC02934.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Hackstrom', 'DSC02938.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Hackstrom', 'DSC02946.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Hackstrom', 'DSC02947.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Hackstrom', 'IMG_8057.JPG', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+        ],
         name: 'Hack Storm',
         logo: hackStorm,
         category: 'Coding',

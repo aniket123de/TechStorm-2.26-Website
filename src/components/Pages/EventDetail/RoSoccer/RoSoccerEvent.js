@@ -2,19 +2,20 @@ import React from 'react';
 import EventDetail from '../EventDetail';
 import roSoccer from '../../../../assets/img/PIXELATED EVENT MASCOTS/RO-SOCCER.png';
 import roSoccerBanner from '../../../../assets/img/event_specific_pictures/robotics/ro_soccer.png';
+import { getCloudinaryUrl } from '../../../../config/cloudinary';
 
 const RoSoccerEvent = () => {
     const eventData = {
-                previousYearImages: [
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Ro Soccer_/DSC02699.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Ro Soccer_/DSC02701.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Ro Soccer_/DSC02703.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Ro Soccer_/DSC02711.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Ro Soccer_/DSC02714.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Ro Soccer_/DSC02715.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Ro Soccer_/DSC02717.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Ro Soccer_/DSC02718.jpeg',
-                ],
+        previousYearImages: [
+            getCloudinaryUrl('pictures_of_gallery/Ro Soccer_', 'DSC02699.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Ro Soccer_', 'DSC02701.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Ro Soccer_', 'DSC02703.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Ro Soccer_', 'DSC02711.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Ro Soccer_', 'DSC02714.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Ro Soccer_', 'DSC02715.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Ro Soccer_', 'DSC02717.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Ro Soccer_', 'DSC02718.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+        ],
         name: 'Ro-Soccer',
         logo: roSoccer,
         category: 'Robotics',

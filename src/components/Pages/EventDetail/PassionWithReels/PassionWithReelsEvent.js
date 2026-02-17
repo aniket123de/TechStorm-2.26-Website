@@ -2,6 +2,7 @@ import React from 'react';
 import EventDetail from '../EventDetail';
 import passionWithReels from '../../../../assets/img/PIXELATED EVENT MASCOTS/PASSION WITH REELS.png';
 import passionWithReelsBanner from '../../../../assets/img/event_specific_pictures/creative/passion_with_reels.png';
+import { getCloudinaryUrl } from '../../../../config/cloudinary';
 
 const PassionWithReelsEvent = () => {
     // Convert themed rules array to plain strings for EventDetail.js rendering
@@ -34,14 +35,14 @@ const PassionWithReelsEvent = () => {
         '• Registration fees are non-refundable.'
     ];
     const eventData = {
-                previousYearImages: [
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Passion with reels-20260216T161844Z-1-001/Passion with reels/Screenshot_2026-02-12-23-47-55-25_99c04817c0de5652397fc8b56c3b3817.jpg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Passion with reels-20260216T161844Z-1-001/Passion with reels/Screenshot_2026-02-12-23-48-34-03_99c04817c0de5652397fc8b56c3b3817.jpg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Passion with reels-20260216T161844Z-1-001/Passion with reels/Screenshot_2026-02-12-23-48-48-76_99c04817c0de5652397fc8b56c3b3817.jpg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Passion with reels-20260216T161844Z-1-001/Passion with reels/Screenshot_2026-02-12-23-49-00-93_99c04817c0de5652397fc8b56c3b3817.jpg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Passion with reels-20260216T161844Z-1-001/Passion with reels/Screenshot_2026-02-12-23-49-21-45_99c04817c0de5652397fc8b56c3b3817.jpg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Passion with reels-20260216T161844Z-1-001/Passion with reels/Screenshot_2026-02-12-23-49-34-16_99c04817c0de5652397fc8b56c3b3817.jpg',
-                ],
+        previousYearImages: [
+            getCloudinaryUrl('pictures_of_gallery/Passion with reels-20260216T161844Z-1-001/Passion with reels', 'Screenshot_2026-02-12-23-47-55-25_99c04817c0de5652397fc8b56c3b3817.jpg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Passion with reels-20260216T161844Z-1-001/Passion with reels', 'Screenshot_2026-02-12-23-48-34-03_99c04817c0de5652397fc8b56c3b3817.jpg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Passion with reels-20260216T161844Z-1-001/Passion with reels', 'Screenshot_2026-02-12-23-48-48-76_99c04817c0de5652397fc8b56c3b3817.jpg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Passion with reels-20260216T161844Z-1-001/Passion with reels', 'Screenshot_2026-02-12-23-49-00-93_99c04817c0de5652397fc8b56c3b3817.jpg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Passion with reels-20260216T161844Z-1-001/Passion with reels', 'Screenshot_2026-02-12-23-49-21-45_99c04817c0de5652397fc8b56c3b3817.jpg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Passion with reels-20260216T161844Z-1-001/Passion with reels', 'Screenshot_2026-02-12-23-49-34-16_99c04817c0de5652397fc8b56c3b3817.jpg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+        ],
         name: 'Passion with Reels',
         logo: passionWithReels,
         category: 'Creative',

@@ -36,6 +36,7 @@ import PassionWithReelsEvent from './Pages/EventDetail/PassionWithReels/PassionW
 import ForzaHorizonEvent from './Pages/EventDetail/ForzaHorizon/ForzaHorizonEvent';
 import FifaMobileEvent from './Pages/EventDetail/FifaMobile/FifaMobileEvent';
 import KhetEvent from './Pages/EventDetail/Khet/KhetEvent';
+import RoSumoEvent from './Pages/EventDetail/RoSumo/RoSumoEvent';
 
 // Import Registration Pages
 import CodeBeeRegistration from './Pages/Registration/CodeBeeRegistration';
@@ -156,6 +157,7 @@ const AppContent = () => {
         <Route exact path="/events/ro-combat" component={RoCombatEvent} />
         <Route exact path="/events/ro-soccer" component={RoSoccerEvent} />
         <Route exact path="/events/ro-terrance" component={RoTerranceEvent} />
+        <Route exact path="/events/ro-sumo" component={RoSumoEvent} />
         <Route exact path="/events/creative-canvas" component={CreativeCanvasEvent} />
         <Route exact path="/events/passion-with-reels" component={PassionWithReelsEvent} />
         <Route exact path="/events/forza-horizon" component={ForzaHorizonEvent} />

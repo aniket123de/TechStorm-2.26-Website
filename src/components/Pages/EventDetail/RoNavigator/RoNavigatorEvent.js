@@ -2,14 +2,15 @@ import React from 'react';
 import EventDetail from '../EventDetail';
 import roNavigator from '../../../../assets/img/PIXELATED EVENT MASCOTS/RO-NAVIGATOR.png';
 import roNavigatorBanner from '../../../../assets/img/event_specific_pictures/robotics/ro_navigator.png';
+import { getCloudinaryUrl } from '../../../../config/cloudinary';
 
 const RoNavigatorEvent = () => {
     const eventData = {
-                previousYearImages: [
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Ro Navigator/IMG_20240403_125518.jpg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Ro Navigator/IMG_20240403_125521.jpg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Ro Navigator/IMG_6571.jpeg',
-                ],
+        previousYearImages: [
+            getCloudinaryUrl('pictures_of_gallery/Ro Navigator', 'IMG_20240403_125518.jpg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Ro Navigator', 'IMG_20240403_125521.jpg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Ro Navigator', 'IMG_6571.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+        ],
         name: 'Ro-Navigator',
         logo: roNavigator,
         category: 'Robotics',

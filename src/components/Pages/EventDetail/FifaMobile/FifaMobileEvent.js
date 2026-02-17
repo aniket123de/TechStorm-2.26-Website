@@ -2,19 +2,20 @@ import React from 'react';
 import EventDetail from '../EventDetail';
 import fifaMobile from '../../../../assets/img/PIXELATED EVENT MASCOTS/FIFA Mobile.png';
 import fifaMobileBanner from '../../../../assets/img/event_specific_pictures/games/fifa_mobile.png';
+import { getCloudinaryUrl } from '../../../../config/cloudinary';
 
 const FifaMobileEvent = () => {
     const eventData = {
-                previousYearImages: [
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/FIFA mobile_/DSC02911.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/FIFA mobile_/DSC02916.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/FIFA mobile_/DSC02920.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/FIFA mobile_/DSC_0189.JPG',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/FIFA mobile_/DSC_0191.JPG',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/FIFA mobile_/IMG_7990.JPG',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/FIFA mobile_/IMG_8015.JPG',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/FIFA mobile_/IMG_8022.JPG',
-                ],
+        previousYearImages: [
+            getCloudinaryUrl('pictures_of_gallery/FIFA mobile_', 'DSC02911.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/FIFA mobile_', 'DSC02916.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/FIFA mobile_', 'DSC02920.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/FIFA mobile_', 'DSC_0189.JPG', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/FIFA mobile_', 'DSC_0191.JPG', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/FIFA mobile_', 'IMG_7990.JPG', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/FIFA mobile_', 'IMG_8015.JPG', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/FIFA mobile_', 'IMG_8022.JPG', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+        ],
         name: 'FIFA Mobile',
         logo: fifaMobile,
         category: 'Gaming',

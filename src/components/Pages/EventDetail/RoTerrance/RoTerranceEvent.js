@@ -2,18 +2,19 @@ import React from 'react';
 import EventDetail from '../EventDetail';
 import roTerrance from '../../../../assets/img/PIXELATED EVENT MASCOTS/RO-TERRANCE.png';
 import roTerranceBanner from '../../../../assets/img/event_specific_pictures/robotics/ro_terrance.png';
+import { getCloudinaryUrl } from '../../../../config/cloudinary';
 
 const RoTerranceEvent = () => {
     const eventData = {
-                previousYearImages: [
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Ro Terrance_/DSC02725.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Ro Terrance_/DSC02726.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Ro Terrance_/DSC02731.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Ro Terrance_/DSC02735.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Ro Terrance_/DSC02835.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Ro Terrance_/DSC02836.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Ro Terrance_/DSC02839.jpeg',
-                ],
+        previousYearImages: [
+            getCloudinaryUrl('pictures_of_gallery/Ro Terrance_', 'DSC02725.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Ro Terrance_', 'DSC02726.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Ro Terrance_', 'DSC02731.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Ro Terrance_', 'DSC02735.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Ro Terrance_', 'DSC02835.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Ro Terrance_', 'DSC02836.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Ro Terrance_', 'DSC02839.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+        ],
         name: 'Ro-Terrance',
         logo: roTerrance,
         category: 'Robotics',

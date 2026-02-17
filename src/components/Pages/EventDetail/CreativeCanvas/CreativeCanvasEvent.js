@@ -2,18 +2,19 @@ import React from 'react';
 import EventDetail from '../EventDetail';
 import creativeCanvas from '../../../../assets/img/PIXELATED EVENT MASCOTS/CREATIVE CANVAS.png';
 import creativeCanvasBanner from '../../../../assets/img/event_specific_pictures/creative/creative_canvas.png';
+import { getCloudinaryUrl } from '../../../../config/cloudinary';
 
 const CreativeCanvasEvent = () => {
     const eventData = {
-                previousYearImages: [
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Creative Canva_/DSC_0095 (1).JPG',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Creative Canva_/DSC_0097.JPG',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Creative Canva_/DSC_0098.JPG',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Creative Canva_/DSC_0099.JPG',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Creative Canva_/DSC_0103.JPG',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Creative Canva_/DSC_0105.JPG',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Creative Canva_/IMG_8186.JPG',
-                ],
+        previousYearImages: [
+            getCloudinaryUrl('pictures_of_gallery/Creative Canva_', 'DSC_0095 (1).JPG', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Creative Canva_', 'DSC_0097.JPG', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Creative Canva_', 'DSC_0098.JPG', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Creative Canva_', 'DSC_0099.JPG', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Creative Canva_', 'DSC_0103.JPG', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Creative Canva_', 'DSC_0105.JPG', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Creative Canva_', 'IMG_8186.JPG', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+        ],
         name: 'Creative Canvas',
         logo: creativeCanvas,
         category: 'Creative',

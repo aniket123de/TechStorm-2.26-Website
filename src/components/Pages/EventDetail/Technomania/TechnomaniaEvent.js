@@ -2,22 +2,23 @@ import React from 'react';
 import EventDetail from '../EventDetail';
 import technomania from '../../../../assets/img/PIXELATED EVENT MASCOTS/TECHNOMANIA.png';
 import technomaniaBanner from '../../../../assets/img/event_specific_pictures/technomania/technomania.png';
+import { getCloudinaryUrl } from '../../../../config/cloudinary';
 
 const TechnomaniaEvent = () => {
     const eventData = {
-                previousYearImages: [
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Technomania/DSC02745.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Technomania/DSC02752.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Technomania/DSC02753.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Technomania/DSC02762.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Technomania/DSC02764.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Technomania/DSC02765.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Technomania/DSC02768.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Technomania/DSC02770.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Technomania/DSC02778.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Technomania/DSC02779.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Technomania/DSC03075.jpeg',
-                ],
+        previousYearImages: [
+            getCloudinaryUrl('pictures_of_gallery/Technomania', 'DSC02745.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Technomania', 'DSC02752.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Technomania', 'DSC02753.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Technomania', 'DSC02762.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Technomania', 'DSC02764.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Technomania', 'DSC02765.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Technomania', 'DSC02768.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Technomania', 'DSC02770.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Technomania', 'DSC02778.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Technomania', 'DSC02779.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Technomania', 'DSC03075.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+        ],
         name: 'TechnoMania',
         logo: technomania,
         category: 'Coding',

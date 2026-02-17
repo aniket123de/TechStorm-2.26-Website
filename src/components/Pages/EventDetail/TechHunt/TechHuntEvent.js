@@ -2,18 +2,19 @@ import React from 'react';
 import EventDetail from '../EventDetail';
 import techHunt from '../../../../assets/img/PIXELATED EVENT MASCOTS/TECH HUNT.png';
 import techHuntBanner from '../../../../assets/img/event_specific_pictures/techHunt/techhunt_banner.png';
+import { getCloudinaryUrl } from '../../../../config/cloudinary';
 
 const TechHuntEvent = () => {
     const eventData = {
-                previousYearImages: [
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Tech- Hunt/DSC02954.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Tech- Hunt/DSC02955.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Tech- Hunt/DSC02969.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Tech- Hunt/DSC02970.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Tech- Hunt/DSC02971.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Tech- Hunt/DSC02972.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Tech- Hunt/DSC02974.jpeg',
-                ],
+        previousYearImages: [
+            getCloudinaryUrl('pictures_of_gallery/Tech- Hunt', 'DSC02954.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Tech- Hunt', 'DSC02955.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Tech- Hunt', 'DSC02969.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Tech- Hunt', 'DSC02970.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Tech- Hunt', 'DSC02971.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Tech- Hunt', 'DSC02972.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Tech- Hunt', 'DSC02974.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+        ],
         name: 'Tech Hunt',
         logo: techHunt,
         category: 'Brain Teaser',

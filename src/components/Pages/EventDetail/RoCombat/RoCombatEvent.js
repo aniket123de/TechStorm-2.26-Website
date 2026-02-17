@@ -2,25 +2,26 @@ import React from 'react';
 import EventDetail from '../EventDetail';
 import roCombat from '../../../../assets/img/PIXELATED EVENT MASCOTS/RO-COMBAT.png';
 import roCombatBanner from '../../../../assets/img/event_specific_pictures/robotics/ro_combat.png';
+import { getCloudinaryUrl } from '../../../../config/cloudinary';
 
 const RoCombatEvent = () => {
     const eventData = {
-                previousYearImages: [
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Combat/DSC02738.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Combat/DSC02848.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Combat/DSC02849.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Combat/DSC02850.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Combat/DSC02877.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Combat/DSC02884.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Combat/DSC03101.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Combat/DSC03102.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Combat/DSC03107.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Combat/DSC03108.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Combat/DSC03114.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Combat/DSC03116.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Combat/DSC03117.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Combat/IMG_8129.JPG',
-                ],
+        previousYearImages: [
+            getCloudinaryUrl('pictures_of_gallery/Combat', 'DSC02738.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Combat', 'DSC02848.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Combat', 'DSC02849.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Combat', 'DSC02850.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Combat', 'DSC02877.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Combat', 'DSC02884.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Combat', 'DSC03101.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Combat', 'DSC03102.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Combat', 'DSC03107.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Combat', 'DSC03108.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Combat', 'DSC03114.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Combat', 'DSC03116.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Combat', 'DSC03117.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Combat', 'IMG_8129.JPG', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+        ],
         name: 'Ro-Combat',
         logo: roCombat,
         category: 'Robotics',

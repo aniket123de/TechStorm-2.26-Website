@@ -2,17 +2,18 @@ import React from 'react';
 import EventDetail from '../EventDetail';
 import omegatrix from '../../../../assets/img/PIXELATED EVENT MASCOTS/OMEGATRIX.png';
 import omegatrixBanner from '../../../../assets/img/event_specific_pictures/omegatrix/OMEGATRIX_banner.png';
+import { getCloudinaryUrl } from '../../../../config/cloudinary';
 
 const OmegatrixEvent = () => {
     const eventData = {
-                previousYearImages: [
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Omega trix_/DSC02782.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Omega trix_/DSC02785.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Omega trix_/DSC02786.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Omega trix_/DSC02787.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Omega trix_/DSC02788.jpeg',
-                    process.env.PUBLIC_URL + '/pictures_of_gallery/Omega trix_/DSC02798.jpeg',
-                ],
+        previousYearImages: [
+            getCloudinaryUrl('pictures_of_gallery/Omega trix_', 'DSC02782.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Omega trix_', 'DSC02785.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Omega trix_', 'DSC02786.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Omega trix_', 'DSC02787.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Omega trix_', 'DSC02788.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+            getCloudinaryUrl('pictures_of_gallery/Omega trix_', 'DSC02798.jpeg', 'w_800,h_600,c_fill,q_auto:good,f_auto'),
+        ],
         name: 'Omegatrix',
         logo: omegatrix,
         category: 'Brain Teaser',
