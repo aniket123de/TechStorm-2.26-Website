@@ -41,7 +41,7 @@ const MatchesAnimated = () => {
         { logo: forzaHorizon, name: 'Forza Horizon', category: 'Games' },
         { logo: fifaMobile, name: 'FIFA Mobile', category: 'Games' },
         { logo: khet, name: 'KHET', category: 'Games' },
-        { logo: rosumo, name: 'Rosumo', category: 'Rover' },
+        { logo: rosumo, name: 'Rosumo', category: 'Rover', url: '/events/ro-sumo' },
     ];
 
     const [filteredEvents, setFilteredEvents] = React.useState(allEvents);
