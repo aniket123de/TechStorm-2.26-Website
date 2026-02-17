@@ -6,8 +6,8 @@ import {
   StyleSheet,
   Dimensions,
   Platform,
-  Linking,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { HERO_CONTENT, IMAGE_URLS } from '../../utils/constants';
 import { colors } from '../../theme/colors';
@@ -16,15 +16,13 @@ import PrimaryButton from '../Shared/PrimaryButton';
 
 const { width } = Dimensions.get('window');
 
-// Website URLs for CTAs (web view tabs - Register goes to contact, Explore goes to events)
-const WEBSITE_CONTACT = 'https://techstorm.bppimt.ac.in/contact';
-const WEBSITE_EVENTS = 'https://techstorm.bppimt.ac.in/events';
-
 export default function HeroSection() {
   const insets = useSafeAreaInsets();
+  const navigation = useNavigation();
 
-  const handleRegister = () => Linking.openURL(WEBSITE_CONTACT);
-  const handleExplore = () => Linking.openURL(WEBSITE_EVENTS);
+  const handleExploreEvents = () => {
+    navigation.navigate('EventsTab');
+  };
 
   return (
     <View style={[styles.container, { minHeight: Dimensions.get('window').height - insets.top - 80 }]}>
@@ -49,17 +47,11 @@ export default function HeroSection() {
         {/* Subtitle */}
         <Text style={styles.subtitle}>{HERO_CONTENT.subtitle}</Text>
 
-        {/* CTA Buttons */}
+        {/* CTA Button - navigates to Events tab (in-app WebView) */}
         <View style={styles.buttonGroup}>
           <PrimaryButton
-            title={HERO_CONTENT.ctaRegister}
-            onPress={handleRegister}
-            size="large"
-            accessibilityLabel="Register for TechStorm 2026"
-          />
-          <PrimaryButton
             title={HERO_CONTENT.ctaExplore}
-            onPress={handleExplore}
+            onPress={handleExploreEvents}
             size="large"
             accessibilityLabel="Explore TechStorm events"
           />
