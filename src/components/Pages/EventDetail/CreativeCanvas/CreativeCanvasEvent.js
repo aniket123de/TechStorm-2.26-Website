@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import EventDetail from "../EventDetail";
 import creativeCanvas from "../../../../assets/img/PIXELATED EVENT MASCOTS/CREATIVE CANVAS.png";
 import creativeCanvasBanner from "../../../../assets/img/event_specific_pictures/creative/creative_canvas.png";

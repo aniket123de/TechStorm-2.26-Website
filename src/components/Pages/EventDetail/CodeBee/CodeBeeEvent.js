@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import EventDetail from "../EventDetail";
 import codeBee from "../../../../assets/img/PIXELATED EVENT MASCOTS/CODE BEE.png";
 import codeBeeGif from "../../../../assets/img/event_specific_pictures/codebee/codebeefibg.gif";
