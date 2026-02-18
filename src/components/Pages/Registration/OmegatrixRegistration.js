@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { submitEventRegistration } from '../../../utils/eventRegistrationAPI';
 import Breadcrumb from '../../Utilities/Breadcrumb/Breadcrumb';
 import './Registration.css';
 import omegatrixBanner from '../../../assets/img/event_specific_pictures/omegatrix/OMEGATRIX_banner.png';
@@ -108,7 +109,7 @@ const OmegatrixRegistration = () => {
     return Object.keys(nextErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateForm()) {
@@ -117,15 +118,24 @@ const OmegatrixRegistration = () => {
 
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      console.log('Omegatrix registration submitted:', formData);
-      setIsSubmitting(false);
+    try {
+      const result = await submitEventRegistration('Omegatrix', formData);
+      console.log('Omegatrix registration successful:', result);
       setSubmitSuccess(true);
 
       setTimeout(() => {
         history.push('/events');
       }, 2500);
-    }, 1200);
+    } catch (error) {
+      console.error('Registration error:', error);
+      if (error.message.includes('duplicate')) {
+        setErrors({ submit: 'You have already registered for this event with this email or phone number.' });
+      } else {
+        setErrors({ submit: error.message || 'Registration failed. Please try again.' });
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -146,6 +156,18 @@ const OmegatrixRegistration = () => {
           {submitSuccess && (
             <div className="success-message">
               Registration Successful! Redirecting to events page...
+            </div>
+          )}
+          {errors.submit && (
+            <div className="error-message" style={{ 
+              marginBottom: '20px', 
+              padding: '15px', 
+              backgroundColor: '#ff4444', 
+              color: 'white',
+              borderRadius: '5px',
+              textAlign: 'center'
+            }}>
+              {errors.submit}
             </div>
           )}
 

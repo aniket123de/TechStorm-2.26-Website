@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { submitEventRegistration } from '../../../utils/eventRegistrationAPI';
 import './Registration.css';
 import Breadcrumb from '../../Utilities/Breadcrumb/Breadcrumb';
 
@@ -130,17 +131,24 @@ const RegistrationForm = ({ eventConfig }) => {
         
         setIsSubmitting(true);
         
-        // Simulate API call
-        setTimeout(() => {
-            console.log('Form submitted for:', eventConfig.eventName, formData);
-            setIsSubmitting(false);
+        try {
+            const result = await submitEventRegistration(eventConfig.eventName, formData);
+            console.log('Registration successful:', result);
             setSubmitSuccess(true);
             
-            // Reset form after 3 seconds and redirect
             setTimeout(() => {
                 history.push('/events');
             }, 3000);
-        }, 2000);
+        } catch (error) {
+            console.error('Registration error:', error);
+            if (error.message.includes('duplicate')) {
+                setErrors({ submit: 'You have already registered for this event with this email or phone number.' });
+            } else {
+                setErrors({ submit: error.message || 'Registration failed. Please try again.' });
+            }
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleCancel = () => {
@@ -171,6 +179,19 @@ const RegistrationForm = ({ eventConfig }) => {
                         <div className="success-message">
                             ✓ Registration Successful!<br/>
                             Redirecting to events page...
+                        </div>
+                    )}
+
+                    {errors.submit && (
+                        <div className="error-message" style={{ 
+                            marginBottom: '20px', 
+                            padding: '15px', 
+                            backgroundColor: '#ff4444', 
+                            color: 'white',
+                            borderRadius: '5px',
+                            textAlign: 'center'
+                        }}>
+                            {errors.submit}
                         </div>
                     )}
 
