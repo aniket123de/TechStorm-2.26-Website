@@ -4,6 +4,52 @@ import "./EventDetail.css";
 import { Button } from "../../ui/8bit/button";
 import { Dialog, DialogContent } from "../../ui/8bit/dialog";
 
+<<<<<<< HEAD
+const EventDetail = ({ eventData, faqAccordion }) => {
+        // Fix: Declare missing refs and state
+        const autoScrollInterval = useRef(null);
+        const scrollContainerRef = useRef(null);
+        const pauseTimeout = useRef(null);
+        const [isRulesDialogOpen, setIsRulesDialogOpen] = useState(false);
+    const history = useHistory();
+    const {
+        name,
+        logo,
+        category,
+        breadcrumbBg,
+        description,
+        previousYearImages: galleryImages = [],
+        rules = [],
+        prizes = [],
+        teamSize,
+        duration,
+        venue,
+        registerButton,
+        contact,
+        coordinators,
+        qrCode,
+        paymentLink,
+        faq
+    } = eventData;
+    const getRegistrationRoute = (eventName) => {
+        const routeMap = {
+            'Code-Bee': '/register/code-bee',
+            'Hack Storm': '/register/hack-storm',
+            'TechnoMania': '/register/technomania',
+            'Omegatrix': '/register/omegatrix',
+            'Tech Hunt': '/register/tech-hunt',
+            'Ro-Navigator': '/register/ro-navigator',
+            'Ro-Combat': '/register/ro-combat',
+            'Ro-Soccer': '/register/ro-soccer',
+            'Ro-Terrance': '/register/ro-terrance',
+            'Creative Canvas': '/register/creative-canvas',
+            'Passion with Reels': '/register/passion-with-reels',
+            'Forza Horizon': '/register/forza-horizon',
+            'FIFA Mobile': '/register/fifa-mobile',
+            'KHET': '/register/khet'
+        };
+        return routeMap[eventName] || '/events';
+=======
 const EventDetail = ({ eventData }) => {
   const history = useHistory();
   const {
@@ -47,10 +93,14 @@ const EventDetail = ({ eventData }) => {
       "Forza Horizon": "/register/forza-horizon",
       "FIFA Mobile": "/register/fifa-mobile",
       KHET: "/register/khet",
+>>>>>>> 219c3e9241e2d32283dea2c28f1f5d2b59dafe06
     };
     return routeMap[eventName] || "/events";
   };
 
+<<<<<<< HEAD
+    // ...existing code...
+=======
   // Dummy placeholder images - replace with actual event photos later
   const dummyImages = [
     "https://via.placeholder.com/400x300/1a0e22/ffc010?text=Event+Photo+1",
@@ -66,6 +116,7 @@ const EventDetail = ({ eventData }) => {
     previousYearImages && previousYearImages.length > 0
       ? previousYearImages
       : dummyImages;
+>>>>>>> 219c3e9241e2d32283dea2c28f1f5d2b59dafe06
 
   // Start auto-scroll
   const startAutoScroll = () => {
@@ -1762,6 +1813,176 @@ const EventDetail = ({ eventData }) => {
         </div>
       </section>
 
+<<<<<<< HEAD
+            {/* Entry Fee Section */}
+            <section className="entry-fee-section pt-30 pb-60">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="entry-heading" style={{ textAlign: 'center' }}>
+                                <h2 className="heading-white">ENTRY</h2>
+                                <h2 className="heading-white">FEE</h2>
+                                <div className="heading-brush" style={{ margin: '10px auto 30px' }}></div>
+                            </div>
+                            <div className="entry-content">
+                                {/* Horizontal Fee Layout */}
+                                <div style={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    gap: '30px',
+                                    flexWrap: 'wrap',
+                                    marginBottom: '40px'
+                                }}>
+                                    <div className="fee-category" style={{
+                                        flex: '1',
+                                        minWidth: '280px',
+                                        maxWidth: '400px',
+                                        padding: '25px',
+                                        backgroundColor: 'rgba(255, 192, 16, 0.05)',
+                                        border: '3px solid #ffc010',
+                                        textAlign: 'center'
+                                    }}>
+                                        <h4 style={{ 
+                                            color: '#ffc010', 
+                                            fontSize: '14px', 
+                                            fontFamily: 'Press Start 2P',
+                                            marginBottom: '15px',
+                                            lineHeight: '1.5'
+                                        }}>
+                                            For BPPIMT students
+                                        </h4>
+                                        <div className="fee-amount" style={{
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            gap: '12px'
+                                        }}>
+                                            <span className="fee-icon" style={{ fontSize: '28px' }}>💰</span>
+                                            <span className="fee-text" style={{
+                                                color: '#fff',
+                                                fontSize: '18px',
+                                                fontFamily: 'Press Start 2P'
+                                            }}>₹80 per team</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="fee-category" style={{
+                                        flex: '1',
+                                        minWidth: '280px',
+                                        maxWidth: '400px',
+                                        padding: '25px',
+                                        backgroundColor: 'rgba(0, 255, 234, 0.05)',
+                                        border: '3px solid #00ffea',
+                                        textAlign: 'center'
+                                    }}>
+                                        <h4 style={{ 
+                                            color: '#00ffea', 
+                                            fontSize: '14px', 
+                                            fontFamily: 'Press Start 2P',
+                                            marginBottom: '15px',
+                                            lineHeight: '1.5'
+                                        }}>
+                                            For outside students
+                                        </h4>
+                                        <div className="fee-amount" style={{
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            gap: '12px'
+                                        }}>
+                                            <span className="fee-icon" style={{ fontSize: '28px' }}>💰</span>
+                                            <span className="fee-text" style={{
+                                                color: '#fff',
+                                                fontSize: '18px',
+                                                fontFamily: 'Press Start 2P'
+                                            }}>₹100 per team</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Team Size Options */}
+                                <div className="nes-container with-title" style={{ 
+                                    maxWidth: '500px',
+                                    margin: '0 auto',
+                                    backgroundColor: 'rgba(255, 192, 16, 0.08)',
+                                    borderColor: '#ffc010'
+                                }}>
+                                    <p className="title" style={{ 
+                                        margin: 0, 
+                                        padding: '3px 3px 3px 3px',
+                                        color: '#ffc010'
+                                    }}>Team Options</p>
+                                    <p style={{ 
+                                        fontSize: '16px',
+                                        margin: '0 0 10px 0',
+                                        fontFamily: 'Press Start 2P',
+                                        lineHeight: '1.6',
+                                        color: '#d0d0d0',
+                                        textAlign: 'center'
+                                    }}>
+                                        Solo / Duo / Thrice
+                                    </p>
+                                </div>
+                                
+                                {/* Payment Options */}
+                                <div style={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    gap: '30px',
+                                    marginTop: '30px',
+                                    flexWrap: 'wrap'
+                                }}>
+                                    {qrCode && (
+                                        <div className="qr-section" style={{ textAlign: 'center' }}>
+                                            <h4 className="qr-title" style={{
+                                                fontFamily: 'Press Start 2P',
+                                                color: '#ffc010',
+                                                fontSize: '14px',
+                                                marginBottom: '15px'
+                                            }}>Scan to Pay</h4>
+                                            <div className="qr-code-wrapper">
+                                                <img src={qrCode} alt="Payment QR Code" className="qr-code" style={{
+                                                    maxWidth: '200px',
+                                                    border: '3px solid #ffc010'
+                                                }} />
+                                            </div>
+                                        </div>
+                                    )}
+                                    {paymentLink && (
+                                        <div className="payment-link-section" style={{
+                                            display: 'flex',
+                                            alignItems: 'center'
+                                        }}>
+                                            <Button
+                                                variant="default"
+                                                onClick={() => window.open(paymentLink, '_blank')}
+                                                style={{ fontSize: '12px' }}
+                                            >
+                                                PAY ONLINE
+                                            </Button>
+                                        </div>
+                                    )}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* FAQ Accordion for Ro-Navigator (above coordinators) */}
+            {faqAccordion}
+            {/* Coordinators Section */}
+            <section className="coordinators-section pt-30 pb-90" style={{marginTop: '48px'}}>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="coordinator-heading">
+                                <h2 className="heading-white">COORDINATORS &</h2>
+                                <h2 className="heading-gold">VOLUNTEERS</h2>
+                                <div className="heading-brush"></div>
+                            </div>
+=======
       {/* Coordinators Section */}
       <section className="coordinators-section pt-30 pb-90">
         <div className="container">
@@ -1861,6 +2082,7 @@ const EventDetail = ({ eventData }) => {
                         <div className="coordinator-contacts">
                           <p className="coord-phone">{person.phone}</p>
                           <p className="coord-email">{person.email}</p>
+>>>>>>> 219c3e9241e2d32283dea2c28f1f5d2b59dafe06
                         </div>
                       </div>
                     </div>

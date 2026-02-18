@@ -21,68 +21,63 @@ const faqData = [
 const Faqs = () => {
     return (
         <React.Fragment>
-            <Breadcrumb pageTitle={'Faq'} currentPage={'Faq'} />
-
-            {/* <Faq/> */}
-            <section id="faq" className="faq-area pb-90">
+            <Breadcrumb pageTitle={"Faq"} currentPage={"Faq"} />
+            <section id="faq" className="faq-area pb-90" style={{ background: "#000", color: "#fff" }}>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6 col-md-6">
                             <div className="faq-wrap">
-                                <h4 className="mb-30">{'General Questions about TechStorm 2026'}</h4>
-                                <p>{'Got questions about registration, events, or participation? Find answers to the most frequently asked questions below. Still have doubts? Reach out to us through the Contact page!'}</p>
+                                <h4 className="mb-30 font-silkscreen" style={{ color: "#ffc010", fontSize: "18px", letterSpacing: "1px", textShadow: "2px 2px 0 #201328" }}>
+                                    General Questions about TechStorm 2026
+                                </h4>
+                                <p className="font-silkscreen" style={{ color: "#fff", fontSize: "13px" }}>
+                                    Got questions about registration, events, or participation? Find answers to the most frequently asked questions below. Still have doubts? Reach out to us through the Contact page!
+                                </p>
                             </div>
                         </div>
                         <div className="col-lg-6 col-md-6">
                             <div className="faq-wrap">
-                                <Accordion className="accordion" id="accordionExample" defaultActiveKey="0">
-                                    {
-                                        faqData.map((data, index) => {
-                                            const { title, bodyText } = data;
-                                            return (
-                                                <AccordionItem
-                                                    id={index}
-                                                    title={title}
-                                                    body={bodyText} />
-                                            );
-                                        })
-                                    }
+                                <Accordion className="accordion font-silkscreen" id="accordionExample" defaultActiveKey="0">
+                                    {faqData.map((data, index) => (
+                                        <AccordionItem
+                                            id={index}
+                                            title={<span style={{ color: "#ffc010", fontFamily: 'Silkscreen, sans-serif', fontSize: "15px" }}>{data.title}</span>}
+                                            body={<span style={{ color: "#fff", fontFamily: 'Silkscreen, sans-serif', fontSize: "13px" }}>{data.bodyText}</span>}
+                                        />
+                                    ))}
                                 </Accordion>
                             </div>
                         </div>
                     </div>
-
                     <div className="row mt-50">
                         <div className="col-lg-6 col-md-6">
                             <div className="faq-wrap">
-                                <h4 className="mb-30">{'Event & Prize Information'}</h4>
-                                <p>{'TechStorm 2026 features exciting prizes, certificates, and exclusive merchandise. Winners will be announced on the same day, with prizes distributed at the closing ceremony.'}</p>
+                                <h4 className="mb-30 font-silkscreen" style={{ color: "#ffc010", fontSize: "18px", letterSpacing: "1px", textShadow: "2px 2px 0 #201328" }}>
+                                    Event & Prize Information
+                                </h4>
+                                <p className="font-silkscreen" style={{ color: "#fff", fontSize: "13px" }}>
+                                    TechStorm 2026 features exciting prizes, certificates, and exclusive merchandise. Winners will be announced on the same day, with prizes distributed at the closing ceremony.
+                                </p>
                             </div>
                         </div>
                         <div className="col-lg-6 col-md-6">
                             <div className="faq-wrap">
-                                <Accordion className="accordion" id="accordionExample2" defaultActiveKey="0">
-                                    {
-                                        faqData.map((data, index) => {
-                                            const { title, bodyText } = data;
-                                            return (
-                                                <AccordionItem
-                                                    id={index}
-                                                    title={title}
-                                                    body={bodyText} />
-                                            );
-                                        })
-                                    }
+                                <Accordion className="accordion font-silkscreen" id="accordionExample2" defaultActiveKey="0">
+                                    {faqData.map((data, index) => (
+                                        <AccordionItem
+                                            id={index}
+                                            title={<span style={{ color: "#ffc010", fontFamily: 'Silkscreen, sans-serif', fontSize: "15px" }}>{data.title}</span>}
+                                            body={<span style={{ color: "#fff", fontFamily: 'Silkscreen, sans-serif', fontSize: "13px" }}>{data.bodyText}</span>}
+                                        />
+                                    ))}
                                 </Accordion>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </section>
-
         </React.Fragment>
-    )
+    );
 }
 
 export default Faqs;
