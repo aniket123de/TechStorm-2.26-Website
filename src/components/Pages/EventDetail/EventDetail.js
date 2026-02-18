@@ -412,14 +412,771 @@ const EventDetail = ({ eventData }) => {
                             const isHeader =
                               /^[\u{1F300}-\u{1F9FF}]|^[\u{2600}-\u{26FF}]|^[\u{2700}-\u{27BF}]/u.test(rule);
                             // Check if it's an empty line
-                            const isEmpty = rule.trim() === "";
+                            // const isEmpty = rule.trim() === "";
                             // Highlight Judging Criteria header
+<<<<<<< HEAD
                             // const isJudgingCriteria = false; // Remove or properly initialize if needed
                             // ...existing rule rendering logic...
                             // (Move misplaced EventDetail definition out of map)
                             // ...existing code...
                             // All rule rendering logic should be inside this callback
                             // Remove unreachable code after map
+=======
+                            // const isJudgingCriteria = false;
+                            // Check if it's a registration fee header
+                            const isRegistrationFeeHeader = 
+                              name === "Passion with Reels" &&
+                              rule.trim().toUpperCase() === "REGISTRATION FEES:";
+                            // Check if it's a FAQ question (ends with ?)
+                            const isFaqQuestion = /\?$/.test(rule.trim());
+                            
+                            if (isHeader) {
+                              // Reduce space below Forza Horizon gold header
+                              const isForzaHorizonHeader =
+                                name === "Forza Horizon" &&
+                                rule
+                                  .trim()
+                                  .toUpperCase()
+                                  .includes("FORZA HORIZON GAME RULES");
+                              return (
+                                <h3
+                                  key={index}
+                                  style={{
+                                    color: "#ffc010",
+                                    fontSize: "clamp(12px, 3vw, 16px)",
+                                    fontFamily: "Press Start 2P",
+                                    marginTop: index === 0 ? "0" : "25px",
+                                    marginBottom: isForzaHorizonHeader
+                                      ? "2px"
+                                      : "15px",
+                                    lineHeight: "1.5",
+                                    textTransform: "uppercase",
+                                  }}
+                                >
+                                  {rule}
+                                </h3>
+                              );
+                            }
+                            // Restore yellow background shade for 'BASIC PARTICIPATION RULES:'
+                            if (
+                              name === "Forza Horizon" &&
+                              rule.trim().toUpperCase() ===
+                                "BASIC PARTICIPATION RULES:"
+                            ) {
+                              return (
+                                <div
+                                  key={index}
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    background: "rgba(255, 192, 16, 0.07)",
+                                    color: "#ffc010",
+                                    fontWeight: 400,
+                                    fontFamily: "Press Start 2P",
+                                    fontSize: "clamp(12px, 3vw, 16px)",
+                                    padding: "6px 12px",
+                                    borderRadius: "4px",
+                                    margin: "10px 0",
+                                    letterSpacing: "2px",
+                                    textTransform: "uppercase",
+                                    boxShadow: "none",
+                                  }}
+                                >
+                                  <span
+                                    style={{
+                                      fontSize: "22px",
+                                      marginRight: "10px",
+                                      lineHeight: 1,
+                                    }}
+                                  ></span>
+                                  {rule}
+                                </div>
+                              );
+                            }
+                            // Keep 'â± RACE FORMAT RULES' as gold heading
+                            if (
+                              name === "Forza Horizon" &&
+                              rule.trim().toUpperCase() ===
+                                "â± RACE FORMAT RULES"
+                            ) {
+                              return (
+                                <h3
+                                  key={index}
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    color: "#ffc010",
+                                    fontSize: "clamp(14px, 4vw, 20px)",
+                                    fontFamily: "Press Start 2P",
+                                    marginTop: "25px",
+                                    marginBottom: "10px",
+                                    lineHeight: "1.5",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "2px",
+                                  }}
+                                >
+                                  <span
+                                    style={{
+                                      fontSize: "22px",
+                                      marginRight: "10px",
+                                      lineHeight: 1,
+                                    }}
+                                  ></span>
+                                  {rule}
+                                </h3>
+                              );
+                            }
+                            // Registration fee header: larger font for Passion with Reels
+                            if (isRegistrationFeeHeader) {
+                              return (
+                                <div
+                                  key={index}
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    background: "rgba(255, 192, 16, 0.07)",
+                                    color: "#e6b800",
+                                    fontWeight: 500,
+                                    fontFamily: "Silkscreen, sans-serif",
+                                    fontSize: "clamp(15px, 3vw, 18px)",
+                                    padding: "3px 10px",
+                                    borderRadius: "4px",
+                                    margin: "6px 0",
+                                    boxShadow: "none",
+                                  }}
+                                >
+                                  <span
+                                    style={{
+                                      fontSize: "18px",
+                                      marginRight: "8px",
+                                      color: "#ffc010",
+                                      lineHeight: 1,
+                                    }}
+                                  ></span>
+                                  {rule}
+                                </div>
+                              );
+                            }
+                            // Highlight Ro-Navigator section headers with yellow background, remove bullet
+                            // Highlight PRELIMS RULES: and FINALS RULES: with gold heading and diff icon
+                            if (
+                              (name === "Ro-Navigator" ||
+                                name === "Ro-Soccer" ||
+                                name === "Ro-Combat" ||
+                                name === "Ro-Terrance" ||
+                                name === "Ro-Sumo") &&
+                              [
+                                "PRELIMS RULES:",
+                                "FINALS RULES:",
+                                "KNOCKOUT & FINALS RULES:",
+                              ].includes(rule.trim().toUpperCase())
+                            ) {
+                              if (
+                                rule.trim().toUpperCase() === "PRELIMS RULES:"
+                              ) {
+                                return (
+                                  <h3
+                                    key={index}
+                                    style={{
+                                      display: "flex",
+                                      alignItems: "center",
+                                      color: "#ffc010",
+                                      fontSize: "clamp(14px, 4vw, 20px)",
+                                      fontFamily: "Press Start 2P",
+                                      marginTop: "25px",
+                                      marginBottom: "10px",
+                                      lineHeight: "1.5",
+                                      textTransform: "uppercase",
+                                      letterSpacing: "2px",
+                                    }}
+                                  >
+                                    <span
+                                      style={{
+                                        fontSize: "22px",
+                                        marginRight: "10px",
+                                        lineHeight: 1,
+                                      }}
+                                    ></span>
+                                    {rule}
+                                  </h3>
+                                );
+                              } else if (
+                                rule.trim().toUpperCase() ===
+                                  "KNOCKOUT & FINALS RULES:" ||
+                                rule.trim().toUpperCase() === "FINALS RULES:"
+                              ) {
+                                return (
+                                  <h3
+                                    key={index}
+                                    style={{
+                                      display: "flex",
+                                      alignItems: "center",
+                                      color: "#ffc010",
+                                      fontSize: "clamp(14px, 4vw, 20px)",
+                                      fontFamily: "Press Start 2P",
+                                      marginTop: "25px",
+                                      marginBottom: "10px",
+                                      lineHeight: "1.5",
+                                      textTransform: "uppercase",
+                                      letterSpacing: "2px",
+                                    }}
+                                  >
+                                    <span
+                                      style={{
+                                        fontSize: "22px",
+                                        marginRight: "10px",
+                                        lineHeight: 1,
+                                      }}
+                                    ></span>
+                                    {rule}
+                                  </h3>
+                                );
+                              }
+                            }
+                            // Highlight BOT SPECIFICATIONS and GENERAL RULES
+                            if (
+                              (name === "Ro-Navigator" ||
+                                name === "Ro-Soccer" ||
+                                name === "Ro-Combat" ||
+                                name === "Ro-Terrance" ||
+                                name === "Ro-Sumo") &&
+                              (rule.trim().toUpperCase() ===
+                                "BOT SPECIFICATIONS:" ||
+                                rule.trim().toUpperCase() ===
+                                  "GENERAL RULES (COMMON FOR PRELIMS & FINALS):" ||
+                                rule.trim().toUpperCase() === "FAQ:")
+                            ) {
+                              // Restore previous icon for BOT SPECIFICATIONS, keep robot for GENERAL RULES, and add FAQ highlight
+                              if (
+                                rule.trim().toUpperCase() ===
+                                "BOT SPECIFICATIONS:"
+                              ) {
+                                return (
+                                  <h3
+                                    key={index}
+                                    style={{
+                                      display: "flex",
+                                      alignItems: "center",
+                                      color: "#ffc010",
+                                      fontSize: "clamp(14px, 4vw, 20px)",
+                                      fontFamily: "Press Start 2P",
+                                      marginTop: "25px",
+                                      marginBottom: "10px",
+                                      lineHeight: "1.5",
+                                      textTransform: "uppercase",
+                                      letterSpacing: "2px",
+                                    }}
+                                  >
+                                    <span
+                                      style={{
+                                        fontSize: "22px",
+                                        marginRight: "10px",
+                                        lineHeight: 1,
+                                      }}
+                                    ></span>
+                                    {rule}
+                                  </h3>
+                                );
+                              } else if (
+                                rule.trim().toUpperCase() ===
+                                "GENERAL RULES (COMMON FOR PRELIMS & FINALS):"
+                              ) {
+                                return (
+                                  <h3
+                                    key={index}
+                                    style={{
+                                      display: "flex",
+                                      alignItems: "center",
+                                      color: "#ffc010",
+                                      fontSize: "clamp(14px, 4vw, 20px)",
+                                      fontFamily: "Press Start 2P",
+                                      marginTop: "25px",
+                                      marginBottom: "10px",
+                                      lineHeight: "1.5",
+                                      textTransform: "uppercase",
+                                      letterSpacing: "2px",
+                                    }}
+                                  >
+                                    <span
+                                      style={{
+                                        fontSize: "22px",
+                                        marginRight: "10px",
+                                        lineHeight: 1,
+                                      }}
+                                    ></span>
+                                    {rule}
+                                  </h3>
+                                );
+                              } else if (rule.trim().toUpperCase() === "FAQ:") {
+                                return (
+                                  <h3
+                                    key={index}
+                                    style={{
+                                      display: "flex",
+                                      alignItems: "center",
+                                      color: "#ffc010",
+                                      fontSize: "clamp(14px, 4vw, 20px)",
+                                      fontFamily: "Press Start 2P",
+                                      marginTop: "25px",
+                                      marginBottom: "10px",
+                                      lineHeight: "1.5",
+                                      textTransform: "uppercase",
+                                      letterSpacing: "2px",
+                                    }}
+                                  >
+                                    <span
+                                      style={{
+                                        fontSize: "22px",
+                                        marginRight: "10px",
+                                        lineHeight: 1,
+                                      }}
+                                    ></span>
+                                    {rule}
+                                  </h3>
+                                );
+                              }
+                            }
+                            // Highlight GENERAL GUIDELINES: for FIFA Mobile and Forza Horizon
+                            if (
+                              (name === "FIFA Mobile" ||
+                                name === "Forza Horizon") &&
+                              rule.trim().toUpperCase() ===
+                                "GENERAL GUIDELINES:"
+                            ) {
+                              return (
+                                <h3
+                                  key={index}
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    color: "#ffc010",
+                                    fontSize: "clamp(14px, 4vw, 20px)",
+                                    fontFamily: "Press Start 2P",
+                                    marginTop: "25px",
+                                    marginBottom: "10px",
+                                    lineHeight: "1.5",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "2px",
+                                  }}
+                                >
+                                  <span
+                                    style={{
+                                      fontSize: "22px",
+                                      marginRight: "10px",
+                                      lineHeight: 1,
+                                    }}
+                                  ></span>
+                                  {rule}
+                                </h3>
+                              );
+                            }
+                            if (
+                              (name === "Ro-Navigator" ||
+                                name === "Ro-Soccer" ||
+                                name === "Ro-Combat" ||
+                                name === "Ro-Terrance" ||
+                                name === "Ro-Sumo") &&
+                              [
+                                "FACULTY CO-ORDINATOR NAME:",
+                                "STUDENT CO-ORDINATOR NAME:",
+                                "VOLUNTEER NAME:",
+                                "TEAM STRENGTH:",
+                                "REGISTRATION FEES:",
+                              ].includes(rule.trim().toUpperCase())
+                            ) {
+                              return (
+                                <div
+                                  key={index}
+                                  style={{
+                                    background: "rgba(255, 192, 16, 0.07)",
+                                    color: "#ffc010",
+                                    fontWeight: 400,
+                                    fontFamily: "Press Start 2P",
+                                    fontSize: "clamp(12px, 3vw, 16px)",
+                                    padding: "6px 12px",
+                                    borderRadius: "4px",
+                                    margin: "10px 0",
+                                    letterSpacing: "2px",
+                                    textTransform: "uppercase",
+                                    boxShadow: "none",
+                                  }}
+                                >
+                                  {rule}
+                                </div>
+                              );
+                            }
+                            // Highlight REGISTRATION FEES value for Ro-Terrance
+                            if (
+                              name === "Ro-Terrance" &&
+                              rule.trim() === "400/- Per Team/Bot"
+                            ) {
+                              return (
+                                <div
+                                  key={index}
+                                  style={{
+                                    color: "#fffacd", // yellowish white
+                                    fontFamily: "Press Start 2P",
+                                    fontSize: "clamp(13px, 3vw, 17px)",
+                                    margin: "10px 0 10px 16px",
+                                    letterSpacing: "2px",
+                                    textTransform: "uppercase",
+                                  }}
+                                >
+                                  {rule}
+                                </div>
+                              );
+                            }
+                            // FAQ question: bullet
+                            if (isFaqQuestion) {
+                              return (
+                                <div
+                                  key={index}
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "flex-start",
+                                    marginBottom: "12px",
+                                    gap: "12px",
+                                  }}
+                                >
+                                  <span
+                                    style={{
+                                      color: "#00ffea",
+                                      fontSize: "14px",
+                                      flexShrink: 0,
+                                      marginTop: "2px",
+                                    }}
+                                  >
+                                    â–¸
+                                  </span>
+                                  <span
+                                    style={{
+                                      color: "#e0e0e0",
+                                      fontSize: "13px",
+                                      lineHeight: "1.6",
+                                      fontFamily: "Silkscreen, sans-serif",
+                                      fontWeight: "bold",
+                                    }}
+                                  >
+                                    {rule}
+                                  </span>
+                                </div>
+                              );
+                            }
+                            // FAQ answer: no bullet, indented
+                            if (
+                              index > 0 &&
+                              rules[index - 1] &&
+                              /\?$/.test(rules[index - 1].trim())
+                            ) {
+                              return (
+                                <div
+                                  key={index}
+                                  style={{
+                                    marginLeft: "32px",
+                                    marginBottom: "12px",
+                                  }}
+                                >
+                                  <span
+                                    style={{
+                                      color: "#e0e0e0",
+                                      fontSize: "13px",
+                                      lineHeight: "1.6",
+                                      fontFamily: "Silkscreen, sans-serif",
+                                      fontWeight: "normal",
+                                    }}
+                                  >
+                                    {rule}
+                                  </span>
+                                </div>
+                              );
+                            }
+                            // Regular rule with bullet, with semi-bold and gold color for judging criteria line
+                            const judgingCriteriaText =
+                              "PROJECTS WILL BE JUDGED BASED ON INNOVATION & CREATIVITY, TECHNICAL IMPLEMENTATION & FUNCTIONALITY, SUSTAINABILITY IMPACT, PRACTICAL FEASIBILITY, AND PRESENTATION & COMMUNICATION SKILLS.";
+                            if (
+                              rule.trim().toUpperCase() === judgingCriteriaText
+                            ) {
+                              return (
+                                <div
+                                  key={index}
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "flex-start",
+                                    marginBottom: "12px",
+                                    gap: "12px",
+                                  }}
+                                >
+                                  <span
+                                    style={{
+                                      color: "#00ffea",
+                                      fontSize: "14px",
+                                      flexShrink: 0,
+                                      marginTop: "2px",
+                                    }}
+                                  >
+                                    â–¸
+                                  </span>
+                                  <span
+                                    style={{
+                                      color: "#fffacd",
+                                      fontSize: "13px",
+                                      lineHeight: "1.6",
+                                      fontFamily: "Silkscreen, sans-serif",
+                                      fontWeight: 600,
+                                    }}
+                                  >
+                                    {rule}
+                                  </span>
+                                </div>
+                              );
+                            }
+                            // Remove leading bullet dots for Ro-Navigator regular rules (keep font style unchanged)
+                            if (name === "Ro-Navigator") {
+                              // Section headers and special lines are handled above
+                              // Remove leading 'â€¢ ' from all rules except section headers
+                              let displayRule = rule;
+                              if (rule.startsWith("â€¢ ")) {
+                                displayRule = rule.slice(2);
+                              }
+                              // Render regular rule with original font style
+                              return (
+                                <div
+                                  key={index}
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "flex-start",
+                                    marginBottom: "12px",
+                                    gap: "12px",
+                                  }}
+                                >
+                                  <span
+                                    style={{
+                                      color: "#00ffea",
+                                      fontSize: "14px",
+                                      flexShrink: 0,
+                                      marginTop: "-2px",
+                                    }}
+                                  >
+                                    â–¸
+                                  </span>
+                                  <span
+                                    style={{
+                                      color: "#e0e0e0", // off-white
+                                      fontSize: "13px",
+                                      lineHeight: "1.6",
+                                      fontFamily: "Silkscreen, sans-serif",
+                                    }}
+                                  >
+                                    {displayRule}
+                                  </span>
+                                </div>
+                              );
+                            }
+                            // Remove only white bullets for Passion with Reels regular rules
+                            if (name === "Passion with Reels") {
+                              // Section headers and special lines (blue/cyan/gold bullets) are handled above
+                              // Only remove bullets for regular rules (those starting with 'â€¢ ')
+                              if (rule.startsWith("â€¢ ")) {
+                                // Highlight the 'ONLY short films allowed...' rule for Passion with Reels
+                                if (
+                                  name === "Passion with Reels" &&
+                                  rule
+                                    .toUpperCase()
+                                    .includes(
+                                      "ONLY SHORT FILMS ALLOWED. NO DOCUMENTARIES, ANIMATIONS, OR EXPERIMENTAL ART FORMS.",
+                                    )
+                                ) {
+                                  return (
+                                    <div
+                                      key={index}
+                                      style={{
+                                        display: "flex",
+                                        alignItems: "flex-start",
+                                        marginBottom: "12px",
+                                        gap: "6px",
+                                      }}
+                                    >
+                                      <span
+                                        style={{
+                                          color: "#00ffea",
+                                          fontSize: "7px",
+                                          flexShrink: 0,
+                                          marginTop: "2px",
+                                          fontFamily: "monospace",
+                                        }}
+                                      >
+                                        â–¶
+                                      </span>
+                                      <span
+                                        style={{
+                                          color: "#00ffea",
+                                          fontSize: "13px",
+                                          lineHeight: "1.6",
+                                          fontFamily: "Silkscreen, sans-serif",
+                                          fontWeight: "bold",
+                                          textTransform: "uppercase",
+                                        }}
+                                      >
+                                        {rule.slice(2)}
+                                      </span>
+                                    </div>
+                                  );
+                                }
+                                // Highlight the 'TEAM SIZE: 2-6 MEMBERS (INCLUDING CAST).' rule for Passion with Reels
+                                if (
+                                  name === "Passion with Reels" &&
+                                  rule
+                                    .toUpperCase()
+                                    .includes(
+                                      "TEAM SIZE: 2-6 MEMBERS (INCLUDING CAST).",
+                                    )
+                                ) {
+                                  return (
+                                    <div
+                                      key={index}
+                                      style={{
+                                        display: "flex",
+                                        alignItems: "flex-start",
+                                        marginBottom: "12px",
+                                        gap: "6px",
+                                      }}
+                                    >
+                                      <span
+                                        style={{
+                                          color: "#00ffea",
+                                          fontSize: "7px",
+                                          flexShrink: 0,
+                                          marginTop: "2px",
+                                          fontFamily: "monospace",
+                                        }}
+                                      >
+                                        â–¶
+                                      </span>
+                                      <span
+                                        style={{
+                                          color: "#fffacd",
+                                          fontSize: "13px",
+                                          lineHeight: "1.6",
+                                          fontFamily: "Silkscreen, sans-serif",
+                                          fontWeight: "bold",
+                                          textTransform: "uppercase",
+                                        }}
+                                      >
+                                        {rule.slice(2)}
+                                      </span>
+                                    </div>
+                                  );
+                                }
+                                return (
+                                  <div
+                                    key={index}
+                                    style={{
+                                      display: "flex",
+                                      alignItems: "flex-start",
+                                      marginBottom: "12px",
+                                      gap: "6px",
+                                    }}
+                                  >
+                                    <span
+                                      style={{
+                                        color: "#00ffea",
+                                        fontSize: "7px",
+                                        flexShrink: 0,
+                                        marginTop: "2px",
+                                        fontFamily: "monospace",
+                                      }}
+                                    >
+                                      â–¶
+                                    </span>
+                                    <span
+                                      style={{
+                                        color: "#e0e0e0",
+                                        fontSize: "13px",
+                                        lineHeight: "1.6",
+                                        fontFamily: "Silkscreen, sans-serif",
+                                      }}
+                                    >
+                                      {rule.slice(2)}
+                                    </span>
+                                  </div>
+                                );
+                              }
+                              // Render yellow heading for Passion with Reels description section
+                              if (
+                                name === "Passion with Reels" &&
+                                rule.trim() === "A movie making competition:"
+                              ) {
+                                return (
+                                  <div
+                                    key={index}
+                                    style={{
+                                      display: "flex",
+                                      alignItems: "center",
+                                      marginBottom: "10px",
+                                    }}
+                                  >
+                                    <span
+                                      style={{
+                                        fontSize: "22px",
+                                        marginRight: "10px",
+                                        color: "#ffc010",
+                                        lineHeight: 1,
+                                      }}
+                                    ></span>
+                                    <h3
+                                      style={{
+                                        color: "#ffc010",
+                                        fontFamily: "Press Start 2P",
+                                        fontSize: "clamp(14px, 4vw, 20px)",
+                                        marginTop: "0",
+                                        marginBottom: "0",
+                                        lineHeight: "1.5",
+                                        textTransform: "uppercase",
+                                        letterSpacing: "2px",
+                                      }}
+                                    >
+                                      {rule.replace(":", "")}
+                                    </h3>
+                                  </div>
+                                );
+                              }
+                              // For other lines, render as usual (section headers, registration, etc.)
+                            }
+                            // Regular rule with bullet for other events (including Forza Horizon)
+                            // Regular rule with bullet for other events
+                            return (
+                              <div
+                                key={index}
+                                style={{
+                                  display: "flex",
+                                  alignItems: "flex-start",
+                                  marginBottom: "12px",
+                                  gap: "12px",
+                                }}
+                              >
+                                <span
+                                  style={{
+                                    color: "#00ffea",
+                                    fontSize: "14px",
+                                    flexShrink: 0,
+                                    marginTop: "2px",
+                                  }}
+                                >
+                                  â–¸
+                                </span>
+                                <span
+                                  style={{
+                                    color: "#e0e0e0",
+                                    fontSize: "13px",
+                                    lineHeight: "1.6",
+                                    fontFamily: "Silkscreen, sans-serif",
+                                  }}
+                                >
+                                  {rule}
+                                </span>
+                              </div>
+                            );
+>>>>>>> 0b77ed0e7cf2f23588367c38774d2b408bce9b8c
                           })}
                       </div>
                       <div style={{ textAlign: "center", marginTop: "25px" }}>

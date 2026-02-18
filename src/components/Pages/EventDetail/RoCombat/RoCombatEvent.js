@@ -85,7 +85,7 @@ const RoCombatEvent = () => {
     description:
       "Ro-Combat is the ultimate robot battle arena! Build a robust combat robot and face off against opponents in intense one-on-one battles. Use strategy, engineering excellence, and clever design to disable your opponent's robot while protecting yours. Weapons, flippers, and innovative mechanisms are encouraged. May the best bot win!",
     teamSize: "2-5 Members",
-    entryFee: "â‚¹800 per team",
+    entryFee: "800 per team",
     duration: "4 Hours (Tournament Format)",
     venue: "Combat Arena",
     registerButton: {
