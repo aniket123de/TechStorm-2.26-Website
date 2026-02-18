@@ -18,6 +18,7 @@ const FifaMobileRegistration = () => {
     teamOvr: '',
     deviceModel: '',
     paymentMode: '',
+    transactionId: '',
     paymentDate: '',
     paymentReceipt: null,
     agreeToRules: false,
@@ -64,8 +65,13 @@ const FifaMobileRegistration = () => {
     if (!formData.paymentMode) nextErrors.paymentMode = 'Payment mode is required';
     if (!formData.paymentDate) nextErrors.paymentDate = 'Payment date is required';
     
-    if (formData.paymentMode === 'online' && !formData.paymentReceipt) {
-      nextErrors.paymentReceipt = 'Payment screenshot is required for online payment';
+    if (formData.paymentMode === 'online') {
+      if (!formData.transactionId.trim()) {
+        nextErrors.transactionId = 'Transaction ID is required for online payment';
+      }
+      if (!formData.paymentReceipt) {
+        nextErrors.paymentReceipt = 'Payment screenshot is required for online payment';
+      }
     }
     if (formData.paymentMode === 'offline' && !formData.paymentReceipt) {
       nextErrors.paymentReceipt = 'Offline receipt is required for offline payment';
@@ -306,6 +312,21 @@ const FifaMobileRegistration = () => {
                 />
                 {errors.paymentDate && <div className="error-message">{errors.paymentDate}</div>}
               </div>
+
+              {formData.paymentMode === 'online' && (
+                <div className="form-group">
+                  <label className="form-label required">Transaction ID</label>
+                  <input
+                    type="text"
+                    name="transactionId"
+                    value={formData.transactionId}
+                    onChange={handleInputChange}
+                    className="retro-input"
+                    placeholder="Transaction ID"
+                  />
+                  {errors.transactionId && <div className="error-message">{errors.transactionId}</div>}
+                </div>
+              )}
 
               {formData.paymentMode && (
                 <div className="form-group">
