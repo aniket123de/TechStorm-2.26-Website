@@ -473,98 +473,58 @@ const EventDetail = ({ eventData }) => {
                             const isEmpty = rule.trim() === "";
                             // Highlight Judging Criteria header
                             const isJudgingCriteria =
-                              rule.includes("JUDGING CRITERIA");
-                            // Highlight Round 1 and Round 2
-                            const isRound1 = rule
-                              .trim()
-                              .toLowerCase()
-                              .startsWith("round 1:");
-                            const isRound2 = rule
-                              .trim()
-                              .toLowerCase()
-                              .startsWith("round 2:");
-                            // FAQ question detection
-                            const isFaqQuestion =
-                              /\?$/.test(rule.trim()) &&
-                              rule.trim().length < 60;
-                            // Registration fee header detection for Passion with Reels
-                            const isRegistrationFeeHeader =
-                              name === "Passion with Reels" &&
-                              rule.trim().toLowerCase() ===
-                                "registration fees:";
+                              const EventDetail = ({ eventData, faqAccordion }) => {
+                                const history = useHistory();
+                                const {
+                                  name,
+                                  logo,
+                                  category,
+                                  breadcrumbBg,
+                                  description,
+                                  previousYearImages: galleryImages = [],
+                                  rules = [],
+                                  prizes = [],
+                                  teamSize,
+                                  duration,
+                                  venue,
+                                  registerButton,
+                                  contact,
+                                  coordinators,
+                                  qrCode,
+                                  paymentLink,
+                                  faq,
+                                  entryFeeInternal,
+                                  entryFeeExternal,
+                                  entryFee,
+                                  isFree,
+                                } = eventData;
 
-                            // Reduce space after description (first empty line)
-                            if (isEmpty) {
-                              // If this is the first empty line after the description, use minimum height
-                              if (
-                                index === 1 &&
-                                rules[0] &&
-                                rules[0]
-                                  .toLowerCase()
-                                  .includes("creative canvas")
-                              ) {
-                                return (
-                                  <div
-                                    key={index}
-                                    style={{ height: "1px" }}
-                                  ></div>
-                                );
-                              }
-                              return (
-                                <div
-                                  key={index}
-                                  style={{ height: "15px" }}
-                                ></div>
-                              );
-                            }
-                            if (isJudgingCriteria) {
-                              return (
-                                <div
-                                  key={index}
-                                  className="judging-criteria-header-wrapper"
-                                >
-                                  <h3
-                                    className="judging-criteria-header"
-                                    style={{
-                                      color: "#ff2d2d",
-                                      fontSize: "clamp(14px, 3vw, 18px)",
-                                      fontFamily: "Press Start 2P",
-                                      marginTop: "35px",
-                                      marginBottom: "8px",
-                                      lineHeight: "1.5",
-                                      textTransform: "uppercase",
-                                      letterSpacing: "2px",
-                                      background: "rgba(255,45,45,0.12)",
-                                      padding: "8px 0",
-                                      textAlign: "left",
-                                    }}
-                                  >
-                                    <span
-                                      style={{
-                                        fontSize: "22px",
-                                        marginRight: "10px",
-                                        lineHeight: 1,
-                                      }}
-                                    ></span>
-                                    <span>{rule}</span>
-                                  </h3>
-                                </div>
-                              );
-                            }
-                            if (isRound1) {
-                              return (
-                                <div
-                                  key={index}
-                                  style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    marginTop: "25px",
-                                    marginBottom: "10px",
-                                  }}
-                                >
-                                  <span
-                                    style={{
-                                      color: "#ffc010",
+                                const scrollContainerRef = useRef(null);
+                                const autoScrollInterval = useRef(null);
+                                const pauseTimeout = useRef(null);
+                                const [isRulesDialogOpen, setIsRulesDialogOpen] = useState(false);
+
+                                // Map event names to registration routes
+                                const getRegistrationRoute = (eventName) => {
+                                  const routeMap = {
+                                    'Code-Bee': '/register/code-bee',
+                                    'Hack Storm': '/register/hack-storm',
+                                    'TechnoMania': '/register/technomania',
+                                    'Omegatrix': '/register/omegatrix',
+                                    'Tech Hunt': '/register/tech-hunt',
+                                    'Ro-Navigator': '/register/ro-navigator',
+                                    'Ro-Combat': '/register/ro-combat',
+                                    'Ro-Soccer': '/register/ro-soccer',
+                                    'Ro-Terrance': '/register/ro-terrance',
+                                    'Ro-Sumo': '/register/ro-sumo',
+                                    'Creative Canvas': '/register/creative-canvas',
+                                    'Passion with Reels': '/register/passion-with-reels',
+                                    'Forza Horizon': '/register/forza-horizon',
+                                    'FIFA Mobile': '/register/fifa-mobile',
+                                    'KHET': '/register/khet',
+                                  };
+                                  return routeMap[eventName] || '/events';
+                                };
                                       fontFamily: "Press Start 2P",
                                       fontSize: "clamp(16px, 4vw, 24px)",
                                       fontWeight: "bold",
