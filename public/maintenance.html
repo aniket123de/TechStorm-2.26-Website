@@ -4,6 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Techstorm Maintenance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#05060a;
@@ -15,7 +18,7 @@
 body{
   min-height:100vh;
   background: radial-gradient(circle at center,#10121c 0%,#05060a 60%);
-  font-family:system-ui,Segoe UI,Roboto,Arial;
+  font-family:'Press Start 2P',monospace;
   color:var(--text);
   display:flex;
   align-items:center;
@@ -37,7 +40,7 @@ body{
 .mascot img{
   width:100%;
   image-rendering:pixelated;
-  animation:idle 3s ease-in-out infinite;
+  /* animation:idle 3s ease-in-out infinite; */
   filter:drop-shadow(0 40px 60px rgba(0,0,0,.7));
 }
 
@@ -48,10 +51,11 @@ body{
 
 .title{
   margin-top:28px;
-  font-size:clamp(34px,5vw,64px);
-  font-weight:800;
-  letter-spacing:.04em;
+  font-size:clamp(24px,4vw,48px);
+  font-weight:400;
+  letter-spacing:.08em;
   text-transform:uppercase;
+  line-height:1.5;
 }
 
 .glitch{
@@ -81,10 +85,10 @@ body{
 @keyframes glitchBottom{0%{clip-path:inset(80% 0 0 0)}100%{clip-path:inset(0 0 80% 0)}}
 
 .desc{
-  margin-top:18px;
-  font-size:clamp(15px,2.2vw,18px);
+  margin-top:24px;
+  font-size:clamp(8px,1.4vw,12px);
   color:var(--muted);
-  line-height:1.7;
+  line-height:1.8;
 }
 
 .scanlines::before{
