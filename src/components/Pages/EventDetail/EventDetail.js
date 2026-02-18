@@ -414,14 +414,14 @@ const EventDetail = ({ eventData }) => {
                             // Check if it's an empty line
                             // const isEmpty = rule.trim() === "";
                             // Highlight Judging Criteria header
-<<<<<<< HEAD
+
                             // const isJudgingCriteria = false; // Remove or properly initialize if needed
                             // ...existing rule rendering logic...
                             // (Move misplaced EventDetail definition out of map)
                             // ...existing code...
                             // All rule rendering logic should be inside this callback
                             // Remove unreachable code after map
-=======
+
                             // const isJudgingCriteria = false;
                             // Check if it's a registration fee header
                             const isRegistrationFeeHeader = 
@@ -1176,7 +1176,7 @@ const EventDetail = ({ eventData }) => {
                                 </span>
                               </div>
                             );
->>>>>>> 0b77ed0e7cf2f23588367c38774d2b408bce9b8c
+
                           })}
                       </div>
                       <div style={{ textAlign: "center", marginTop: "25px" }}>
