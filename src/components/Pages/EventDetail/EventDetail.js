@@ -419,9 +419,9 @@ const EventDetail = ({ eventData }) => {
                                 rule,
                               );
                             // Check if it's an empty line
-                            const isEmpty = rule.trim() === "";
+                            // const isEmpty = rule.trim() === "";
                             // Highlight Judging Criteria header
-                            const isJudgingCriteria = false;
+                            // const isJudgingCriteria = false;
                             // Check if it's a registration fee header
                             const isRegistrationFeeHeader = 
                               name === "Passion with Reels" &&
