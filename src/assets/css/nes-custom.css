@@ -20,7 +20,7 @@
     background: #1a0e22;
     color: #ffc010;
     padding: 4px 16px;
-    font-family: 'Press Start 2P', 'Silkscreen', monospace;
+    font-family: "Press Start 2P", "Silkscreen", monospace;
     font-size: 12px;
     letter-spacing: 1px;
 }
@@ -53,11 +53,11 @@
     background: #2d1b3d;
     border: 4px solid #ffc010;
     color: #ffd966;
-    font-family: 'Silkscreen', monospace;
+    font-family: "Silkscreen", monospace;
     font-size: 13px;
     line-height: 1.6;
     image-rendering: pixelated;
-    box-shadow: 
+    box-shadow:
         inset -2px -2px 0px 0px rgba(0, 0, 0, 0.3),
         inset 2px 2px 0px 0px rgba(255, 192, 16, 0.1);
 }
@@ -134,15 +134,15 @@
 }
 
 .nes-mario::before {
-    content: "🕹️";
+    content: "";
 }
 
 .nes-ash::before {
-    content: "👾";
+    content: "";
 }
 
 .nes-kirby::before {
-    content: "🎯";
+    content: "";
 }
 
 .nes-bcrikko::before {
@@ -152,7 +152,7 @@
 /* Hover Effects */
 .nes-balloon:hover {
     border-color: #ffd966;
-    box-shadow: 
+    box-shadow:
         inset -2px -2px 0px 0px rgba(0, 0, 0, 0.3),
         inset 2px 2px 0px 0px rgba(255, 192, 16, 0.2),
         0 0 15px rgba(255, 192, 16, 0.5);
@@ -167,40 +167,40 @@
         align-items: flex-start !important;
         gap: 10px;
     }
-    
+
     .message.-right {
         align-items: flex-end !important;
     }
-    
+
     /* About section messages - all emojis on LEFT side */
     .about-nes-container .message {
         flex-direction: row !important;
         align-items: center !important;
         justify-content: flex-start !important;
     }
-    
+
     .about-nes-container .message.-left,
     .about-nes-container .message.-right {
         flex-direction: row !important;
         justify-content: flex-start !important;
     }
-    
+
     .nes-balloon {
         max-width: 100% !important;
         font-size: 12px;
         padding: 5px;
     }
-    
+
     .nes-balloon.from-left::before,
     .nes-balloon.from-right::before {
         display: none;
     }
-    
+
     .nes-balloon.from-left::after,
     .nes-balloon.from-right::after {
         display: none;
     }
-    
+
     .nes-container.with-title > .title {
         font-size: 10px;
         text-decoration-color: #ffc010;
@@ -210,7 +210,8 @@
 
 /* Animation */
 @keyframes float {
-    0%, 100% {
+    0%,
+    100% {
         transform: translateY(0px);
     }
     50% {

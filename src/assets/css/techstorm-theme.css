@@ -4,106 +4,190 @@
    ═══════════════════════════════════════════════════ */
 
 :root {
-  --orange: #FF6B00;
-  --yellow: #FFD700;
-  --amber: #FF8C00;
-  --black: #0A0A0A;
-  --deep-black: #050505;
-  --blue-deep: #0A0E2E;
-  --blue-mid: #1A1F5E;
-  --blue-bright: #3D5AFE;
-  --blue-electric: #00B4FF;
-  --purple-dark: #1A0A2E;
-  --purple-mid: #6B21A8;
-  --purple-bright: #A855F7;
-  --purple-neon: #D946EF;
-  --grid-color: rgba(61, 90, 254, 0.15);
+    --orange: #ff6b00;
+    --yellow: #ffd700;
+    --amber: #ff8c00;
+    --black: #0a0a0a;
+    --deep-black: #050505;
+    --blue-deep: #0a0e2e;
+    --blue-mid: #1a1f5e;
+    --blue-bright: #3d5afe;
+    --blue-electric: #00b4ff;
+    --purple-dark: #1a0a2e;
+    --purple-mid: #6b21a8;
+    --purple-bright: #a855f7;
+    --purple-neon: #d946ef;
+    --grid-color: rgba(61, 90, 254, 0.15);
 }
 
 /* ── Flicker ── */
 @keyframes flicker {
-  0%, 100% { opacity: 1; }
-  92% { opacity: 1; }
-  93% { opacity: 0.4; }
-  94% { opacity: 1; }
-  96% { opacity: 0.6; }
-  97% { opacity: 1; }
+    0%,
+    100% {
+        opacity: 1;
+    }
+    92% {
+        opacity: 1;
+    }
+    93% {
+        opacity: 0.4;
+    }
+    94% {
+        opacity: 1;
+    }
+    96% {
+        opacity: 0.6;
+    }
+    97% {
+        opacity: 1;
+    }
 }
 
 /* ── Blink ── */
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
 }
 
 /* ── Float (generic — used wherever float animation is applied) ── */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 /* ── Float Centered (for elements positioned with left:50% translateX(-50%)) ── */
 @keyframes floatCentered {
-  0%, 100% { transform: translateX(-50%) translateY(0px); }
-  50% { transform: translateX(-50%) translateY(-10px); }
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0px);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-10px);
+    }
 }
 
 /* ── Pixel Pulse ── */
 @keyframes pixelPulse {
-  0%, 100% {
-    box-shadow: 0 0 10px var(--orange), 0 0 30px rgba(255,107,0,0.5);
-  }
-  50% {
-    box-shadow: 0 0 20px var(--orange), 0 0 60px rgba(255,107,0,0.8), 0 0 100px rgba(255,107,0,0.3);
-  }
+    0%,
+    100% {
+        box-shadow:
+            0 0 10px var(--orange),
+            0 0 30px rgba(255, 107, 0, 0.5);
+    }
+    50% {
+        box-shadow:
+            0 0 20px var(--orange),
+            0 0 60px rgba(255, 107, 0, 0.8),
+            0 0 100px rgba(255, 107, 0, 0.3);
+    }
 }
 
 /* ── Glitch ── */
 @keyframes glitch {
-  0%, 100% { transform: translate(0); clip-path: none; }
-  20% { transform: translate(-3px, 2px); clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%); }
-  40% { transform: translate(3px, -2px); clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%); }
-  60% { transform: translate(-2px, 1px); clip-path: polygon(0 10%, 100% 10%, 100% 30%, 0 30%); }
-  80% { transform: translate(2px, -1px); clip-path: none; }
+    0%,
+    100% {
+        transform: translate(0);
+        clip-path: none;
+    }
+    20% {
+        transform: translate(-3px, 2px);
+        clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+    }
+    40% {
+        transform: translate(3px, -2px);
+        clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+    }
+    60% {
+        transform: translate(-2px, 1px);
+        clip-path: polygon(0 10%, 100% 10%, 100% 30%, 0 30%);
+    }
+    80% {
+        transform: translate(2px, -1px);
+        clip-path: none;
+    }
 }
 
 /* ── Scan Move ── */
 @keyframes scanMove {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
 }
 
 /* ── Marquee ── */
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 /* ── Rainbow Border ── */
 @keyframes rainbow-border {
-  0%   { border-color: var(--orange); }
-  25%  { border-color: var(--yellow); }
-  50%  { border-color: var(--blue-electric); }
-  75%  { border-color: var(--purple-neon); }
-  100% { border-color: var(--orange); }
+    0% {
+        border-color: var(--orange);
+    }
+    25% {
+        border-color: var(--yellow);
+    }
+    50% {
+        border-color: var(--blue-electric);
+    }
+    75% {
+        border-color: var(--purple-neon);
+    }
+    100% {
+        border-color: var(--orange);
+    }
 }
 
 /* ── Starfield ── */
 @keyframes starfield {
-  from { transform: translateZ(0); }
-  to   { transform: translateZ(600px); }
+    from {
+        transform: translateZ(0);
+    }
+    to {
+        transform: translateZ(600px);
+    }
 }
 
 /* ── Slide Up ── */
 @keyframes slideUp {
-  from { transform: translateY(60px); opacity: 0; }
-  to   { transform: translateY(0);    opacity: 1; }
+    from {
+        transform: translateY(60px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* ── Count Up ── */
 @keyframes countUp {
-  from { opacity: 0; transform: scale(0.8); }
-  to   { opacity: 1; transform: scale(1); }
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 /* ─────────────────────────────────────────────────────────────────
@@ -115,66 +199,95 @@
 /* Undo the universal max-width:100% cap so the 1240px wrapper can
    centre itself with margin:0 auto.  Also undo word-break hacks. */
 section#about * {
-  max-width: none !important;
-  word-break: normal !important;
-  overflow-wrap: normal !important;
-  hyphens: none !important;
+    max-width: none !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    hyphens: none !important;
+}
+
+/* Allow hero background elements (retrowave grid, canvas) to exceed
+   100% width — defeats the global div { max-width: 100% !important }
+   rule. A class selector (0,1,0) beats an element selector (0,0,1)
+   even when both carry !important, so .hero-grid-floor wins. */
+section#home > div,
+section#home canvas {
+    max-width: none !important;
+}
+
+/* The retrowave perspective grid extends left:-30% right:-30% = 160%
+   wide. The global "div { max-width:100% !important }" in style.css
+   was capping it at 100vw and cutting off the right side.
+   Class specificity (0,1,0) > element specificity (0,0,1), so this
+   wins even though both rules carry !important. */
+.hero-grid-floor {
+    max-width: none !important;
+    width: auto !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
 }
 
 /* Restore h2 sizing — global style.css forces 18px !important */
 section#about h2 {
-  font-size: clamp(16px, 5vw, 32px) !important;
-  line-height: 1.4 !important;
-  letter-spacing: 2px !important;
-  font-weight: 700 !important;
+    font-size: clamp(16px, 5vw, 32px) !important;
+    line-height: 1.4 !important;
+    letter-spacing: 2px !important;
+    font-weight: 700 !important;
 }
 
 /* Restore p margins & sizing */
 section#about p {
-  margin: 0 !important;
-  font-size: clamp(14px, 1.7vw, 18px) !important;
-  line-height: 1.6 !important;
-  letter-spacing: 0.5px !important;
+    margin: 0 !important;
+    font-size: clamp(14px, 1.7vw, 18px) !important;
+    line-height: 1.6 !important;
+    letter-spacing: 0.5px !important;
 }
 
 /* Make sure the section itself is never clipped or padded by outer rules */
 section#about {
-  overflow: clip !important;
-  padding: 0 !important;
-  margin: 0 !important;
+    overflow: clip !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Hide scrollbar on mobile cards horizontal scroll wrapper */
+section#about [style*="scroll-snap-type"]::-webkit-scrollbar,
+section#about [style*="scrollSnapType"]::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
 }
 
 /* Scrollbar theming for the arcade feel */
 ::-webkit-scrollbar {
-  width: 8px;
-  background: var(--black);
+    width: 8px;
+    background: var(--black);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--orange);
-  border: 2px solid var(--yellow);
+    background: var(--orange);
+    border: 2px solid var(--yellow);
 }
 
 /* Selection colour */
 ::selection {
-  background: var(--orange);
-  color: var(--black);
+    background: var(--orange);
+    color: var(--black);
 }
 
 /* Pixel border utility classes */
 .pixel-border {
-  image-rendering: pixelated;
-  border: 4px solid var(--orange);
-  box-shadow:
-    0 0 0 4px var(--black),
-    0 0 0 8px var(--yellow),
-    0 0 20px var(--orange),
-    0 0 60px rgba(255,107,0,0.3);
+    image-rendering: pixelated;
+    border: 4px solid var(--orange);
+    box-shadow:
+        0 0 0 4px var(--black),
+        0 0 0 8px var(--yellow),
+        0 0 20px var(--orange),
+        0 0 60px rgba(255, 107, 0, 0.3);
 }
 .pixel-border-blue {
-  border: 4px solid var(--blue-electric);
-  box-shadow:
-    0 0 0 4px var(--black),
-    0 0 0 8px var(--blue-bright),
-    0 0 20px var(--blue-electric),
-    0 0 60px rgba(0,180,255,0.3);
+    border: 4px solid var(--blue-electric);
+    box-shadow:
+        0 0 0 4px var(--black),
+        0 0 0 8px var(--blue-bright),
+        0 0 20px var(--blue-electric),
+        0 0 60px rgba(0, 180, 255, 0.3);
 }
