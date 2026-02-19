@@ -1,3 +1,4 @@
+                           
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import coordinatorCardBg from "../../../assets/img/coordinatorcardbg.png";
 import { useHistory } from "react-router-dom";
@@ -1236,6 +1237,12 @@ const EventDetail = ({ eventData }) => {
                                 </h3>
                               );
                             }
+                             // FAQ question detection
+                            const isFaqQuestion = /\?$/.test(rule.trim());
+                            // Registration fee header detection for Passion with Reels
+                            const isRegistrationFeeHeader =
+                              name === "Passion with Reels" &&
+                              rule.trim().toLowerCase() === "registration fees:";
                             
                             if (isRegistrationFeeHeader) {
                               return (
