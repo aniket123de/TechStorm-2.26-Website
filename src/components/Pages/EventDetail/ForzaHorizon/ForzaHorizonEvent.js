@@ -95,9 +95,6 @@ const ForzaHorizonEvent = () => {
         ],
     venue: "Gaming Zone A",
     rules: [
-      "FORZA HORIZON GAME RULES",
-      "",
-      "",
       "BASIC PARTICIPATION RULES:",
       // ...existing code...
       "Each participant must register before the event starts. Without fee submission, no entry.",

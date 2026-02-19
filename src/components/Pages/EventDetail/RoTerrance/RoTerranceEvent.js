@@ -61,7 +61,7 @@ const RoTerranceEvent = () => {
       
       
       "REGISTRATION FEES:",
-      "â‚¹350/- Per Team/Bot (BPPIMT) | â‚¹400/- Per Team/Bot (Outside)",
+      "¹350/- Per Team/Bot (BPPIMT) | ¹400/- Per Team/Bot (Outside)",
       "",
       "BOT SPECIFICATIONS:",
       "The dimension of the bot must not exceed  30 cm (no tolerance) throughout the event.",

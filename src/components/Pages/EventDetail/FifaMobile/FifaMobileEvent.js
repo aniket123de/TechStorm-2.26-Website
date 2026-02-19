@@ -105,8 +105,6 @@ const FifaMobileEvent = () => {
       text: "Register Now",
     },
     rules: [
-      "TECHSTORM FIFA MOBILE TOURNAMENT RULES",
-      "",
       "GENERAL GUIDELINES:",
       "Platform: EA SPORTS FC™ Mobile (FIFA Mobile).",
       "Game Mode: Head-to-Head (H2H) Friendly Match.",

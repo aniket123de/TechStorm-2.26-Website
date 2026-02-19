@@ -15,7 +15,7 @@ import './assets/css/default.css';
 import './assets/css/style.css';
 import './assets/css/responsive.css';
 import './components/Utilities/Button/Button8bit.css';
-import 'nes.css/css/nes.min.css';
+// import 'nes.css/css/nes.min.css'; // Removed because module not found
 import './assets/css/nes-custom.css';
 import './assets/css/scroll-animations.css';
 import './assets/css/techstorm-theme.css';

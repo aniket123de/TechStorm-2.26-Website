@@ -1208,12 +1208,43 @@ const EventDetail = ({ eventData }) => {
                                 </div>
                               );
                             }
-                            // Keep '⏱ RACE FORMAT RULES' as gold heading
+                            // Highlight Forza Horizon rule section headers
+                            const forzaSectionHeaders = [
+                              "GAME SETUP RULES",
+                              "CAR & RACE RULES",
+                              "FAIR PLAY RULES",
+                              "TECHNICAL RULES",
+                              "AUDIENCE & CONDUCT RULES",
+                              "⏱ RACE FORMAT RULES"
+                            ];
                             if (
                               name === "Forza Horizon" &&
-                              rule.trim().toUpperCase() === 
-                                "⏱ RACE FORMAT RULES"
+                              forzaSectionHeaders.includes(rule.trim().toUpperCase())
                             ) {
+                              // Icon selection
+                              let icon = "";
+                              switch (rule.trim().toUpperCase()) {
+                                case "GAME SETUP RULES":
+                                  icon = "🎮";
+                                  break;
+                                case "CAR & RACE RULES":
+                                  icon = "🚗";
+                                  break;
+                                case "FAIR PLAY RULES":
+                                  icon = "🤝";
+                                  break;
+                                case "TECHNICAL RULES":
+                                  icon = "🛠️";
+                                  break;
+                                case "AUDIENCE & CONDUCT RULES":
+                                  icon = "👥";
+                                  break;
+                                case "⏱ RACE FORMAT RULES":
+                                  icon = "⏱";
+                                  break;
+                                default:
+                                  icon = "";
+                              }
                               return (
                                 <h3
                                   key={index}
@@ -1237,7 +1268,114 @@ const EventDetail = ({ eventData }) => {
                                       lineHeight: 1,
                                     }}
                                   >
-                                    🤖
+                                    {icon}
+                                  </span>
+                                  {rule}
+                                </h3>
+                              );
+                            }
+
+                            // Highlight Creative Canvas rule section headers
+                            const creativeCanvasSectionHeaders = [
+                              "PRELIMS",
+                              "SUBMISSION (PRELIMS)",
+                              "ELIMINATION CRITERIA (PRELIMS)",
+                              "FINAL ROUND",
+                              "SUBMISSION (FINALS)",
+                              "ELIMINATION CRITERIA (FINALS)",
+                              "# BRING YOUR OWN DATA TRANSFER CABLE"
+                            ];
+                            if (
+                              name === "Creative Canvas" &&
+                              creativeCanvasSectionHeaders.includes(rule.trim().toUpperCase())
+                            ) {
+                              let icon = "";
+                              switch (rule.trim().toUpperCase()) {
+                                case "PRELIMS":
+                                  icon = "🎯";
+                                  break;
+                                case "SUBMISSION (PRELIMS)":
+                                  icon = "📤";
+                                  break;
+                                case "ELIMINATION CRITERIA (PRELIMS)":
+                                  icon = "❌";
+                                  break;
+                                case "FINAL ROUND":
+                                  icon = "🏁";
+                                  break;
+                                case "SUBMISSION (FINALS)":
+                                  icon = "📤";
+                                  break;
+                                case "ELIMINATION CRITERIA (FINALS)":
+                                  icon = "❌";
+                                  break;
+                                case "# BRING YOUR OWN DATA TRANSFER CABLE":
+                                  icon = "🔌";
+                                  break;
+                                default:
+                                  icon = "";
+                              }
+                              return (
+                                <h3
+                                  key={index}
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    color: "#ffc010",
+                                    fontSize: "clamp(14px, 4vw, 20px)",
+                                    fontFamily: "Press Start 2P",
+                                    marginTop: "25px",
+                                    marginBottom: "10px",
+                                    lineHeight: "1.5",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "2px",
+                                  }}
+                                >
+                                  <span
+                                    style={{
+                                      fontSize: "22px",
+                                      marginRight: "10px",
+                                      lineHeight: 1,
+                                    }}
+                                  >
+                                    {icon}
+                                  </span>
+                                  {rule}
+                                </h3>
+                              );
+                            }
+
+                            // Highlight WINNER CRITERIA for Forza Horizon
+                            if (
+                              name === "Forza Horizon" &&
+                              rule.trim().toUpperCase() === "WINNER CRITERIA"
+                            ) {
+                              return (
+                                <h3
+                                  key={index}
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    color: "#ff2d2d",
+                                    fontSize: "clamp(14px, 4vw, 20px)",
+                                    fontFamily: "Press Start 2P",
+                                    marginTop: "25px",
+                                    marginBottom: "10px",
+                                    lineHeight: "1.5",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "2px",
+                                    background: "rgba(255,45,45,0.12)",
+                                    padding: "8px 0",
+                                  }}
+                                >
+                                  <span
+                                    style={{
+                                      fontSize: "22px",
+                                      marginRight: "10px",
+                                      lineHeight: 1,
+                                    }}
+                                  >
+                                    ❗
                                   </span>
                                   {rule}
                                 </h3>
