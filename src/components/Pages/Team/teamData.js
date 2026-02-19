@@ -24,6 +24,13 @@ import saniaDharImg from '../../../assets/img/team/WhatsApp Image 2026-02-19 at 
 import oliviaSikderImg from '../../../assets/img/team/IMG_20251221_232659 - OLIVIA CSE3084.png';
 import gourabDeyImg from '../../../assets/img/team/Goyurab Dey - MCA - GOURAB DEY MCA4039.png';
 import adityaChoubeyImg from '../../../assets/img/team/IMG_20260218_201846 - ADITYA CHOUBEY.png';
+import krishnaKaliImg from '../../../assets/img/team/IMG-20260219-WA0005-Krishnakali.png';
+import debaditoImg from '../../../assets/img/team/Debadrito.png';
+import shreyaJhaImg from '../../../assets/img/team/IMG_20251214_033807.jpg - Shreya Jha.png';
+import ankitaAmanImg from '../../../assets/img/team/IMG_20260219_151927 - Ankita Aman.png';
+import abhishekKumarImg from '../../../assets/img/team/ABHISHEK PHOTO - Abhishek Kumar.png';
+import souvikDeyImg from '../../../assets/img/team/IMG_20260219_130801 - Souvik Dey.png';
+import shivamKumarImg from '../../../assets/img/team/1771488293669 - Shivam Kumar.png';
 
 export const coreMembers = [
     // FINANCE MANAGEMENT TEAM
@@ -32,7 +39,7 @@ export const coreMembers = [
     // EVENT MANAGEMENT TEAM
     { id: '2', avatar: defaultAvatar, name: 'Protyoy Bhandary', deg: 'Event Coordinator' },
     { id: '3', avatar: bapanBanikImg, name: 'Bapan Banik', deg: 'Event Joint Coordinator' },
-    { id: '4', avatar: defaultAvatar, name: 'Debadrito Saha', deg: 'Event Joint Coordinator' },
+    { id: '4', avatar: debaditoImg, name: 'Debadrito Saha', deg: 'Event Joint Coordinator' },
     
     // PUBLIC RELATIONS MANAGEMENT TEAM
     { id: '5', avatar: anikPaulImg, name: 'Anik Paul', deg: 'PR Lead' },
@@ -48,21 +55,21 @@ export const coreMembers = [
     { id: '13', avatar: saptarshiGhoshImg, name: 'Saptarshi Ghosh', deg: 'Sponsorship Joint Lead' },
     { id: '14', avatar: harshSinghImg, name: 'Harsh Singh', deg: 'Sponsorship Joint Lead' },
     { id: '15', avatar: prantikGhoshImg, name: 'Prantik Ghosh', deg: 'Sponsorship Team Member' },
-    { id: '16', avatar: defaultAvatar, name: 'Krishna Kali Sarkar', deg: 'Sponsorship Team Member' },
-    { id: '17', avatar: defaultAvatar, name: 'Ankita Aman', deg: 'Sponsorship Team Member' },
-    { id: '18', avatar: defaultAvatar, name: 'Abhishek Kumar', deg: 'Sponsorship Team Member' },
+    { id: '16', avatar: krishnaKaliImg, name: 'Krishna Kali Sarkar', deg: 'Sponsorship Team Member' },
+    { id: '17', avatar: ankitaAmanImg, name: 'Ankita Aman', deg: 'Sponsorship Team Member' },
+    { id: '18', avatar: abhishekKumarImg, name: 'Abhishek Kumar', deg: 'Sponsorship Team Member' },
     
     // CREATIVE & SOCIAL MANAGEMENT TEAM
     { id: '19', avatar: gauravChaudharyImg, name: 'Gaurav Chaudhary', deg: 'Social Lead' },
-    { id: '20', avatar: defaultAvatar, name: 'Shreya Jha', deg: 'Creative Lead' },
+    { id: '20', avatar: shreyaJhaImg, name: 'Shreya Jha', deg: 'Creative Lead' },
     { id: '21', avatar: saniaDharImg, name: 'Sania Dhar', deg: 'Creative & Social Member' },
     { id: '22', avatar: oliviaSikderImg, name: 'Olivia Sikder', deg: 'Creative & Social Member' },
     { id: '23', avatar: gourabDeyImg, name: 'Gourab Dey', deg: 'Creative & Social Member' },
     
     // DISCIPLINE & HOSPITALITY MANAGEMENT TEAM
-    { id: '24', avatar: defaultAvatar, name: 'Souvik Dey', deg: 'Disc. & Hospitality Lead' },
+    { id: '24', avatar: souvikDeyImg, name: 'Souvik Dey', deg: 'Disc. & Hospitality Lead' },
     { id: '25', avatar: shreyaSahaImg, name: 'Shreya Saha', deg: 'Disc. & Hospitality Member'},
-    { id: '26', avatar: defaultAvatar, name: 'Shivam Kumar', deg: 'Disc. & Hospitality Member' },
+    { id: '26', avatar: shivamKumarImg, name: 'Shivam Kumar', deg: 'Disc. & Hospitality Member' },
     { id: '27', avatar: defaultAvatar, name: 'Indrani Banik', deg: 'Disc. & Hospitality Member' },
     { id: '28', avatar: adityaChoubeyImg, name: 'Aditya Choubey', deg: 'Disc. & Hospitality Member' },
 ];
