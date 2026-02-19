@@ -1,10 +1,16 @@
-                           
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import coordinatorCardBg from "../../../assets/img/coordinatorcardbg.png";
 import { useHistory } from "react-router-dom";
 import "./EventDetail.css";
 import { Button } from "../../ui/8bit/button";
 import { Dialog, DialogContent } from "../../ui/8bit/dialog";
+
+const omegatrixHeadings = [
+  "omegatrix 2.26 rules",
+  "general rules",
+  "prelims rules",
+  "mains rules"
+];
 // Reusable FAQ Accordion component
 function FAQAccordion({ faqs }) {
   const [openIndex, setOpenIndex] = React.useState(null);
@@ -1205,7 +1211,7 @@ const EventDetail = ({ eventData }) => {
                             // Keep '⏱ RACE FORMAT RULES' as gold heading
                             if (
                               name === "Forza Horizon" &&
-                              rule.trim().toUpperCase() ===
+                              rule.trim().toUpperCase() === 
                                 "⏱ RACE FORMAT RULES"
                             ) {
                               return (
@@ -1243,8 +1249,13 @@ const EventDetail = ({ eventData }) => {
                             const isRegistrationFeeHeader =
                               name === "Passion with Reels" &&
                               rule.trim().toLowerCase() === "registration fees:";
-                            
-                            if (isRegistrationFeeHeader) {
+
+                            // Tech Hunt: highlight special headings
+                            const isTechHuntSpecialHeading =
+                              name === "Tech Hunt" &&
+                              ["preliminary round", "the footage may represent:", "discipline :"].includes(rule.trim().toLowerCase());
+
+                            if (isRegistrationFeeHeader || isTechHuntSpecialHeading) {
                               return (
                                 <div
                                   key={index}
@@ -1260,18 +1271,10 @@ const EventDetail = ({ eventData }) => {
                                     borderRadius: "4px",
                                     margin: "6px 0",
                                     boxShadow: "none",
+                                    letterSpacing: "2px",
+                                    textTransform: "uppercase",
                                   }}
                                 >
-                                  <span
-                                    style={{
-                                      fontSize: "18px",
-                                      marginRight: "8px",
-                                      color: "#ffc010",
-                                      lineHeight: 1,
-                                    }}
-                                  >
-                                    💰
-                                  </span>
                                   {rule}
                                 </div>
                               );
@@ -1349,80 +1352,131 @@ const EventDetail = ({ eventData }) => {
                                 );
                               }
                             }
-                            // Highlight BOT SPECIFICATIONS and GENERAL RULES
+                            // Highlight BOT SPECIFICATIONS and GENERAL RULES (Ro-Navigator), Tech Hunt, and CodeBee section headings
+                            const codebeeHeadings = [
+                              "general information",
+                              "registration fees & refund policy",
+                              "event schedule & rounds",
+                              "round 1: mindmaze (prelims)",
+                              "round 2: code sprint",
+                              "round 3: elite code clash (finals)",
+                              "device & network policy",
+                              "strict anti-cheating policy",
+                              "scoring & tie-breakers"
+                            ];
+                            const hackstormHeadings = [
+                              "hackstorm hackathon rules",
+                              "spirit of the competition",
+                              "eligibility",
+                              "team participation",
+                              "project development rules",
+                              "ai tools and code generation",
+                              "mentoring reviews",
+                              "demo requirements",
+                              "judging criteria ———————————",
+                              "disqualification rules"
+                            ];
+                            const technomaniaHeadings = [
+                              "theme: role of artificial intelligence in sustainable development",
+                              "venue: vip campus, b. p. poddar institute of management and technology",
+                              "basic rules",
+                              "project and model guidelines",
+                              "presentation rules",
+                              "code of conduct"
+                            ];
                             if (
-                              name === "Ro-Navigator" &&
-                              (rule.trim().toUpperCase() ===
-                                "BOT SPECIFICATIONS:" ||
-                                rule.trim().toUpperCase() ===
-                                  "GENERAL RULES (COMMON FOR PRELIMS & FINALS):")
+                              (name === "Ro-Navigator" &&
+                                (rule.trim().toUpperCase() === "BOT SPECIFICATIONS:" ||
+                                  rule.trim().toUpperCase() === "GENERAL RULES (COMMON FOR PRELIMS & FINALS):")) ||
+                              (name === "Tech Hunt" &&
+                                [
+                                  "round 1 (time warp trials)",
+                                  "round 2 (visual vault)",
+                                  "treasure round (retro run)"
+                                ].includes(rule.trim().toLowerCase())) ||
+                              (name === "Code-Bee" &&
+                                codebeeHeadings.includes(rule.trim().toLowerCase())) ||
+                              (name === "Hack Storm" &&
+                                hackstormHeadings.includes(rule.trim().toLowerCase())) ||
+                              (name === "TechnoMania" &&
+                                technomaniaHeadings.includes(rule.trim().toLowerCase())) ||
+                              (name === "Omegatrix" &&
+                                omegatrixHeadings.includes(rule.trim().toLowerCase()))
                             ) {
-                              // Restore previous icon for BOT SPECIFICATIONS, keep robot for GENERAL RULES
-                              if (
-                                rule.trim().toUpperCase() ===
-                                "BOT SPECIFICATIONS:"
-                              ) {
-                                return (
-                                  <h3
-                                    key={index}
-                                    style={{
-                                      display: "flex",
-                                      alignItems: "center",
-                                      color: "#ffc010",
-                                      fontSize: "clamp(14px, 4vw, 20px)",
-                                      fontFamily: "Press Start 2P",
-                                      marginTop: "25px",
-                                      marginBottom: "10px",
-                                      lineHeight: "1.5",
-                                      textTransform: "uppercase",
-                                      letterSpacing: "2px",
-                                    }}
-                                  >
-                                    <span
-                                      style={{
-                                        fontSize: "22px",
-                                        marginRight: "10px",
-                                        lineHeight: 1,
-                                      }}
-                                    >
-                                      🔧
-                                    </span>
-                                    {rule}
-                                  </h3>
-                                );
-                              } else if (
-                                rule.trim().toUpperCase() ===
-                                "GENERAL RULES (COMMON FOR PRELIMS & FINALS):"
-                              ) {
-                                return (
-                                  <h3
-                                    key={index}
-                                    style={{
-                                      display: "flex",
-                                      alignItems: "center",
-                                      color: "#ffc010",
-                                      fontSize: "clamp(14px, 4vw, 20px)",
-                                      fontFamily: "Press Start 2P",
-                                      marginTop: "25px",
-                                      marginBottom: "10px",
-                                      lineHeight: "1.5",
-                                      textTransform: "uppercase",
-                                      letterSpacing: "2px",
-                                    }}
-                                  >
-                                    <span
-                                      style={{
-                                        fontSize: "22px",
-                                        marginRight: "10px",
-                                        lineHeight: 1,
-                                      }}
-                                    >
-                                      👨‍🏫
-                                    </span>
-                                    {rule}
-                                  </h3>
-                                );
+                              // Icon selection
+                              let icon = "";
+                              if (name === "Ro-Navigator") {
+                                icon = rule.trim().toUpperCase() === "BOT SPECIFICATIONS:" ? "🔧" : "🤖";
+                              } else if (name === "Tech Hunt") {
+                                if (rule.trim().toLowerCase() === "round 1 (time warp trials)") icon = "📝";
+                                else if (rule.trim().toLowerCase() === "round 2 (visual vault)") icon = "🖼️";
+                                else if (rule.trim().toLowerCase() === "treasure round (retro run)") icon = "🏆";
+                              } else if (name === "Code-Bee") {
+                                const heading = rule.trim().toLowerCase();
+                                if (heading === "general information") icon = "ℹ️";
+                                else if (heading === "registration fees & refund policy") icon = "💰";
+                                else if (heading === "event schedule & rounds") icon = "📅";
+                                else if (heading === "round 1: mindmaze (prelims)") icon = "🧠";
+                                else if (heading === "round 2: code sprint") icon = "🏃‍♂️";
+                                else if (heading === "round 3: elite code clash (finals)") icon = "⚔️";
+                                else if (heading === "device & network policy") icon = "💻";
+                                else if (heading === "strict anti-cheating policy") icon = "🚫";
+                                else if (heading === "scoring & tie-breakers") icon = "🎯";
+                              } else if (name === "Hack Storm") {
+                                const heading = rule.trim().toLowerCase();
+                                if (heading === "hackstorm hackathon rules") icon = "⚡";
+                                else if (heading === "spirit of the competition") icon = "🤝";
+                                else if (heading === "eligibility") icon = "🧑‍🎓";
+                                else if (heading === "team participation") icon = "👥";
+                                else if (heading === "project development rules") icon = "💡";
+                                else if (heading === "ai tools and code generation") icon = "🤖";
+                                else if (heading === "mentoring reviews") icon = "🧑‍🏫";
+                                else if (heading === "demo requirements") icon = "🎬";
+                                else if (heading.startsWith("judging criteria")) icon = "🏅";
+                                else if (heading === "disqualification rules") icon = "🚫";
+                              } else if (name === "TechnoMania") {
+                                const heading = rule.trim().toLowerCase();
+                                if (heading.startsWith("theme:")) icon = "🌱";
+                                else if (heading.startsWith("venue:")) icon = "📍";
+                                else if (heading === "basic rules") icon = "📜";
+                                else if (heading === "project and model guidelines") icon = "🛠️";
+                                else if (heading === "presentation rules") icon = "📊";
+                                else if (heading === "code of conduct") icon = "⚖️";
+                              } else if (name === "Omegatrix") {
+                                const heading = rule.trim().toLowerCase();
+                                if (heading === "omegatrix 2.26 rules") icon = "🧩";
+                                else if (heading === "general rules") icon = "📋";
+                                else if (heading === "prelims rules") icon = "✏️";
+                                else if (heading === "mains rules") icon = "🎯";
                               }
+                              return (
+                                <h3
+                                  key={index}
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    color: "#ffc010",
+                                    fontSize: "clamp(14px, 4vw, 20px)",
+                                    fontFamily: "Press Start 2P",
+                                    marginTop: "25px",
+                                    marginBottom: "10px",
+                                    lineHeight: "1.5",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "2px",
+                                  }}
+                                >
+                                  <span
+                                    style={{
+                                      fontSize: "22px",
+                                      marginRight: "10px",
+                                      lineHeight: 1,
+                                    }}
+                                  >
+                                    {icon}
+                                  </span>
+                                  {rule}
+                                </h3>
+                              );
                             }
                             if (
                               name === "Ro-Navigator" &&

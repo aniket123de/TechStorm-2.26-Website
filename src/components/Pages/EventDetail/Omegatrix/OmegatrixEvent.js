@@ -75,8 +75,6 @@ const OmegatrixEvent = () => {
       text: "Register Now",
     },
     rules: [
-      "OMEGATRIX 2.26 RULES",
-      "",
       "GENERAL RULES",
       "The event is split into two offline stages: The Prelims (The Filter) and The Mains (The Showdown).",
       "Your Armor & Weapons: You must bring two things to enter: Your college ID or Library Card (Your entry pass) and a Pen (Your weapon of choice).",

@@ -39,26 +39,7 @@ const RoSumoEvent = () => {
       text: "Register Now",
     },
     rules: [
-      // Faculty Coordinators
-      "FACULTY CO-ORDINATOR NAME:",
-      "Dr. Binoy Krishna Biswas",
-      "Mr. Subhasish Das",
-      "",
-      // Student Coordinators
-      "STUDENT CO-ORDINATOR NAME:",
-      "D Samir Dora (ECE3)",
-      "Sagnek Chowdhury (ECE3)",
-      "",
-      // Volunteers
-      "VOLUNTEER NAME:",
-      "Abdul Razzak (ECE2)",
-      "Sumit Ghara (EE2)",
-      "",
-      // Team Strength
-      "TEAM STRENGTH:",
-      "Minimum Members: 2",
-      "Maximum Members: 5",
-      "",
+      
       // Bot Specifications
       "BOT SPECIFICATIONS:",
       "The total weight of the bot including all onboard batteries, pneumatic tanks, hydraulic systems, and weapons must not exceed 3 kg (only 100 g margin allowed), and remote controller weight is excluded.",
@@ -87,26 +68,7 @@ const RoSumoEvent = () => {
       "Participation Policy: No refund of participation fees will be provided once registration is completed under any circumstances.",
       "You have to mandatorily bring your COLLEGE ID.",
       "",
-      // FAQ (Shortened for display)
-      "FAQ:",
-      "1. Max allowed weight: 3 kg (100g margin allowed, remote not included).",
-      "2. No size restriction, but cluster bots must total â‰¤ 3 kg and â‰¤ 6 ft height during motion.",
-      "3. Allowed: pneumatic, hydraulic, electric lifters, wedges, manual jumping/hopping. Prohibited: flying, sticky/suction mechanisms.",
-      "4. Mobility: wheels, tracks, rolling bodies, or approved non-wheeled continuous drive.",
-      "5. Autonomous allowed if can be overridden remotely.",
-      "6. Wireless remote only, all power onboard, Kill Switch & E-Stop mandatory.",
-      "7. Min 4-frequency remote or dual circuits, no rematch for signal interference.",
-      "8. Max voltage: 36V DC, only electric power, no IC engines.",
-      "9. Only sealed, leak-proof batteries, no battery change during match.",
-      "10. Match: 3 min active fight time.",
-      "11. Formats: 1v1 or multi-robot (Rumble).",
-      "12. Win by immobilization or by judges (aggression, control, damage).",
-      "13. Pinning/lifting: max 20s, must release on instruction.",
-      "14. Arena stuck: winner by points.",
-      "15. Teams: 2-5 members, any institute.",
-      "16. Team name can be changed with approval.",
-      "17. No refund after registration.",
-      "18. Immediate disqualification: unsafe design, throwing out, >36V, prohibited mechanisms, ignoring referee.",
+      
     ],
     prizes: [
       { position: "1st Prize", amount: "â‚¹10,000" },
