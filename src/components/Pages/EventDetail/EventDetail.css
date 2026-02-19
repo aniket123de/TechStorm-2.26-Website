@@ -454,45 +454,112 @@ p.about-text {
     transform: translateX(-50%) skewX(-5deg);
 }
 
-.coordinator-card {
+/* ── Group labels (Coordinators / Volunteers) ── */
+.coord-group-label {
+    font-family: "Press Start 2P", cursive;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 auto 6px;
+    padding: 8px 18px;
+    display: block;
     text-align: center;
-    padding: 30px 20px;
-    background: linear-gradient(
-        135deg,
-        rgba(26, 14, 34, 0.8) 0%,
-        rgba(15, 10, 26, 0.9) 100%
-    );
-    border: 3px solid #ffc010;
-    box-shadow: 0 5px 20px rgba(255, 192, 16, 0.2);
-    transition: all 0.3s ease;
+    border-left: none;
+    border-bottom: 3px solid currentColor;
+    width: fit-content;
 }
 
-.coordinator-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(255, 192, 16, 0.4);
-    border-color: #00ffea;
+.coord-group-label--coordinator {
+    color: #ffc010;
+    background: rgba(255, 192, 16, 0.07);
 }
 
+.coord-group-label--volunteer {
+    color: #00ffea;
+    background: rgba(0, 255, 234, 0.06);
+}
+
+/* ── Card shell ── */
+.coord-card {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition:
+        transform 0.4s ease-out,
+        box-shadow 0.4s ease-out,
+        border-color 0.4s ease-out;
+    cursor: pointer;
+    /* remove any default nes-container background */
+    background: transparent !important;
+}
+
+/* ── Dim background image via pseudo layer ── */
+.coord-card-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center bottom;
+    opacity: 0.28;
+    filter: brightness(1.1) saturate(1.4);
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.coord-card:hover .coord-card-bg {
+    opacity: 0.45;
+}
+
+/* ── Text content sits above the bg ── */
+.coord-card-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+/* ── Name ── */
 .coordinator-name {
     font-family: "Press Start 2P", cursive;
-    font-size: 12px;
+    font-size: 11px;
     color: #ffc010;
-    margin: 0 0 8px;
-    line-height: 1.6;
+    margin: 0 0 10px;
+    line-height: 1.7;
 }
 
+.coordinator-name--volunteer {
+    color: #00ffea;
+}
+
+/* ── Role badge ── */
 .coordinator-role {
     font-family: "Press Start 2P", cursive;
-    font-size: 9px;
-    color: #00ffea;
-    margin-bottom: 15px;
+    font-size: 8px;
+    color: #ffc010;
+    margin-bottom: 12px;
     text-transform: uppercase;
+    letter-spacing: 1px;
+    background: rgba(255, 192, 16, 0.1);
+    border: 1px solid rgba(255, 192, 16, 0.35);
+    padding: 4px 8px;
+    display: inline-block;
 }
 
+.coordinator-role--volunteer {
+    color: #00ffea;
+    background: rgba(0, 255, 234, 0.08);
+    border-color: rgba(0, 255, 234, 0.3);
+}
+
+/* ── Phone ── */
 .coordinator-contacts {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 2px solid rgba(255, 192, 16, 0.3);
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 192, 16, 0.25);
 }
 
 .coord-phone,
@@ -500,7 +567,7 @@ p.about-text {
     font-family: "Press Start 2P", cursive;
     font-size: 8px;
     color: #ffffff;
-    margin: 8px 0;
+    margin: 6px 0;
     line-height: 1.8;
     word-break: break-all;
 }

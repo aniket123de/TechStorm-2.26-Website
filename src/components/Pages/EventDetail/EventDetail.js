@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useRef, useState } from "react";
+import coordinatorCardBg from "../../../assets/img/coordinatorcardbg.png";
 import { useHistory } from "react-router-dom";
 import "./EventDetail.css";
 import { Button } from "../../ui/8bit/button";
@@ -2141,60 +2142,131 @@ const EventDetail = ({ eventData }) => {
               </div>
             </div>
           </div>
-          <div className="row justify-content-center mt-40">
-            {currentEventCoordinators && currentEventCoordinators.length > 0
-              ? currentEventCoordinators.map((person, index) => (
-                  <div
-                    key={index}
-                    className="col-lg-3 col-md-4 col-sm-6 mb-30"
-                    style={{ paddingTop: "10px", display: "flex" }}
-                  >
+
+          {/* ── Student Co-Ordinators row ── */}
+          {currentEventCoordinators.some((p) => p.type === "coordinator") && (
+            <>
+              <div className="row mt-40 justify-content-center text-center">
+                <div className="col-12">
+                  <p className="coord-group-label coord-group-label--coordinator">
+                    ★ Student Co-Ordinators
+                  </p>
+                </div>
+              </div>
+              <div className="row justify-content-center">
+                {currentEventCoordinators
+                  .filter((p) => p.type === "coordinator")
+                  .map((person, index) => (
                     <div
-                      className="nes-container is-rounded"
-                      style={{
-                        borderColor: "#555",
-                        transition: "all 0.4s ease-out",
-                        cursor: "pointer",
-                        width: "100%",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        textAlign: "center",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.transform =
-                          "translateY(-8px) scale(1.02)";
-                        e.currentTarget.style.boxShadow =
-                          "0 5px 15px rgba(255, 215, 0, 0.2), 0 10px 30px rgba(255, 215, 0, 0.15), 0 20px 50px rgba(255, 215, 0, 0.1), 0 0 40px rgba(255, 215, 0, 0.3)";
-                        e.currentTarget.style.borderColor = "#888";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform =
-                          "translateY(0) scale(1)";
-                        e.currentTarget.style.boxShadow = "none";
-                        e.currentTarget.style.borderColor = "#555";
-                      }}
+                      key={`coord-${index}`}
+                      className="col-lg-3 col-md-4 col-sm-6 mb-30"
+                      style={{ paddingTop: "10px", display: "flex" }}
                     >
-                      <h4 className="coordinator-name">{person.name}</h4>
-                      <p className="coordinator-role">
-                        {person.type === "volunteer"
-                          ? "Student Volunteer"
-                          : person.role || "Student Co-Ordinator"}
-                      </p>
-                      <div className="coordinator-contacts">
-                        {person.type === "coordinator" && person.phone && (
-                          <p className="coord-phone">{person.phone}</p>
-                        )}
-                        {person.email && (
-                          <p className="coord-email">{person.email}</p>
-                        )}
+                      <div
+                        className="coord-card nes-container is-rounded"
+                        style={{
+                          borderColor: "#ffc010",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.transform =
+                            "translateY(-8px) scale(1.02)";
+                          e.currentTarget.style.boxShadow =
+                            "0 5px 15px rgba(255, 192, 16, 0.3), 0 10px 30px rgba(255, 192, 16, 0.2), 0 0 40px rgba(255, 192, 16, 0.35)";
+                          e.currentTarget.style.borderColor = "#ffd54f";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.transform =
+                            "translateY(0) scale(1)";
+                          e.currentTarget.style.boxShadow = "none";
+                          e.currentTarget.style.borderColor = "#ffc010";
+                        }}
+                      >
+                        {/* dim bg image */}
+                        <div
+                          className="coord-card-bg"
+                          style={{
+                            backgroundImage: `url(${coordinatorCardBg})`,
+                          }}
+                        />
+                        {/* content sits above bg */}
+                        <div className="coord-card-content">
+                          <h4 className="coordinator-name">{person.name}</h4>
+                          <p className="coordinator-role">
+                            {person.role || "Student Co-Ordinator"}
+                          </p>
+                          <div className="coordinator-contacts">
+                            {person.phone && (
+                              <p className="coord-phone">{person.phone}</p>
+                            )}
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))
-              : null}
-          </div>
+                  ))}
+              </div>
+            </>
+          )}
+
+          {/* ── Student Volunteers row ── */}
+          {currentEventCoordinators.some((p) => p.type === "volunteer") && (
+            <>
+              <div className="row mt-30 justify-content-center text-center">
+                <div className="col-12">
+                  <p className="coord-group-label coord-group-label--volunteer">
+                    ✦ Student Volunteers
+                  </p>
+                </div>
+              </div>
+              <div className="row justify-content-center">
+                {currentEventCoordinators
+                  .filter((p) => p.type === "volunteer")
+                  .map((person, index) => (
+                    <div
+                      key={`vol-${index}`}
+                      className="col-lg-3 col-md-4 col-sm-6 mb-30"
+                      style={{ paddingTop: "10px", display: "flex" }}
+                    >
+                      <div
+                        className="coord-card nes-container is-rounded"
+                        style={{
+                          borderColor: "#00ffea",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.transform =
+                            "translateY(-8px) scale(1.02)";
+                          e.currentTarget.style.boxShadow =
+                            "0 5px 15px rgba(0, 255, 234, 0.25), 0 10px 30px rgba(0, 255, 234, 0.15), 0 0 40px rgba(0, 255, 234, 0.3)";
+                          e.currentTarget.style.borderColor = "#66fff5";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.transform =
+                            "translateY(0) scale(1)";
+                          e.currentTarget.style.boxShadow = "none";
+                          e.currentTarget.style.borderColor = "#00ffea";
+                        }}
+                      >
+                        {/* dim bg image */}
+                        <div
+                          className="coord-card-bg"
+                          style={{
+                            backgroundImage: `url(${coordinatorCardBg})`,
+                          }}
+                        />
+                        {/* content sits above bg */}
+                        <div className="coord-card-content">
+                          <h4 className="coordinator-name coordinator-name--volunteer">
+                            {person.name}
+                          </h4>
+                          <p className="coordinator-role coordinator-role--volunteer">
+                            Student Volunteer
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
     </Fragment>
