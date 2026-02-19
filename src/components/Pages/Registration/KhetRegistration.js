@@ -251,7 +251,7 @@ const KhetRegistration = () => {
                       onChange={handleInputChange}
                     />
                     <label htmlFor="collegeIdProof" className="file-upload-label">
-                      <div className="file-upload-icon">FILE</div>
+                      <div className="file-upload-icon"></div>
                       <div className="file-upload-text">
                         <span className="highlight">Click to upload</span>
                         <br />
@@ -387,7 +387,7 @@ const KhetRegistration = () => {
                           onChange={handleInputChange}
                         />
                         <label htmlFor="paymentScreenshot" className="file-upload-label">
-                          <div className="file-upload-icon">FILE</div>
+                          <div className="file-upload-icon"></div>
                           <div className="file-upload-text">
                             <span className="highlight">Click to upload</span>
                             <br />
@@ -416,7 +416,7 @@ const KhetRegistration = () => {
                         onChange={handleInputChange}
                       />
                       <label htmlFor="cashReceipt" className="file-upload-label">
-                        <div className="file-upload-icon">FILE</div>
+                        <div className="file-upload-icon"></div>
                         <div className="file-upload-text">
                           <span className="highlight">Click to upload</span>
                           <br />

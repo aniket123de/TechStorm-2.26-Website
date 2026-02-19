@@ -313,7 +313,7 @@ const TechHuntRegistration = () => {
                           }
                         />
                         <label htmlFor={`participantId_${index}`} className="file-upload-label">
-                          <div className="file-upload-icon">FILE</div>
+                          <div className="file-upload-icon"></div>
                           <div className="file-upload-text">
                             <span className="highlight">Click to upload</span>
                             <br />
@@ -409,7 +409,7 @@ const TechHuntRegistration = () => {
                       onChange={handleFieldChange}
                     />
                     <label htmlFor="paymentReceipt" className="file-upload-label">
-                      <div className="file-upload-icon">FILE</div>
+                      <div className="file-upload-icon"></div>
                       <div className="file-upload-text">
                         <span className="highlight">Click to upload</span>
                         <br />

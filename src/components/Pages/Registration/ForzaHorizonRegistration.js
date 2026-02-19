@@ -227,7 +227,7 @@ const ForzaHorizonRegistration = () => {
                       onChange={handleInputChange}
                     />
                     <label htmlFor="participantIdProof" className="file-upload-label">
-                      <div className="file-upload-icon">FILE</div>
+                      <div className="file-upload-icon"></div>
                       <div className="file-upload-text">
                         <span className="highlight">Click to upload</span>
                         <br />
@@ -298,7 +298,7 @@ const ForzaHorizonRegistration = () => {
                       onChange={handleInputChange}
                     />
                     <label htmlFor="paymentScreenshot" className="file-upload-label">
-                      <div className="file-upload-icon">FILE</div>
+                      <div className="file-upload-icon"></div>
                       <div className="file-upload-text">
                         <span className="highlight">Click to upload</span>
                         <br />

@@ -361,7 +361,7 @@ const RoNavigatorRegistration = () => {
                           }
                         />
                         <label htmlFor={`participantId_${index}`} className="file-upload-label">
-                          <div className="file-upload-icon">FILE</div>
+                          <div className="file-upload-icon"></div>
                           <div className="file-upload-text">
                             <span className="highlight">Click to upload</span>
                             <br />
@@ -451,7 +451,7 @@ const RoNavigatorRegistration = () => {
                           onChange={handleFieldChange}
                         />
                         <label htmlFor="paymentScreenshot" className="file-upload-label">
-                          <div className="file-upload-icon">FILE</div>
+                          <div className="file-upload-icon"></div>
                           <div className="file-upload-text">
                             <span className="highlight">Click to upload</span>
                             <br />
@@ -480,7 +480,7 @@ const RoNavigatorRegistration = () => {
                         onChange={handleFieldChange}
                       />
                       <label htmlFor="cashReceipt" className="file-upload-label">
-                        <div className="file-upload-icon">FILE</div>
+                        <div className="file-upload-icon"></div>
                         <div className="file-upload-text">
                           <span className="highlight">Click to upload</span>
                           <br />

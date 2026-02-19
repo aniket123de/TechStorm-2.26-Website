@@ -1,40 +1,40 @@
-import React, { useMemo, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { submitEventRegistration } from '../../../utils/eventRegistrationAPI';
-import Breadcrumb from '../../Utilities/Breadcrumb/Breadcrumb';
-import './Registration.css';
-import creativeCanvasBanner from '../../../assets/img/event_specific_pictures/creative/creative_canvas.png';
+import React, { useMemo, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { submitEventRegistration } from "../../../utils/eventRegistrationAPI";
+import Breadcrumb from "../../Utilities/Breadcrumb/Breadcrumb";
+import "./Registration.css";
+import creativeCanvasBanner from "../../../assets/img/event_specific_pictures/creative/creative_canvas.png";
 
 const MIN_PARTICIPANTS = 1;
 const MAX_PARTICIPANTS = 2;
-const YEAR_OPTIONS = ['1st', '2nd', '3rd', '4th'];
+const YEAR_OPTIONS = ["1st", "2nd", "3rd", "4th"];
 const COLLEGE_OPTIONS = [
-  'B.P. PODDAR INSTITUTE OF MANAGEMENT & TECHNOLOGY',
-  'OTHERS'
+  "B.P. PODDAR INSTITUTE OF MANAGEMENT & TECHNOLOGY",
+  "OTHERS",
 ];
 
 const createParticipant = () => ({
-  name: '',
-  contact: '',
-  email: '',
-  college: '',
-  year: '',
-  idFile: null
+  name: "",
+  contact: "",
+  email: "",
+  college: "",
+  year: "",
+  idFile: null,
 });
 
 const CreativeCanvasRegistration = () => {
   const history = useHistory();
 
   const [formData, setFormData] = useState({
-    teamName: '',
-    numberOfParticipants: '1',
+    teamName: "",
+    numberOfParticipants: "1",
     participants: Array.from({ length: MAX_PARTICIPANTS }, createParticipant),
-    paymentMode: '',
-    transactionId: '',
+    paymentMode: "",
+    transactionId: "",
     paymentReceipt: null,
     cashReceipt: null,
     whatsappConfirmed: false,
-    agreeToRules: false
+    agreeToRules: false,
   });
 
   const [errors, setErrors] = useState({});
@@ -51,15 +51,15 @@ const CreativeCanvasRegistration = () => {
     const { name, value, type, checked, files } = e.target;
     let nextValue = value;
 
-    if (type === 'checkbox') {
+    if (type === "checkbox") {
       nextValue = checked;
-    } else if (type === 'file') {
+    } else if (type === "file") {
       nextValue = files && files[0] ? files[0] : null;
     }
 
     setFormData((prev) => ({ ...prev, [name]: nextValue }));
     if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: '' }));
+      setErrors((prev) => ({ ...prev, [name]: "" }));
     }
   };
 
@@ -68,18 +68,18 @@ const CreativeCanvasRegistration = () => {
       const nextParticipants = [...prev.participants];
       nextParticipants[index] = {
         ...nextParticipants[index],
-        [field]: value
+        [field]: value,
       };
 
       return {
         ...prev,
-        participants: nextParticipants
+        participants: nextParticipants,
       };
     });
 
     const key = `participant_${index}_${field}`;
     if (errors[key]) {
-      setErrors((prev) => ({ ...prev, [key]: '' }));
+      setErrors((prev) => ({ ...prev, [key]: "" }));
     }
   };
 
@@ -90,65 +90,80 @@ const CreativeCanvasRegistration = () => {
     const participant2 = formData.participants[1];
 
     if (!formData.teamName.trim()) {
-      nextErrors.teamName = 'Team Name is required';
+      nextErrors.teamName = "Team Name is required";
     }
 
     if (!String(formData.numberOfParticipants).trim()) {
-      nextErrors.numberOfParticipants = 'Number of Participants is required';
-    } else if (!Number.isInteger(numericCount) || numericCount < MIN_PARTICIPANTS || numericCount > MAX_PARTICIPANTS) {
-      nextErrors.numberOfParticipants = 'Participants must be an integer between 1 and 2';
+      nextErrors.numberOfParticipants = "Number of Participants is required";
+    } else if (
+      !Number.isInteger(numericCount) ||
+      numericCount < MIN_PARTICIPANTS ||
+      numericCount > MAX_PARTICIPANTS
+    ) {
+      nextErrors.numberOfParticipants =
+        "Participants must be an integer between 1 and 2";
     }
 
-    if (!participant1.name.trim()) nextErrors.participant_0_name = 'Name is required';
+    if (!participant1.name.trim())
+      nextErrors.participant_0_name = "Name is required";
 
     if (!participant1.contact.trim()) {
-      nextErrors.participant_0_contact = 'Contact Number is required';
-    } else if (!/^\d{10,15}$/.test(participant1.contact.replace(/\D/g, ''))) {
-      nextErrors.participant_0_contact = 'Enter a valid contact number';
+      nextErrors.participant_0_contact = "Contact Number is required";
+    } else if (!/^\d{10,15}$/.test(participant1.contact.replace(/\D/g, ""))) {
+      nextErrors.participant_0_contact = "Enter a valid contact number";
     }
 
     if (!participant1.email.trim()) {
-      nextErrors.participant_0_email = 'Email ID is required';
+      nextErrors.participant_0_email = "Email ID is required";
     } else if (!/\S+@\S+\.\S+/.test(participant1.email)) {
-      nextErrors.participant_0_email = 'Invalid email format';
+      nextErrors.participant_0_email = "Invalid email format";
     }
 
-    if (!participant1.college) nextErrors.participant_0_college = 'College selection is required';
-    if (!participant1.idFile) nextErrors.participant_0_idFile = 'Participant ID file is required';
+    if (!participant1.college)
+      nextErrors.participant_0_college = "College selection is required";
+    if (!participant1.idFile)
+      nextErrors.participant_0_idFile = "Participant ID file is required";
 
-    if (participant2.contact.trim() && !/^\d{10,15}$/.test(participant2.contact.replace(/\D/g, ''))) {
-      nextErrors.participant_1_contact = 'Enter a valid contact number';
+    if (
+      participant2.contact.trim() &&
+      !/^\d{10,15}$/.test(participant2.contact.replace(/\D/g, ""))
+    ) {
+      nextErrors.participant_1_contact = "Enter a valid contact number";
     }
 
     if (participant2.email.trim() && !/\S+@\S+\.\S+/.test(participant2.email)) {
-      nextErrors.participant_1_email = 'Invalid email format';
+      nextErrors.participant_1_email = "Invalid email format";
     }
 
     if (!formData.paymentMode) {
-      nextErrors.paymentMode = 'Mode of Payment is required';
+      nextErrors.paymentMode = "Mode of Payment is required";
     }
 
-    if (formData.paymentMode === 'online') {
+    if (formData.paymentMode === "online") {
       if (!formData.transactionId.trim()) {
-        nextErrors.transactionId = 'Transaction ID is required for online payment';
+        nextErrors.transactionId =
+          "Transaction ID is required for online payment";
       }
       if (!formData.paymentReceipt) {
-        nextErrors.paymentReceipt = 'Upload payment receipt screenshot for online payment';
+        nextErrors.paymentReceipt =
+          "Upload payment receipt screenshot for online payment";
       }
     }
 
-    if (formData.paymentMode === 'cash') {
+    if (formData.paymentMode === "cash") {
       if (!formData.cashReceipt) {
-        nextErrors.cashReceipt = 'Upload cash receipt photocopy for offline payment';
+        nextErrors.cashReceipt =
+          "Upload cash receipt photocopy for offline payment";
       }
     }
 
     if (!formData.whatsappConfirmed) {
-      nextErrors.whatsappConfirmed = 'Please confirm after joining the WhatsApp group';
+      nextErrors.whatsappConfirmed =
+        "Please confirm after joining the WhatsApp group";
     }
 
     if (!formData.agreeToRules) {
-      nextErrors.agreeToRules = 'You must agree to the rules and regulations';
+      nextErrors.agreeToRules = "You must agree to the rules and regulations";
     }
 
     setErrors(nextErrors);
@@ -165,19 +180,24 @@ const CreativeCanvasRegistration = () => {
     setIsSubmitting(true);
 
     try {
-      const result = await submitEventRegistration('Creative Canvas', formData);
-      console.log('Creative Canvas registration successful:', result);
+      const result = await submitEventRegistration("Creative Canvas", formData);
+      console.log("Creative Canvas registration successful:", result);
       setSubmitSuccess(true);
 
       setTimeout(() => {
-        history.push('/events');
+        history.push("/events");
       }, 2500);
     } catch (error) {
-      console.error('Registration error:', error);
-      if (error.message.includes('duplicate')) {
-        setErrors({ submit: 'You have already registered for this event with this email or phone number.' });
+      console.error("Registration error:", error);
+      if (error.message.includes("duplicate")) {
+        setErrors({
+          submit:
+            "You have already registered for this event with this email or phone number.",
+        });
       } else {
-        setErrors({ submit: error.message || 'Registration failed. Please try again.' });
+        setErrors({
+          submit: error.message || "Registration failed. Please try again.",
+        });
       }
     } finally {
       setIsSubmitting(false);
@@ -195,7 +215,9 @@ const CreativeCanvasRegistration = () => {
       <div className="registration-container">
         <div className="registration-content">
           <div className="registration-header">
-            <h1 className="registration-title">Creative Canvas Registration Form</h1>
+            <h1 className="registration-title">
+              Creative Canvas Registration Form
+            </h1>
             <p className="registration-subtitle">Note: "*" = Mandatory</p>
           </div>
 
@@ -205,14 +227,17 @@ const CreativeCanvasRegistration = () => {
             </div>
           )}
           {errors.submit && (
-            <div className="error-message" style={{
-              marginBottom: '20px',
-              padding: '15px',
-              backgroundColor: '#ff4444',
-              color: 'white',
-              borderRadius: '5px',
-              textAlign: 'center'
-            }}>
+            <div
+              className="error-message"
+              style={{
+                marginBottom: "20px",
+                padding: "15px",
+                backgroundColor: "#ff4444",
+                color: "white",
+                borderRadius: "5px",
+                textAlign: "center",
+              }}
+            >
               {errors.submit}
             </div>
           )}
@@ -231,11 +256,15 @@ const CreativeCanvasRegistration = () => {
                   className="retro-input"
                   placeholder="Team Name"
                 />
-                {errors.teamName && <div className="error-message">{errors.teamName}</div>}
+                {errors.teamName && (
+                  <div className="error-message">{errors.teamName}</div>
+                )}
               </div>
 
               <div className="form-group">
-                <label className="form-label required">Number of Participants</label>
+                <label className="form-label required">
+                  Number of Participants
+                </label>
                 <input
                   type="number"
                   name="numberOfParticipants"
@@ -247,7 +276,9 @@ const CreativeCanvasRegistration = () => {
                   placeholder="Enter number between 1 and 2"
                 />
                 {errors.numberOfParticipants && (
-                  <div className="error-message">{errors.numberOfParticipants}</div>
+                  <div className="error-message">
+                    {errors.numberOfParticipants}
+                  </div>
                 )}
               </div>
             </div>
@@ -256,72 +287,107 @@ const CreativeCanvasRegistration = () => {
               const participant = formData.participants[index];
               const number = index + 1;
               const isParticipantOne = index === 0;
-              const requiredClass = isParticipantOne ? 'required' : '';
+              const requiredClass = isParticipantOne ? "required" : "";
 
               return (
                 <div className="form-section" key={number}>
                   <h2 className="form-section-title">{`>>> Participant ${number}`}</h2>
 
                   <div className="form-group">
-                    <label className={`form-label ${requiredClass}`}>Name</label>
+                    <label className={`form-label ${requiredClass}`}>
+                      Name
+                    </label>
                     <input
                       type="text"
                       value={participant.name}
-                      onChange={(e) => handleParticipantChange(index, 'name', e.target.value)}
+                      onChange={(e) =>
+                        handleParticipantChange(index, "name", e.target.value)
+                      }
                       className="retro-input"
                       placeholder={`Participant ${number} Name`}
                     />
                     {errors[`participant_${index}_name`] && (
-                      <div className="error-message">{errors[`participant_${index}_name`]}</div>
+                      <div className="error-message">
+                        {errors[`participant_${index}_name`]}
+                      </div>
                     )}
                   </div>
 
                   <div className="form-group">
-                    <label className={`form-label ${requiredClass}`}>Contact Number</label>
+                    <label className={`form-label ${requiredClass}`}>
+                      Contact Number
+                    </label>
                     <input
                       type="text"
                       value={participant.contact}
-                      onChange={(e) => handleParticipantChange(index, 'contact', e.target.value)}
+                      onChange={(e) =>
+                        handleParticipantChange(
+                          index,
+                          "contact",
+                          e.target.value,
+                        )
+                      }
                       className="retro-input"
                       placeholder={`Participant ${number} Contact Number`}
                     />
                     {errors[`participant_${index}_contact`] && (
-                      <div className="error-message">{errors[`participant_${index}_contact`]}</div>
+                      <div className="error-message">
+                        {errors[`participant_${index}_contact`]}
+                      </div>
                     )}
                   </div>
 
                   <div className="form-group">
-                    <label className={`form-label ${requiredClass}`}>Email ID</label>
+                    <label className={`form-label ${requiredClass}`}>
+                      Email ID
+                    </label>
                     <input
                       type="text"
                       value={participant.email}
-                      onChange={(e) => handleParticipantChange(index, 'email', e.target.value)}
+                      onChange={(e) =>
+                        handleParticipantChange(index, "email", e.target.value)
+                      }
                       className="retro-input"
                       placeholder={`Participant ${number} Email ID`}
                     />
                     {errors[`participant_${index}_email`] && (
-                      <div className="error-message">{errors[`participant_${index}_email`]}</div>
+                      <div className="error-message">
+                        {errors[`participant_${index}_email`]}
+                      </div>
                     )}
                   </div>
 
                   <div className="form-group">
-                    <label className={`form-label ${requiredClass}`}>College Name</label>
+                    <label className={`form-label ${requiredClass}`}>
+                      College Name
+                    </label>
                     <div className="mcq-group">
                       {COLLEGE_OPTIONS.map((option) => (
-                        <label className="mcq-option" key={`${number}_${option}`}>
+                        <label
+                          className="mcq-option"
+                          key={`${number}_${option}`}
+                        >
                           <input
                             type="radio"
                             name={`participantCollege_${index}`}
                             value={option}
                             checked={participant.college === option}
-                            onChange={(e) => handleParticipantChange(index, 'college', e.target.value)}
+                            onChange={(e) =>
+                              handleParticipantChange(
+                                index,
+                                "college",
+                                e.target.value,
+                              )
+                            }
                           />
                           <span className="mcq-option-label">{option}</span>
                         </label>
                       ))}
                     </div>
                     {errors[`participant_${index}_college`] && (
-                      <div className="error-message">{errors[`participant_${index}_college`]}</div>
+                      <div className="error-message">
+                        {errors[`participant_${index}_college`]}
+                      </div>
                     )}
                   </div>
 
@@ -329,13 +395,22 @@ const CreativeCanvasRegistration = () => {
                     <label className="form-label">Year</label>
                     <div className="mcq-group">
                       {YEAR_OPTIONS.map((yearOption) => (
-                        <label className="mcq-option" key={`${number}_${yearOption}`}>
+                        <label
+                          className="mcq-option"
+                          key={`${number}_${yearOption}`}
+                        >
                           <input
                             type="radio"
                             name={`participantYear_${index}`}
                             value={yearOption}
                             checked={participant.year === yearOption}
-                            onChange={(e) => handleParticipantChange(index, 'year', e.target.value)}
+                            onChange={(e) =>
+                              handleParticipantChange(
+                                index,
+                                "year",
+                                e.target.value,
+                              )
+                            }
                           />
                           <span className="mcq-option-label">{yearOption}</span>
                         </label>
@@ -345,7 +420,8 @@ const CreativeCanvasRegistration = () => {
 
                   <div className="form-group">
                     <label className={`form-label ${requiredClass}`}>
-                      Participants Id (if student then College id / library card)
+                      Participants Id (if student then College id / library
+                      card)
                     </label>
                     <div className="file-upload-wrapper">
                       <div className="file-upload">
@@ -355,11 +431,20 @@ const CreativeCanvasRegistration = () => {
                           className="file-upload-input"
                           accept="image/*,.pdf"
                           onChange={(e) =>
-                            handleParticipantChange(index, 'idFile', e.target.files && e.target.files[0] ? e.target.files[0] : null)
+                            handleParticipantChange(
+                              index,
+                              "idFile",
+                              e.target.files && e.target.files[0]
+                                ? e.target.files[0]
+                                : null,
+                            )
                           }
                         />
-                        <label htmlFor={`participantId_${index}`} className="file-upload-label">
-                          <div className="file-upload-icon">FILE</div>
+                        <label
+                          htmlFor={`participantId_${index}`}
+                          className="file-upload-label"
+                        >
+                          <div className="file-upload-icon"></div>
                           <div className="file-upload-text">
                             <span className="highlight">Click to upload</span>
                             <br />
@@ -367,10 +452,16 @@ const CreativeCanvasRegistration = () => {
                           </div>
                         </label>
                       </div>
-                      {participant.idFile && <div className="file-name">{participant.idFile.name}</div>}
+                      {participant.idFile && (
+                        <div className="file-name">
+                          {participant.idFile.name}
+                        </div>
+                      )}
                     </div>
                     {errors[`participant_${index}_idFile`] && (
-                      <div className="error-message">{errors[`participant_${index}_idFile`]}</div>
+                      <div className="error-message">
+                        {errors[`participant_${index}_idFile`]}
+                      </div>
                     )}
                   </div>
                 </div>
@@ -388,7 +479,7 @@ const CreativeCanvasRegistration = () => {
                       type="radio"
                       name="paymentMode"
                       value="cash"
-                      checked={formData.paymentMode === 'cash'}
+                      checked={formData.paymentMode === "cash"}
                       onChange={handleFieldChange}
                     />
                     <span className="mcq-option-label">Offline (Cash)</span>
@@ -399,13 +490,15 @@ const CreativeCanvasRegistration = () => {
                       type="radio"
                       name="paymentMode"
                       value="online"
-                      checked={formData.paymentMode === 'online'}
+                      checked={formData.paymentMode === "online"}
                       onChange={handleFieldChange}
                     />
                     <span className="mcq-option-label">Online</span>
                   </label>
                 </div>
-                {errors.paymentMode && <div className="error-message">{errors.paymentMode}</div>}
+                {errors.paymentMode && (
+                  <div className="error-message">{errors.paymentMode}</div>
+                )}
               </div>
 
               <div className="form-group">
@@ -418,11 +511,15 @@ const CreativeCanvasRegistration = () => {
                   className="retro-input"
                   placeholder="Transaction ID"
                 />
-                {errors.transactionId && <div className="error-message">{errors.transactionId}</div>}
+                {errors.transactionId && (
+                  <div className="error-message">{errors.transactionId}</div>
+                )}
               </div>
 
               <div className="form-group">
-                <label className="form-label">Payment Receipt (Upload the screenshot)</label>
+                <label className="form-label">
+                  Payment Receipt (Upload the screenshot)
+                </label>
                 <div className="file-upload-wrapper">
                   <div className="file-upload">
                     <input
@@ -433,8 +530,11 @@ const CreativeCanvasRegistration = () => {
                       accept="image/*,.pdf"
                       onChange={handleFieldChange}
                     />
-                    <label htmlFor="paymentReceipt" className="file-upload-label">
-                      <div className="file-upload-icon">FILE</div>
+                    <label
+                      htmlFor="paymentReceipt"
+                      className="file-upload-label"
+                    >
+                      <div className="file-upload-icon"></div>
                       <div className="file-upload-text">
                         <span className="highlight">Click to upload</span>
                         <br />
@@ -442,13 +542,21 @@ const CreativeCanvasRegistration = () => {
                       </div>
                     </label>
                   </div>
-                  {formData.paymentReceipt && <div className="file-name">{formData.paymentReceipt.name}</div>}
+                  {formData.paymentReceipt && (
+                    <div className="file-name">
+                      {formData.paymentReceipt.name}
+                    </div>
+                  )}
                 </div>
-                {errors.paymentReceipt && <div className="error-message">{errors.paymentReceipt}</div>}
+                {errors.paymentReceipt && (
+                  <div className="error-message">{errors.paymentReceipt}</div>
+                )}
               </div>
 
               <div className="form-group">
-                <label className="form-label">Upload cash Receipt photocopy (In Case of Offline)</label>
+                <label className="form-label">
+                  Upload cash Receipt photocopy (In Case of Offline)
+                </label>
                 <div className="file-upload-wrapper">
                   <div className="file-upload">
                     <input
@@ -460,7 +568,7 @@ const CreativeCanvasRegistration = () => {
                       onChange={handleFieldChange}
                     />
                     <label htmlFor="cashReceipt" className="file-upload-label">
-                      <div className="file-upload-icon">FILE</div>
+                      <div className="file-upload-icon"></div>
                       <div className="file-upload-text">
                         <span className="highlight">Click to upload</span>
                         <br />
@@ -468,16 +576,29 @@ const CreativeCanvasRegistration = () => {
                       </div>
                     </label>
                   </div>
-                  {formData.cashReceipt && <div className="file-name">{formData.cashReceipt.name}</div>}
+                  {formData.cashReceipt && (
+                    <div className="file-name">{formData.cashReceipt.name}</div>
+                  )}
                 </div>
-                {errors.cashReceipt && <div className="error-message">{errors.cashReceipt}</div>}
+                {errors.cashReceipt && (
+                  <div className="error-message">{errors.cashReceipt}</div>
+                )}
               </div>
             </div>
 
             <div className="form-section">
-              <h2 className="form-section-title">&gt;&gt;&gt; WhatsApp Group Link</h2>
+              <h2 className="form-section-title">
+                &gt;&gt;&gt; WhatsApp Group Link
+              </h2>
               <div className="form-group">
-                <p style={{ margin: 0, color: '#ffffff', fontSize: '11px', fontFamily: 'Press Start 2P, monospace' }}>
+                <p
+                  style={{
+                    margin: 0,
+                    color: "#ffffff",
+                    fontSize: "11px",
+                    fontFamily: "Press Start 2P, monospace",
+                  }}
+                >
                   Every Participants must join!
                 </p>
               </div>
@@ -492,10 +613,15 @@ const CreativeCanvasRegistration = () => {
                   />
                   <span className="checkbox-custom"></span>
                   <span className="checkbox-label">
-                    I have checked all the details carefully and have joined the WhatsApp group
+                    I have checked all the details carefully and have joined the
+                    WhatsApp group
                   </span>
                 </label>
-                {errors.whatsappConfirmed && <div className="error-message">{errors.whatsappConfirmed}</div>}
+                {errors.whatsappConfirmed && (
+                  <div className="error-message">
+                    {errors.whatsappConfirmed}
+                  </div>
+                )}
               </div>
 
               <div className="form-group">
@@ -508,16 +634,23 @@ const CreativeCanvasRegistration = () => {
                   />
                   <span className="checkbox-custom"></span>
                   <span className="checkbox-label">
-                    I have read all the above information carefully and will abide by the rules and regulations
+                    I have read all the above information carefully and will
+                    abide by the rules and regulations
                   </span>
                 </label>
-                {errors.agreeToRules && <div className="error-message">{errors.agreeToRules}</div>}
+                {errors.agreeToRules && (
+                  <div className="error-message">{errors.agreeToRules}</div>
+                )}
               </div>
             </div>
 
             <div className="submit-button-wrapper">
-              <button type="submit" className="retro-button" disabled={isSubmitting}>
-                {isSubmitting ? 'Submitting...' : 'Submit Registration'}
+              <button
+                type="submit"
+                className="retro-button"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Submitting..." : "Submit Registration"}
               </button>
               <button
                 type="button"

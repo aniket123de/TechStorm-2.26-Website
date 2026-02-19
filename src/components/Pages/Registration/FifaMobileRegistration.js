@@ -344,7 +344,7 @@ const FifaMobileRegistration = () => {
                         accept="image/*,.pdf"
                       />
                       <label htmlFor="paymentReceipt" className="file-upload-label">
-                        <div className="file-upload-icon">FILE</div>
+                        <div className="file-upload-icon"></div>
                         <div className="file-upload-text">
                           <span className="highlight">Click to upload</span><br/>
                           {formData.paymentMode === 'online' ? 'Payment screenshot' : 'Offline receipt'}<br/>
