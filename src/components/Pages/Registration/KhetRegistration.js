@@ -51,7 +51,8 @@ const KhetRegistration = () => {
   const validateForm = () => {
     const nextErrors = {};
 
-    if (!formData.teamName.trim()) nextErrors.teamName = 'Team Name is required';
+    // teamName is optional for individual events
+    // if (!formData.teamName.trim()) nextErrors.teamName = 'Team Name is required';
 
     if (!String(formData.numberOfParticipants).trim()) {
       nextErrors.numberOfParticipants = 'Number of Participants is required';
@@ -109,11 +110,14 @@ const KhetRegistration = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('🚀 Form submitted!', formData);
 
     if (!validateForm()) {
+      console.log('❌ Validation failed', errors);
       return;
     }
 
+    console.log('✅ Validation passed, submitting...');
     setIsSubmitting(true);
 
     try {

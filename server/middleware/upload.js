@@ -27,21 +27,9 @@ const upload = multer({
 });
 
 // Middleware to handle multiple file uploads for event registration
-const uploadRegistrationFiles = upload.fields([
-  { name: 'paymentReceipt', maxCount: 1 },
-  { name: 'paymentScreenshot', maxCount: 1 },
-  { name: 'cashReceipt', maxCount: 1 },
-  { name: 'idProof', maxCount: 1 },
-  { name: 'idFile', maxCount: 1 },
-  { name: 'resume', maxCount: 1 },
-  { name: 'portfolio', maxCount: 1 },
-  // Participant ID files
-  { name: 'participants[0][idFile]', maxCount: 1 },
-  { name: 'participants[1][idFile]', maxCount: 1 },
-  { name: 'participants[2][idFile]', maxCount: 1 },
-  { name: 'participants[3][idFile]', maxCount: 1 },
-  { name: 'participants[4][idFile]', maxCount: 1 },
-]);
+// Using upload.any() to accept any file field dynamically (not just predefined names)
+// This allows for event-specific file fields like 'collegeIdProof', 'teamIdCard', etc.
+const uploadRegistrationFiles = upload.any();
 
 // Error handling middleware for multer
 const handleMulterError = (err, req, res, next) => {

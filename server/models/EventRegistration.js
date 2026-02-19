@@ -162,15 +162,27 @@ class EventRegistrationFactory {
         trim: true,
         index: true
       },
+      // Payment Receipt (Image -> Cloudinary, PDF -> MongoDB)
       paymentReceipt: String,
       paymentReceiptUrl: String,
       paymentReceiptCloudinaryId: String,
+      paymentReceiptData: String, // Base64 for PDFs
+      paymentReceiptMimeType: String,
+      paymentReceiptSize: Number,
+      // Payment Screenshot (Image -> Cloudinary, PDF -> MongoDB)
       paymentScreenshot: String,
       paymentScreenshotUrl: String,
       paymentScreenshotCloudinaryId: String,
+      paymentScreenshotData: String,
+      paymentScreenshotMimeType: String,
+      paymentScreenshotSize: Number,
+      // Cash Receipt (Image -> Cloudinary, PDF -> MongoDB)
       cashReceipt: String,
       cashReceiptUrl: String,
       cashReceiptCloudinaryId: String,
+      cashReceiptData: String,
+      cashReceiptMimeType: String,
+      cashReceiptSize: Number,
       paymentStatus: {
         type: String,
         enum: ['pending', 'verified', 'failed', 'not-required'],
@@ -184,11 +196,19 @@ class EventRegistrationFactory {
       specialRequirements: String,
       howDidYouHear: String,
 
-      // Files
+      // Files (Image -> Cloudinary, PDF -> MongoDB)
       idProof: String,
       idProofUrl: String,
       idProofCloudinaryId: String,
+      idProofData: String,
+      idProofMimeType: String,
+      idProofSize: Number,
       idFile: String,
+      idFileUrl: String,
+      idFileCloudinaryId: String,
+      idFileData: String,
+      idFileMimeType: String,
+      idFileSize: Number,
 
       // Custom fields (flexible for event-specific data)
       customField1: mongoose.Schema.Types.Mixed,

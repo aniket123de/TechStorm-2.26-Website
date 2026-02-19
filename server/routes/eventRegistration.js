@@ -4,11 +4,13 @@ const EventRegistrationFactory = require('../models/EventRegistration');
 const { asyncHandler } = require('../middleware/errorHandler');
 const { optionalAuthenticate } = require('../middleware/auth');
 const { uploadRegistrationFiles, handleMulterError } = require('../middleware/upload');
+const { uploadToCloudinary, deleteFromCloudinary } = require('../config/cloudinary');
 
 /**
  * Register for an event
  * POST /api/event-registration/:eventName
  * Public endpoint - no authentication required
+ * Handles file uploads to Cloudinary
  */
 router.post('/:eventName',
   uploadRegistrationFiles,
@@ -19,7 +21,7 @@ router.post('/:eventName',
 
     console.log('📥 Received registration for:', eventName);
     console.log('📝 Body data:', req.body);
-    console.log('📎 Files:', req.files ? Object.keys(req.files) : 'No files');
+    console.log('📎 Files:', req.files && Array.isArray(req.files) ? req.files.map(f => f.fieldname).join(', ') : 'No files');
 
     // Validate event name
     if (!eventName || eventName.trim().length === 0) {
@@ -56,15 +58,85 @@ router.post('/:eventName',
       }
     }
 
-    // Handle file uploads - convert to simple string references
-    if (req.files) {
-      Object.keys(req.files).forEach(fieldName => {
-        const file = req.files[fieldName][0];
-        // Store just the filename for now (simplified)
-        // Later integrate with Cloudinary for actual storage
-        registrationData[fieldName] = file.originalname;
-        console.log(`✅ Processed file: ${fieldName} - ${file.originalname} (${(file.size / 1024).toFixed(2)}KB)`);
-      });
+    // Handle file uploads based on type
+    // Note: upload.any() provides req.files as an array, not an object
+    if (req.files && Array.isArray(req.files) && req.files.length > 0) {
+      console.log('📁 Processing uploaded files...');
+      console.log(`📎 Total files: ${req.files.length}`);
+      
+      try {
+        const uploadPromises = req.files.map(async (file) => {
+          const fieldName = file.fieldname; // Get field name from file object
+          const fileExtension = file.originalname.split('.').pop().toLowerCase();
+          const isImage = ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(fileExtension);
+          const isPDF = fileExtension === 'pdf';
+          
+          console.log(`📄 Processing file: ${fieldName} (${file.originalname})`);
+          
+          if (isImage) {
+            // Upload images to Cloudinary
+            console.log(`☁️ Uploading image to Cloudinary: ${fieldName}`);
+            
+            // Determine subfolder based on field type
+            let subfolder = 'registrations';
+            if (fieldName.includes('payment') || fieldName.includes('receipt') || fieldName.includes('cash')) {
+              subfolder = 'payments';
+            } else if (fieldName.includes('id') || fieldName.includes('Id') || fieldName.toLowerCase().includes('proof')) {
+              subfolder = 'id-proofs';
+            }
+            
+            // Upload to Cloudinary in techstorm folder
+            const uploadResult = await uploadToCloudinary(
+              file.buffer,
+              file.originalname,
+              `techstorm/${subfolder}/${eventName}`,
+              {
+                tags: [eventName, fieldName, 'registration', 'techstorm'],
+                context: `event=${eventName}|field=${fieldName}|type=image`
+              }
+            );
+            
+            // Store Cloudinary data in registration
+            registrationData[fieldName] = file.originalname;
+            registrationData[`${fieldName}Url`] = uploadResult.secure_url;
+            registrationData[`${fieldName}CloudinaryId`] = uploadResult.public_id;
+            
+            console.log(`✅ Image uploaded to Cloudinary: ${uploadResult.secure_url}`);
+            
+          } else if (isPDF) {
+            // Store PDFs directly in MongoDB as base64
+            console.log(`💾 Storing PDF in MongoDB: ${fieldName}`);
+            
+            registrationData[fieldName] = file.originalname;
+            registrationData[`${fieldName}Data`] = file.buffer.toString('base64');
+            registrationData[`${fieldName}MimeType`] = file.mimetype;
+            registrationData[`${fieldName}Size`] = file.size;
+            
+            console.log(`✅ PDF stored in MongoDB: ${file.originalname} (${(file.size / 1024).toFixed(2)}KB)`);
+            
+          } else {
+            // Unknown file type - store in MongoDB
+            console.log(`⚠️ Unknown file type, storing in MongoDB: ${fieldName}`);
+            registrationData[fieldName] = file.originalname;
+            registrationData[`${fieldName}Data`] = file.buffer.toString('base64');
+            registrationData[`${fieldName}MimeType`] = file.mimetype;
+          }
+          
+          return { fieldName, type: isImage ? 'cloudinary' : 'mongodb' };
+        });
+        
+        await Promise.all(uploadPromises);
+        console.log('✅ All files processed successfully');
+        
+      } catch (uploadError) {
+        console.error('❌ File processing failed:', uploadError);
+        return res.status(500).json({
+          error: 'File Upload Failed',
+          message: 'Failed to process uploaded files. Please try again.',
+          details: uploadError.message,
+          timestamp: new Date().toISOString()
+        });
+      }
     }
 
     // Add eventName to registration data
