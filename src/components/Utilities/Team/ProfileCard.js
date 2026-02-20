@@ -518,8 +518,11 @@ const ProfileCardComponent = ({
                   )`,
                 }}
                 onError={(e) => {
+                  console.error('Image failed to load:', avatarUrl);
+                  // Don't hide the image, show a placeholder background instead
                   const t = e.target;
-                  t.style.display = "none";
+                  t.style.backgroundColor = '#ffc010';
+                  t.style.minHeight = '300px';
                 }}
               />
               {showUserInfo && (

@@ -51,7 +51,7 @@
 .profile-card-avatar {
   overflow: visible;
   backface-visibility: hidden;
-  mix-blend-mode: luminosity;
+  mix-blend-mode: normal;
   transform: translateZ(2px);
   grid-area: 1 / -1;
   pointer-events: none;
