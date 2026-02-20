@@ -59,6 +59,9 @@ import KhetRegistration from './Pages/Registration/KhetRegistration';
 import AdminRoleSelection from './Pages/Admin/AdminRoleSelection';
 import AdminLogin from './Pages/Admin/AdminLogin';
 import AdminDashboard from './Pages/Admin/AdminDashboard';
+import RegistrationsPage from './Pages/Admin/RegistrationsPage';
+import EventsPage from './Pages/Admin/EventsPage';
+import StatisticsPage from './Pages/Admin/StatisticsPage';
 
 const navItems = [
     { label: 'Home', href: '/#home' },
@@ -140,6 +143,9 @@ const AppContent = () => {
         <Route exact path="/admin/core/dashboard" component={AdminDashboard} />
         <Route exact path="/admin/coordinator/dashboard" component={AdminDashboard} />
         <Route exact path="/admin/volunteer/dashboard" component={AdminDashboard} />
+        <Route exact path="/admin/:role/registrations" component={RegistrationsPage} />
+        <Route exact path="/admin/:role/events" component={EventsPage} />
+        <Route exact path="/admin/:role/statistics" component={StatisticsPage} />
 
         <Route exact path="/" component={Home} />
         <Route exact path="/home-two" component={HomeTwo} />

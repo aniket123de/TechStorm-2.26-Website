@@ -57,6 +57,17 @@ const AdminDashboard = () => {
 
   const config = roleConfig[role] || roleConfig.core;
 
+  const handleNavigate = (page) => {
+    // Navigate to specific dashboard based on role
+    if (role === 'core') {
+      history.push(`/admin/core/${page}`);
+    } else if (role === 'coordinator') {
+      history.push(`/admin/coordinator/${page}`);
+    } else if (role === 'volunteer') {
+      history.push(`/admin/volunteer/${page}`);
+    }
+  };
+
   if (loading) {
     return (
       <div className="admin-dashboard" style={{ '--role-color': config.color }}>
@@ -105,7 +116,7 @@ const AdminDashboard = () => {
             <p className="card-kicker">Overview</p>
             <h3>Statistics</h3>
             <p>View key event and system metrics.</p>
-            <button className="card-button">Open</button>
+            <button className="card-button" onClick={() => handleNavigate('statistics')}>Open</button>
           </div>
 
           {user.permissions?.includes('read') && (
@@ -113,7 +124,7 @@ const AdminDashboard = () => {
               <p className="card-kicker">Data</p>
               <h3>Events</h3>
               <p>Review schedules and event records.</p>
-              <button className="card-button">Open</button>
+              <button className="card-button" onClick={() => handleNavigate('events')}>Open</button>
             </div>
           )}
 
@@ -122,7 +133,7 @@ const AdminDashboard = () => {
               <p className="card-kicker">Actions</p>
               <h3>Edit Content</h3>
               <p>Update event details and announcements.</p>
-              <button className="card-button">Open</button>
+              <button className="card-button" onClick={() => handleNavigate('edit')}>Open</button>
             </div>
           )}
 
@@ -131,7 +142,7 @@ const AdminDashboard = () => {
               <p className="card-kicker">Actions</p>
               <h3>Create New</h3>
               <p>Add new events and resources.</p>
-              <button className="card-button">Open</button>
+              <button className="card-button" onClick={() => handleNavigate('create')}>Open</button>
             </div>
           )}
 
@@ -140,7 +151,7 @@ const AdminDashboard = () => {
               <p className="card-kicker">Admin</p>
               <h3>Manage Users</h3>
               <p>Access user administration controls.</p>
-              <button className="card-button">Open</button>
+              <button className="card-button" onClick={() => handleNavigate('users')}>Open</button>
             </div>
           )}
 
@@ -148,7 +159,7 @@ const AdminDashboard = () => {
             <p className="card-kicker">Participants</p>
             <h3>Registrations</h3>
             <p>View participant registration status.</p>
-            <button className="card-button">Open</button>
+            <button className="card-button" onClick={() => handleNavigate('registrations')}>Open</button>
           </div>
         </div>
       </div>
