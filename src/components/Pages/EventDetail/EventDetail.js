@@ -151,7 +151,7 @@ const EventDetail = ({ eventData }) => {
   const coordinatorsImg = isMobile ? coordinatorsBgMobile : coordinatorsBg;
   // Lighter overlay on mobile so background images are more visible
   const sectionOverlay = isMobile
-    ? "linear-gradient(to bottom, rgba(10,4,20,0.68) 0%, rgba(10,4,20,0.06) 20%, rgba(10,4,20,0.06) 80%, rgba(10,4,20,0.68) 100%)"
+    ? "linear-gradient(to bottom, rgba(10,4,20,0.42) 0%, rgba(10,4,20,0.02) 22%, rgba(10,4,20,0.02) 78%, rgba(10,4,20,0.42) 100%)"
     : "linear-gradient(to bottom, rgba(10,4,20,0.97) 0%, rgba(10,4,20,0.22) 18%, rgba(10,4,20,0.22) 82%, rgba(10,4,20,0.97) 100%)";
 
   // Event-specific coordinators data
@@ -818,7 +818,7 @@ const EventDetail = ({ eventData }) => {
         style={
           breadcrumbBg
             ? {
-              backgroundImage: `linear-gradient(${isMobile ? "rgba(26, 14, 34, 0.45)" : "rgba(26, 14, 34, 0.7)"}, ${isMobile ? "rgba(26, 14, 34, 0.45)" : "rgba(26, 14, 34, 0.7)"}), url(${breadcrumbBg})`,
+              backgroundImage: `linear-gradient(${isMobile ? "rgba(26, 14, 34, 0.28)" : "rgba(26, 14, 34, 0.7)"}, ${isMobile ? "rgba(26, 14, 34, 0.28)" : "rgba(26, 14, 34, 0.7)"}), url(${breadcrumbBg})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }

@@ -162,16 +162,39 @@
 
 /* ── Mobile: ensure bg images render with cover and scroll attachment ── */
 @media (max-width: 767px) {
+    /* Stronger blend at bottom of event-name section into next section */
+    .event-name-section::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 160px;
+        background: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(10, 4, 20, 0.75) 100%
+        );
+        z-index: 1;
+        pointer-events: none;
+    }
+
     .about-event-section,
     .faq-accordion-section,
-    .entry-fee-section,
-    .coordinators-section {
+    .entry-fee-section {
         background-size: cover !important;
         background-position: center 30% !important;
         background-attachment: scroll !important;
     }
 
-    /* Extra dimming layer on mobile so stretched/zoomed bg image looks atmospheric */
+    /* Coordinators section: bg image fits better on mobile (centered, cover) */
+    .coordinators-section {
+        background-size: cover !important;
+        background-position: center center !important;
+        background-attachment: scroll !important;
+    }
+
+    /* Stronger dimming + blend between sections on mobile */
     .about-event-section::after,
     .faq-accordion-section::after,
     .entry-fee-section::after,
@@ -179,7 +202,13 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: rgba(10, 4, 20, 0.52);
+        background: linear-gradient(
+            to bottom,
+            rgba(10, 4, 20, 0.62) 0%,
+            rgba(10, 4, 20, 0.12) 18%,
+            rgba(10, 4, 20, 0.12) 82%,
+            rgba(10, 4, 20, 0.62) 100%
+        );
         z-index: 1;
         pointer-events: none;
     }
