@@ -1,3 +1,4 @@
+                           
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import coordinatorCardBg from "../../../assets/img/coordinatorcardbg.png";
 import entryFeeBg from "../../../assets/img/event-1.png";
@@ -30,9 +31,9 @@ function FAQAccordion({ faqs }) {
         fontFamily: "Press Start 2P, monospace",
         color: "#ffc010",
         border: "2px solid rgba(255, 192, 16, 0.35)",
-        boxSizing: "border-box",
       }}
     >
+      {/* FAQAccordion content rendering logic here */}
       {faqs.map((faq, idx) => (
         <div key={idx}>
           <button
@@ -113,6 +114,7 @@ function FAQAccordion({ faqs }) {
     </div>
   );
 }
+
 
 const EventDetail = ({ eventData }) => {
   const history = useHistory();

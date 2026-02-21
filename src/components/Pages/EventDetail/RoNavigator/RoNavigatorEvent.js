@@ -40,12 +40,12 @@ const RoNavigatorEvent = () => {
     rules: [
       
       "BOT SPECIFICATIONS:",
-      "The robot must not exceed the dimensions of 20 Ã— 20 Ã— 20 cm (length Ã— width Ã— height).",
+      "The robot must not exceed the dimensions of 20 x 20 x 20 cm (length x width x height)(5% tolerance allowed).",
       "Only one robot is allowed per team for both rounds.",
       "A single robot cannot be used by multiple teams.",
       "Readymade bots, LegoCity bots, or Kakarobots are strictly prohibited.",
       "The robot must operate fully autonomously without any external control.",
-      "The power supply must be limited to the onboard system and should not exceed 10â€“12V.",
+      "The power supply must be limited to the onboard system and should not exceed 10-12V.",
       "The robot must be designed to move on a white flex sheet arena with a 2.5 cm wide black path and gaps.",
       "",
       "GENERAL RULES (COMMON FOR PRELIMS & FINALS):",
@@ -53,7 +53,7 @@ const RoNavigatorEvent = () => {
       "Each team is responsible for the operation and management of their robot.",
       "Teams must carry valid ID cards during the event.",
       "In case of disqualification, no refund will be provided.",
-      "In case of a tie, the event headsâ€™ decision will be final.",
+      "In case of a tie, the event heads' decision will be final.",
       "",
       "PRELIMS RULES:",
       "All teams will run their robots individually on the designated track.",
