@@ -1315,13 +1315,27 @@ const EventDetail = ({ eventData }) => {
                               name === "Ro-Terrance" && (
                                 roTerranceHeadingsToHighlight.some(h => normalizedRule.includes(normalizeRuleText(h)))
                               );
+                            // Ro-Soccer headings and highlight logic
+                            const roSoccerHeadingsToHighlight = [
+                              'BOT SPECIFICATIONS:',
+                              'GENERAL RULES (COMMON FOR PRELIMS & FINALS):',
+                              'PRELIMS RULES:',
+                              'SCORING FORMULA:',
+                              'BRICK PENALTY RULE:',
+                              'RANKING CRITERIA:',
+                              'KNOCKOUT & FINALS RULES:',
+                            ];
+                            const isRoSoccerSectionHeader =
+                              name === "Ro-Soccer" && (
+                                roSoccerHeadingsToHighlight.some(h => normalizedRule.includes(normalizeRuleText(h)))
+                              );
                             const isForzaHorizonHeader =
                               name === "Forza Horizon" &&
                               rule
                                 .trim()
                                 .toUpperCase()
                                 .includes("FORZA HORIZON GAME RULES");
-                            if (isKhetSectionHeader || isRoTerranceSectionHeader || isHeader) {
+                            if (isKhetSectionHeader || isRoTerranceSectionHeader || isRoSoccerSectionHeader || isHeader) {
                               // Choose emoji based on heading
                               let emoji = '⭐';
                               if (normalizedRule.includes('GENERAL RULES')) emoji = '📋';
@@ -1340,20 +1354,30 @@ const EventDetail = ({ eventData }) => {
                               else if (normalizedRule.includes('COMMON FOR PRELIMS')) emoji = '📋';
                               else if (normalizedRule.includes('FINALS RULES')) emoji = '🏆';
                               else if (normalizedRule.includes('PRELIMS RULES')) emoji = '🟢';
+                              // Ro-Soccer specific
+                              else if (name === "Ro-Soccer") {
+                                if (normalizedRule.includes('BOT SPECIFICATIONS')) emoji = '🤖';
+                                else if (normalizedRule.includes('GENERAL RULES')) emoji = '📋';
+                                else if (normalizedRule.includes('PRELIMS RULES')) emoji = '🟢';
+                                else if (normalizedRule.includes('SCORING FORMULA')) emoji = '➗';
+                                else if (normalizedRule.includes('BRICK PENALTY RULE')) emoji = '🧱';
+                                else if (normalizedRule.includes('RANKING CRITERIA')) emoji = '🏅';
+                                else if (normalizedRule.includes('KNOCKOUT & FINALS RULES')) emoji = '🏆';
+                              }
                               return (
                                 <h3
                                   key={index}
                                   style={{
-                                    color: (isKhetSectionHeader || isRoTerranceSectionHeader) ? '#ffc010' : '#ffc010',
+                                    color: '#ffc010',
                                     fontSize: 'clamp(15px, 3.5vw, 22px)',
                                     fontFamily: 'Press Start 2P',
-                                    fontWeight: (isKhetSectionHeader || isRoTerranceSectionHeader) ? 'bold' : 'normal',
+                                    fontWeight: 'bold',
                                     marginTop: index === 0 ? '0' : '28px',
                                     marginBottom: isForzaHorizonHeader ? '2px' : '18px',
                                     lineHeight: '1.5',
                                     textTransform: 'uppercase',
-                                    letterSpacing: (isKhetSectionHeader || isRoTerranceSectionHeader) ? '2.5px' : undefined,
-                                    textAlign: (isKhetSectionHeader || isRoTerranceSectionHeader) ? 'left' : undefined,
+                                    letterSpacing: '2.5px',
+                                    textAlign: 'left',
                                     display: 'flex',
                                     alignItems: 'center',
                                     gap: '10px',
