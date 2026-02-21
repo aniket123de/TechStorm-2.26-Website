@@ -669,9 +669,18 @@ const EventDetail = ({ eventData }) => {
   useEffect(() => {
     if (name === "KHET") {
       fetch("/khet-cloudinary-urls.json")
-        .then((res) => res.json())
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("Failed to fetch KHET images");
+          }
+          return res.json();
+        })
         .then((data) => {
           setKhetGalleryImages(Object.values(data));
+        })
+        .catch((err) => {
+          console.error("KHET gallery fetch error:", err);
+          setKhetGalleryImages([]);
         });
     }
   }, [name]);
@@ -787,6 +796,11 @@ const EventDetail = ({ eventData }) => {
                   </h1>
                 )}
                 <div className="heading-brush"></div>
+                {name === "KHET" && khetGalleryImages.length === 0 && (
+                  <div style={{color: '#ffc010', marginTop: 10, fontSize: 14}}>
+                    KHET gallery images failed to load. Please check your network or contact admin.
+                  </div>
+                )}
               </div>
             </div>
           </div>
