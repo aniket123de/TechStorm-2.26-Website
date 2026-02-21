@@ -1,8 +1,7 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const { User, ROLES } = require('../models/User');
-const { validateCredentials, parseEmail } = require('../utils/eventAbbreviation');
-const adminCredentials = require('../config/adminCredentials.json');
+const roleCredentials = require('../config/roleCredentials.json');
 const { asyncHandler } = require('../middleware/errorHandler');
 const { securityLogger } = require('../middleware/logger');
 
@@ -29,25 +28,26 @@ const generateToken = (userId, role, eventAbbr) => {
  */
 router.get('/events',
   asyncHandler(async (req, res) => {
-    const events = adminCredentials.events.map(event => ({
-      name: event.name,
-      abbreviation: event.abbreviation,
-      category: event.category,
-      coordinator: {
-        email: event.coordinator.email
-      },
-      volunteer: {
-        email: event.volunteer.email
-      }
+    const coordinators = roleCredentials.coordinator.map(coord => ({
+      name: coord.event,
+      email: coord.email,
+      role: 'coordinator'
+    }));
+
+    const volunteers = roleCredentials.volunteer.map(vol => ({
+      name: vol.event,
+      email: vol.email,
+      role: 'volunteer'
     }));
 
     res.json({
       message: 'Events retrieved successfully',
-      events,
+      coordinators,
+      volunteers,
       core: {
-        email: adminCredentials.core.email
+        email: roleCredentials.core[0].email
       },
-      total: events.length
+      total: coordinators.length
     });
   })
 );
@@ -71,26 +71,57 @@ router.post('/login',
       });
     }
 
-    // Parse email to get role and event abbreviation
-    const parsed = parseEmail(email);
-    
-    console.log('📧 Parsed email:', parsed);
-    
-    if (!parsed) {
-      console.log('❌ Invalid email format');
-      return res.status(401).json({
-        error: 'Authentication failed',
-        message: 'Invalid email format for admin access'
-      });
+    // Normalize email to lowercase
+    const normalizedEmail = email.toLowerCase().trim();
+
+    // Find matching credentials
+    let credentialMatch = null;
+    let role = null;
+    let eventInfo = null;
+
+    // Check core
+    if (normalizedEmail === roleCredentials.core[0].email.toLowerCase()) {
+      if (password === roleCredentials.core[0].password) {
+        credentialMatch = roleCredentials.core[0];
+        role = 'core';
+      }
     }
 
-    // Validate credentials against the pattern
-    const validation = validateCredentials(email, password);
+    // Check coordinators
+    if (!credentialMatch) {
+      const coordinator = roleCredentials.coordinator.find(
+        c => c.email.toLowerCase() === normalizedEmail
+      );
+      if (coordinator && password === coordinator.password) {
+        credentialMatch = coordinator;
+        role = 'coordinator';
+        eventInfo = {
+          name: coordinator.event,
+          abbr: coordinator.eventAbbr
+        };
+      }
+    }
+
+    // Check volunteers
+    if (!credentialMatch) {
+      const volunteer = roleCredentials.volunteer.find(
+        v => v.email.toLowerCase() === normalizedEmail
+      );
+      if (volunteer && password === volunteer.password) {
+        credentialMatch = volunteer;
+        role = 'volunteer';
+        eventInfo = {
+          name: volunteer.event,
+          abbr: volunteer.eventAbbr
+        };
+      }
+    }
+
+    console.log('📧 Credential match:', credentialMatch ? 'Found' : 'Not found');
+    console.log('👤 Role:', role);
     
-    console.log('✅ Validation result:', validation);
-    
-    if (!validation.valid) {
-      console.log('❌ Invalid credentials:', validation.error);
+    if (!credentialMatch) {
+      console.log('❌ Invalid credentials');
       return res.status(401).json({
         error: 'Authentication failed',
         message: 'Invalid credentials'
@@ -98,29 +129,23 @@ router.post('/login',
     }
 
     // Find or create user in database
-    let user = await User.findOne({ email: email.toLowerCase() });
+    let user = await User.findOne({ email: normalizedEmail });
     
     if (!user) {
       // Create new admin user
-      const eventInfo = parsed.eventAbbr 
-        ? adminCredentials.events.find(e => e.abbreviation === parsed.eventAbbr)
-        : null;
-
       user = new User({
-        name: parsed.role === 'core' 
-          ? 'Core Administrator' 
-          : `${parsed.role === 'coordinator' ? 'Coordinator' : 'Volunteer'} - ${eventInfo ? eventInfo.name : 'Unknown Event'}`,
-        email: email.toLowerCase(),
+        name: credentialMatch.name,
+        email: normalizedEmail,
         password: password,
-        role: parsed.role,
-        eventAbbr: parsed.eventAbbr,
+        role: role,
+        eventAbbr: eventInfo ? eventInfo.abbr : null,
         eventName: eventInfo ? eventInfo.name : null,
         department: 'Admin',
         isActive: true
       });
 
       await user.save();
-      console.log(`✅ New admin user created: ${email} (${parsed.role})`);
+      console.log(`✅ New admin user created: ${normalizedEmail} (${role})`);
     } else {
       // Verify user is not locked
       if (user.isLocked) {
@@ -158,7 +183,7 @@ router.post('/login',
       permissions: user.getPermissions()
     };
 
-    console.log(`✅ Admin login successful: ${email} (${user.role})`);
+    console.log(`✅ Admin login successful: ${normalizedEmail} (${user.role})`);
 
     res.json({
       message: 'Login successful',
@@ -242,40 +267,6 @@ router.post('/logout',
     // This endpoint is for logging purposes
     res.json({
       message: 'Logout successful'
-    });
-  })
-);
-
-/**
- * Get admin credentials for a specific event (debugging only - should be removed in production)
- * GET /api/admin-auth/credentials/:eventAbbr
- */
-router.get('/credentials/:eventAbbr',
-  asyncHandler(async (req, res) => {
-    const { eventAbbr } = req.params;
-    
-    // Only allow in development
-    if (process.env.NODE_ENV === 'production') {
-      return res.status(403).json({
-        error: 'Not available in production',
-        message: 'This endpoint is not available in production'
-      });
-    }
-
-    const event = adminCredentials.events.find(e => e.abbreviation === eventAbbr);
-    
-    if (!event) {
-      return res.status(404).json({
-        error: 'Event not found',
-        message: `No event found with abbreviation: ${eventAbbr}`
-      });
-    }
-
-    res.json({
-      event: event.name,
-      abbreviation: event.abbreviation,
-      coordinator: event.coordinator,
-      volunteer: event.volunteer
     });
   })
 );
