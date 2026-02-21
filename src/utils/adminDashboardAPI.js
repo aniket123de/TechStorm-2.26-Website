@@ -247,7 +247,7 @@ export const getEvents = async () => {
   }
 };
 
-export default {
+const adminDashboardAPI = {
   getDashboardStats,
   getRegistrations,
   getRegistrationById,
@@ -257,3 +257,5 @@ export default {
   createRegistration,
   getEvents
 };
+
+export default adminDashboardAPI;

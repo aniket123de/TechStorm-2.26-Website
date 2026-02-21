@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { getRegistrations, updateRegistration, updateRegistrationStatus, deleteRegistration, getEvents, createRegistration } from '../../../utils/adminDashboardAPI';
 import './RoleDashboard.css';
@@ -28,22 +28,7 @@ const RegistrationsPage = () => {
   // Extract role from pathname
   const role = location.pathname.split('/')[2];
 
-  useEffect(() => {
-    const userData = localStorage.getItem('adminUser');
-    if (userData) {
-      setUser(JSON.parse(userData));
-    }
-    
-    // Fetch initial data
-    fetchEvents();
-    fetchRegistrations();
-  }, []);
-
-  useEffect(() => {
-    // Refetch when filters change
-    fetchRegistrations();
-  }, [selectedEvent, searchTerm]);
-
+  // Define fetch functions before useEffect hooks
   const fetchEvents = async () => {
     try {
       const result = await getEvents();
@@ -54,7 +39,7 @@ const RegistrationsPage = () => {
     }
   };
 
-  const fetchRegistrations = async () => {
+  const fetchRegistrations = useCallback(async () => {
     try {
       setLoading(true);
       const params = {};
@@ -83,7 +68,23 @@ const RegistrationsPage = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedEvent, searchTerm]);
+
+  useEffect(() => {
+    const userData = localStorage.getItem('adminUser');
+    if (userData) {
+      setUser(JSON.parse(userData));
+    }
+    
+    // Fetch initial data
+    fetchEvents();
+    fetchRegistrations();
+  }, [fetchRegistrations]);
+
+  useEffect(() => {
+    // Refetch when filters change
+    fetchRegistrations();
+  }, [selectedEvent, searchTerm, fetchRegistrations]);
 
   // Dummy registration data - REMOVED, now fetching from API
   // const [registrations, setRegistrations] = useState([...]);
