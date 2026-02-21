@@ -795,7 +795,7 @@ const EventDetail = ({ eventData }) => {
         <div className="container">
           <div className="row">
             <div className="col-12">
-<<<<<<< HEAD
+
                 <div className="event-name-heading">
                   <h1 className="event-title-white">{name.split(" ")[0]}</h1>
                   {name.split(" ").slice(1).join(" ") && (
@@ -815,7 +815,7 @@ const EventDetail = ({ eventData }) => {
                     </div>
                   )}
                 </div>
-=======
+
               <div className="event-name-heading">
                 <h1 className="event-title-white">{name.split(" ")[0]}</h1>
                 {name.split(" ").slice(1).join(" ") && (
@@ -833,7 +833,7 @@ const EventDetail = ({ eventData }) => {
                   </div>
                 )}
               </div>
->>>>>>> 2f501497d9884266c3f16c4606285429b34d5818
+
             </div>
           </div>
         </div>
