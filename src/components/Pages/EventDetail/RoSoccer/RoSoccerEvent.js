@@ -96,7 +96,7 @@ const RoSoccerEvent = () => {
       "PRELIMS RULES:",
       "Prelims & The knockout will be 4 minutes long.",
       "Scoring Formula:",
-      "    Total Score = (Number of Goals Ã— 15) â€“ Penalty Points",
+      "    Total Score = (Number of Goals x 15) - Penalty Points",
       "Brick Penalty Rule:",
       "    If a robot touches a brick marked -5 or -10, corresponding penalty seconds will be added to the total score.",
       "Ranking Criteria:",
