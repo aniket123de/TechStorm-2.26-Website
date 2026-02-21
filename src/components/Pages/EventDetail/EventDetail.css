@@ -149,8 +149,34 @@
     .entry-fee-section,
     .coordinators-section {
         background-size: cover !important;
-        background-position: center center !important;
+        background-position: center 30% !important;
         background-attachment: scroll !important;
+    }
+
+    /* Extra dimming layer on mobile so stretched/zoomed bg image looks atmospheric */
+    .about-event-section::after,
+    .faq-accordion-section::after,
+    .entry-fee-section::after,
+    .coordinators-section::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(10, 4, 20, 0.52);
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    /* Fix centered heading brushes on mobile — reset the absolute positioning
+       so margin: auto can do the centering instead */
+    .entry-heading .heading-brush,
+    .coordinator-heading .heading-brush,
+    .faq-heading .heading-brush {
+        position: relative !important;
+        left: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        margin: 10px auto 0 !important;
+        display: block !important;
     }
 }
 

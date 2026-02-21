@@ -761,10 +761,10 @@ const EventDetail = ({ eventData }) => {
         style={
           breadcrumbBg
             ? {
-                backgroundImage: `linear-gradient(rgba(26, 14, 34, 0.7), rgba(26, 14, 34, 0.7)), url(${breadcrumbBg})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }
+              backgroundImage: `linear-gradient(rgba(26, 14, 34, 0.7), rgba(26, 14, 34, 0.7)), url(${breadcrumbBg})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }
             : {}
         }
       >
@@ -1232,7 +1232,7 @@ const EventDetail = ({ eventData }) => {
                             if (
                               name === "Forza Horizon" &&
                               rule.trim().toUpperCase() ===
-                                "BASIC PARTICIPATION RULES:"
+                              "BASIC PARTICIPATION RULES:"
                             ) {
                               return (
                                 <div
@@ -1523,7 +1523,7 @@ const EventDetail = ({ eventData }) => {
                             const isRegistrationFeeHeader =
                               name === "Passion with Reels" &&
                               rule.trim().toLowerCase() ===
-                                "registration fees:";
+                              "registration fees:";
 
                             // Tech Hunt: highlight special headings
                             const isTechHuntSpecialHeading =
@@ -1671,7 +1671,7 @@ const EventDetail = ({ eventData }) => {
                                 (rule.trim().toUpperCase() ===
                                   "BOT SPECIFICATIONS:" ||
                                   rule.trim().toUpperCase() ===
-                                    "GENERAL RULES (COMMON FOR PRELIMS & FINALS):")) ||
+                                  "GENERAL RULES (COMMON FOR PRELIMS & FINALS):")) ||
                               (name === "Tech Hunt" &&
                                 [
                                   "round 1 (time warp trials)",
@@ -1700,7 +1700,7 @@ const EventDetail = ({ eventData }) => {
                               if (name === "Ro-Navigator") {
                                 icon =
                                   rule.trim().toUpperCase() ===
-                                  "BOT SPECIFICATIONS:"
+                                    "BOT SPECIFICATIONS:"
                                     ? "🔧"
                                     : "🤖";
                               } else if (name === "Tech Hunt") {
@@ -2382,46 +2382,101 @@ const EventDetail = ({ eventData }) => {
               <div className="entry-content">
                 {/* Check if event is free */}
                 {eventData.isFree ? (
-                  <div style={{ textAlign: "center", marginBottom: "40px" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      marginBottom: "40px",
+                    }}
+                  >
                     <div
-                      className="nes-container is-rounded"
                       style={{
-                        maxWidth: "500px",
-                        margin: "0 auto",
-                        padding: "30px",
-                        backgroundColor: "rgba(0, 255, 234, 0.08)",
-                        borderColor: "#00ffea",
+                        maxWidth: "480px",
+                        width: "100%",
+                        background: "rgba(0, 255, 234, 0.05)",
+                        border: "2px solid rgba(0, 255, 234, 0.4)",
+                        padding: "40px 32px",
+                        textAlign: "center",
+                        clipPath:
+                          "polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px))",
+                        position: "relative",
+                        boxShadow:
+                          "0 0 30px rgba(0,255,234,0.08), inset 0 0 20px rgba(0,255,234,0.02)",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        gap: "14px",
                       }}
                     >
-                      <i
-                        className="nes-icon trophy is-large"
+                      {/* Corner accent */}
+                      <div
                         style={{
-                          filter: "drop-shadow(0 0 8px #00ffea)",
-                          marginBottom: "16px",
-                          display: "block",
+                          position: "absolute",
+                          top: 0,
+                          right: 20,
+                          width: "20px",
+                          height: "20px",
+                          background: "#00ffea",
+                          clipPath: "polygon(100% 0, 0 100%, 100% 100%)",
                         }}
-                      ></i>
-                      <h3
+                      />
+                      {/* Trophy */}
+                      <div
                         style={{
+                          fontSize: "52px",
+                          lineHeight: 1,
+                          filter: "drop-shadow(0 0 14px rgba(0,255,234,0.7))",
+                        }}
+                      >
+
+                      </div>
+                      {/* Badge */}
+                      <div
+                        style={{
+                          background: "rgba(0,255,234,0.1)",
+                          border: "1px solid rgba(0,255,234,0.3)",
+                          padding: "4px 14px",
+                          fontFamily: "'Press Start 2P', monospace",
+                          fontSize: "7px",
+                          color: "rgba(0,255,234,0.65)",
+                          letterSpacing: "3px",
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        ENTRY REQUIREMENT
+                      </div>
+                      {/* Main text */}
+                      <div
+                        style={{
+                          fontFamily: "'Press Start 2P', monospace",
+                          fontSize: "clamp(14px, 3vw, 20px)",
                           color: "#00ffea",
-                          fontSize: "clamp(14px, 3vw, 22px)",
-                          fontFamily: "Press Start 2P",
-                          marginBottom: "15px",
-                          lineHeight: "1.5",
+                          textShadow:
+                            "0 0 12px rgba(0,255,234,0.6), 0 0 24px rgba(0,255,234,0.3)",
+                          letterSpacing: "3px",
+                          lineHeight: 1.4,
                         }}
                       >
                         FREE EVENT
-                      </h3>
-                      <p
+                      </div>
+                      {/* Sub text box */}
+                      <div
                         style={{
-                          color: "#aaa",
+                          background: "rgba(0,255,234,0.04)",
+                          border: "2px solid rgba(0,255,234,0.25)",
+                          borderLeft: "4px solid #00ffea",
+                          padding: "14px 22px",
+                          fontFamily: "Silkscreen, monospace",
                           fontSize: "13px",
-                          fontFamily: "Silkscreen, sans-serif",
-                          lineHeight: "1.6",
+                          color: "rgba(255,255,255,0.65)",
+                          letterSpacing: "1px",
+                          marginTop: "4px",
+                          width: "100%",
+                          boxSizing: "border-box",
                         }}
                       >
-                        No registration fee required!
-                      </p>
+                        No registration fee required
+                      </div>
                     </div>
                   </div>
                 ) : (
