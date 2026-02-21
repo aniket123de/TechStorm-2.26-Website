@@ -39,6 +39,7 @@ import rosumoBg from "../../../assets/img/event_specific_pictures/robotics/ro_co
 
 import SectionTitle from "../SectionTitle/SectionTitle";
 import RetroCard from "../RetroCard/RetroCard";
+import "./Matches.css";
 
 const Matches = () => {
   const [hoveredIndex, setHoveredIndex] = React.useState(null);
@@ -341,7 +342,7 @@ const Matches = () => {
   return (
     <section
       id="match"
-      className="match-area"
+      className="match-area matches-events-page"
       style={{
         background: "transparent",
         overflow: "visible",
@@ -393,7 +394,7 @@ const Matches = () => {
         {/* Auto-scrolling Pictures Album */}
         <div className="row mb-50">
           <div className="col-lg-12">
-            <div style={{ marginBottom: "30px" }}>
+            <div className="matches-gallery-head" style={{ marginBottom: "30px" }}>
               <h2
                 style={{
                   fontSize: "48px",
@@ -414,6 +415,7 @@ const Matches = () => {
                 </span>
               </h2>
               <div
+                className="matches-gallery-underline"
                 style={{
                   height: "4px",
                   width: "60px",
@@ -498,6 +500,7 @@ const Matches = () => {
 
               <div
                 ref={scrollContainerRef}
+                className="matches-gallery-scroll-wrap"
                 style={{
                   display: "flex",
                   gap: "20px",
@@ -559,6 +562,7 @@ const Matches = () => {
               <div
                 className="button-group filter-button-group"
                 style={{ textAlign: "center", marginBottom: "20px" }}
+                aria-label="Filter events"
               >
                 <button
                   className={activeFilter === "All" ? "active" : ""}

@@ -3,6 +3,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import Matches from '../../Utilities/Matches/Matches';
 import bgImage from '../../../assets/img/eventroute.png';
 import bgImageMobile from '../../../assets/img/1.png';
+import './Events.css';
 
 const MOBILE_BREAKPOINT = 768;
 
@@ -20,7 +21,7 @@ const Events = () => {
 
     return (
         <Fragment>
-            <div style={{
+            <div className="events-page-wrap" style={{
                 backgroundImage: `url(${bg})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center center',

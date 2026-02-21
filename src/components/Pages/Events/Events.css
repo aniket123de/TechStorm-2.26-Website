@@ -1,0 +1,6 @@
+/* Mobile: reduce top padding on Events page wrapper */
+@media (max-width: 768px) {
+  .events-page-wrap {
+    padding-top: 8px !important;
+  }
+}

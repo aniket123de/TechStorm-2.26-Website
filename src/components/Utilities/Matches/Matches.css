@@ -1,0 +1,60 @@
+/* Mobile-only: reduce excessive spacing on Events page */
+@media (max-width: 768px) {
+  .matches-events-page.match-area {
+    padding-bottom: 36px !important;
+  }
+
+  .matches-events-page .breadcrumb-area.schedule-breadcrumb {
+    padding: 12px 0 !important;
+    min-height: 72px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .matches-events-page .row.mb-50 {
+    margin-bottom: 20px !important;
+  }
+
+  .matches-events-page .matches-gallery-head {
+    margin-bottom: 14px !important;
+  }
+
+  .matches-events-page .matches-gallery-head h2 {
+    font-size: 26px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .matches-events-page .matches-gallery-head .matches-gallery-underline {
+    margin-bottom: 14px !important;
+  }
+
+  .matches-events-page .matches-gallery-scroll-wrap {
+    padding: 12px 0 !important;
+  }
+
+  .matches-events-page #events-grid.row.mb-30,
+  .matches-events-page #events-grid.row.align-items-center.mb-30 {
+    margin-bottom: 16px !important;
+  }
+
+  .matches-events-page .section-title.cta-title.mb-35 {
+    margin-bottom: 14px !important;
+  }
+
+  .matches-events-page .filter-button-group {
+    margin-bottom: 12px !important;
+  }
+
+  .matches-events-page .filter-button-group button {
+    padding: 6px 12px !important;
+    font-size: 10px !important;
+  }
+
+  .matches-events-page .row[style*="paddingTop"] {
+    padding-top: 10px !important;
+  }
+
+  .matches-events-page .col-lg-4.col-md-6.col-sm-6.mb-40,
+  .matches-events-page .col-sm-6.mb-40 {
+    margin-bottom: 20px !important;
+  }
+}
