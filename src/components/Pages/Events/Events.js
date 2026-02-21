@@ -1,15 +1,19 @@
 import React, { Fragment } from 'react';
 
 import Matches from '../../Utilities/Matches/Matches';
-import bgImage from '../../../assets/img/bg/match-bg3.png';
+import bgImage from '../../../assets/img/eventroute.png';
 
 
 const Events = () => {
 
     return (
         <Fragment>
-            <div style={{ 
-                background: `url(${bgImage}) repeat`,
+            <div style={{
+                backgroundImage: `url(${bgImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center center',
+                backgroundRepeat: 'no-repeat',
+                backgroundAttachment: 'fixed',
                 minHeight: '100vh',
                 paddingTop: '20px'
             }}>

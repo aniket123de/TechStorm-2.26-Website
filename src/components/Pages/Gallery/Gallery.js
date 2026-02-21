@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { cloudinaryImages } from '../../../config/cloudinary';
-import galleryBg from '../../../assets/img/bg/new-bg.png';
+import galleryBg from '../../../assets/img/eventroute.png';
 import SectionTitle from '../../Utilities/SectionTitle/SectionTitle';
 import {
   Pagination,

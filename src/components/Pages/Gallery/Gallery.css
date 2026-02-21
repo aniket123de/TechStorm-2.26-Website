@@ -7,7 +7,7 @@
 }
 
 .gallery-hero-video {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -15,6 +15,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   z-index: 0;
 }
 
@@ -57,7 +58,7 @@
   color: #ffbb00 !important;
 }
 
-.gallery-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+.gallery-breadcrumb .breadcrumb-item+.breadcrumb-item::before {
   color: rgb(255, 187, 1);
 }
 
@@ -67,6 +68,7 @@
 .gallery-hero-overlay section#work .row.align-items-center.mb-30 [class*="col-"] {
   overflow: visible;
 }
+
 .gallery-hero-overlay section#work.gallery-work-section {
   padding-bottom: 1rem;
 }
@@ -74,10 +76,12 @@
 .gallery-hero-overlay section#work .row.align-items-center.mb-30 {
   margin-bottom: 16px !important;
 }
+
 .gallery-heading-title.section-title,
 .gallery-heading-title.section-title h2 {
   overflow: visible;
 }
+
 .gallery-heading-title.section-title {
   margin-bottom: 0 !important;
 }
@@ -144,8 +148,13 @@
 }
 
 @keyframes gallery-toast-fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .gallery-toast {
@@ -159,13 +168,11 @@
     0 0 0 6px #ffc010,
     0 0 40px rgba(255, 192, 16, 0.3);
   padding: 8px;
-  clip-path: polygon(
-    0 12px, 12px 12px, 12px 0,
-    calc(100% - 12px) 0, calc(100% - 12px) 12px, 100% 12px,
-    100% calc(100% - 12px), calc(100% - 12px) calc(100% - 12px),
-    calc(100% - 12px) 100%, 12px 100%, 12px calc(100% - 12px),
-    0 calc(100% - 12px)
-  );
+  clip-path: polygon(0 12px, 12px 12px, 12px 0,
+      calc(100% - 12px) 0, calc(100% - 12px) 12px, 100% 12px,
+      100% calc(100% - 12px), calc(100% - 12px) calc(100% - 12px),
+      calc(100% - 12px) 100%, 12px 100%, 12px calc(100% - 12px),
+      0 calc(100% - 12px));
 }
 
 .gallery-toast-img {
@@ -215,13 +222,11 @@
     0 0 0 2px #0f0819,
     4px 4px 0 #0f0819,
     0 0 0 6px #ffc010;
-  clip-path: polygon(
-    0 10px, 10px 10px, 10px 0,
-    calc(100% - 10px) 0, calc(100% - 10px) 10px, 100% 10px,
-    100% calc(100% - 10px), calc(100% - 10px) calc(100% - 10px),
-    calc(100% - 10px) 100%, 10px 100%, 10px calc(100% - 10px),
-    0 calc(100% - 10px)
-  );
+  clip-path: polygon(0 10px, 10px 10px, 10px 0,
+      calc(100% - 10px) 0, calc(100% - 10px) 10px, 100% 10px,
+      100% calc(100% - 10px), calc(100% - 10px) calc(100% - 10px),
+      calc(100% - 10px) 100%, 10px 100%, 10px calc(100% - 10px),
+      0 calc(100% - 10px));
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
@@ -312,6 +317,7 @@
     width: calc(50% - 6px);
     margin: 0 3px 40px;
   }
+
   .gallery-retro .portfolio .grid.col4.gallery-grid-4x3,
   .gallery-grid-4x3 {
     row-gap: 40px;
@@ -324,13 +330,11 @@
   .gallery-retro .grid-item .box {
     border-width: 2px;
     box-shadow: 0 0 0 2px #0f0819, 3px 3px 0 #0f0819;
-    clip-path: polygon(
-      0 6px, 6px 6px, 6px 0,
-      calc(100% - 6px) 0, calc(100% - 6px) 6px, 100% 6px,
-      100% calc(100% - 6px), calc(100% - 6px) calc(100% - 6px),
-      calc(100% - 6px) 100%, 6px 100%, 6px calc(100% - 6px),
-      0 calc(100% - 6px)
-    );
+    clip-path: polygon(0 6px, 6px 6px, 6px 0,
+        calc(100% - 6px) 0, calc(100% - 6px) 6px, 100% 6px,
+        100% calc(100% - 6px), calc(100% - 6px) calc(100% - 6px),
+        calc(100% - 6px) 100%, 6px 100%, 6px calc(100% - 6px),
+        0 calc(100% - 6px));
   }
 
   .gallery-retro .grid-item .box-hover {
@@ -427,6 +431,7 @@
     margin: 0 0 48px;
     max-width: 100%;
   }
+
   .gallery-retro .portfolio .grid.col4.gallery-grid-4x3,
   .gallery-grid-4x3 {
     row-gap: 48px;
