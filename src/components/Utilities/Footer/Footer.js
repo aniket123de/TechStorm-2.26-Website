@@ -4,6 +4,14 @@ import logo from "../../../assets/img/logo/iplogo.png";
 
 const footerbg = cloudinaryImages.root.footerbg;
 
+const eventCategories = [
+  { label: "Coding", query: "Coding" },
+  { label: "Robotics", query: "Robotics" },
+  { label: "Gaming", query: "Gaming" },
+  { label: "Brain Teaser", query: "Brain Teaser" },
+  { label: "Creative", query: "Creative" },
+];
+
 const Footer = () => {
   return (
     <footer
@@ -16,26 +24,41 @@ const Footer = () => {
         position: "relative",
       }}
     >
-      {/* Gradient overlay — dark at top to blend with page above, then standard dim */}
+      {/* Top blend — page content always fades to #000 via the universal App overlay, footer picks up from there */}
       <div
         style={{
           position: "absolute",
           top: 0,
           left: 0,
           right: 0,
-          bottom: 0,
+          height: "60px",
           background:
-            "linear-gradient(to bottom, rgba(10,4,20,0.97) 0%, rgba(10,4,20,0.92) 6%, rgba(0,0,0,0.72) 18%, rgba(0,0,0,0.72) 100%)",
+            "linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 100%)",
+          zIndex: 1,
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Main dark overlay for the rest of the footer */}
+      <div
+        style={{
+          position: "absolute",
+          top: "60px",
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: "rgba(0,0,0,0.72)",
           zIndex: 0,
         }}
-      ></div>
+      />
 
       <div
         className="footer-top pt-70"
-        style={{ position: "relative", zIndex: 1, paddingBottom: "40px" }}
+        style={{ position: "relative", zIndex: 2, paddingBottom: "40px" }}
       >
         <div className="container">
           <div className="row">
+            {/* ── Column 1: Logo + Contact ── */}
             <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
               <div className="footer-widget mb-30">
                 <div className="f-widget-title mb-20">
@@ -63,25 +86,25 @@ const Footer = () => {
                     <li>
                       <i className="icon far fa-clock"></i>
                       <span>
-                        Phone :
-                        <Link to={"#callto:+91XXXXXXXXXX"}>
-                          {"+91 9038903850"}
-                        </Link>
+                        Phone :{" "}
+                        <a href="tel:+919038903850">{"+91 9038903850"}</a>
                       </span>
                     </li>
                     <li>
                       <i className="icon dripicons-mail"></i>
                       <span>
-                        {"Email :"}
-                        <Link to={"mailto:techstorm@bppimt.ac.in"}>
-                          {"techstorm@bppimt.ac.in"}
-                        </Link>
+                        {"Email :"}{" "}
+                        <a href="mailto:techforum@bppimt.ac.in">
+                          {"techforum@bppimt.ac.in"}
+                        </a>
                       </span>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
+
+            {/* ── Column 2: Our Links ── */}
             <div className="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-6">
               <div className="footer-widget mb-30 footer-links-section">
                 <div className="f-widget-title">
@@ -93,21 +116,26 @@ const Footer = () => {
                       <Link to={"/"}>{"Home"}</Link>
                     </li>
                     <li>
-                      <Link to={"/about"}> {"About Us"}</Link>
+                      <Link to={"/about"}>{"About Us"}</Link>
                     </li>
                     <li>
-                      <Link to={"/service"}> {"Services"} </Link>
+                      <Link to={"/events"}>{"Events"}</Link>
                     </li>
                     <li>
-                      <Link to={"/contact"}> {"Contact Us"}</Link>
+                      <Link to={"/gallery"}>{"Gallery"}</Link>
                     </li>
                     <li>
-                      <Link to={"/blog"}>{"Blog"} </Link>
+                      <Link to={"/schedule"}>{"Schedule"}</Link>
+                    </li>
+                    <li>
+                      <Link to={"/team"}>{"Teams"}</Link>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
+
+            {/* ── Column 3: Event Categories → /events?category=… ── */}
             <div className="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-6">
               <div className="footer-widget mb-30 footer-links-section">
                 <div className="f-widget-title">
@@ -116,68 +144,59 @@ const Footer = () => {
                 <div className="footer-link">
                   <ul>
                     <li>
-                      <Link to={"#"}>{"Coding Arena"}</Link>
+                      <Link to={"/events"}>{"All Events"}</Link>
                     </li>
-                    <li>
-                      <Link to={"#"}>{"Robo League"}</Link>
-                    </li>
-                    <li>
-                      <Link to={"#"}>{"Gaming Zone"}</Link>
-                    </li>
-                    <li>
-                      <Link to={"/faq"}>{"FAQ"}</Link>
-                    </li>
-                    <li>
-                      <Link to={"#"}>{"Rules & Guidelines"}</Link>
-                    </li>
+                    {eventCategories.map(({ label, query }) => (
+                      <li key={query}>
+                        <Link
+                          to={`/events?category=${encodeURIComponent(query)}`}
+                        >
+                          {label}
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
             </div>
+
+            {/* ── Column 4: Follow Us + Map ── */}
             <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12">
               <div className="footer-widget mb-30 footer-links-section">
                 <div className="f-widget-title">
                   <h2>{"Follow Us"}</h2>
                 </div>
                 <div className="footer-social-nes mt-30">
-                  <Link
-                    to={"https://www.facebook.com"}
+                  <a
+                    href="https://www.facebook.com/techstorm2.23"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="nes-social-icon"
                   >
                     <i className="nes-icon facebook is-medium"></i>
-                  </Link>
-                  <Link
-                    to={"https://www.instagram.com"}
+                  </a>
+                  <a
+                    href="https://www.instagram.com/techstorm_2.26/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="nes-social-icon"
                   >
                     <i className="nes-icon instagram is-medium"></i>
-                  </Link>
-                  <Link
-                    to={"https://www.linkedin.com"}
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/company/techstorm-2-23/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="nes-social-icon"
                   >
                     <i className="nes-icon linkedin is-medium"></i>
-                  </Link>
-                  <Link
-                    to={"mailto:techstorm@bppimt.ac.in"}
+                  </a>
+                  <a
+                    href="mailto:techforum@bppimt.ac.in"
                     className="nes-social-icon"
                   >
                     <i className="nes-icon gmail is-medium"></i>
-                  </Link>
-                  <Link
-                    to={"https://wa.me/919038903850"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="nes-social-icon"
-                  >
-                    <i className="nes-icon whatsapp is-medium"></i>
-                  </Link>
+                  </a>
                 </div>
               </div>
               <div
@@ -218,9 +237,10 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
       <div
         className="copyright-wrap"
-        style={{ position: "relative", zIndex: 1 }}
+        style={{ position: "relative", zIndex: 2 }}
       >
         <div className="container">
           <div className="row align-items-center">

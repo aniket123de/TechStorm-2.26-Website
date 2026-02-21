@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { cloudinaryImages } from "../../../config/cloudinary";
 
 // Import pixelated event mascots
@@ -46,6 +46,7 @@ const Matches = () => {
   const scrollContainerRef = useRef(null);
   const autoScrollInterval = useRef(null);
   const pauseTimeout = useRef(null);
+  const location = useLocation();
 
   // Start auto-scroll
   const startAutoScroll = () => {
@@ -79,6 +80,32 @@ const Matches = () => {
     startAutoScroll();
     return () => stopAutoScroll();
   }, []);
+
+  // Read ?category= query param and auto-apply filter on mount / URL change
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const cat = params.get("category");
+    if (cat) {
+      // Map URL query values to the filter button labels used by filterEvents()
+      const queryToFilter = {
+        Coding: "Coding",
+        Robotics: "Robotics",
+        Gaming: "Gaming",
+        "Brain Teaser": "Brain Teaser",
+        Creative: "Creative",
+      };
+      const mapped = queryToFilter[cat];
+      if (mapped) {
+        filterEvents(mapped);
+        // Scroll down to the events grid after a short delay so the page has rendered
+        setTimeout(() => {
+          const el = document.getElementById("events-grid");
+          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 300);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.search]);
 
   // Navigation handlers
   const handlePrevious = () => {
@@ -519,7 +546,7 @@ const Matches = () => {
           </div>
         </div>
 
-        <div className="row align-items-center mb-30">
+        <div id="events-grid" className="row align-items-center mb-30">
           <div className="col-lg-12">
             <SectionTitle titlefirst="Featured" titleSec="Events" />
           </div>
