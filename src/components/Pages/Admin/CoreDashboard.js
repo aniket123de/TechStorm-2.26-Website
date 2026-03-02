@@ -115,42 +115,60 @@ const CoreDashboard = () => {
   return (
     <div className="role-dashboard core-dashboard">
       <div className="dashboard-wrapper">
+
+        {/* ── Header ── */}
         <header className="dash-header">
-          <div>
-            <p className="dash-kicker">TechStorm Admin</p>
+          <div className="dash-header-left">
+            <p className="dash-kicker">TechStorm 2.26 · Admin Portal</p>
             <h1 className="dash-title">Core Dashboard</h1>
-            <p className="dash-subtitle">Full system access • CRUD operations</p>
+            <div className="dash-header-meta">
+              <span className="core-access-tag core-access-tag--full">Full Access</span>
+              <span className="core-access-tag core-access-tag--crud">CRUD Operations</span>
+            </div>
           </div>
-          <button className="logout-btn" onClick={handleLogout}>Log out</button>
+          <button className="logout-btn" onClick={handleLogout}>↩ Log out</button>
         </header>
 
-        <div className="stats-grid">
-          <div className="stat-card">
+        {/* ── Stats ── */}
+        <div className="stats-grid stats-grid--core">
+          <div className="stat-card stat-card--events">
+            <p className="stat-icon">📋</p>
             <p className="stat-label">Total Registrations</p>
             <p className="stat-value">{registrations.length}</p>
+            <p className="stat-hint">Across all events</p>
           </div>
-          <div className="stat-card">
+          <div className="stat-card stat-card--pending">
+            <p className="stat-icon">⏳</p>
             <p className="stat-label">Pending Payments</p>
             <p className="stat-value">{registrations.filter(r => r.paymentStatus === 'pending').length}</p>
+            <p className="stat-hint">Awaiting verification</p>
           </div>
-          <div className="stat-card">
+          <div className="stat-card stat-card--confirmed">
+            <p className="stat-icon">✅</p>
             <p className="stat-label">Confirmed</p>
             <p className="stat-value">{registrations.filter(r => r.registrationStatus === 'confirmed').length}</p>
+            <p className="stat-hint">Registration confirmed</p>
           </div>
-          <div className="stat-card">
+          <div className="stat-card stat-card--total">
+            <p className="stat-icon">🎮</p>
             <p className="stat-label">Events Active</p>
             <p className="stat-value">{events.length - 1}</p>
+            <p className="stat-hint">Live event tracks</p>
           </div>
         </div>
 
+        {/* ── Controls ── */}
         <div className="controls-bar">
-          <input
-            type="text"
-            placeholder="Search by name, email, or registration number..."
-            className="search-input"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+          <div className="coord-search-wrapper">
+            <span className="coord-search-icon">🔍</span>
+            <input
+              type="text"
+              placeholder="Search by name, email or registration number…"
+              className="search-input coord-search-input"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
           <select
             className="event-filter"
             value={selectedEvent}
@@ -162,73 +180,90 @@ const CoreDashboard = () => {
               </option>
             ))}
           </select>
-          <button className="add-btn" onClick={() => setShowAddModal(true)}>+ Add Registration</button>
+          <button className="add-btn" onClick={() => setShowAddModal(true)}>＋ Add Registration</button>
         </div>
 
+        {/* ── Table Section ── */}
         <div className="registrations-section">
-          <h2 className="section-title">Registrations ({filteredRegistrations.length})</h2>
-          
-          <div className="table-container">
-            <table className="data-table">
-              <thead>
-                <tr>
-                  <th>Reg. Number</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Contact</th>
-                  <th>College</th>
-                  <th>Event</th>
-                  <th>Payment</th>
-                  <th>Status</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredRegistrations.map(reg => (
-                  <tr key={reg._id}>
-                    <td className="reg-number">{reg.registrationNumber}</td>
-                    <td>{reg.fullName}</td>
-                    <td className="email-cell">{reg.emailAddress}</td>
-                    <td>{reg.contactNumber}</td>
-                    <td className="college-cell">{reg.collegeName}</td>
-                    <td><span className="event-badge">{reg.eventName}</span></td>
-                    <td>
-                      <select
-                        className={`status-select payment-${reg.paymentStatus}`}
-                        value={reg.paymentStatus}
-                        onChange={(e) => handleStatusChange(reg._id, 'paymentStatus', e.target.value)}
-                      >
-                        <option value="pending">Pending</option>
-                        <option value="confirmed">Confirmed</option>
-                        <option value="failed">Failed</option>
-                      </select>
-                    </td>
-                    <td>
-                      <select
-                        className={`status-select reg-${reg.registrationStatus}`}
-                        value={reg.registrationStatus}
-                        onChange={(e) => handleStatusChange(reg._id, 'registrationStatus', e.target.value)}
-                      >
-                        <option value="confirmed">Confirmed</option>
-                        <option value="pending">Pending</option>
-                        <option value="cancelled">Cancelled</option>
-                      </select>
-                    </td>
-                    <td>
-                      <div className="action-buttons">
-                        <button className="action-btn view-btn" onClick={() => handleView(reg)} title="View Details">👁️</button>
-                        <button className="action-btn edit-btn" onClick={() => handleEdit(reg)} title="Edit">✏️</button>
-                        <button className="action-btn delete-btn" onClick={() => handleDelete(reg._id)} title="Delete">🗑️</button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="core-section-header">
+            <div>
+              <h2 className="section-title">Registrations</h2>
+              <p className="section-subtitle">
+                Showing <strong>{filteredRegistrations.length}</strong> of <strong>{registrations.length}</strong> total registrations
+                {selectedEvent !== 'all' && <> · filtered by <strong>{selectedEvent}</strong></>}
+              </p>
+            </div>
           </div>
+
+          {filteredRegistrations.length === 0 ? (
+            <div className="coord-empty-state">
+              <p className="coord-empty-icon">🔍</p>
+              <p className="coord-empty-title">No registrations found</p>
+              <p className="coord-empty-body">Try adjusting your search or event filter.</p>
+            </div>
+          ) : (
+            <div className="table-container core-table-container">
+              <table className="data-table core-table">
+                <thead>
+                  <tr>
+                    <th className="col-reg">Reg. No.</th>
+                    <th className="col-name">Name</th>
+                    <th className="col-email">Email</th>
+                    <th className="col-contact">Contact</th>
+                    <th className="col-college">College</th>
+                    <th className="col-event">Event</th>
+                    <th className="col-payment">Payment</th>
+                    <th className="col-status">Status</th>
+                    <th className="col-actions">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredRegistrations.map(reg => (
+                    <tr key={reg._id}>
+                      <td><span className="reg-number cell-nowrap">{reg.registrationNumber}</span></td>
+                      <td><span className="name-cell">{reg.fullName}</span></td>
+                      <td><span className="email-cell">{reg.emailAddress}</span></td>
+                      <td><span className="cell-nowrap">{reg.contactNumber}</span></td>
+                      <td><span className="college-cell">{reg.collegeName}</span></td>
+                      <td className="event-cell"><span className="event-badge">{reg.eventName}</span></td>
+                      <td>
+                        <select
+                          className={`status-select payment-${reg.paymentStatus}`}
+                          value={reg.paymentStatus}
+                          onChange={(e) => handleStatusChange(reg._id, 'paymentStatus', e.target.value)}
+                        >
+                          <option value="pending">Pending</option>
+                          <option value="confirmed">Confirmed</option>
+                          <option value="failed">Failed</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select
+                          className={`status-select reg-${reg.registrationStatus}`}
+                          value={reg.registrationStatus}
+                          onChange={(e) => handleStatusChange(reg._id, 'registrationStatus', e.target.value)}
+                        >
+                          <option value="confirmed">Confirmed</option>
+                          <option value="pending">Pending</option>
+                          <option value="cancelled">Cancelled</option>
+                        </select>
+                      </td>
+                      <td>
+                        <div className="action-buttons">
+                          <button className="action-btn view-btn" onClick={() => handleView(reg)} title="View Details">👁️</button>
+                          <button className="action-btn edit-btn" onClick={() => handleEdit(reg)} title="Edit">✏️</button>
+                          <button className="action-btn delete-btn" onClick={() => handleDelete(reg._id)} title="Delete">🗑️</button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
 
-        {/* Modals */}
+        {/* ── Modals ── */}
         {viewingRegistration && (
           <ViewRegistrationModal
             registration={viewingRegistration}
@@ -250,6 +285,7 @@ const CoreDashboard = () => {
             onAdd={handleAddRegistration}
           />
         )}
+
       </div>
     </div>
   );
