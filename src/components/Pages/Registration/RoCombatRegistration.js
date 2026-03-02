@@ -41,7 +41,8 @@ const RoCombatRegistration = () => {
     paymentDate: '',
     paymentScreenshot: null,
     agreeToRules: false,
-    whatsappConfirmed: false
+    whatsappConfirmed: false,
+    referralCode: ''
   });
 
   const [errors, setErrors] = useState({});
@@ -620,6 +621,18 @@ const RoCombatRegistration = () => {
                     <li>Organizers' decision will be final and binding</li>
                     <li>Entry fee is non-refundable under any circumstances</li>
                   </ul>
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">Referral Code (If Any)</label>
+                  <input
+                    type="text"
+                    name="referralCode"
+                    value={formData.referralCode}
+                    onChange={handleFieldChange}
+                    className="retro-input"
+                    placeholder="Enter referral code (optional)"
+                  />
                 </div>
 
                 <div className="form-group">

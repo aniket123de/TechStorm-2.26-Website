@@ -41,6 +41,7 @@ const CreativeCanvasRegistration = () => {
     paymentReceipt: null,
     whatsappConfirmed: false,
     agreeToRules: false,
+    referralCode: '',
   });
 
   const [errors, setErrors] = useState({});
@@ -776,6 +777,18 @@ const CreativeCanvasRegistration = () => {
                       {errors.whatsappConfirmed}
                     </div>
                   )}
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">Referral Code (If Any)</label>
+                  <input
+                    type="text"
+                    name="referralCode"
+                    value={formData.referralCode}
+                    onChange={handleFieldChange}
+                    className="retro-input"
+                    placeholder="Enter referral code (optional)"
+                  />
                 </div>
 
                 <div className="form-group">

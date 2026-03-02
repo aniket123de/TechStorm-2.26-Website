@@ -42,7 +42,8 @@ const TechHuntRegistration = () => {
     whatsappConfirmed: false,
     declarationRulesRead: false,
     declarationFairPlay: false,
-    declarationLogistics: false
+    declarationLogistics: false,
+    referralCode: ''
   });
 
   const [errors, setErrors] = useState({});
@@ -644,6 +645,18 @@ const TechHuntRegistration = () => {
                     </span>
                   </label>
                   {errors.whatsappConfirmed && <div className="error-message">{errors.whatsappConfirmed}</div>}
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">Referral Code (If Any)</label>
+                  <input
+                    type="text"
+                    name="referralCode"
+                    value={formData.referralCode}
+                    onChange={handleFieldChange}
+                    className="retro-input"
+                    placeholder="Enter referral code (optional)"
+                  />
                 </div>
 
                 <div className="form-group">

@@ -41,7 +41,8 @@ const RoSumoRegistration = () => {
     paymentDate: '',
     paymentScreenshot: null,
     agreeToRules: false,
-    whatsappConfirmed: false
+    whatsappConfirmed: false,
+    referralCode: ''
   });
 
   const [errors, setErrors] = useState({});
@@ -619,6 +620,18 @@ const RoSumoRegistration = () => {
                       <li>Follow all safety guidelines during the competition</li>
                       <li>Organizers' decisions are final</li>
                     </ul>
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">Referral Code (If Any)</label>
+                    <input
+                      type="text"
+                      name="referralCode"
+                      value={formData.referralCode}
+                      onChange={handleFieldChange}
+                      className="retro-input"
+                      placeholder="Enter referral code (optional)"
+                    />
                   </div>
 
                   <div className="form-group">

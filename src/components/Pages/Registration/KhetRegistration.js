@@ -30,7 +30,8 @@ const KhetRegistration = () => {
     transactionId: '',
     transactionDate: '',
     paymentScreenshot: null,
-    declarationConfirmed: false
+    declarationConfirmed: false,
+    referralCode: ''
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -510,6 +511,18 @@ const KhetRegistration = () => {
                     <span className="checkbox-label">I have joined the official WhatsApp group</span>
                   </label>
                   {errors.joinWhatsappConfirmed && <div className="error-message">{errors.joinWhatsappConfirmed}</div>}
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">Referral Code (If Any)</label>
+                  <input
+                    type="text"
+                    name="referralCode"
+                    value={formData.referralCode}
+                    onChange={handleInputChange}
+                    className="retro-input"
+                    placeholder="Enter referral code (optional)"
+                  />
                 </div>
 
                 <div className="form-group">

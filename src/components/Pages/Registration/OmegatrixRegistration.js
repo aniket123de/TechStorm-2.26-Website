@@ -35,7 +35,8 @@ const OmegatrixRegistration = () => {
     declarationEligibility: false,
     declarationRounds: false,
     declarationCarryItems: false,
-    declarationRules: false
+    declarationRules: false,
+    referralCode: ''
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -553,6 +554,18 @@ const OmegatrixRegistration = () => {
                 </div>
 
                 <h2 className="form-section-title">&gt;&gt;&gt; Mandatory Declaration</h2>
+
+                <div className="form-group">
+                  <label className="form-label">Referral Code (If Any)</label>
+                  <input
+                    type="text"
+                    name="referralCode"
+                    value={formData.referralCode}
+                    onChange={handleInputChange}
+                    className="retro-input"
+                    placeholder="Enter referral code (optional)"
+                  />
+                </div>
 
                 <div className="form-group">
                   <label className="checkbox-group">

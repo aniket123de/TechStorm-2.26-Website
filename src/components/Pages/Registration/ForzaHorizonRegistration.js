@@ -30,7 +30,8 @@ const ForzaHorizonRegistration = () => {
     paymentMode: '',
     transactionId: '',
     paymentScreenshot: null,
-    whatsappConfirmed: false
+    whatsappConfirmed: false,
+    referralCode: ''
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -487,6 +488,18 @@ const ForzaHorizonRegistration = () => {
                       https://chat.whatsapp.com/LUkCLLC2wS83vAKLMvS9O7?mode=gi_t
                     </a>
                   </p>
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">Referral Code (If Any)</label>
+                  <input
+                    type="text"
+                    name="referralCode"
+                    value={formData.referralCode}
+                    onChange={handleInputChange}
+                    className="retro-input"
+                    placeholder="Enter referral code (optional)"
+                  />
                 </div>
 
                 <div className="form-group">
