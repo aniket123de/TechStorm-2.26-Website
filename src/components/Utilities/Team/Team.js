@@ -1,7 +1,8 @@
 import SectionTitle from "../SectionTitle/SectionTitle";
-import defaultAvatar from '../../../assets/img/team/IMG202602191108292-GouravPaul.png';
+import { cloudinaryImages } from '../../../config/cloudinary';
 import Member from "./Member";
 import AnimateOnScroll from '../ScrollAnimation/AnimateOnScroll';
+const defaultAvatar = cloudinaryImages.team.defaultAvatar;
 
 const teamData = [
     {

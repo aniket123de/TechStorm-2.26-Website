@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { cloudinaryImages } from "../../../config/cloudinary";
-import logo from "../../../assets/img/logo/iplogo.png";
+const logo = cloudinaryImages.logo.iplogo;
 
 const footerbg = cloudinaryImages.root.footerbg;
 

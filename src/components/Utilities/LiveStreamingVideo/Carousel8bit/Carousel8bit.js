@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { cloudinaryImages } from '../../../../config/cloudinary';
 import SectionTitle from '../../SectionTitle/SectionTitle';
 import './Carousel8bit.css';
-import highlightBg from '../../../../assets/img/eventbg.png';
+const highlightBg = cloudinaryImages.backgrounds.eventbg;
 
 // Carousel images from Cloudinary
 const c1 = cloudinaryImages.carousel.c1;

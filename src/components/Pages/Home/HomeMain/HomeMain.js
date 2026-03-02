@@ -10,7 +10,8 @@ import WorkGallery from '../../../Utilities/WorkGallery/WorkGallery';
 import Carousel8bit from '../../../Utilities/LiveStreamingVideo/Carousel8bit/Carousel8bit';
 import EventTicker from '../../../Utilities/EventTicker/EventTicker';
 import RetroGameConsole from '../../Gallery/RetroGameConsole';
-import retroArcadeBg from '../../../../assets/img/retroarcade.png';
+import { cloudinaryImages } from '../../../../config/cloudinary';
+const retroArcadeBg = cloudinaryImages.backgrounds.retroarcade;
 
 gsap.registerPlugin(ScrollTrigger);
 

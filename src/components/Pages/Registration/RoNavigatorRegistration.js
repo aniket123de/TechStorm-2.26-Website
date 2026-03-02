@@ -5,9 +5,10 @@ import Breadcrumb from '../../Utilities/Breadcrumb/Breadcrumb';
 import Stepper, { Step } from '../../Utilities/Stepper/Stepper';
 import RegistrationSuccess from './RegistrationSuccess';
 import './Registration.css';
-import qrCodeImage from '../../../assets/img/QrCode_For_Payment.jpg.jpeg';
+import { cloudinaryImages } from '../../../config/cloudinary';
+const qrCodeImage = cloudinaryImages.misc.qrCode;
 
-const roNavigatorBanner = "https://res.cloudinary.com/dyj3kxni2/image/upload/v1772034191/eoorox/event_specific_pictures/robotics/ro_navigator.png";
+const roNavigatorBanner = "https://res.cloudinary.com/ds3vepmkd/image/upload/f_auto,q_auto/v1/eoorox/event_specific_pictures/robotics/ro_navigator";
 
 const MIN_PARTICIPANTS = 2;
 const MAX_PARTICIPANTS = 5;

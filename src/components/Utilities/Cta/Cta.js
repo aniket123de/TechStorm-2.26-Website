@@ -1,6 +1,7 @@
-import bgImg from '../../../assets/img/eventbg.png';
+import { cloudinaryImages } from '../../../config/cloudinary';
 import Button8bit from '../Button/Button8bit';
 import './Cta.css';
+const bgImg = cloudinaryImages.backgrounds.eventbg;
 const ctaData = {
     bg: bgImg,
     title: 'Ready to Press Start? Register Now for TechStorm 2026!',

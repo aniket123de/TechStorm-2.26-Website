@@ -1,7 +1,7 @@
 import React from 'react';
 import RegistrationForm from './RegistrationForm';
 
-const codeBeeGif = "https://res.cloudinary.com/dyj3kxni2/image/upload/v1772034191/eoorox/event_specific_pictures/codebee/codebeefibg.gif";
+const codeBeeGif = "https://res.cloudinary.com/ds3vepmkd/image/upload/v1772034191/eoorox/event_specific_pictures/codebee/codebeefibg.gif";
 
 const CodeBeeRegistration = () => {
     const eventConfig = {

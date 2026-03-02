@@ -2,8 +2,8 @@ import React from "react";
 import EventDetail from "../EventDetail";
 import { getCloudinaryUrl } from "../../../../config/cloudinary";
 
-const creativeCanvas = "https://res.cloudinary.com/dyj3kxni2/image/upload/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/CREATIVE%20CANVAS.png";
-const creativeCanvasBanner = "https://res.cloudinary.com/dyj3kxni2/image/upload/v1772034191/eoorox/event_specific_pictures/creative/creative_canvas.png";
+const creativeCanvas = "https://res.cloudinary.com/ds3vepmkd/image/upload/f_auto,q_auto/v1/eoorox/PIXELATED%20EVENT%20MASCOTS/CREATIVE%20CANVAS";
+const creativeCanvasBanner = "https://res.cloudinary.com/ds3vepmkd/image/upload/f_auto,q_auto/v1/eoorox/event_specific_pictures/creative/creative_canvas";
 
 const CreativeCanvasEvent = () => {
   const eventData = {

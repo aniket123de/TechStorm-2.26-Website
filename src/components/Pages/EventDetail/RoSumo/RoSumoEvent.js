@@ -2,8 +2,8 @@ import React from "react";
 import EventDetail from "../EventDetail";
 import { getCloudinaryUrl } from "../../../../config/cloudinary";
 
-const roSumo = "https://res.cloudinary.com/dyj3kxni2/image/upload/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/rosumo.png";
-const roSumoBanner = "https://res.cloudinary.com/dyj3kxni2/image/upload/v1772034191/eoorox/event_specific_pictures/robotics/ro_sumo.png";
+const roSumo = "https://res.cloudinary.com/ds3vepmkd/image/upload/f_auto,q_auto/v1/eoorox/PIXELATED%20EVENT%20MASCOTS/rosumo";
+const roSumoBanner = "https://res.cloudinary.com/ds3vepmkd/image/upload/f_auto,q_auto/v1/eoorox/event_specific_pictures/robotics/ro_sumo";
 
 const RoSumoEvent = () => {
   const eventData = {

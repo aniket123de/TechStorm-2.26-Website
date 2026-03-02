@@ -5,15 +5,16 @@ import {
   useCallback,
   useLayoutEffect,
 } from "react";
-import aboutBg from "../../../assets/img/aboutandform.png";
-import aboutBgMobile from "../../../assets/img/3.png";
-import arcade0 from "../../../assets/img/arcade0.png";
-import arcade1 from "../../../assets/img/arcade1.png";
-import arcade2 from "../../../assets/img/arcade2.png";
-import arcade3 from "../../../assets/img/arcade3.png";
-import arcade4 from "../../../assets/img/arcade4.png";
+import { cloudinaryImages } from "../../../config/cloudinary";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+const aboutBg       = cloudinaryImages.backgrounds.aboutandform;
+const aboutBgMobile = cloudinaryImages.mobile.bg3;
+const arcade0       = cloudinaryImages.arcade.arcade0;
+const arcade1       = cloudinaryImages.arcade.arcade1;
+const arcade2       = cloudinaryImages.arcade.arcade2;
+const arcade3       = cloudinaryImages.arcade.arcade3;
+const arcade4       = cloudinaryImages.arcade.arcade4;
 
 /* ─────────────────────────────────────────
    EVENT PHOTOS — replace src with real URLs

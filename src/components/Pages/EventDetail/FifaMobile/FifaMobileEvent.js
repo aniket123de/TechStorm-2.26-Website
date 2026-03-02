@@ -2,8 +2,8 @@ import React from "react";
 import EventDetail from "../EventDetail";
 import { getCloudinaryUrl } from "../../../../config/cloudinary";
 
-const fifaMobile = "https://res.cloudinary.com/dyj3kxni2/image/upload/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/FIFA%20Mobile.png";
-const fifaMobileBanner = "https://res.cloudinary.com/dyj3kxni2/image/upload/v1772034191/eoorox/event_specific_pictures/games/fifa_mobile.png";
+const fifaMobile = "https://res.cloudinary.com/ds3vepmkd/image/upload/f_auto,q_auto/v1/eoorox/PIXELATED%20EVENT%20MASCOTS/FIFA%20Mobile";
+const fifaMobileBanner = "https://res.cloudinary.com/ds3vepmkd/image/upload/f_auto,q_auto/v1/eoorox/event_specific_pictures/games/fifa_mobile";
 
 const FifaMobileEvent = () => {
   const eventData = {

@@ -1,7 +1,8 @@
 import React from "react";
-import errorImg from '../../../assets/img/mystery.png';
-import errorHdImg from '../../../assets/img/herobg.png';
+import { cloudinaryImages } from '../../../config/cloudinary';
 import Button8bit from '../../Utilities/Button/Button8bit';
+const errorImg = cloudinaryImages.backgrounds.mystery;
+const errorHdImg = cloudinaryImages.backgrounds.herobg;
 const Error404 = () => {
     return (
         <React.Fragment>

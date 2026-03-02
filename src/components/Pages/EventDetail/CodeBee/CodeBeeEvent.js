@@ -2,8 +2,8 @@ import React from "react";
 import EventDetail from "../EventDetail";
 import { getCloudinaryUrl } from "../../../../config/cloudinary";
 
-const codeBee = "https://res.cloudinary.com/dyj3kxni2/image/upload/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/CODE%20BEE.png";
-const codeBeeGif = "https://res.cloudinary.com/dyj3kxni2/image/upload/v1772034191/eoorox/event_specific_pictures/codebee/codebeefibg.gif";
+const codeBee = "https://res.cloudinary.com/ds3vepmkd/image/upload/f_auto,q_auto/v1/eoorox/PIXELATED%20EVENT%20MASCOTS/CODE%20BEE";
+const codeBeeGif = "https://res.cloudinary.com/ds3vepmkd/image/upload/v1772132869/codebeefibg_bdvugl.gif";
 
 const CodeBeeEvent = () => {
   const galleryImages = [

@@ -1,8 +1,8 @@
 import React from "react";
 import EventDetail from "../EventDetail";
 
-const forzaHorizon = "https://res.cloudinary.com/dyj3kxni2/image/upload/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/FORZA%20HORIZON.png";
-const forzaHorizonBanner = "https://res.cloudinary.com/dyj3kxni2/image/upload/v1772034191/eoorox/event_specific_pictures/games/forza_horizon.png";
+const forzaHorizon = "https://res.cloudinary.com/ds3vepmkd/image/upload/f_auto,q_auto/v1/eoorox/PIXELATED%20EVENT%20MASCOTS/FORZA%20HORIZON";
+const forzaHorizonBanner = "https://res.cloudinary.com/ds3vepmkd/image/upload/f_auto,q_auto/v1/eoorox/event_specific_pictures/games/forza_horizon";
 
 const ForzaHorizonEvent = () => {
   const eventData = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import RegistrationForm from './RegistrationForm';
 
-const hackStormBanner = "https://res.cloudinary.com/dyj3kxni2/image/upload/v1772034191/eoorox/event_specific_pictures/hackstorm/hstorm.png";
+const hackStormBanner = "https://res.cloudinary.com/ds3vepmkd/image/upload/f_auto,q_auto/v1/eoorox/event_specific_pictures/hackstorm/hstorm";
 
 const HackStormRegistration = () => {
     const eventConfig = {

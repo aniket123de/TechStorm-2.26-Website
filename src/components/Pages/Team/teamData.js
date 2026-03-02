@@ -4,39 +4,39 @@
  * Images hosted on Cloudinary - using direct URLs for reliability.
  */
 
-// Cloudinary base URL - direct access without transformations for maximum reliability
-const cloudinaryBase = 'https://res.cloudinary.com/dyj3kxni2/image/upload';
+// Cloudinary base URL - using f_auto,q_auto for optimal format/quality via CDN
+const cloudinaryBase = 'https://res.cloudinary.com/ds3vepmkd/image/upload/f_auto,q_auto/v1/eoorox';
 
-// Core Team Member Images from Cloudinary (direct URLs)
-const aniketDeImg = `${cloudinaryBase}/v1771534189/eoorox/team/1000507264~2%20-%20Aniket%20De.png`;
-const bapanBanikImg = `${cloudinaryBase}/v1771534211/eoorox/team/IMG_20260216_202234%20-%20Bapan%20Banik.png`;
-const anikPaulImg = `${cloudinaryBase}/v1771534195/eoorox/team/file_00000000fb6471faad0fa22d7155287b%20-%20Anik%20Paul.png`;
-const pushkarShawImg = `${cloudinaryBase}/v1771534223/eoorox/team/photo__%20-%20PUSHKAR%20IT3065.png`;
-const srijitaDuttaImg = `${cloudinaryBase}/v1771534199/eoorox/team/IMG-20260218-WA0018(2)%20-%20SRIJITA%20ECE3086.png`;
-const soumiliSahaImg = `${cloudinaryBase}/v1771534216/eoorox/team/IMG_20260218_203358%20-%20Soumili%20Saha.png`;
-const sohamSahaImg = `${cloudinaryBase}/v1771534198/eoorox/team/IMG-20251221-WA0027%20-%20SohamSaha.png`;
-const soumadeepLayekImg = `${cloudinaryBase}/v1771534230/eoorox/team/WhatsApp%20Image%202026-02-18%20at%209.24.42%20PM%20-%20Soumadeep%20Layek.png`;
-const gouravPaulImg = `${cloudinaryBase}/v1771534202/eoorox/team/IMG202602191108292-GouravPaul.png`;
-const saptarshiGhoshImg = `${cloudinaryBase}/v1771534194/eoorox/team/file_00000000d1fc71faa8882c412c66c7bd%20-%20Saptarshi%20Ghosh.png`;
-const harshSinghImg = `${cloudinaryBase}/v1771534222/eoorox/team/IMG_7070%20-%20Harsh%20Singh.png`;
-const prantikGhoshImg = `${cloudinaryBase}/v1771534235/eoorox/team/WhatsApp%20Image%202026-02-19%20at%2010.17.06%20AM%20-%20Prantik%20Ghosh.png`;
-const gauravChaudharyImg = `${cloudinaryBase}/v1771534217/eoorox/team/IMG_20260218_204930%20-%20Gaurav%20Kumar.png`;
-const shreyaSahaImg = `${cloudinaryBase}/v1771534204/eoorox/team/IMG_20250702_221316%20-%20SHREYA%20ECE3066.png`;
-const saniaDharImg = `${cloudinaryBase}/v1771534233/eoorox/team/WhatsApp%20Image%202026-02-19%20at%2010.02.29%20AM%20copy%20-%20Sania%20Dhar.png`;
-const oliviaSikderImg = `${cloudinaryBase}/v1771534206/eoorox/team/IMG_20251221_232659%20-%20OLIVIA%20CSE3084.png`;
-const gourabDeyImg = `${cloudinaryBase}/v1771534196/eoorox/team/Goyurab%20Dey%20-%20MCA%20-%20GOURAB%20DEY%20MCA4039.png`;
-const adityaChoubeyImg = `${cloudinaryBase}/v1771534215/eoorox/team/IMG_20260218_201846%20-%20ADITYA%20CHOUBEY.png`;
-const krishnaKaliImg = `${cloudinaryBase}/v1771534200/eoorox/team/IMG-20260219-WA0005-Krishnakali.png`;
-const debaditoImg = `${cloudinaryBase}/v1771534193/eoorox/team/Debadrito.png`;
-const shreyaJhaImg = `${cloudinaryBase}/v1771761543/IMG_20251214_033807.jpg_-_Shreya_Jha_ggscfa.png`;
-const ankitaAmanImg = `${cloudinaryBase}/v1771534220/eoorox/team/IMG_20260219_151927%20-%20Ankita%20Aman.png`;
-const abhishekKumarImg = `${cloudinaryBase}/v1771534191/eoorox/team/ABHISHEK%20PHOTO%20-%20Abhishek%20Kumar.png`;
-const protyoyBhandaryImg = `${cloudinaryBase}/v1771534228/eoorox/team/Protyoy.png`;
-const pranayChatterjeeImg = `${cloudinaryBase}/v1771534225/eoorox/team/Pranay.png`;
-const souvikDeyImg = `${cloudinaryBase}/v1771534219/eoorox/team/IMG_20260219_130801%20-%20Souvik%20Dey.png`;
-const shivamKumarImg = `${cloudinaryBase}/v1771534190/eoorox/team/1771488293669%20-%20Shivam%20Kumar.png`;
-const adrishBasakImg = `${cloudinaryBase}/v1771534208/eoorox/team/IMG_20251226_234300%20-%20Adrish%20Basak.png`;
-const indraniBanikImg = `${cloudinaryBase}/v1771858328/indranibanik_myhv3i.png`;
+// Core Team Member Images from Cloudinary (matched to all-cloudinary-links.json)
+const aniketDeImg        = `${cloudinaryBase}/team/1000507264~2%20-%20Aniket%20De`;
+const bapanBanikImg      = `${cloudinaryBase}/team/IMG_20260216_202234%20-%20Bapan%20Banik`;
+const anikPaulImg        = `${cloudinaryBase}/team/file_00000000fb6471faad0fa22d7155287b%20-%20Anik%20Paul`;
+const pushkarShawImg     = `${cloudinaryBase}/team/photo__%20-%20PUSHKAR%20IT3065`;
+const srijitaDuttaImg    = `${cloudinaryBase}/team/IMG-20260218-WA0018(2)%20-%20SRIJITA%20ECE3086`;
+const soumiliSahaImg     = `${cloudinaryBase}/team/IMG_20260218_203358%20-%20Soumili%20Saha`;
+const sohamSahaImg       = `${cloudinaryBase}/team/IMG-20251221-WA0027%20-%20SohamSaha`;
+const soumadeepLayekImg  = `${cloudinaryBase}/team/WhatsApp%20Image%202026-02-18%20at%209.24.42%20PM%20-%20Soumadeep%20Layek`;
+const gouravPaulImg      = `${cloudinaryBase}/team/IMG202602191108292-GouravPaul`;
+const saptarshiGhoshImg  = `${cloudinaryBase}/team/file_00000000d1fc71faa8882c412c66c7bd%20-%20Saptarshi%20Ghosh`;
+const harshSinghImg      = `${cloudinaryBase}/team/IMG_7070%20-%20Harsh%20Singh`;
+const prantikGhoshImg    = `${cloudinaryBase}/team/WhatsApp%20Image%202026-02-19%20at%2010.17.06%20AM%20-%20Prantik%20Ghosh`;
+const gauravChaudharyImg = `${cloudinaryBase}/team/IMG_20260218_204930%20-%20Gaurav%20Kumar`;
+const shreyaSahaImg      = `${cloudinaryBase}/team/IMG_20250702_221316%20-%20SHREYA%20ECE3066`;
+const saniaDharImg       = `${cloudinaryBase}/team/WhatsApp%20Image%202026-02-19%20at%2010.02.29%20AM%20copy%20-%20Sania%20Dhar`;
+const oliviaSikderImg    = `${cloudinaryBase}/team/IMG_20251221_232659%20-%20OLIVIA%20CSE3084`;
+const gourabDeyImg       = `${cloudinaryBase}/team/Goyurab%20Dey%20-%20MCA%20-%20GOURAB%20DEY%20MCA4039`;
+const adityaChoubeyImg   = `${cloudinaryBase}/team/IMG_20260218_201846%20-%20ADITYA%20CHOUBEY`;
+const krishnaKaliImg     = `${cloudinaryBase}/team/IMG-20260219-WA0005-Krishnakali`;
+const debaditoImg        = `${cloudinaryBase}/team/Debadrito`;
+const shreyaJhaImg       = `https://res.cloudinary.com/ds3vepmkd/image/upload/v1772115072/eoorox/team/IMG_20251214_033807.jpg%20-%20Shreya%20Jha.webp`;
+const ankitaAmanImg      = `${cloudinaryBase}/team/IMG_20260219_151927%20-%20Ankita%20Aman`;
+const abhishekKumarImg   = `${cloudinaryBase}/team/ABHISHEK%20PHOTO%20-%20Abhishek%20Kumar`;
+const protyoyBhandaryImg = `${cloudinaryBase}/team/Protyoy`;
+const pranayChatterjeeImg= `${cloudinaryBase}/team/Pranay`;
+const souvikDeyImg       = `${cloudinaryBase}/team/IMG_20260219_130801%20-%20Souvik%20Dey`;
+const shivamKumarImg     = `${cloudinaryBase}/team/1771488293669%20-%20Shivam%20Kumar`;
+const adrishBasakImg     = `${cloudinaryBase}/team/IMG_20251226_234300%20-%20Adrish%20Basak`;
+const indraniBanikImg    = `https://res.cloudinary.com/ds3vepmkd/image/upload/v1772122548/indranibanik_urdv5c.webp`;
 
 export const coreMembers = [
     // FINANCE MANAGEMENT TEAM

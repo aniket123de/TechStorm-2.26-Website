@@ -7,41 +7,52 @@ import RetroCard from "../RetroCard/RetroCard";
 import "./Matches.css";
 
 // Cloudinary base URL
-const CLOUDINARY_BASE = "https://res.cloudinary.com/dyj3kxni2/image/upload";
+const CLOUDINARY_BASE = "https://res.cloudinary.com/ds3vepmkd/image/upload/f_auto,q_auto/v1/eoorox";
+
+// Inject Cloudinary resize transform into a URL (inserts after /upload/)
+const withTransform = (url, transform) =>
+  url ? url.replace('/upload/', `/upload/${transform}/`) : url;
+
+// Smaller card-background images (16:9, 600px wide)
+const cardThumb = (url) => withTransform(url, 'w_600,h_338,c_fill');
+// Smaller mascot logos (200px wide, keep aspect ratio)
+const logoThumb = (url) => withTransform(url, 'w_200,c_fit');
+// Smaller gallery strip thumbnails
+const galleryThumb = (url) => withTransform(url, 'w_300,h_200,c_fill');
 
 // Pixelated event mascots from Cloudinary
-const codeBee = `${CLOUDINARY_BASE}/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/CODE%20BEE.png`;
-const hackStorm = `${CLOUDINARY_BASE}/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/HACKSTORM.png`;
-const technomania = `${CLOUDINARY_BASE}/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/TECHNOMANIA.png`;
-const roNavigator = `${CLOUDINARY_BASE}/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/RO-NAVIGATOR.png`;
-const roCombat = `${CLOUDINARY_BASE}/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/RO-COMBAT.png`;
-const roSoccer = `${CLOUDINARY_BASE}/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/RO-SOCCER.png`;
-const roTerrance = `${CLOUDINARY_BASE}/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/RO-TERRANCE.png`;
-const techHunt = `${CLOUDINARY_BASE}/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/TECH%20HUNT.png`;
-const omegatrix = `${CLOUDINARY_BASE}/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/OMEGATRIX.png`;
-const creativeCanvas = `${CLOUDINARY_BASE}/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/CREATIVE%20CANVAS.png`;
-const passionWithReels = `${CLOUDINARY_BASE}/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/PASSION%20WITH%20REELS.png`;
-const khet = `${CLOUDINARY_BASE}/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/KHET.png`;
-const forzaHorizon = `${CLOUDINARY_BASE}/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/FORZA%20HORIZON.png`;
-const fifaMobile = `${CLOUDINARY_BASE}/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/FIFA%20Mobile.png`;
-const rosumo = `${CLOUDINARY_BASE}/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/rosumo.png`;
+const codeBee = `${CLOUDINARY_BASE}/PIXELATED%20EVENT%20MASCOTS/CODE%20BEE`;
+const hackStorm = `${CLOUDINARY_BASE}/PIXELATED%20EVENT%20MASCOTS/HACKSTORM`;
+const technomania = `${CLOUDINARY_BASE}/PIXELATED%20EVENT%20MASCOTS/TECHNOMANIA`;
+const roNavigator = `${CLOUDINARY_BASE}/PIXELATED%20EVENT%20MASCOTS/RO-NAVIGATOR`;
+const roCombat = `${CLOUDINARY_BASE}/PIXELATED%20EVENT%20MASCOTS/RO-COMBAT`;
+const roSoccer = `${CLOUDINARY_BASE}/PIXELATED%20EVENT%20MASCOTS/RO-SOCCER`;
+const roTerrance = `${CLOUDINARY_BASE}/PIXELATED%20EVENT%20MASCOTS/RO-TERRANCE`;
+const techHunt = `${CLOUDINARY_BASE}/PIXELATED%20EVENT%20MASCOTS/TECH%20HUNT`;
+const omegatrix = `${CLOUDINARY_BASE}/PIXELATED%20EVENT%20MASCOTS/OMEGATRIX`;
+const creativeCanvas = `${CLOUDINARY_BASE}/PIXELATED%20EVENT%20MASCOTS/CREATIVE%20CANVAS`;
+const passionWithReels = `${CLOUDINARY_BASE}/PIXELATED%20EVENT%20MASCOTS/PASSION%20WITH%20REELS`;
+const khet = `${CLOUDINARY_BASE}/PIXELATED%20EVENT%20MASCOTS/KHET`;
+const forzaHorizon = `${CLOUDINARY_BASE}/PIXELATED%20EVENT%20MASCOTS/FORZA%20HORIZON`;
+const fifaMobile = `${CLOUDINARY_BASE}/PIXELATED%20EVENT%20MASCOTS/FIFA%20Mobile`;
+const rosumo = `${CLOUDINARY_BASE}/PIXELATED%20EVENT%20MASCOTS/rosumo`;
 
 // Event card backgrounds from Cloudinary
-const codeBeeBg = `${CLOUDINARY_BASE}/v1772034191/eoorox/event_specific_pictures/codebee/codebeefibg.gif`;
-const hackStormBg = `${CLOUDINARY_BASE}/v1772034191/eoorox/event_specific_pictures/hackstorm/hstorm.png`;
-const technomaniaBg = `${CLOUDINARY_BASE}/v1772034191/eoorox/event_specific_pictures/technomania/technomania.png`;
-const roNavigatorBg = `${CLOUDINARY_BASE}/v1772034191/eoorox/event_specific_pictures/robotics/ro_navigator.png`;
-const roCombatBg = `${CLOUDINARY_BASE}/v1772034191/eoorox/event_specific_pictures/robotics/ro_combat.png`;
-const roSoccerBg = `${CLOUDINARY_BASE}/v1772034191/eoorox/event_specific_pictures/robotics/ro_soccer.png`;
-const roTerranceBg = `${CLOUDINARY_BASE}/v1772034191/eoorox/event_specific_pictures/robotics/ro_terrance.png`;
-const techHuntBg = `${CLOUDINARY_BASE}/v1772034191/eoorox/event_specific_pictures/techHunt/techhunt_banner.png`;
-const omegatrixBg = `${CLOUDINARY_BASE}/v1772034191/eoorox/event_specific_pictures/omegatrix/OMEGATRIX_banner.png`;
-const creativeCanvasBg = `${CLOUDINARY_BASE}/v1772034191/eoorox/event_specific_pictures/creative/creative_canvas.png`;
-const passionWithReelsBg = `${CLOUDINARY_BASE}/v1772034191/eoorox/event_specific_pictures/creative/passion_with_reels.png`;
-const khetBg = `${CLOUDINARY_BASE}/v1772034191/eoorox/event_specific_pictures/games/khet.png`;
-const forzaHorizonBg = `${CLOUDINARY_BASE}/v1772034191/eoorox/event_specific_pictures/games/forza_horizon.png`;
-const fifaMobileBg = `${CLOUDINARY_BASE}/v1772034191/eoorox/event_specific_pictures/games/fifa_mobile.png`;
-const rosumoBg = `${CLOUDINARY_BASE}/v1772034191/eoorox/event_specific_pictures/robotics/ro_sumo.png`;
+const codeBeeBg = `https://res.cloudinary.com/ds3vepmkd/image/upload/v1772133027/codebee_8bit_vjmv1v.gif`;
+const hackStormBg = `${CLOUDINARY_BASE}/event_specific_pictures/hackstorm/hstorm`;
+const technomaniaBg = `${CLOUDINARY_BASE}/event_specific_pictures/technomania/technomania`;
+const roNavigatorBg = `${CLOUDINARY_BASE}/event_specific_pictures/robotics/ro_navigator`;
+const roCombatBg = `${CLOUDINARY_BASE}/event_specific_pictures/robotics/ro_combat`;
+const roSoccerBg = `${CLOUDINARY_BASE}/event_specific_pictures/robotics/ro_soccer`;
+const roTerranceBg = `${CLOUDINARY_BASE}/event_specific_pictures/robotics/ro_terrance`;
+const techHuntBg = `${CLOUDINARY_BASE}/event_specific_pictures/techHunt/techhunt_banner`;
+const omegatrixBg = `${CLOUDINARY_BASE}/event_specific_pictures/omegatrix/OMEGATRIX_banner`;
+const creativeCanvasBg = `${CLOUDINARY_BASE}/event_specific_pictures/creative/creative_canvas`;
+const passionWithReelsBg = `${CLOUDINARY_BASE}/event_specific_pictures/creative/passion_with_reels`;
+const khetBg = `${CLOUDINARY_BASE}/event_specific_pictures/games/khet`;
+const forzaHorizonBg = `${CLOUDINARY_BASE}/event_specific_pictures/games/forza_horizon`;
+const fifaMobileBg = `${CLOUDINARY_BASE}/event_specific_pictures/games/fifa_mobile`;
+const rosumoBg = `${CLOUDINARY_BASE}/event_specific_pictures/robotics/ro_sumo`;
 
 const Matches = () => {
   const [hoveredIndex, setHoveredIndex] = React.useState(null);
@@ -91,7 +102,7 @@ const Matches = () => {
     if (cat) {
       // Map URL query values to the filter button labels used by filterEvents()
       const queryToFilter = {
-        Coding: "Technicals",
+        Technicals: "Technicals",
         Robotics: "Robotics",
         Gaming: "Gaming",
         "Brain Teaser": "Brain Teaser",
@@ -326,7 +337,7 @@ const Matches = () => {
       setFilteredEvents(allEvents);
     } else {
       const filtered = allEvents.filter((event) => {
-        if (category === "Coding") return event.category === "Technical";
+        if (category === "Technicals") return event.category === "Technical";
         if (category === "Robotics") return event.category === "Rover";
         if (category === "Gaming") return event.category === "Games";
         if (category === "Brain Teaser")
@@ -493,30 +504,30 @@ const Matches = () => {
                 }}
                 onMouseLeave={(e) => {
                   e.target.style.background = "#ffd700";
-                  e.target.style.transform = "translateY(-50%) scale(1)";
-                }}
-              >
-                ›
-              </button>
+                    e.target.style.transform = "translateY(-50%) scale(1)";
+                  }}
+                  >
+                  ›
+                  </button>
 
-              <div
-                ref={scrollContainerRef}
-                className="matches-gallery-scroll-wrap"
-                style={{
-                  display: "flex",
-                  gap: "20px",
-                  overflowX: "hidden",
-                  overflowY: "hidden",
-                  padding: "20px 0",
-                  scrollBehavior: "smooth",
-                  background: "rgba(26, 14, 34, 0.5)",
-                  border: "3px solid #ffd700",
-                  borderRadius: "10px",
-                  boxShadow: "0 0 20px rgba(255, 215, 0, 0.3)",
-                }}
-              >
-                {galleryImages.concat(galleryImages).map((image, index) => (
                   <div
+                  ref={scrollContainerRef}
+                  className="matches-gallery-scroll-wrap"
+                  style={{
+                    display: "flex",
+                    gap: "20px",
+                    overflowX: "hidden",
+                    overflowY: "hidden",
+                    padding: "20px 0",
+                    scrollBehavior: "smooth",
+                    background: "rgba(26, 14, 34, 0.5)",
+                    border: "3px solid #ffd700",
+                    borderRadius: "10px",
+                    boxShadow: "0 0 20px rgba(255, 215, 0, 0.3)",
+                  }}
+                  >
+                  {galleryImages.concat(galleryImages).map((image, index) => (
+                    <div
                     key={index}
                     style={{
                       minWidth: "300px",
@@ -531,85 +542,88 @@ const Matches = () => {
                       alignItems: "center",
                       justifyContent: "center",
                     }}
-                  >
+                    >
                     <img
-                      src={image}
+                      src={galleryThumb(image)}
                       alt={`Gallery ${index + 1}`}
+                      loading="lazy"
+                      decoding="async"
                       style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        imageRendering: "pixelated",
-                        filter: "drop-shadow(0 0 10px rgba(0, 255, 234, 0.5))",
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      imageRendering: "pixelated",
+                      filter: "drop-shadow(0 0 10px rgba(0, 255, 234, 0.5))",
                       }}
                     />
+                    </div>
+                  ))}
                   </div>
-                ))}
+                </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
 
-        <div id="events-grid" className="row align-items-center mb-30">
-          <div className="col-lg-12">
-            <SectionTitle titlefirst="Featured Events" className="gallery-heading-title" />
-          </div>
-          <div className="col-lg-12">
-            <div
-              className="my-masonry wow fadeInDown animated"
-              data-animation="fadeInRight"
-              data-delay=".4s"
-            >
-              <div
-                className="button-group filter-button-group"
-                style={{ textAlign: "center", marginBottom: "20px" }}
-                aria-label="Filter events"
-              >
-                <button
-                  className={activeFilter === "All" ? "active" : ""}
-                  onClick={() => filterEvents("All")}
+              <div id="events-grid" className="row align-items-center mb-30">
+                <div className="col-lg-12" style={{ textAlign: "center" }}>
+                <SectionTitle titlefirst="Featured Events" className="gallery-heading-title" />
+                </div>
+                <div className="col-lg-12">
+                <div
+                  className="my-masonry wow fadeInDown animated"
+                  data-animation="fadeInRight"
+                  data-delay=".4s"
+                  style={{ textAlign: "center" }}
                 >
-                  All
-                </button>
-                <button
-                  className={activeFilter === "Coding" ? "active" : ""}
-                  onClick={() => filterEvents("Coding")}
-                >
-                  Coding
-                </button>
-                <button
-                  className={activeFilter === "Robotics" ? "active" : ""}
-                  onClick={() => filterEvents("Robotics")}
-                >
-                  Robotics
-                </button>
-                <button
-                  className={activeFilter === "Gaming" ? "active" : ""}
-                  onClick={() => filterEvents("Gaming")}
-                >
-                  Gaming
-                </button>
-                <button
-                  className={activeFilter === "Brain Teaser" ? "active" : ""}
-                  onClick={() => filterEvents("Brain Teaser")}
-                >
-                  Brain Teaser
-                </button>
-                <button
-                  className={activeFilter === "Creative" ? "active" : ""}
-                  onClick={() => filterEvents("Creative")}
-                >
-                  Creative
-                </button>
+                  <div
+                  className="button-group filter-button-group"
+                  style={{ textAlign: "center", marginBottom: "20px" }}
+                  aria-label="Filter events"
+                  >
+                  <button
+                    className={activeFilter === "All" ? "active" : ""}
+                    onClick={() => filterEvents("All")}
+                  >
+                    All
+                  </button>
+                  <button
+                    className={activeFilter === "Technicals" ? "active" : ""}
+                    onClick={() => filterEvents("Technicals")}
+                  >
+                    Technicals
+                  </button>
+                  <button
+                    className={activeFilter === "Robotics" ? "active" : ""}
+                    onClick={() => filterEvents("Robotics")}
+                  >
+                    Robotics
+                  </button>
+                  <button
+                    className={activeFilter === "Gaming" ? "active" : ""}
+                    onClick={() => filterEvents("Gaming")}
+                  >
+                    Gaming
+                  </button>
+                  <button
+                    className={activeFilter === "Brain Teaser" ? "active" : ""}
+                    onClick={() => filterEvents("Brain Teaser")}
+                  >
+                    Brain Teaser
+                  </button>
+                  <button
+                    className={activeFilter === "Creative" ? "active" : ""}
+                    onClick={() => filterEvents("Creative")}
+                  >
+                    Creative
+                  </button>
+                  </div>
+                </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="row"
-          style={{ paddingTop: "20px", overflow: "visible" }}
-        >
-          {events.map((event, index) => {
+              <div
+                className="row"
+                style={{ paddingTop: "20px", overflow: "visible" }}
+              >
+                {events.map((event, index) => {
             const {
               logo,
               cardBg,
@@ -661,7 +675,7 @@ const Matches = () => {
                         left: 0,
                         width: "100%",
                         height: "100%",
-                        backgroundImage: `url(${cardBg})`,
+                        backgroundImage: `url(${cardThumb(cardBg)})`,
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                         opacity: hoveredIndex === index ? 0.4 : 0.3,
@@ -686,8 +700,10 @@ const Matches = () => {
                     >
                       {/* Mascot image */}
                       <img
-                        src={logo}
+                        src={logoThumb(logo)}
                         alt={name}
+                        loading="lazy"
+                        decoding="async"
                         style={{
                           maxWidth: "70%",
                           maxHeight: "65%",

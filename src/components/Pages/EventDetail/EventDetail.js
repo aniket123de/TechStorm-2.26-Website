@@ -1,14 +1,15 @@
                            
 import React, { Fragment, useEffect, useRef, useState } from "react";
-import coordinatorCardBg from "../../../assets/img/coordinatorcardbg.png";
-import entryFeeBg from "../../../assets/img/event-1.png";
-import entryFeeBgMobile from "../../../assets/img/4.png";
-import coordinatorsBg from "../../../assets/img/event-2.png";
-import coordinatorsBgMobile from "../../../assets/img/5.png";
+import { cloudinaryImages } from "../../../config/cloudinary";
 import { useHistory } from "react-router-dom";
 import "./EventDetail.css";
 import { Button } from "../../ui/8bit/button";
 import { Dialog, DialogContent } from "../../ui/8bit/dialog";
+const coordinatorCardBg = cloudinaryImages.backgrounds.coordinatorcardbg;
+const entryFeeBg = cloudinaryImages.backgrounds.event1;
+const entryFeeBgMobile = cloudinaryImages.mobile.bg4;
+const coordinatorsBg = cloudinaryImages.backgrounds.event2;
+const coordinatorsBgMobile = cloudinaryImages.mobile.bg5;
 
 const omegatrixHeadings = [
   "omegatrix 2.26 rules",
@@ -129,6 +130,7 @@ const EventDetail = ({ eventData }) => {
     coordinators,
     breadcrumbBg,
     registerButton,
+    devfolioSlug,
   } = eventData;
 
   // Refs for auto-scroll functionality
@@ -154,7 +156,7 @@ const EventDetail = ({ eventData }) => {
   // Lighter overlay on mobile so background images are more visible
   const sectionOverlay = isMobile
     ? "linear-gradient(to bottom, rgba(10,4,20,0.42) 0%, rgba(10,4,20,0.02) 22%, rgba(10,4,20,0.02) 78%, rgba(10,4,20,0.42) 100%)"
-    : "linear-gradient(to bottom, rgba(10,4,20,0.97) 0%, rgba(10,4,20,0.22) 18%, rgba(10,4,20,0.22) 82%, rgba(10,4,20,0.97) 100%)";
+    : "linear-gradient(to bottom, rgba(10,4,20,0.97) 0%, rgba(10,4,20,z.22) 18%, rgba(10,4,20,0.22) 82%, rgba(10,4,20,0.97) 100%)";
 
   // Event-specific coordinators data
   const eventCoordinators = {
@@ -1022,7 +1024,32 @@ const EventDetail = ({ eventData }) => {
                     flexWrap: "wrap",
                   }}
                 >
-                  {registerButton && (
+                  {devfolioSlug ? (
+                    <a
+                      href={`https://${devfolioSlug}.devfolio.co`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "8px",
+                        backgroundColor: "#3870FF",
+                        color: "#ffffff",
+                        fontSize: "13px",
+                        fontWeight: "600",
+                        padding: "0 24px",
+                        height: "42px",
+                        borderRadius: "4px",
+                        textDecoration: "none",
+                        letterSpacing: "0.5px",
+                        transition: "background-color 0.2s ease",
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#2558e0"}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#3870FF"}
+                    >
+                      Apply with Devfolio
+                    </a>
+                  ) : registerButton && (
                     <Button
                       variant="default"
                       onClick={

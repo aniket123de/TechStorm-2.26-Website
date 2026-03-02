@@ -5,9 +5,10 @@ import Breadcrumb from '../../Utilities/Breadcrumb/Breadcrumb';
 import Stepper, { Step } from '../../Utilities/Stepper/Stepper';
 import RegistrationSuccess from './RegistrationSuccess';
 import './Registration.css';
-import qrCodeImage from '../../../assets/img/QrCode_For_Payment.jpg.jpeg';
+import { cloudinaryImages } from '../../../config/cloudinary';
+const qrCodeImage = cloudinaryImages.misc.qrCode;
 
-const omegatrixBanner = "https://res.cloudinary.com/dyj3kxni2/image/upload/v1772034191/eoorox/event_specific_pictures/omegatrix/OMEGATRIX_banner.png";
+const omegatrixBanner = "https://res.cloudinary.com/ds3vepmkd/image/upload/f_auto,q_auto/v1/eoorox/event_specific_pictures/omegatrix/OMEGATRIX_banner";
 
 const YEAR_OPTIONS = ['1st Year', '2nd Year', '3rd Year', '4th Year'];
 const DEPARTMENT_OPTIONS = ["CSE", "IT", "ECE", "EE", "BCA", "MCA", "Others"];

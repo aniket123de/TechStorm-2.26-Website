@@ -2,8 +2,8 @@ import React from "react";
 import EventDetail from "../EventDetail";
 import { getCloudinaryUrl } from "../../../../config/cloudinary";
 
-const roNavigator = "https://res.cloudinary.com/dyj3kxni2/image/upload/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/RO-NAVIGATOR.png";
-const roNavigatorBanner = "https://res.cloudinary.com/dyj3kxni2/image/upload/v1772034191/eoorox/event_specific_pictures/robotics/ro_navigator.png";
+const roNavigator = "https://res.cloudinary.com/ds3vepmkd/image/upload/f_auto,q_auto/v1/eoorox/PIXELATED%20EVENT%20MASCOTS/RO-NAVIGATOR";
+const roNavigatorBanner = "https://res.cloudinary.com/ds3vepmkd/image/upload/f_auto,q_auto/v1/eoorox/event_specific_pictures/robotics/ro_navigator";
 
 const RoNavigatorEvent = () => {
   const eventData = {

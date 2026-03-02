@@ -1,8 +1,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { cloudinaryImages } from '../../../config/cloudinary';
-import galleryBg from '../../../assets/img/eventroute.png';
-import galleryBgMobile from '../../../assets/img/1.png';
+const galleryBg = cloudinaryImages.backgrounds.eventroute;
+const galleryBgMobile = cloudinaryImages.mobile.bg1;
 import SectionTitle from '../../Utilities/SectionTitle/SectionTitle';
 import {
   Pagination,
@@ -60,6 +60,11 @@ const galleryImgs = [
 ];
 
 const ITEMS_PER_PAGE = 12; /* 4 columns x 3 rows */
+
+// Inject Cloudinary thumbnail transformation for grid display
+// Keeps full-res URL for the toast preview
+const getThumbnailUrl = (url) =>
+  url.replace('/upload/', '/upload/w_400,h_300,c_fill,');
 
 const getPageNumbers = (currentPage, totalPages) => {
   if (totalPages <= 6) {
@@ -168,7 +173,12 @@ const Gallery = () => {
                             className="popup-image gallery-image-trigger"
                             onClick={(e) => handleImageClick(e, thumb)}
                           >
-                            <img src={thumb} alt="Gallery" />
+                            <img
+                              src={getThumbnailUrl(thumb)}
+                              alt="Gallery"
+                              loading="lazy"
+                              decoding="async"
+                            />
                           </a>
                         </div>
                       </div>

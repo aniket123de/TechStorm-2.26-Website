@@ -1,9 +1,10 @@
 import React, { Fragment, useEffect, useState } from 'react';
 
 import Matches from '../../Utilities/Matches/Matches';
-import bgImage from '../../../assets/img/eventroute.png';
-import bgImageMobile from '../../../assets/img/1.png';
+import { cloudinaryImages } from '../../../config/cloudinary';
 import './Events.css';
+const bgImage = cloudinaryImages.backgrounds.eventroute;
+const bgImageMobile = cloudinaryImages.mobile.bg1;
 
 const MOBILE_BREAKPOINT = 768;
 

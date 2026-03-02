@@ -12,7 +12,7 @@ const TrendingData = [
         thumb: img1,
         tag: 'Coding',
         label: 'Hack Storm',
-        description: '24-hr Hackathon'
+        description: '10-hr Hackathon'
     },
     {
         id: '2',

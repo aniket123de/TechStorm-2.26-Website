@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import ReactDOM from "react-dom";
-import arcadeVideo from "../../../../assets/arcade.mp4";
+const arcadeVideo = "https://github.com/aniket123de/TechStorm-2.26-Website/releases/download/Video/arcade.mp4";
 
 /* ─── Pixel Coin SVG ─── */
 function CoinIcon({ size = 22 }) {

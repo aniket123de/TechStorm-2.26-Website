@@ -2,8 +2,8 @@ import React from "react";
 import EventDetail from "../EventDetail";
 import { getCloudinaryUrl } from "../../../../config/cloudinary";
 
-const passionWithReels = "https://res.cloudinary.com/dyj3kxni2/image/upload/v1772034548/eoorox/PIXELATED%20EVENT%20MASCOTS/PASSION%20WITH%20REELS.png";
-const passionWithReelsBanner = "https://res.cloudinary.com/dyj3kxni2/image/upload/v1772034191/eoorox/event_specific_pictures/creative/passion_with_reels.png";
+const passionWithReels = "https://res.cloudinary.com/ds3vepmkd/image/upload/f_auto,q_auto/v1/eoorox/PIXELATED%20EVENT%20MASCOTS/PASSION%20WITH%20REELS";
+const passionWithReelsBanner = "https://res.cloudinary.com/ds3vepmkd/image/upload/f_auto,q_auto/v1/eoorox/event_specific_pictures/creative/passion_with_reels";
 
 const PassionWithReelsEvent = () => {
   // Convert themed rules array to plain strings for EventDetail.js rendering

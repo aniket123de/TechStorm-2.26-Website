@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
-// import { Link } from 'react-router-dom';
-import heroBg from '../../../assets/img/herobg.png';
-// import SectionTitle from '../../Utilities/SectionTitle/SectionTitle';
+import { cloudinaryImages } from '../../../config/cloudinary';
 import './Schedule.css';
+const heroBg = cloudinaryImages.backgrounds.herobg;
 
 // const scheduleData = {
 //     day1: {

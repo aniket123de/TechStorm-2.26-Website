@@ -1,5 +1,6 @@
-import defaultBg from '../../../assets/img/herobg.png'
+import { cloudinaryImages } from '../../../config/cloudinary';
 import { Link } from 'react-router-dom';
+const defaultBg = cloudinaryImages.backgrounds.herobg;
 const Breadcrumb = ({ pageTitle, currentPage, bgImage})=>{
     const bg = bgImage || defaultBg;
     return(

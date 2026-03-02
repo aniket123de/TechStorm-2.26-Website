@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import teamBg from '../../../assets/img/teamsbg.png'; // replace file with team-bg.jpg once saved
-import teamBgMobile from '../../../assets/img/2.png';
+import { cloudinaryImages } from '../../../config/cloudinary';
+const teamBg = cloudinaryImages.backgrounds.teamsbg;
+const teamBgMobile = cloudinaryImages.mobile.bg2;
 import SectionTitle from '../../Utilities/SectionTitle/SectionTitle';
 import ProfileCardMember from '../../Utilities/Team/ProfileCardMember';
 import { coreMembers } from './teamData';

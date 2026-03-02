@@ -54,7 +54,7 @@
 
 .registration-container {
   min-height: 100vh;
-  background-image: linear-gradient(135deg, rgba(26, 14, 34, 0.70) 0%, rgba(45, 27, 61, 0.65) 50%, rgba(26, 14, 34, 0.70) 100%), url('../../../assets/img/aboutandform.png');
+  background-image: linear-gradient(135deg, rgba(10, 4, 16, 0.93) 0%, rgba(26, 10, 38, 0.90) 50%, rgba(10, 4, 16, 0.93) 100%), url('../../../assets/img/aboutandform.webp');
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
@@ -69,7 +69,7 @@
 
 @media (max-width: 768px) {
   .registration-container {
-    background-image: linear-gradient(135deg, rgba(26, 14, 34, 0.70) 0%, rgba(45, 27, 61, 0.65) 50%, rgba(26, 14, 34, 0.70) 100%), url('../../../assets/img/3.png');
+    background-image: linear-gradient(135deg, rgba(10, 4, 16, 0.93) 0%, rgba(26, 10, 38, 0.90) 50%, rgba(10, 4, 16, 0.93) 100%), url('../../../assets/img/3.webp');
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
@@ -86,16 +86,17 @@
   bottom: 0;
   background-image:
     repeating-linear-gradient(0deg,
-      rgba(255, 192, 16, 0.03) 0px,
+      rgba(255, 192, 16, 0.04) 0px,
       transparent 1px,
-      transparent 2px,
-      rgba(255, 192, 16, 0.03) 3px),
+      transparent 3px,
+      rgba(255, 192, 16, 0.04) 4px),
     repeating-linear-gradient(90deg,
-      rgba(0, 255, 234, 0.03) 0px,
+      rgba(0, 255, 234, 0.04) 0px,
       transparent 1px,
-      transparent 2px,
-      rgba(0, 255, 234, 0.03) 3px);
+      transparent 3px,
+      rgba(0, 255, 234, 0.04) 4px);
   pointer-events: none;
+  z-index: 0;
 }
 
 .registration-content {
@@ -116,28 +117,57 @@
 .registration-header {
   text-align: center;
   margin-bottom: 35px;
-  padding: 20px;
-  background: rgba(255, 192, 16, 0.05);
-  border-radius: 8px;
-  border: 2px solid rgba(255, 192, 16, 0.2);
+  padding: 24px 20px;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 0;
+  border: 3px solid #ffc010;
+  box-shadow:
+    0 0 0 1px #000,
+    0 0 0 5px rgba(255, 192, 16, 0.3),
+    inset 0 0 30px rgba(255, 192, 16, 0.06);
+  position: relative;
+}
+
+.registration-header::before,
+.registration-header::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: #c97d28;
+  border-style: solid;
+}
+
+.registration-header::before {
+  top: -3px;
+  left: -3px;
+  border-width: 3px 0 0 3px;
+}
+
+.registration-header::after {
+  bottom: -3px;
+  right: -3px;
+  border-width: 0 3px 3px 0;
 }
 
 .registration-title {
   font-family: "Press Start 2P", monospace;
-  font-size: 28px;
+  font-size: 26px;
   color: #ffc010;
   text-shadow:
-    3px 3px 0 #d89500,
-    0 0 20px rgba(255, 192, 16, 0.5);
+    3px 3px 0 #7a4d00,
+    0 0 20px rgba(255, 192, 16, 0.7),
+    0 0 40px rgba(255, 192, 16, 0.3);
   margin-bottom: 15px;
+  letter-spacing: 2px;
   animation: glowPulse 2s ease-in-out infinite;
 }
 
 .registration-subtitle {
   font-family: "Press Start 2P", monospace;
   font-size: 12px;
-  color: #ff6b35;
-  text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+  color: #c97d28;
+  text-shadow: 0 0 10px rgba(201, 125, 40, 0.5);
 }
 
 @keyframes glowPulse {
@@ -158,14 +188,15 @@
 }
 
 .registration-form {
-  background: #000000;
-  border: 4px solid #ff6b35;
-  border-radius: 12px;
+  background: rgba(4, 2, 10, 0.96);
+  border: 3px solid #c97d28;
+  border-radius: 0;
   box-shadow:
-    0 0 0 4px #000000,
-    0 0 0 8px #ffc010,
-    0 0 30px rgba(255, 192, 16, 0.3),
-    inset 0 0 30px rgba(255, 192, 16, 0.1);
+    0 0 0 1px #000,
+    0 0 0 5px #ffc010,
+    0 0 0 6px #000,
+    0 0 40px rgba(255, 192, 16, 0.25),
+    inset 0 0 40px rgba(201, 125, 40, 0.05);
   padding: 40px;
   margin-bottom: 30px;
   box-sizing: border-box;
@@ -173,25 +204,52 @@
   position: relative;
 }
 
+/* Pixel corner decorations on the form */
+.registration-form::before,
+.registration-form::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: #ffc010;
+  border-style: solid;
+  z-index: 2;
+}
+
+.registration-form::before {
+  top: -3px;
+  left: -3px;
+  border-width: 4px 0 0 4px;
+}
+
+.registration-form::after {
+  bottom: -3px;
+  right: -3px;
+  border-width: 0 4px 4px 0;
+}
+
 .form-section {
   margin-bottom: 30px;
   padding: 25px;
-  background: rgba(255, 192, 16, 0.03);
-  border-radius: 6px;
-  border: 1px solid rgba(255, 192, 16, 0.1);
+  background: rgba(255, 192, 16, 0.02);
+  border-radius: 0;
+  border-left: 4px solid #c97d28;
+  border-bottom: 1px solid rgba(201, 125, 40, 0.2);
   box-sizing: border-box;
   overflow: visible;
   width: 100%;
+  position: relative;
 }
 
 .form-section-title {
   font-family: "Press Start 2P", monospace;
-  font-size: 14px;
-  color: #ff6b35;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 3px solid #ff6b35;
-  text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+  font-size: 12px;
+  color: #ffc010;
+  margin-bottom: 22px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(201, 125, 40, 0.4);
+  text-shadow: 0 0 12px rgba(255, 192, 16, 0.6);
+  letter-spacing: 1px;
 }
 
 .form-group {
@@ -236,20 +294,19 @@
 .retro-textarea,
 .retro-select {
   width: 100%;
-  padding: 10px 14px;
-  background: #000000;
-  border: 3px solid #ff6b35;
-  border-radius: 4px;
-  color: #ffffff;
+  padding: 11px 14px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 2px solid rgba(201, 125, 40, 0.7);
+  border-radius: 0;
+  color: #e8e8e8;
   font-family: 'Space Mono', 'Consolas', monospace;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.5px;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   box-shadow:
-    inset 0 2px 0 rgba(0, 0, 0, 0.5),
-    0 0 0 3px transparent,
-    0 0 10px rgba(255, 107, 53, 0.3);
+    inset 0 2px 6px rgba(0, 0, 0, 0.7),
+    0 0 0 1px transparent;
   box-sizing: border-box;
 }
 
@@ -258,10 +315,12 @@
 .retro-select:focus {
   outline: none;
   border-color: #ffc010;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.95);
   box-shadow:
-    inset 0 2px 0 rgba(0, 0, 0, 0.5),
-    0 0 0 3px #ffc010,
-    0 0 20px rgba(255, 192, 16, 0.5);
+    inset 0 2px 6px rgba(0, 0, 0, 0.7),
+    0 0 0 2px #ffc010,
+    0 0 16px rgba(255, 192, 16, 0.45);
   animation: inputGlow 0.5s ease;
 }
 
@@ -291,7 +350,7 @@
 .retro-select {
   cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ff6b35' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c97d28' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
   padding-right: 40px;
@@ -310,12 +369,12 @@
 .mcq-option {
   display: flex;
   align-items: center;
-  padding: 10px 14px;
-  background: #000000;
-  border: 3px solid #ff6b35;
-  border-radius: 4px;
+  padding: 11px 14px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid rgba(201, 125, 40, 0.5);
+  border-radius: 0;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   position: relative;
   width: 100%;
   box-sizing: border-box;
@@ -323,8 +382,9 @@
 
 .mcq-option:hover {
   border-color: #ffc010;
-  box-shadow: 0 0 20px rgba(255, 192, 16, 0.3);
-  transform: translateX(5px);
+  background: rgba(255, 192, 16, 0.06);
+  box-shadow: 0 0 14px rgba(255, 192, 16, 0.25);
+  transform: translateX(4px);
 }
 
 .mcq-option input[type="radio"] {
@@ -363,7 +423,7 @@
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
-  border: 3px solid #ff6b35;
+  border: 3px solid #c97d28;
   background: #000000;
   transition: all 0.3s ease;
 }
@@ -399,7 +459,7 @@
   gap: 15px;
   padding: 20px;
   background: #000000;
-  border: 3px dashed #ff6b35;
+  border: 3px dashed #c97d28;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -479,10 +539,10 @@
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.3px;
-  color: #ff6b35;
+  color: #c97d28;
   padding: 8px 12px;
-  background: rgba(255, 107, 53, 0.1);
-  border: 2px solid #ff6b35;
+  background: rgba(201, 125, 40, 0.1);
+  border: 2px solid #c97d28;
   word-break: break-all;
 }
 
@@ -499,31 +559,33 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 12px 35px;
+  padding: 14px 40px;
   font-family: "Press Start 2P", monospace;
   font-size: 12px;
   background: #ffc010;
-  color: #1a0e22;
-  border: 4px solid #d89500;
-  border-radius: 6px;
+  color: #0a0410;
+  border: 3px solid #d89500;
+  border-radius: 0;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   text-transform: uppercase;
+  letter-spacing: 1px;
   box-shadow:
-    0 4px 0 #d89500,
-    0 6px 15px rgba(0, 0, 0, 0.5);
+    4px 4px 0 #7a4d00,
+    0 6px 20px rgba(255, 192, 16, 0.3);
   position: relative;
   top: 0;
+  clip-path: polygon(0 4px, 4px 4px, 4px 0, calc(100% - 4px) 0, calc(100% - 4px) 4px, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 4px calc(100% - 4px), 0 calc(100% - 4px));
 }
 
 .retro-button:hover {
-  background: #ff6b35;
-  border-color: #ff4500;
-  color: #000000;
+  background: #ffe566;
+  border-color: #ffc010;
+  color: #0a0410;
   box-shadow:
-    0 4px 0 #ff4500,
-    0 6px 15px rgba(255, 107, 53, 0.5),
-    0 0 30px rgba(255, 107, 53, 0.4);
+    4px 4px 0 #7a4d00,
+    0 0 24px rgba(255, 192, 16, 0.6),
+    0 0 48px rgba(255, 192, 16, 0.2);
   transform: translateY(-2px);
   top: -2px;
 }
@@ -538,15 +600,15 @@
 
 .retro-button.secondary {
   background: transparent;
-  color: #ff6b35;
-  border-color: #ff6b35;
+  color: #c97d28;
+  border-color: #c97d28;
   box-shadow:
-    0 4px 0 #ff4500,
+    0 4px 0 #a86518,
     0 6px 15px rgba(0, 0, 0, 0.5);
 }
 
 .retro-button.secondary:hover {
-  background: #ff6b35;
+  background: #c97d28;
   color: #000000;
 }
 
@@ -595,7 +657,7 @@
 .checkbox-custom {
   width: 24px;
   height: 24px;
-  border: 3px solid #ff6b35;
+  border: 3px solid #c97d28;
   border-radius: 3px;
   background: #000000;
   position: relative;
@@ -1027,10 +1089,10 @@
 .payment-qr-section {
   margin: 25px 0;
   padding: 25px;
-  background: rgba(255, 107, 53, 0.05);
-  border: 3px solid #ff6b35;
+  background: rgba(201, 125, 40, 0.05);
+  border: 3px solid #c97d28;
   border-radius: 8px;
-  box-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
+  box-shadow: 0 0 20px rgba(201, 125, 40, 0.2);
 }
 
 .payment-qr-title {
@@ -1057,7 +1119,7 @@
   border-radius: 8px;
   box-shadow:
     0 0 0 4px #000000,
-    0 0 0 8px #ff6b35,
+    0 0 0 8px #c97d28,
     0 0 30px rgba(255, 192, 16, 0.4);
   transition: all 0.3s ease;
 }
@@ -1066,7 +1128,7 @@
   transform: scale(1.05);
   box-shadow:
     0 0 0 4px #000000,
-    0 0 0 8px #ff6b35,
+    0 0 0 8px #c97d28,
     0 0 40px rgba(255, 192, 16, 0.6);
 }
 
@@ -1082,10 +1144,10 @@
   width: 100%;
   padding: 15px;
   background: #000000;
-  border: 3px solid #ff6b35;
+  border: 3px solid #c97d28;
   border-radius: 6px;
   text-align: center;
-  box-shadow: 0 0 15px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 0 15px rgba(201, 125, 40, 0.3);
 }
 
 .upi-id-label {

@@ -1,7 +1,8 @@
 import React from 'react';
 import newBg from '../../../../assets/img/sponserbg.png';
-import mysteryBox from '../../../../assets/img/mystery.png';
+import { cloudinaryImages } from '../../../../config/cloudinary';
 import './BlogOne.css';
+const mysteryBox = cloudinaryImages.backgrounds.mystery;
 
 /*
 import brand1 from '../../../../assets/img/brand/b-logo1.png';

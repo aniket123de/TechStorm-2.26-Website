@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from "react-router-dom";
 import { cloudinaryImages } from '../../../config/cloudinary';
-import bgImg from '../../../assets/img/eventbg.png';
 import './WorkGallery.css';
-
 import SectionTitle from '../SectionTitle/SectionTitle';
 import RetroCard from '../RetroCard/RetroCard';
+const bgImg = cloudinaryImages.backgrounds.eventbg;
 import AnimateOnScroll from '../ScrollAnimation/AnimateOnScroll';
 
 // Event Images from Cloudinary
@@ -40,7 +39,7 @@ const galleryItems = [
         img: hackstormImg,
         tag: 'Hackathon',
         label: 'Hack Storm',
-        description: '24-hour innovation sprint',
+        description: '10-hour hacking sprint',
         cat: 'Coding',
         route: '/events/hack-storm',
     },
@@ -365,7 +364,7 @@ const WorkGallery = () => {
                                     <div className="button-group filter-button-group">
                                         <button className={activeFilter === 'All' ? 'active' : ''} onClick={showAllItems}>All</button>
                                         <button className={activeFilter === 'Coding' ? 'active' : ''} onClick={() => fliterItem('Coding')}>
-                                            {'Coding'}
+                                            {'Technicals'}
                                         </button>
                                         <button className={activeFilter === 'Robotics' ? 'active' : ''} onClick={() => fliterItem('Robotics')}>
                                             {'Robotics'}
