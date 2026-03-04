@@ -200,7 +200,7 @@ const EventDetail = ({ eventData }) => {
         type: "volunteer",
       },
       {
-        name: "Sayan Karmakar (CSE1)",
+        name: "Sristi Bandyopadhyay (CSE1)",
         role: "Student Volunteer",
         type: "volunteer",
       },
@@ -231,17 +231,12 @@ const EventDetail = ({ eventData }) => {
         type: "coordinator",
       },
       {
-        name: "Shilpa Banerjee (MCA)",
+        name: "Sucheta Maity (IT2)",
         role: "Student Volunteer",
         type: "volunteer",
       },
       {
         name: "Sneha Roy (CSE2)",
-        role: "Student Volunteer",
-        type: "volunteer",
-      },
-      {
-        name: "Dibyojyoti Biswas (CSE1)",
         role: "Student Volunteer",
         type: "volunteer",
       },
@@ -304,7 +299,7 @@ const EventDetail = ({ eventData }) => {
         type: "volunteer",
       },
       {
-        name: "Rankan Das (EE2)",
+        name: "Indranil Maji (EE2)",
         role: "Student Volunteer",
         type: "volunteer",
       },
@@ -387,7 +382,7 @@ const EventDetail = ({ eventData }) => {
         type: "volunteer",
       },
       {
-        name: "Indranil Maji (EE2)",
+        name: "Rankan Das (EE2)",
         role: "Student Volunteer",
         type: "volunteer",
       },
@@ -520,7 +515,7 @@ const EventDetail = ({ eventData }) => {
         type: "volunteer",
       },
       {
-        name: "Sucheta Maity (IT2)",
+        name: "Shreyashi Laha (IT2)",
         role: "Student Volunteer",
         type: "volunteer",
       },
@@ -554,7 +549,7 @@ const EventDetail = ({ eventData }) => {
         type: "volunteer",
       },
       {
-        name: "Sristi Bandyopadhyay (CSE1)",
+        name: "Shilpa Banerjee (MCA)",
         role: "Student Volunteer",
         type: "volunteer",
       },
@@ -626,6 +621,12 @@ const EventDetail = ({ eventData }) => {
       },
       {
         name: "Upashak Ghosal (CSE3)",
+        role: "Student Co-Ordinator",
+        phone: "8585892420",
+        type: "coordinator",
+      },
+      {
+        name: "Sayan Karmakar (CSE1)",
         role: "Student Volunteer",
         type: "volunteer",
       },

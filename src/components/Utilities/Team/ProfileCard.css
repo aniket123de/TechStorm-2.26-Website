@@ -252,6 +252,10 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .profile-card-wrap:hover {
+    transform: none;
+  }
+
   .profile-card-wrap {
     max-width: 290px;
   }
