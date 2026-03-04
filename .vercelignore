@@ -1,8 +1,0 @@
-# Exclude backend server from frontend Vercel deployment
-server/
-
-# Exclude local build artifacts and scripts
-uploadAllWebp.js
-update-all-registrations.js
-add-error-display.js
-all-cloudinary-links.json
