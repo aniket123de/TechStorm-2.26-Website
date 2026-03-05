@@ -5,6 +5,7 @@ const { asyncHandler } = require('../middleware/errorHandler');
 const { optionalAuthenticate } = require('../middleware/auth');
 const { uploadRegistrationFiles, handleMulterError } = require('../middleware/upload');
 const { uploadToCloudinary, deleteFromCloudinary } = require('../config/cloudinary');
+const { appendToSheet } = require('../config/googleSheets');
 
 /**
  * Register for an event
@@ -285,6 +286,11 @@ router.post('/:eventName',
     // Save to database
     await registration.save();
 
+    // Append to Google Sheet (non-blocking)
+    appendToSheet(registration).catch(err => {
+      console.error('⚠️ Failed to sync to Google Sheet (non-critical):', err.message);
+    });
+
     const totalDuration = Date.now() - startTime;
     console.log(`⏱️ Registration completed in ${totalDuration}ms`);
 
@@ -293,7 +299,7 @@ router.post('/:eventName',
       message: 'Registration successful',
       data: {
         registrationId: registration._id,
-        registrationNumber: registration.registrationNumber, // ADD THIS LINE
+        registrationNumber: registration.registrationNumber,
         eventName: eventName,
         email: registration.email,
         phone: registration.phone,

@@ -1,0 +1,4 @@
+# Google Service Account Credentials
+google-credentials.json
+*.json
+!adminCredentials.json

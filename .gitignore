@@ -17,6 +17,7 @@
 server/.env
 server/roleCredentials.json
 server/config/roleCredentials.json
+server/config/google-credentials.json
 .DS_Store
 .env.local
 .env.development.local
