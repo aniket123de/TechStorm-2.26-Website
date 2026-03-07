@@ -1,6 +1,8 @@
 import React from "react";
 import EventDetail from "../EventDetail";
 import { getCloudinaryUrl } from "../../../../config/cloudinary";
+import hackstormsponsor1 from "../../../../assets/img/hackstormsponsor1.png";
+import hackstormsponsor2 from "../../../../assets/img/hackstormsponsor2.png";
 
 const hackStorm = "https://res.cloudinary.com/ds3vepmkd/image/upload/f_auto,q_auto/v1/eoorox/PIXELATED%20EVENT%20MASCOTS/HACKSTORM";
 const hackStormBanner = "https://res.cloudinary.com/ds3vepmkd/image/upload/f_auto,q_auto/v1/eoorox/event_specific_pictures/hackstorm/hstorm";
@@ -157,6 +159,16 @@ const HackStormEvent = () => {
       "",
     ],
     prizes: [],
+    sponsors: [
+      {
+        logo: hackstormsponsor1,
+        partnerType: "Domain Partner",
+      },
+      {
+        logo: hackstormsponsor2,
+        partnerType: "Media Partner",
+      },
+    ],
     contact: [
       {
         name: "Hack Coordinator",
