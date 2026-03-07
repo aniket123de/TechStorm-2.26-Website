@@ -56,6 +56,7 @@ const RegistrationsPage = () => {
   const [selectedEvent, setSelectedEvent] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [searchInput, setSearchInput] = useState(''); // New: separate input state
+  const [paymentModeFilter, setPaymentModeFilter] = useState('all'); // NEW: Payment mode filter
   const [viewingRegistration, setViewingRegistration] = useState(null);
   const [editingRegistration, setEditingRegistration] = useState(null);
   const [showAddModal, setShowAddModal] = useState(false);
@@ -108,6 +109,10 @@ const RegistrationsPage = () => {
         params.search = searchTerm;
       }
       
+      if (paymentModeFilter !== 'all') {
+        params.paymentMode = paymentModeFilter;
+      }
+      
       console.log('🔍 Fetching registrations with params:', params);
       const result = await getRegistrations(params);
       console.log('📊 API Response:', result);
@@ -132,7 +137,7 @@ const RegistrationsPage = () => {
       setLoading(false);
       setTableLoading(false);
     }
-  }, [selectedEvent, searchTerm]);
+  }, [selectedEvent, searchTerm, paymentModeFilter]);
 
   useEffect(() => {
     const userData = localStorage.getItem(`adminUser_${role}`);
@@ -149,7 +154,7 @@ const RegistrationsPage = () => {
     // Refetch when filters change (but NOT searchInput, only searchTerm)
     // Don't show full page loading, only table loading
     fetchRegistrations(false);
-  }, [selectedEvent, searchTerm, fetchRegistrations]);
+  }, [selectedEvent, searchTerm, paymentModeFilter, fetchRegistrations]);
 
   // Handle search button click
   const handleSearch = () => {
@@ -551,6 +556,25 @@ const RegistrationsPage = () => {
               ))}
             </select>
           )}
+          <select
+            className="payment-mode-filter"
+            value={paymentModeFilter}
+            onChange={(e) => setPaymentModeFilter(e.target.value)}
+            style={{
+              padding: '10px 15px',
+              border: '1px solid #d1d5db',
+              borderRadius: '5px',
+              backgroundColor: 'white',
+              cursor: 'pointer',
+              fontSize: '14px',
+              fontWeight: '500',
+              color: '#374151'
+            }}
+          >
+            <option value="all">All Payments</option>
+            <option value="cash">💵 Cash</option>
+            <option value="online">💳 Online</option>
+          </select>
           <button 
             className="export-btn" 
             onClick={handleExportToExcel}

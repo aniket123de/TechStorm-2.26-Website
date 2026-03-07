@@ -46,13 +46,17 @@ router.get('/stats',
             confirmedRegistrations,
             pendingRegistrations,
             pendingPayments,
-            confirmedPayments
+            confirmedPayments,
+            cashPayments,
+            onlinePayments
           ] = await Promise.all([
             model.countDocuments(),
             model.countDocuments({ registrationStatus: 'confirmed' }),
             model.countDocuments({ registrationStatus: 'pending' }),
             model.countDocuments({ paymentStatus: 'pending' }),
-            model.countDocuments({ paymentStatus: 'verified' })
+            model.countDocuments({ paymentStatus: 'verified' }),
+            model.countDocuments({ paymentMode: { $regex: /^(cash|offline)$/i } }), // Include "offline" as cash
+            model.countDocuments({ paymentMode: { $regex: /^online$/i } })
           ]);
           
           return {
@@ -62,7 +66,9 @@ router.get('/stats',
             confirmedRegistrations,
             pendingRegistrations,
             pendingPayments,
-            confirmedPayments
+            confirmedPayments,
+            cashPayments,
+            onlinePayments
           };
         } catch (error) {
           console.error(`Error fetching stats for ${event.name}:`, error);
@@ -73,7 +79,9 @@ router.get('/stats',
             confirmedRegistrations: 0,
             pendingRegistrations: 0,
             pendingPayments: 0,
-            confirmedPayments: 0
+            confirmedPayments: 0,
+            cashPayments: 0,
+            onlinePayments: 0
           };
         }
       })
@@ -85,13 +93,17 @@ router.get('/stats',
       confirmedRegistrations: acc.confirmedRegistrations + stat.confirmedRegistrations,
       pendingRegistrations: acc.pendingRegistrations + stat.pendingRegistrations,
       pendingPayments: acc.pendingPayments + stat.pendingPayments,
-      confirmedPayments: acc.confirmedPayments + stat.confirmedPayments
+      confirmedPayments: acc.confirmedPayments + stat.confirmedPayments,
+      cashPayments: acc.cashPayments + stat.cashPayments,
+      onlinePayments: acc.onlinePayments + stat.onlinePayments
     }), {
       totalRegistrations: 0,
       confirmedRegistrations: 0,
       pendingRegistrations: 0,
       pendingPayments: 0,
-      confirmedPayments: 0
+      confirmedPayments: 0,
+      cashPayments: 0,
+      onlinePayments: 0
     });
     
     res.json({
@@ -121,13 +133,14 @@ router.get('/registrations',
       eventName, 
       search, 
       paymentStatus, 
+      paymentMode,  // NEW: Add payment mode filter
       registrationStatus,
       page = 1,
       limit = 1000 // Increased default limit
     } = req.query;
     
     console.log(`📊 [REGISTRATIONS] Request from admin: ${admin.email} (${admin.role})`);
-    console.log(`📊 [REGISTRATIONS] Query params:`, { eventName, search, paymentStatus, registrationStatus, page, limit });
+    console.log(`📊 [REGISTRATIONS] Query params:`, { eventName, search, paymentStatus, paymentMode, registrationStatus, page, limit });
     
     // Get all events from role credentials
     const allEvents = [
@@ -168,6 +181,16 @@ router.get('/registrations',
         
         if (paymentStatus) {
           query.paymentStatus = paymentStatus;
+        }
+        
+        if (paymentMode) {
+          // Filter by payment mode (case-insensitive)
+          // "cash" filter includes both "cash" and "offline" payments
+          if (paymentMode.toLowerCase() === 'cash') {
+            query.paymentMode = { $regex: /^(cash|offline)$/i };
+          } else {
+            query.paymentMode = { $regex: new RegExp(`^${paymentMode}$`, 'i') };
+          }
         }
         
         if (registrationStatus) {
@@ -533,6 +556,49 @@ router.get('/debug/check-event/:collectionName',
         email: sample.email || sample.emailAddress,
         registrationNumber: sample.registrationNumber
       } : null
+    });
+  })
+);
+
+/**
+ * Debug endpoint - Check payment modes in registrations
+ * GET /api/admin-dashboard/debug/payment-modes/:eventName
+ */
+router.get('/debug/payment-modes/:eventName',
+  asyncHandler(async (req, res) => {
+    const { eventName } = req.params;
+    const model = EventRegistrationFactory.getModel(eventName);
+    
+    // Get all unique payment modes
+    const paymentModes = await model.distinct('paymentMode');
+    
+    // Count each payment mode
+    const counts = {};
+    for (const mode of paymentModes) {
+      counts[mode || 'null/empty'] = await model.countDocuments({ paymentMode: mode });
+    }
+    
+    // Count registrations without paymentMode field
+    const noPaymentMode = await model.countDocuments({ paymentMode: { $exists: false } });
+    if (noPaymentMode > 0) {
+      counts['field_not_exists'] = noPaymentMode;
+    }
+    
+    // Count null/undefined
+    const nullPaymentMode = await model.countDocuments({ 
+      $or: [
+        { paymentMode: null },
+        { paymentMode: '' },
+        { paymentMode: { $exists: false } }
+      ]
+    });
+    
+    res.json({
+      eventName,
+      uniquePaymentModes: paymentModes,
+      counts,
+      nullOrEmptyCount: nullPaymentMode,
+      total: await model.countDocuments()
     });
   })
 );
