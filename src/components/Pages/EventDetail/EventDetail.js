@@ -10,6 +10,7 @@ const entryFeeBg = cloudinaryImages.backgrounds.event1;
 const entryFeeBgMobile = cloudinaryImages.mobile.bg4;
 const coordinatorsBg = cloudinaryImages.backgrounds.event2;
 const coordinatorsBgMobile = cloudinaryImages.mobile.bg5;
+const sponsorsBg = cloudinaryImages.backgrounds.teamsbg;
 
 const omegatrixHeadings = [
   "omegatrix 2.26 rules",
@@ -156,7 +157,7 @@ const EventDetail = ({ eventData }) => {
   // Lighter overlay on mobile so background images are more visible
   const sectionOverlay = isMobile
     ? "linear-gradient(to bottom, rgba(10,4,20,0.42) 0%, rgba(10,4,20,0.02) 22%, rgba(10,4,20,0.02) 78%, rgba(10,4,20,0.42) 100%)"
-    : "linear-gradient(to bottom, rgba(10,4,20,0.97) 0%, rgba(10,4,20,z.22) 18%, rgba(10,4,20,0.22) 82%, rgba(10,4,20,0.97) 100%)";
+    : "linear-gradient(to bottom, rgba(10,4,20,0.97) 0%, rgba(10,4,20,0.22) 18%, rgba(10,4,20,0.22) 82%, rgba(10,4,20,0.97) 100%)";
 
   // Event-specific coordinators data
   const eventCoordinators = {
@@ -3237,6 +3238,118 @@ const EventDetail = ({ eventData }) => {
                 </div>
                 <FAQAccordion faqs={eventData.faqs} />
               </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Sponsors Section */}
+      {eventData.sponsors && eventData.sponsors.length > 0 && (
+        <section
+          className="sponsors-section pt-50 pb-50"
+          style={{
+            backgroundImage: `${sectionOverlay}, url(${sponsorsBg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            position: "relative",
+          }}
+        >
+          {/* scanline overlay */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              backgroundImage:
+                "repeating-linear-gradient(0deg, rgba(0,0,0,0.18) 0px, transparent 1px, transparent 3px, rgba(0,0,0,0.18) 4px)",
+              pointerEvents: "none",
+              zIndex: 0,
+            }}
+          />
+          <div className="container" style={{ position: "relative", zIndex: 1 }}>
+            <div className="row">
+              <div className="col-12" style={{ textAlign: "center", marginBottom: "36px" }}>
+                <h2 className="heading-white">OUR</h2>
+                <h2 className="heading-gold">SPONSORS</h2>
+                <div className="heading-brush" style={{ margin: "0 auto" }}></div>
+              </div>
+            </div>
+            <div
+              className="row justify-content-center"
+              style={{ rowGap: "30px" }}
+            >
+              {eventData.sponsors.map((sponsor, idx) => (
+                <div
+                  key={idx}
+                  className="col-lg-3 col-md-4 col-sm-6 col-10"
+                  style={{ display: "flex", paddingTop: "10px" }}
+                >
+                  <div
+                    className="nes-container is-rounded coord-card"
+                    style={{ borderColor: "#ffc010", width: "100%" }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = "translateY(-8px) scale(1.02)";
+                      e.currentTarget.style.boxShadow =
+                        "0 5px 15px rgba(255,192,16,0.3), 0 10px 30px rgba(255,192,16,0.2), 0 0 40px rgba(255,192,16,0.35)";
+                      e.currentTarget.style.borderColor = "#ffd54f";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "translateY(0) scale(1)";
+                      e.currentTarget.style.boxShadow = "none";
+                      e.currentTarget.style.borderColor = "#ffc010";
+                    }}
+                  >
+                    {/* dim bg image */}
+                    <div
+                      className="coord-card-bg"
+                      style={{
+                        backgroundImage: `url(${coordinatorCardBg})`,
+                      }}
+                    />
+                    {/* content */}
+                    <div
+                      className="coord-card-content"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        gap: "16px",
+                        padding: "12px 8px",
+                      }}
+                    >
+                      {/* fixed-size logo box so all cards are uniform */}
+                      <div
+                        style={{
+                          width: "160px",
+                          height: "90px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          flexShrink: 0,
+                          background: "rgba(0,0,0,0.35)",
+                          border: "2px solid rgba(255,192,16,0.2)",
+                          padding: "8px",
+                        }}
+                      >
+                        <img
+                          src={sponsor.logo}
+                          alt={sponsor.partnerType}
+                          style={{
+                            maxWidth: "100%",
+                            maxHeight: "100%",
+                            objectFit: "contain",
+                            imageRendering: "auto",
+                          }}
+                        />
+                      </div>
+                      {/* partner type badge — same style as coordinator-role */}
+                      <p className="coordinator-role" style={{ marginBottom: 0 }}>
+                        {sponsor.partnerType}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
