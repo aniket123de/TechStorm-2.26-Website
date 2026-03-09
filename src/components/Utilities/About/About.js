@@ -656,10 +656,10 @@ function InfoCard({ card, isActive, progress, index, isMobile }) {
       style={{
         background: active ? "rgba(0,0,0,0.92)" : "rgba(0,0,0,0.45)",
         border: `2px solid ${active ? card.color : "rgba(255,255,255,0.06)"}`,
-        padding: isMobile ? "20px 16px" : "16px 20px",
-        width: isMobile ? "78vw" : "auto",
-        maxWidth: isMobile ? "320px" : "none",
-        minWidth: isMobile ? "240px" : "auto",
+        padding: isMobile ? "22px 18px" : "16px 20px",
+        width: isMobile ? "86vw" : "auto",
+        maxWidth: isMobile ? "360px" : "none",
+        minWidth: isMobile ? "260px" : "auto",
         flexShrink: 0,
         scrollSnapAlign: isMobile ? "center" : "none",
         boxSizing: "border-box",
@@ -779,11 +779,11 @@ function InfoCard({ card, isActive, progress, index, isMobile }) {
             <div
               style={{
                 fontFamily: "'Press Start 2P', monospace",
-                fontSize: "7px",
+                fontSize: isMobile ? "9px" : "7px",
                 color: active ? "#fff" : "#333",
                 background: active ? card.color : "transparent",
                 border: `1px solid ${active ? card.color : "#222"}`,
-                padding: "4px 8px",
+                padding: isMobile ? "5px 10px" : "4px 8px",
                 letterSpacing: "1px",
                 flexShrink: 0,
                 transition: "all 0.5s",
@@ -795,7 +795,7 @@ function InfoCard({ card, isActive, progress, index, isMobile }) {
           <p
             style={{
               fontFamily: "'VT323', monospace",
-              fontSize: "clamp(14px, 1.7vw, 18px)",
+              fontSize: isMobile ? "clamp(17px, 4.5vw, 20px)" : "clamp(14px, 1.7vw, 18px)",
               color: active ? "#eee" : "#2a2a2a",
               lineHeight: 1.6,
               letterSpacing: "0.5px",
@@ -878,8 +878,9 @@ export default function About() {
     return () => window.removeEventListener("keydown", handler);
   }, []);
 
-  /* Scroll → card activation */
+  /* Scroll → card activation (desktop only — mobile uses horizontal swipe) */
   useEffect(() => {
+    if (isMobile) return;
     const ZONE = 1 / INFO_CARDS.length;
 
     const onScroll = () => {
@@ -900,7 +901,7 @@ export default function About() {
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isMobile]);
 
   const goPrev = useCallback(
     () =>
@@ -1037,7 +1038,7 @@ export default function About() {
               width: isMobile ? "100%" : "auto",
               alignItems: "center",
               justifyContent: "center",
-              gap: isMobile ? "0px" : "60px",
+              gap: isMobile ? "28px" : "60px",
             }}
           >
             {/* Left: Arcade Machine */}
@@ -1045,8 +1046,8 @@ export default function About() {
               style={{
                 flexShrink: 0,
                 transform: isMobile ? "scale(0.95)" : "none",
-                marginTop: isMobile ? "-10px" : "0",
-                marginBottom: isMobile ? "-50px" : "0",
+                marginTop: isMobile ? "0px" : "0",
+                marginBottom: isMobile ? "0px" : "0",
                 zIndex: 1,
               }}
             >
@@ -1073,7 +1074,7 @@ export default function About() {
                 overflowX: "visible",
                 overflowY: "visible",
                 zIndex: 2,
-                paddingBottom: isMobile ? "12px" : "0",
+                paddingBottom: isMobile ? "24px" : "0",
               }}
             >
               {/* Swipe Guide for Mobile */}
