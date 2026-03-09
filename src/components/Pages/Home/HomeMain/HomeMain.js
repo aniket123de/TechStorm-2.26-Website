@@ -1,4 +1,5 @@
 import React, { Fragment, useRef, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -11,6 +12,8 @@ import Carousel8bit from '../../../Utilities/LiveStreamingVideo/Carousel8bit/Car
 import EventTicker from '../../../Utilities/EventTicker/EventTicker';
 import RetroGameConsole from '../../Gallery/RetroGameConsole';
 import { cloudinaryImages } from '../../../../config/cloudinary';
+import ticonImg from '../../../../assets/img/ticon.webp';
+import './MerchFab.css';
 const retroArcadeBg = cloudinaryImages.backgrounds.retroarcade;
 
 gsap.registerPlugin(ScrollTrigger);
@@ -175,6 +178,16 @@ const Home = () => {
 
             {/* Blog Component */}
             <BlogOne />
+
+            {/* Merchandise FAB — fixed bottom-left sparkle button */}
+            <Link
+                to="/merchandise"
+                className="merch-fab"
+                aria-label="Go to Merchandise"
+                style={{ backgroundImage: `url(${ticonImg})` }}
+            >
+                <span className="merch-fab-label"></span>
+            </Link>
 
         </Fragment>
     );

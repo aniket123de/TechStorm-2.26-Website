@@ -67,6 +67,9 @@ const StatisticsPage = lazy(() => import("./Pages/Admin/StatisticsPage"));
 // Lazy load Verify Registration Page
 const VerifyRegistration = lazy(() => import("./Pages/VerifyRegistration/VerifyRegistration"));
 
+// Lazy load Merchandise Page
+const Merchandise = lazy(() => import("./Pages/Merchandise/Merchandise"));
+
 const navItems = [
   { label: "Home", href: "/#home" },
   { label: "Events", href: "/events" },
@@ -277,6 +280,8 @@ const AppContent = () => {
 
           {/* Verify Registration Route */}
           <Route exact path="/verify-registration" component={VerifyRegistration} />
+
+          <Route exact path="/merchandise" component={Merchandise} />
 
           <Route exact path="/gallery" component={Gallery} />
           <Route exact path="/schedule" component={Schedule} />

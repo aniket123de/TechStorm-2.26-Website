@@ -1,0 +1,89 @@
+/* Merchandise floating button sparkle animation */
+@keyframes merch-sparkle {
+    0% {
+        box-shadow:
+            0 0 0px 0px rgba(255, 192, 16, 0),
+            0 0 0px 0px rgba(255, 107, 0, 0),
+            0 4px 18px rgba(0, 0, 0, 0.55);
+    }
+    40% {
+        box-shadow:
+            0 0 14px 6px rgba(255, 192, 16, 0.72),
+            0 0 30px 10px rgba(255, 107, 0, 0.38),
+            0 4px 18px rgba(0, 0, 0, 0.55);
+    }
+    70% {
+        box-shadow:
+            0 0 22px 10px rgba(255, 220, 80, 0.55),
+            0 0 40px 16px rgba(255, 140, 0, 0.28),
+            0 4px 18px rgba(0, 0, 0, 0.55);
+    }
+    100% {
+        box-shadow:
+            0 0 0px 0px rgba(255, 192, 16, 0),
+            0 0 0px 0px rgba(255, 107, 0, 0),
+            0 4px 18px rgba(0, 0, 0, 0.55);
+    }
+}
+
+@keyframes merch-ring {
+    0%   { transform: scale(1) rotate(0deg); opacity: 0.7; }
+    50%  { transform: scale(1.13) rotate(180deg); opacity: 1; }
+    100% { transform: scale(1) rotate(360deg); opacity: 0.7; }
+}
+
+@keyframes merch-float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-6px); }
+}
+
+.merch-fab {
+    position: fixed;
+    bottom: 28px;
+    left: 28px;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 192, 16, 0.85);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    z-index: 9999;
+    text-decoration: none;
+    display: block;
+    animation:
+        merch-sparkle 2s ease-in-out infinite,
+        merch-float   3s ease-in-out infinite;
+    transition: transform 0.18s ease, border-color 0.18s ease;
+    outline: none;
+}
+
+.merch-fab::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 220, 80, 0.45);
+    animation: merch-ring 4s linear infinite;
+    pointer-events: none;
+}
+
+.merch-fab:hover {
+    transform: scale(1.12) translateY(-4px);
+    border-color: #ffd700;
+}
+
+.merch-fab-label {
+    position: absolute;
+    bottom: -26px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'VT323', monospace;
+    font-size: 13px;
+    color: #ffc010;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+    pointer-events: none;
+}
