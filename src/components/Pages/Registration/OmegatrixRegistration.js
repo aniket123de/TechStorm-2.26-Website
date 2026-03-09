@@ -51,7 +51,13 @@ const OmegatrixRegistration = () => {
     if (type === 'checkbox') {
       nextValue = checked;
     } else if (type === 'file') {
-      nextValue = files && files[0] ? files[0] : null;
+      const file = files && files[0] ? files[0] : null;
+      if (file && file.size > 2 * 1024 * 1024) {
+        setErrors((prev) => ({ ...prev, [name]: 'File size must not exceed 2MB. Please choose a smaller file.' }));
+        e.target.value = '';
+        return;
+      }
+      nextValue = file;
     }
 
     setFormData((prev) => ({ ...prev, [name]: nextValue }));
@@ -164,11 +170,18 @@ const OmegatrixRegistration = () => {
       }
     } catch (error) {
       console.error('Registration error:', error);
-      if (error.message.includes('duplicate')) {
-        setErrors({ submit: 'You have already registered for this event with this email or phone number.' });
+      const msg = error?.message || '';
+      let userMessage;
+      if (msg.toLowerCase().includes('failed to fetch') || msg.toLowerCase().includes('network error') || msg.toLowerCase().includes('networkerror')) {
+        userMessage = 'Unable to connect to the server. Please check your internet connection and try again.';
+      } else if (msg.includes('FUNCTION_PAYLOAD_TOO_LARGE') || msg.toLowerCase().includes('request entity too large') || msg.toLowerCase().includes('payload too large')) {
+        userMessage = 'Submission is too large. Please ensure all uploaded images are under 2MB and try again.';
+      } else if (msg.toLowerCase().includes('duplicate')) {
+        userMessage = 'You have already registered for this event with this email or phone number.';
       } else {
-        setErrors({ submit: error.message || 'Registration failed. Please try again.' });
+        userMessage = msg || 'Registration failed. Please try again or contact support if the issue persists.';
       }
+      setErrors({ submit: userMessage });
     } finally {
       setIsSubmitting(false);
     }
@@ -190,15 +203,9 @@ const OmegatrixRegistration = () => {
           </div>
 
           {errors.submit && (
-            <div className="error-message" style={{ 
-              marginBottom: '20px', 
-              padding: '15px', 
-              backgroundColor: '#ff4444', 
-              color: 'white',
-              borderRadius: '5px',
-              textAlign: 'center'
-            }}>
-              {errors.submit}
+            <div className="submit-error">
+              <span className="submit-error-icon">⚠</span>
+              <span>{errors.submit}</span>
             </div>
           )}
 
