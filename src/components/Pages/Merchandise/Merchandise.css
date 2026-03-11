@@ -1,0 +1,666 @@
+/* ============================================================
+   Merchandise Page — matches TechStorm site design system
+   Fonts  : "Press Start 2P" (headings) · "Silkscreen" (body)
+   Colours: #ffc010 gold · #FF6B00 orange · #000 / deep-purple bg
+   ============================================================ */
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.mcat-hero {
+    min-height: 18vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 32px 24px 28px;
+    position: relative;
+}
+
+.mcat-hero-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.mcat-hero-title {
+    font-family: 'Press Start 2P', monospace !important;
+    font-size: clamp(16px, 3vw, 32px) !important;
+    color: #ffc010 !important;
+    text-shadow: 3px 3px 0 #FF6B00, 0 0 30px rgba(255, 107, 0, 0.4);
+    line-height: 1.25 !important;
+    margin: 0 0 4px !important;
+    letter-spacing: 2px !important;
+    word-break: break-word !important;
+    animation: mcatTitleGlow 3s ease-in-out infinite;
+}
+
+.mcat-hero-title-sub {
+    font-family: 'Press Start 2P', monospace !important;
+    font-size: clamp(9px, 1.5vw, 13px) !important;
+    color: rgba(255, 192, 16, 0.55) !important;
+    letter-spacing: 6px !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
+}
+
+.mcat-hero-sub {
+    font-family: 'Silkscreen', sans-serif;
+    font-size: clamp(11px, 1.8vw, 15px);
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 0;
+    animation: mcatSubGlow 2.8s ease-in-out infinite;
+}
+
+@keyframes mcatSubGlow {
+    0%, 100% {
+        color: rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+    }
+    50% {
+        color: rgba(255, 255, 255, 0.95);
+        text-shadow: 0 0 12px rgba(255, 255, 255, 0.7), 0 0 24px rgba(255, 192, 16, 0.3);
+    }
+}
+
+/* CRT scanline overlay on hero */
+.mcat-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(0, 0, 0, 0.07) 3px,
+        rgba(0, 0, 0, 0.07) 4px
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+.mcat-hero-coin {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: #ffc010;
+    letter-spacing: 3px;
+    animation: mcatBlink 1.2s step-end infinite;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes mcatBlink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+@keyframes mcatTitleGlow {
+    0%, 100% { text-shadow: 3px 3px 0 #FF6B00, 0 0 20px rgba(255, 107, 0, 0.4); }
+    50%       { text-shadow: 3px 3px 0 #FF6B00, 0 0 52px rgba(255, 107, 0, 0.95), 0 0 90px rgba(255, 192, 16, 0.3); }
+}
+
+/* ── Hero→Products separator ──────────────────────────────── */
+.mcat-sep {
+    background: #07000e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 28px 0;
+    position: relative;
+    border-top: 2px solid rgba(255, 192, 16, 0.65);
+    border-bottom: 2px solid rgba(255, 192, 16, 0.65);
+}
+
+/* inner tight pixel rules at top and bottom edges */
+.mcat-sep::before {
+    content: '';
+    position: absolute;
+    top: 6px; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 192, 16, 0.3) 50%, transparent 100%);
+    pointer-events: none;
+}
+
+.mcat-sep::after {
+    content: '';
+    position: absolute;
+    bottom: 6px; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 192, 16, 0.3) 50%, transparent 100%);
+    pointer-events: none;
+}
+
+.mcat-sep-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 48px;
+    gap: 24px;
+}
+
+.mcat-sep-line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 192, 16, 0.85) 20%, rgba(255, 192, 16, 0.85) 80%, transparent 100%);
+}
+
+.mcat-sep-icon {
+    font-size: 18px;
+    color: #ffc010;
+    flex-shrink: 0;
+    text-shadow: 0 0 18px rgba(255, 192, 16, 0.95), 0 0 40px rgba(255, 107, 0, 0.55);
+    animation: mcatPulse 2.5s ease-in-out infinite;
+}
+
+.mcat-sep-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: rgba(255, 192, 16, 0.85);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    animation: mcatBlink 2s step-end infinite;
+    position: relative;
+    z-index: 1;
+}
+
+.mcat-sep-label::before { content: '>> '; }
+.mcat-sep-label::after  { content: ' <<'; }
+
+@keyframes mcatPulse {
+    0%, 100% { opacity: 0.5; text-shadow: 0 0 8px rgba(255, 192, 16, 0.3); }
+    50%  { opacity: 1;   text-shadow: 0 0 22px rgba(255, 192, 16, 0.95), 0 0 44px rgba(255, 107, 0, 0.5); }
+}
+
+/* ── Row separator (between product cards) ─────────────────── */
+.mcat-row-sep {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #07000e;
+    padding: 22px 0;
+    gap: 12px;
+    border-top: 2px solid rgba(255, 192, 16, 0.65);
+    border-bottom: 2px solid rgba(255, 192, 16, 0.65);
+    position: relative;
+    z-index: 2;
+}
+
+.mcat-row-sep::before {
+    content: '';
+    position: absolute;
+    top: 6px; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 192, 16, 0.3) 50%, transparent 100%);
+    pointer-events: none;
+}
+
+.mcat-row-sep::after {
+    content: '';
+    position: absolute;
+    bottom: 6px; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 192, 16, 0.3) 50%, transparent 100%);
+    pointer-events: none;
+}
+
+.mcat-row-sep-line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 192, 16, 0.85) 20%, rgba(255, 192, 16, 0.85) 80%, transparent 100%);
+}
+
+.mcat-row-sep-center {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: rgba(255, 192, 16, 0.85);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    animation: mcatBlink 2s step-end infinite;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Products Section ───────────────────────────────────────── */
+.mcat-section {
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 3px,
+            rgba(0, 0, 0, 0.04) 3px,
+            rgba(0, 0, 0, 0.04) 4px
+        ),
+        radial-gradient(circle, rgba(255, 192, 16, 0.055) 1px, transparent 1px),
+        linear-gradient(135deg, #0a0015 0%, #0d0018 50%, #0a0015 100%);
+    background-size: 100% 4px, 28px 28px, 100% 100%;
+    padding: 16px;
+    min-height: 50vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.mcat-section::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 960px;
+    height: 520px;
+    background: radial-gradient(ellipse at center, rgba(255, 192, 16, 0.055) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.mcat-section::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    right: -150px;
+    width: 640px;
+    height: 640px;
+    background: radial-gradient(ellipse at center, rgba(150, 30, 255, 0.045) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── Product grid ─────────────────────────────────────────── */
+.mcat-grid {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Product card ─────────────────────────────────────────── */
+.mcat-card {
+    background: linear-gradient(135deg, rgba(14, 5, 28, 1) 0%, rgba(6, 2, 12, 1) 100%);
+    border-left: 3px solid rgba(255, 192, 16, 0.5);
+    border-right: 3px solid rgba(255, 192, 16, 0.5);
+    border-top: 3px solid rgba(255, 192, 16, 0.75);
+    border-bottom: 3px solid rgba(255, 192, 16, 0.35);
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    min-height: 420px;
+    transition: box-shadow 0.3s ease, border-color 0.25s ease;
+    box-shadow:
+        5px 5px 0 rgba(255, 192, 16, 0.22),
+        10px 10px 0 rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.mcat-card + .mcat-card {
+    border-top: 2px solid rgba(255, 192, 16, 0.15);
+    margin-top: 0;
+}
+
+.mcat-card--reverse {
+    flex-direction: row-reverse;
+}
+
+/* Shine sweep on hover */
+.mcat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -130%;
+    width: 45%;
+    height: 100%;
+    background: linear-gradient(
+        108deg,
+        transparent 30%,
+        rgba(255, 192, 16, 0.07) 50%,
+        transparent 70%
+    );
+    transition: left 0.65s ease;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.mcat-card:hover::before {
+    left: 160%;
+}
+
+.mcat-card:hover {
+    border-color: #ffc010;
+    border-top-color: #ffc010;
+    box-shadow:
+        5px 5px 0 rgba(255, 192, 16, 0.45),
+        10px 10px 0 rgba(0, 0, 0, 0.55),
+        0 0 60px rgba(255, 192, 16, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+/* Pixel corner brackets — revealed on hover */
+.mcat-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 4;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    background:
+        linear-gradient(#ffc010, #ffc010) top left     / 16px 2px no-repeat,
+        linear-gradient(#ffc010, #ffc010) top left     / 2px 16px no-repeat,
+        linear-gradient(#ffc010, #ffc010) top right    / 16px 2px no-repeat,
+        linear-gradient(#ffc010, #ffc010) top right    / 2px 16px no-repeat,
+        linear-gradient(#ffc010, #ffc010) bottom left  / 16px 2px no-repeat,
+        linear-gradient(#ffc010, #ffc010) bottom left  / 2px 16px no-repeat,
+        linear-gradient(#ffc010, #ffc010) bottom right / 16px 2px no-repeat,
+        linear-gradient(#ffc010, #ffc010) bottom right / 2px 16px no-repeat;
+}
+
+.mcat-card:hover::after {
+    opacity: 1;
+}
+
+/* ── Card image area ──────────────────────────────────────── */
+.mcat-card-img {
+    width: 50%;
+    flex-shrink: 0;
+    background:
+        repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(255, 192, 16, 0.04) 31px, rgba(255, 192, 16, 0.04) 32px),
+        repeating-linear-gradient(90deg, transparent, transparent 31px, rgba(255, 192, 16, 0.04) 31px, rgba(255, 192, 16, 0.04) 32px),
+        linear-gradient(180deg, rgba(16, 5, 32, 1) 0%, rgba(6, 2, 14, 1) 100%);
+    border-right: 3px solid rgba(255, 192, 16, 0.45);
+    border-bottom: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    gap: 16px;
+}
+
+.mcat-card--reverse .mcat-card-img {
+    border-right: none;
+    border-left: 3px solid rgba(255, 192, 16, 0.45);
+}
+
+.mcat-card-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(0, 0, 0, 0.12) 3px,
+        rgba(0, 0, 0, 0.12) 4px
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+
+.mcat-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.mcat-card-img-placeholder {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 96px;
+    color: rgba(255, 192, 16, 0.28);
+    user-select: none;
+    line-height: 1;
+    text-shadow:
+        0 0 50px rgba(255, 192, 16, 0.4),
+        3px 3px 0 rgba(255, 107, 0, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Card body ────────────────────────────────────────────── */
+.mcat-card-body {
+    flex: 1;
+    padding: 52px 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 18px;
+    justify-content: center;
+}
+
+.mcat-card--reverse .mcat-card-body {
+    align-items: flex-end;
+    text-align: right;
+}
+
+.mcat-item-num {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    color: #ffc010;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 0 #FF6B00, 0 0 18px rgba(255, 192, 16, 0.6);
+}
+
+.mcat-category {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: #000;
+    background: #ffc010;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    display: inline-block;
+    box-shadow: 2px 2px 0 #7a4d00;
+}
+
+.mcat-name {
+    font-family: 'Press Start 2P', monospace !important;
+    font-size: clamp(11px, 1.3vw, 15px) !important;
+    color: #fff !important;
+    line-height: 2.1 !important;
+    margin: 0 !important;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.9);
+}
+
+.mcat-price {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(15px, 1.8vw, 24px);
+    color: #ffc010;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 0 rgba(255, 107, 0, 0.65);
+}
+
+.mcat-card-divider {
+    width: 100%;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, rgba(255, 192, 16, 0.65) 0px, rgba(255, 192, 16, 0.65) 8px, transparent 8px, transparent 14px);
+    margin: 6px 0;
+}
+
+/* ── Buy Now button ───────────────────────────────────────── */
+.mcat-shop-btn {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    color: #000;
+    background: #ffc010;
+    border: none;
+    padding: 14px 32px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 4px 4px 0 #7a4d00;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
+    cursor: pointer;
+    white-space: nowrap;
+    margin-top: 4px;
+}
+
+.mcat-shop-btn::before {
+    content: '► ';
+}
+
+.mcat-shop-btn:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 #7a4d00;
+    background: #ffcf3f;
+    color: #000;
+    text-decoration: none;
+}
+
+.mcat-shop-btn:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
+    color: #000;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .mcat-card-body {
+        padding: 40px 44px;
+    }
+
+    .mcat-name {
+        font-size: clamp(10px, 1.6vw, 13px) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .mcat-hero {
+        min-height: 16vh;
+        padding: 24px 16px 20px;
+    }
+
+    .mcat-hero-title {
+        font-size: clamp(14px, 5vw, 24px) !important;
+        letter-spacing: 1px !important;
+    }
+
+    .mcat-hero-sub {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .mcat-sep {
+        padding: 18px 0;
+        gap: 10px;
+    }
+
+    .mcat-sep-label {
+        font-size: 6px;
+        letter-spacing: 3px;
+    }
+
+    .mcat-row-sep {
+        padding: 16px 0;
+        gap: 8px;
+    }
+
+    .mcat-row-sep-center {
+        font-size: 6px;
+        letter-spacing: 3px;
+    }
+
+    .mcat-section {
+        padding: 16px 12px;
+    }
+
+    .mcat-grid {
+        gap: 0;
+        padding: 0;
+    }
+
+    .mcat-card,
+    .mcat-card--reverse {
+        flex-direction: column;
+        min-height: unset;
+        border-radius: 2px;
+    }
+
+    .mcat-card-img {
+        width: 100%;
+        height: 220px;
+        border-right: none;
+        border-left: none;
+        border-bottom: 2px solid rgba(255, 192, 16, 0.35);
+    }
+
+    .mcat-card--reverse .mcat-card-img {
+        border-right: none;
+        border-left: none;
+        border-bottom: 2px solid rgba(255, 192, 16, 0.35);
+    }
+
+    .mcat-card-img-placeholder {
+        font-size: 56px;
+    }
+
+    .mcat-card-body,
+    .mcat-card--reverse .mcat-card-body {
+        padding: 28px 24px 32px;
+        gap: 14px;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .mcat-item-num {
+        font-size: 13px;
+    }
+
+    .mcat-name {
+        font-size: 10px !important;
+        line-height: 2 !important;
+    }
+
+    .mcat-price {
+        font-size: 16px;
+    }
+
+    .mcat-shop-btn {
+        font-size: 7px;
+        padding: 12px 22px;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .mcat-card-divider {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .mcat-hero-title {
+        font-size: clamp(13px, 6vw, 20px) !important;
+    }
+
+    .mcat-card-body,
+    .mcat-card--reverse .mcat-card-body {
+        padding: 22px 18px 26px;
+        gap: 12px;
+    }
+
+    .mcat-item-num {
+        font-size: 11px;
+    }
+
+    .mcat-price {
+        font-size: 14px;
+    }
+
+    .mcat-shop-btn {
+        font-size: 6px;
+        padding: 11px 18px;
+    }
+}
+

@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import Breadcrumb from '../../Utilities/Breadcrumb/Breadcrumb';
+﻿import React, { useState, useEffect } from 'react';
 import merchBg from '../../../assets/img/merch.webp';
 import merchPhBg from '../../../assets/img/MERCHPH.webp';
 
@@ -31,12 +30,7 @@ const Merchandise = () => {
                     padding: '60px 20px',
                 }}
             >
-                <div
-                    style={{
-                        textAlign: 'center',
-                        maxWidth: '600px',
-                    }}
-                >
+                <div style={{ textAlign: 'center', maxWidth: '600px' }}>
                     <div
                         style={{
                             fontFamily: "'Press Start 2P', monospace",
@@ -64,7 +58,7 @@ const Merchandise = () => {
                         style={{
                             fontFamily: "'VT323', monospace",
                             color: 'rgba(255,255,255,0.7)',
-                            fontSize: 'clamp(18px, 2vw, 16px)',
+                            fontSize: 'clamp(18px, 2vw, 22px)',
                             lineHeight: 1.8,
                             margin: 0,
                         }}

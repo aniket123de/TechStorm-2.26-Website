@@ -68,7 +68,9 @@ const StatisticsPage = lazy(() => import("./Pages/Admin/StatisticsPage"));
 const VerifyRegistration = lazy(() => import("./Pages/VerifyRegistration/VerifyRegistration"));
 
 // Lazy load Merchandise Page
-const Merchandise = lazy(() => import("./Pages/Merchandise/Merchandise"));
+// To switch to the full catalogue, swap the import below to MerchandiseCatalog
+//const Merchandise = lazy(() => import("./Pages/Merchandise/Merchandise"));
+ const Merchandise = lazy(() => import("./Pages/Merchandise/MerchandiseCatalog"));
 
 const navItems = [
   { label: "Home", href: "/#home" },
