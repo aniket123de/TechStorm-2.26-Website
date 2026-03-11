@@ -4,6 +4,79 @@
    Colours: #ffc010 gold · #FF6B00 orange · #000 / deep-purple bg
    ============================================================ */
 
+/* ── Image Slider ─────────────────────────────────────────── */
+.mcat-slider {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* Force every slick wrapper to fill the card image area */
+.mcat-slider.slick-slider,
+.mcat-slider .slick-list,
+.mcat-slider .slick-track,
+.mcat-slider .slick-slide,
+.mcat-slider .slick-slide > div {
+    height: 100%;
+}
+
+.mcat-slide {
+    height: 100%;
+}
+
+.mcat-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+    display: block;
+    padding: 4px;
+}
+
+/* Custom arrow buttons */
+.mcat-slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(7, 0, 14, 0.75);
+    border: 2px solid rgba(255, 192, 16, 0.65);
+    color: #ffc010;
+    font-size: 12px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    padding: 0;
+    line-height: 1;
+}
+
+.mcat-slider-arrow:hover {
+    background: rgba(255, 192, 16, 0.15);
+    border-color: #ffc010;
+}
+
+.mcat-slider-arrow--prev { left: 8px; }
+.mcat-slider-arrow--next { right: 8px; }
+
+/* Dots */
+.mcat-slider-dots {
+    bottom: 10px !important;
+}
+
+.mcat-slider-dots li button::before {
+    color: rgba(255, 192, 16, 0.5) !important;
+    font-size: 8px !important;
+}
+
+.mcat-slider-dots li.slick-active button::before {
+    color: #ffc010 !important;
+}
+
 /* ── Hero ─────────────────────────────────────────────────── */
 .mcat-hero {
     min-height: 18vh;
@@ -290,7 +363,7 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    min-height: 420px;
+    height: 440px;
     transition: box-shadow 0.3s ease, border-color 0.25s ease;
     box-shadow:
         5px 5px 0 rgba(255, 192, 16, 0.22),
@@ -367,6 +440,7 @@
 /* ── Card image area ──────────────────────────────────────── */
 .mcat-card-img {
     width: 50%;
+    height: 100%;
     flex-shrink: 0;
     background:
         repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(255, 192, 16, 0.04) 31px, rgba(255, 192, 16, 0.04) 32px),
@@ -406,10 +480,12 @@
 .mcat-card-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center center;
     display: block;
     position: relative;
     z-index: 1;
+    padding: 4px;
 }
 
 .mcat-card-img-placeholder {
@@ -477,6 +553,15 @@
     color: #ffc010;
     letter-spacing: 2px;
     text-shadow: 3px 3px 0 rgba(255, 107, 0, 0.65);
+}
+
+.mcat-desc {
+    font-family: 'Silkscreen', sans-serif;
+    font-size: clamp(9px, 1.1vw, 12px);
+    color: rgba(255, 255, 255, 0.55);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: -6px;
 }
 
 .mcat-card-divider {
@@ -580,19 +665,32 @@
         padding: 0;
     }
 
+    /* Stack cards vertically, remove fixed height */
     .mcat-card,
     .mcat-card--reverse {
         flex-direction: column;
+        height: auto !important;
         min-height: unset;
         border-radius: 2px;
     }
 
     .mcat-card-img {
         width: 100%;
-        height: 220px;
+        height: 260px;
+        flex-shrink: 0;
         border-right: none;
         border-left: none;
         border-bottom: 2px solid rgba(255, 192, 16, 0.35);
+    }
+
+    /* Ensure slider fills the image block on mobile too */
+    .mcat-card-img .mcat-slider,
+    .mcat-card-img .mcat-slider.slick-slider,
+    .mcat-card-img .mcat-slider .slick-list,
+    .mcat-card-img .mcat-slider .slick-track,
+    .mcat-card-img .mcat-slider .slick-slide,
+    .mcat-card-img .mcat-slider .slick-slide > div {
+        height: 260px;
     }
 
     .mcat-card--reverse .mcat-card-img {
@@ -607,10 +705,12 @@
 
     .mcat-card-body,
     .mcat-card--reverse .mcat-card-body {
-        padding: 28px 24px 32px;
-        gap: 14px;
+        width: 100%;
+        padding: 24px 20px 28px;
+        gap: 12px;
         align-items: flex-start;
         text-align: left;
+        box-sizing: border-box;
     }
 
     .mcat-item-num {
@@ -620,18 +720,24 @@
     .mcat-name {
         font-size: 10px !important;
         line-height: 2 !important;
+        word-break: break-word;
     }
 
     .mcat-price {
         font-size: 16px;
     }
 
+    .mcat-desc {
+        font-size: 9px;
+    }
+
     .mcat-shop-btn {
         font-size: 7px;
-        padding: 12px 22px;
+        padding: 12px 0;
         width: 100%;
         text-align: center;
         box-sizing: border-box;
+        display: block;
     }
 
     .mcat-card-divider {
@@ -644,10 +750,23 @@
         font-size: clamp(13px, 6vw, 20px) !important;
     }
 
+    .mcat-card-img {
+        height: 220px;
+    }
+
+    .mcat-card-img .mcat-slider,
+    .mcat-card-img .mcat-slider.slick-slider,
+    .mcat-card-img .mcat-slider .slick-list,
+    .mcat-card-img .mcat-slider .slick-track,
+    .mcat-card-img .mcat-slider .slick-slide,
+    .mcat-card-img .mcat-slider .slick-slide > div {
+        height: 220px;
+    }
+
     .mcat-card-body,
     .mcat-card--reverse .mcat-card-body {
-        padding: 22px 18px 26px;
-        gap: 12px;
+        padding: 20px 16px 24px;
+        gap: 10px;
     }
 
     .mcat-item-num {
@@ -660,7 +779,7 @@
 
     .mcat-shop-btn {
         font-size: 6px;
-        padding: 11px 18px;
+        padding: 11px 0;
     }
 }
 

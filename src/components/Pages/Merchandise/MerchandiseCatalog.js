@@ -1,32 +1,99 @@
 ﻿import React, { useState, useEffect } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import merchBg from "../../../assets/img/merch.webp";
 import merchPhBg from "../../../assets/img/MERCHPH.webp";
+import rn1Img      from "../../../assets/img/rn1.webp";
+import rn2Img      from "../../../assets/img/rn2.webp";
+import rnBackImg   from "../../../assets/img/rn-back.webp";
+import collarFixImg  from "../../../assets/img/collar-fix.webp";
+import collarCustImg from "../../../assets/img/collar-cust.webp";
 import "./Merchandise.css";
 
 const MOBILE_BREAKPOINT = 768;
 
-// Set shopLink to a real store URL and image to a local import / URL for each product.
 const PRODUCTS = [
-    { id: 1, name: "TechStorm Event T-Shirt", category: "Apparel",     price: "₹299", image: null, shopLink: "#" },
-    { id: 2, name: "TechStorm Hoodie",         category: "Apparel",     price: "₹699", image: null, shopLink: "#" },
-    { id: 3, name: "TechStorm Cap",            category: "Accessories", price: "₹199", image: null, shopLink: "#" },
+    {
+        id: 1,
+        name: "TechStorm Round Neck T-Shirt",
+        category: "Apparel",
+        price: "₹299",
+        desc: "180 GSM premium cotton",
+        images: [
+            rn1Img,
+            rn2Img,
+            rnBackImg,
+        ],
+        shopLink: "https://forms.gle/ny75NhSSk68XVAT6A",
+    },
+    {
+        id: 2,
+        name: "TechStorm Polo T-Shirt Non-Customized",
+        category: "Apparel",
+        price: "₹399",
+        desc: "220 GSM premium polo fabric",
+        image: collarFixImg,
+        shopLink: "https://forms.gle/ny75NhSSk68XVAT6A",
+    },
+    {
+        id: 3,
+        name: "TechStorm Polo T-Shirt Customized",
+        category: "Apparel",
+        price: "₹499",
+        desc: "220 GSM premium polo fabric",
+        image: collarCustImg,
+        shopLink: "https://forms.gle/ny75NhSSk68XVAT6A",
+    },
 ];
+
+// ─── Slider arrow buttons ─────────────────────────────────────────────────────
+const PrevArrow = ({ onClick }) => (
+    <button className="mcat-slider-arrow mcat-slider-arrow--prev" onClick={onClick} aria-label="Previous image">&#9664;</button>
+);
+const NextArrow = ({ onClick }) => (
+    <button className="mcat-slider-arrow mcat-slider-arrow--next" onClick={onClick} aria-label="Next image">&#9654;</button>
+);
+
+const SLIDER_SETTINGS = {
+    dots: true,
+    infinite: true,
+    speed: 400,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow />,
+    dotsClass: "slick-dots mcat-slider-dots",
+};
 
 // ─── Product Card ─────────────────────────────────────────────────────────────
 const ProductCard = ({ product, index }) => {
     const isReverse = index % 2 === 1;
+    const hasMultiple = Array.isArray(product.images) && product.images.length > 0;
+    const hasSingle   = !hasMultiple && product.image;
+
     return (
         <article className={`mcat-card${isReverse ? ' mcat-card--reverse' : ''}`}>
             <div className="mcat-card-img">
-                {product.image
-                    ? <img src={product.image} alt={product.name} />
-                    : <span className="mcat-card-img-placeholder">{product.name.charAt(0)}</span>
-                }
+                {hasMultiple ? (
+                    <Slider {...SLIDER_SETTINGS} className="mcat-slider">
+                        {product.images.map((src, i) => (
+                            <div key={i} className="mcat-slide">
+                                <img src={src} alt={`${product.name} view ${i + 1}`} />
+                            </div>
+                        ))}
+                    </Slider>
+                ) : hasSingle ? (
+                    <img src={product.image} alt={product.name} />
+                ) : (
+                    <span className="mcat-card-img-placeholder">{product.name.charAt(0)}</span>
+                )}
             </div>
             <div className="mcat-card-body">
                 <span className="mcat-item-num">[{String(index + 1).padStart(2, '0')}]</span>
                 <h3 className="mcat-name">{product.name}</h3>
                 {product.price && <span className="mcat-price">{product.price}</span>}
+                {product.desc && <span className="mcat-desc">{product.desc}</span>}
                 <div className="mcat-card-divider" />
                 <a
                     href={product.shopLink}
