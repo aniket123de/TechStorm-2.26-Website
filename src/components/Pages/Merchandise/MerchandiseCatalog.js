@@ -16,7 +16,7 @@ const MOBILE_BREAKPOINT = 768;
 const PRODUCTS = [
     {
         id: 1,
-        name: "TechStorm Round Neck T-Shirt",
+        name: "TechStorm 2.26 Round Neck T-Shirt",
         category: "Apparel",
         price: "₹299",
         desc: "180 GSM premium cotton",
@@ -29,7 +29,7 @@ const PRODUCTS = [
     },
     {
         id: 2,
-        name: "TechStorm Polo T-Shirt Non-Customized",
+        name: "TechStorm 2.26 Polo T-Shirt (Non-Customized)",
         category: "Apparel",
         price: "₹399",
         desc: "220 GSM premium polo fabric",
@@ -38,7 +38,7 @@ const PRODUCTS = [
     },
     {
         id: 3,
-        name: "TechStorm Polo T-Shirt Customized",
+        name: "TechStorm 2.26 Polo T-Shirt (Customized)",
         category: "Apparel",
         price: "₹499",
         desc: "220 GSM premium polo fabric",
