@@ -205,6 +205,17 @@ section#about * {
     hyphens: none !important;
 }
 
+/* Fix: style.css forces `.menu-area { position: relative !important }` which
+   overrides the non-!important `.header-three .menu-area { position: fixed }`.
+   This makes the header take up real document-flow height (~70 px) at scroll=0,
+   pushing the hero section down so its bottom grid falls below the viewport.
+   Adding a higher-specificity !important here restores the intended fixed
+   behaviour so the header wrapper collapses to 0 height and the hero section
+   starts at y=0, keeping the grid exactly at the viewport bottom. */
+.header-three .menu-area {
+    position: fixed !important;
+}
+
 /* Allow hero background elements (retrowave grid, canvas) to exceed
    100% width — defeats the global div { max-width: 100% !important }
    rule. A class selector (0,1,0) beats an element selector (0,0,1)

@@ -1,4 +1,5 @@
 ﻿import React, { useState, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -75,7 +76,7 @@ const Lightbox = ({ images, startIndex, onClose }) => {
         };
     }, [onClose, images.length]);
 
-    return (
+    return createPortal(
         <div className="mcat-lb-overlay" onClick={onClose} role="dialog" aria-modal="true">
             <button className="mcat-lb-close" onClick={onClose} aria-label="Close">✕</button>
             {images.length > 1 && (
@@ -90,7 +91,8 @@ const Lightbox = ({ images, startIndex, onClose }) => {
             {images.length > 1 && (
                 <button className="mcat-lb-arrow mcat-lb-arrow--next" onClick={goNext} aria-label="Next">&#9654;</button>
             )}
-        </div>
+        </div>,
+        document.body
     );
 };
 

@@ -632,7 +632,8 @@ function HeroOne() {
         id="home"
         style={{
           position: "relative",
-          minHeight: "100vh",
+          height: "100vh",
+          maxHeight: "100vh",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -688,6 +689,7 @@ function HeroOne() {
             zIndex: 10,
             textAlign: "center",
             padding: "0 20px",
+            marginTop: isMobile ? "40px" : "60px",
           }}
         >
           {/* Title with glitch effect */}
