@@ -18,6 +18,16 @@
     --purple-bright: #a855f7;
     --purple-neon: #d946ef;
     --grid-color: rgba(61, 90, 254, 0.15);
+    /* Fixed navbar height — update here if the header height changes.
+       Desktop: 65px logo + 10px padding-top + 10px padding-bottom = 85px → round up to 90px.
+       Mobile (≤767px): 40px logo + 20px padding = 60px → 70px with buffer (see override below). */
+    --header-h: 90px;
+}
+
+@media (max-width: 767px) {
+    :root {
+        --header-h: 70px;
+    }
 }
 
 /* ── Flicker ── */
@@ -214,6 +224,29 @@ section#about * {
    starts at y=0, keeping the grid exactly at the viewport bottom. */
 .header-three .menu-area {
     position: fixed !important;
+}
+
+/* Ensure the breadcrumb hero banner (used on About, FAQ, EventDetail, Registration pages)
+   is not obscured by the fixed navbar. The section uses d-flex align-items-center so
+   content stays vertically centred in the remaining space. */
+.breadcrumb-area {
+    padding-top: 42px !important;
+}
+
+/* Breadcrumb link colour — gold throughout */
+.breadcrumb li a,
+.breadcrumb-item a {
+    color: #ffc010 !important;
+}
+
+.breadcrumb-item + .breadcrumb-item::before,
+.breadcrumb-item+.breadcrumb-item:before {
+    color: #ffc010 !important;
+}
+
+.breadcrumb > .active,
+.breadcrumb-item.active {
+    color: #ffc010 !important;
 }
 
 /* Allow hero background elements (retrowave grid, canvas) to exceed

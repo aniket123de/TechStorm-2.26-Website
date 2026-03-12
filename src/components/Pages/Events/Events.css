@@ -1,6 +1,6 @@
-/* Mobile: reduce top padding on Events page wrapper */
+/* Mobile: ensure top padding on Events page wrapper clears the fixed navbar */
 @media (max-width: 768px) {
   .events-page-wrap {
-    padding-top: 8px !important;
+    padding-top: 80px !important;
   }
 }

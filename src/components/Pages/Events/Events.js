@@ -29,7 +29,7 @@ const Events = () => {
                 backgroundRepeat: 'no-repeat',
                 backgroundAttachment: 'fixed',
                 minHeight: '100vh',
-                paddingTop: '20px'
+                paddingTop: '90px'
             }}>
                 <div>
                     {/* Featured Events Component */}
