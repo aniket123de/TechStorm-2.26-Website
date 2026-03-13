@@ -29,22 +29,13 @@ const PRODUCTS = [
     },
     {
         id: 2,
-        name: "TechStorm 2.26 Polo T-Shirt (Non-Customized)",
+        name: "TechStorm 2.26 Polo T-Shirt",
         category: "Apparel",
         price: "₹399",
         desc: "220 GSM premium polo fabric",
         image: collarFixImg,
         shopLink: "https://forms.gle/ny75NhSSk68XVAT6A",
-    },
-    {
-        id: 3,
-        name: "TechStorm 2.26 Polo T-Shirt (Customized)",
-        category: "Apparel",
-        price: "₹499",
-        desc: "220 GSM premium polo fabric",
-        image: collarCustImg,
-        shopLink: "https://forms.gle/ny75NhSSk68XVAT6A",
-    },
+    }
 ];
 
 // ─── Lightbox ─────────────────────────────────────────────────────────────────
