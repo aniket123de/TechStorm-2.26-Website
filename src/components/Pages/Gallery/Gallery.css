@@ -23,7 +23,7 @@
   position: relative;
   z-index: 1;
   background: rgba(0, 0, 0, 0.55);
-  padding-top: 20px;
+  padding-top: 90px;
   padding-bottom: 12px;
 }
 
@@ -268,7 +268,7 @@
 /* ---------- Tablet ---------- */
 @media (max-width: 991px) {
   .gallery-hero-overlay {
-    padding-top: 16px;
+    padding-top: 90px;
     padding-bottom: 12px;
   }
 
@@ -295,7 +295,7 @@
 /* ---------- Mobile landscape / small tablet ---------- */
 @media (max-width: 767px) {
   .gallery-hero-overlay {
-    padding-top: 12px;
+    padding-top: 70px;
     padding-bottom: 12px;
     padding-left: 12px;
     padding-right: 12px;
@@ -421,7 +421,7 @@
 /* ---------- Mobile portrait (single column for easier tap) ---------- */
 @media (max-width: 480px) {
   .gallery-hero-overlay {
-    padding-top: 10px;
+    padding-top: 70px;
     padding-bottom: 12px;
     padding-left: 10px;
     padding-right: 10px;

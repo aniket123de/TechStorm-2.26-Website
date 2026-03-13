@@ -84,7 +84,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 32px 24px 28px;
+    padding: 90px 24px 28px;
     position: relative;
 }
 
@@ -623,7 +623,7 @@
 @media (max-width: 768px) {
     .mcat-hero {
         min-height: 16vh;
-        padding: 24px 16px 20px;
+        padding: 70px 16px 20px;
     }
 
     .mcat-hero-title {
