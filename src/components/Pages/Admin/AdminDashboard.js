@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import AdminLoading from './AdminLoading';
+import RevenueModal from './RevenueModal';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
@@ -8,6 +9,7 @@ const AdminDashboard = () => {
   const location = useLocation();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showRevenueModal, setShowRevenueModal] = useState(false);
 
   // Extract role from pathname (/admin/core/dashboard -> core)
   const role = location.pathname.split('/')[2];
@@ -120,12 +122,12 @@ const AdminDashboard = () => {
             <button type="button" className="card-button" onClick={() => handleNavigate('statistics')}>Open</button>
           </div>
 
-          {user.permissions?.includes('delete') && (
-            <div className="dashboard-card dashboard-card--users">
-              <p className="card-kicker">Admin</p>
-              <h3>Manage Users</h3>
-              <p className="card-desc">Access user administration controls.</p>
-              <button type="button" className="card-button" onClick={() => handleNavigate('users')}>Open</button>
+          {role === 'core' && user.permissions?.includes('delete') && (
+            <div className="dashboard-card dashboard-card--revenue">
+              <p className="card-kicker">Finance</p>
+              <h3>Revenue</h3>
+              <p className="card-desc">Generate total earned revenue across TechStorm 2.26.</p>
+              <button type="button" className="card-button" onClick={() => setShowRevenueModal(true)}>Open</button>
             </div>
           )}
 
@@ -136,6 +138,10 @@ const AdminDashboard = () => {
             <button type="button" className="card-button" onClick={() => handleNavigate('registrations')}>Open</button>
           </div>
         </div>
+
+        {showRevenueModal && role === 'core' && (
+          <RevenueModal onClose={() => setShowRevenueModal(false)} />
+        )}
       </div>
     </div>
   );

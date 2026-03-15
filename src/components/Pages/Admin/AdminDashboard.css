@@ -145,7 +145,7 @@
 }
 
 .dashboard-card--statistics::before { background: #0f766e; }
-.dashboard-card--users::before { background: #7c3aed; }
+.dashboard-card--revenue::before { background: #059669; }
 .dashboard-card--registrations::before { background: #2563eb; }
 
 .card-kicker {
@@ -197,6 +197,114 @@
   outline-offset: 2px;
 }
 
+.revenue-modal {
+  max-width: 980px;
+}
+
+.revenue-input-card {
+  border: 1px solid #d1fae5;
+  background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.revenue-field-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #065f46;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.revenue-number-input {
+  width: 100%;
+  border: 1px solid #a7f3d0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  background: #ffffff;
+}
+
+.revenue-number-input:focus {
+  outline: none;
+  border-color: #059669;
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.12);
+}
+
+.revenue-field-help {
+  margin: 10px 0 0;
+  color: #4b5563;
+  font-size: 13px;
+}
+
+.revenue-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.revenue-summary-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 18px;
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(17, 24, 39, 0.05);
+}
+
+.revenue-summary-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.revenue-summary-value {
+  display: block;
+  color: #111827;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.revenue-breakdown h3 {
+  margin: 0 0 14px;
+  color: #111827;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.revenue-note {
+  margin: 12px 0 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.revenue-pending-list {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.revenue-pending-item {
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid #fde68a;
+  border-radius: 10px;
+  background: #fffbeb;
+  color: #92400e;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
 @media (max-width: 768px) {
   .admin-dashboard {
     padding: 28px 14px;
@@ -243,6 +351,10 @@
   .card-button {
     min-height: 44px;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  .revenue-summary-value {
+    font-size: 24px;
   }
 }
 
