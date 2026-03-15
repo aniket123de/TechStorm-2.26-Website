@@ -63,6 +63,7 @@ const AdminDashboard = lazy(() => import("./Pages/Admin/AdminDashboard"));
 const RegistrationsPage = lazy(() => import("./Pages/Admin/RegistrationsPage"));
 const EventsPage = lazy(() => import("./Pages/Admin/EventsPage"));
 const StatisticsPage = lazy(() => import("./Pages/Admin/StatisticsPage"));
+const RevenuePage = lazy(() => import("./Pages/Admin/RevenuePage"));
 
 // Lazy load Verify Registration Page
 const VerifyRegistration = lazy(() => import("./Pages/VerifyRegistration/VerifyRegistration"));
@@ -164,6 +165,11 @@ const AppContent = () => {
               exact
               path="/admin/:role/statistics"
               component={StatisticsPage}
+            />
+            <Route
+              exact
+              path="/admin/:role/revenue"
+              component={RevenuePage}
             />
 
           <Route exact path="/" component={Home} />

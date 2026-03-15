@@ -208,6 +208,11 @@
   padding: 18px;
 }
 
+.revenue-input-card--page {
+  min-width: 280px;
+  max-width: 360px;
+}
+
 .revenue-field-label {
   display: block;
   margin-bottom: 8px;
@@ -305,6 +310,22 @@
   line-height: 1.5;
 }
 
+.revenue-page-topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.revenue-summary-grid--page {
+  margin-bottom: 24px;
+}
+
+.revenue-page-intro {
+  margin-bottom: 24px;
+}
+
 @media (max-width: 768px) {
   .admin-dashboard {
     padding: 28px 14px;
@@ -355,6 +376,12 @@
 
   .revenue-summary-value {
     font-size: 24px;
+  }
+
+  .revenue-input-card--page {
+    min-width: 0;
+    max-width: none;
+    width: 100%;
   }
 }
 
