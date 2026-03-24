@@ -30,6 +30,9 @@ const allowedOrigins = (
   .map(normalizeOrigin)
   .filter(Boolean);
 
+// Required behind Vercel/other reverse proxies so req.ip and rate-limit behave correctly.
+app.set('trust proxy', 1);
+
 console.log('🔧 CORS Configuration:');
 console.log('📝 CORS_ORIGINS env:', process.env.CORS_ORIGINS);
 console.log('📝 FRONTEND_URL env:', process.env.FRONTEND_URL);
@@ -49,6 +52,11 @@ const limiter = rateLimit({
   },
   standardHeaders: true,
   legacyHeaders: false,
+  skip: (req) => req.method === 'OPTIONS',
+  handler: (req, res, _next, options) => {
+    console.warn(`⚠️ Rate limit hit for IP ${req.ip} on ${req.method} ${req.originalUrl}`);
+    res.status(options.statusCode).json(options.message);
+  }
 });
 
 app.use('/api/', limiter);

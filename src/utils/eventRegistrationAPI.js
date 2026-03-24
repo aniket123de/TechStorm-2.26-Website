@@ -6,6 +6,35 @@
 import API_URL from '../config/api';
 
 const API_BASE_URL = API_URL;
+const REGISTRATION_REQUEST_TIMEOUT_MS = 45000;
+const MAX_NETWORK_RETRIES = 2;
+
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const isTransientNetworkError = (error) => {
+  const message = (error?.message || '').toLowerCase();
+  return (
+    error?.name === 'AbortError' ||
+    message.includes('failed to fetch') ||
+    message.includes('network error') ||
+    message.includes('networkerror') ||
+    message.includes('load failed')
+  );
+};
+
+const fetchWithTimeout = async (url, options, timeoutMs) => {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    return await fetch(url, {
+      ...options,
+      signal: controller.signal
+    });
+  } finally {
+    clearTimeout(timeoutId);
+  }
+};
 
 /**
  * Submit event registration
@@ -74,11 +103,41 @@ export const submitEventRegistration = async (eventName, registrationData) => {
       appendToFormData(key, registrationData[key]);
     });
 
-    const response = await fetch(`${API_BASE_URL}/event-registration/${eventName}`, {
-      method: 'POST',
-      body: formData
-      // Don't set Content-Type header - browser will set it automatically with boundary
-    });
+    const endpoint = `${API_BASE_URL}/event-registration/${encodeURIComponent(eventName)}`;
+    let response;
+
+    for (let attempt = 0; attempt <= MAX_NETWORK_RETRIES; attempt++) {
+      try {
+        response = await fetchWithTimeout(endpoint, {
+          method: 'POST',
+          body: formData
+          // Don't set Content-Type header - browser will set it automatically with boundary
+        }, REGISTRATION_REQUEST_TIMEOUT_MS);
+
+        const shouldRetryStatus = response.status >= 500 || response.status === 429;
+        if (shouldRetryStatus && attempt < MAX_NETWORK_RETRIES) {
+          const retryDelay = Math.min(1000 * (attempt + 1), 3000);
+          console.warn(`⏳ Temporary server issue (${response.status}). Retrying in ${retryDelay}ms...`);
+          await wait(retryDelay);
+          continue;
+        }
+
+        break;
+      } catch (requestError) {
+        if (isTransientNetworkError(requestError) && attempt < MAX_NETWORK_RETRIES) {
+          const retryDelay = Math.min(1000 * (attempt + 1), 3000);
+          console.warn(`⏳ Network/transient error. Retrying in ${retryDelay}ms...`, requestError);
+          await wait(retryDelay);
+          continue;
+        }
+
+        if (requestError?.name === 'AbortError') {
+          throw new Error('network error: request timed out while contacting the server');
+        }
+
+        throw requestError;
+      }
+    }
 
     console.log('📡 Response status:', response.status);
     
