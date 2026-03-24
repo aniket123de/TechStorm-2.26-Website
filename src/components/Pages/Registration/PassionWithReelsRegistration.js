@@ -693,12 +693,12 @@ const PassionWithReelsRegistration = () => {
                   <label className="form-label">Link</label>
                   <p style={{ margin: 0 }}>
                     <a
-                      href="https://chat.whatsapp.com/F0eDr4BPqHOIjgK8zn4sLm"
+                      href="https://chat.whatsapp.com/F0eDr4BPqHOIjgK8zn4sLm?mode=gi_t"
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{ color: '#ffc010' }}
                     >
-                      https://chat.whatsapp.com/F0eDr4BPqHOIjgK8zn4sLm
+                      https://chat.whatsapp.com/F0eDr4BPqHOIjgK8zn4sLm?mode=gi_t
                     </a>
                   </p>
                 </div>
