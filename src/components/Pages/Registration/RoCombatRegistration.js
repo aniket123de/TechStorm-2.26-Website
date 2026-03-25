@@ -624,15 +624,16 @@ const RoCombatRegistration = () => {
                 }}>
                   <h3 style={{ color: '#ffc010', marginBottom: '20px' }}>Ro-Combat Event Rules</h3>
                   <ul style={{ color: '#ccc', lineHeight: '1.8', paddingLeft: '20px' }}>
-                    <li>All participants must carry a valid college ID card</li>
                     <li>Team size: 2-5 participants</li>
-                    <li>Registration fee: ₹800 for all students</li>
-                    <li>Registration is mandatory for all participants</li>
-                    <li>Participants must follow the event schedule strictly</li>
-                    <li>Robots must comply with weight and size restrictions</li>
-                    <li>Any form of malpractice will lead to disqualification</li>
-                    <li>Organizers' decision will be final and binding</li>
-                    <li>Entry fee is non-refundable under any circumstances</li>
+                    <li>Robot weight must be exactly 8 kg (wireless), no tolerance</li>
+                    <li>No bot dimension limit; 200 g bonus for unconventional drive system</li>
+                    <li>Maximum allowed potential difference: 25.2 V</li>
+                    <li>Weapon lock and external kill switch are mandatory for all bots</li>
+                    <li>Bot must be wireless; loose/external weights are not allowed</li>
+                    <li>Pneumatics, hydraulics, projectiles, acids, sharp cutters, strong electromagnets, tesla coil, fire, and EMP are prohibited</li>
+                    <li>Registration fee is strictly non-refundable and non-transferable</li>
+                    <li>Immobility during match is considered defeat; referee decision is final</li>
+                    <li>Any form of malpractice or disciplinary violation can lead to disqualification</li>
                   </ul>
                 </div>
 

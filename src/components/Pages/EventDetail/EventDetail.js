@@ -1379,10 +1379,10 @@ const EventDetail = ({ eventData }) => {
                               'GENERAL RULES (COMMON FOR PRELIMS & FINALS):',
                             ];
                             const roCombatHeadingsToHighlight = [
+                              'TEAM STRENGTH:',
                               'BOT SPECIFICATIONS:',
-                              'GENERAL RULES (COMMON FOR PRELIMS & FINALS):',
-                              'PRELIMS RULES:',
-                              'FINALS RULES:',
+                              'GENERAL RULES:',
+                              'MATCH RULES:',
                             ];
                             const isRoSoccerSectionHeader =
                               name === "Ro-Soccer" && (
@@ -1465,10 +1465,10 @@ const EventDetail = ({ eventData }) => {
                               }
                               // Ro-Combat specific
                               else if (name === "Ro-Combat") {
-                                if (normalizedRule.includes('BOT SPECIFICATIONS')) emoji = '🤖';
+                                if (normalizedRule.includes('TEAM STRENGTH')) emoji = '👥';
+                                else if (normalizedRule.includes('BOT SPECIFICATIONS')) emoji = '🤖';
                                 else if (normalizedRule.includes('GENERAL RULES')) emoji = '📋';
-                                else if (normalizedRule.includes('PRELIMS RULES')) emoji = '🟢';
-                                else if (normalizedRule.includes('FINALS RULES')) emoji = '🏆';
+                                else if (normalizedRule.includes('MATCH RULES')) emoji = '🏁';
                               }
                               return (
                                 <h3
