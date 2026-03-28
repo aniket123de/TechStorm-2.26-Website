@@ -358,7 +358,7 @@ export const eventTeams = [
     },
     {
         id: 'fifa-mobile',
-        eventName: 'FIFA Mobile',
+        eventName: 'EA FC MOBILE',
         category: 'GAMES',
         coordinators: [
             { name: 'Adrish Basak', dept: 'CSE3' },

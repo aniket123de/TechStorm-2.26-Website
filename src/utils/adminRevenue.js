@@ -85,8 +85,8 @@ export const EVENT_REVENUE_CONFIG = {
     externalFee: 100,
     unit: 'participant',
   },
-  'fifa mobile': {
-    name: 'FIFA Mobile',
+  'ea fc mobile': {
+    name: 'EA FC MOBILE',
     internalFee: 50,
     externalFee: 60,
     unit: 'participant',
@@ -126,8 +126,8 @@ const EVENT_ALIASES = {
   passionwithreels: 'passion with reels',
   forzahorizon: 'forza horizon',
   'forza horizon': 'forza horizon',
-  fifamobile: 'fifa mobile',
-  'fifa mobile': 'fifa mobile',
+  eafcmobile: 'ea fc mobile',
+  'ea fc mobile': 'ea fc mobile',
   khet: 'khet',
 };
 

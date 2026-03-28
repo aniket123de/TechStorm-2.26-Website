@@ -50,12 +50,12 @@ const FifaMobileEvent = () => {
         "w_800,h_600,c_fill,q_auto:good,f_auto",
       ),
     ],
-    name: "FIFA Mobile",
+    name: "EA FC MOBILE",
     logo: fifaMobile,
     category: "Gaming",
     breadcrumbBg: fifaMobileBanner,
     description:
-      "FIFA Mobile brings the world's most popular sport to your fingertips! Compete in intense mobile football matches, build your ultimate team, and showcase your gaming skills. From tactical gameplay to lightning-fast reflexes, prove that you're the best FIFA Mobile player in the tournament. Glory awaits the champion!",
+      "EA FC MOBILE brings the world's most popular sport to your fingertips! Compete in intense mobile football matches, build your ultimate team, and showcase your gaming skills. From tactical gameplay to lightning-fast reflexes, prove that you're the best EA FC MOBILE player in the tournament. Glory awaits the champion!",
     teamSize: "Solo",
     entryFeeInternal: "₹50 per participant",
     entryFeeExternal: "₹60 per participant",
@@ -63,7 +63,7 @@ const FifaMobileEvent = () => {
         faqs: [
           {
             q: "Which game will be used?",
-            a: `EA SPORTS FC Mobile (FIFA Mobile).`
+            a: `EA SPORTS FC Mobile (EA FC MOBILE).`
           },
           {
             q: "Which game mode will be played?",
@@ -108,7 +108,7 @@ const FifaMobileEvent = () => {
     },
     rules: [
       "GENERAL GUIDELINES:",
-      "Platform: EA SPORTS FC™ Mobile (FIFA Mobile).",
+      "Platform: EA SPORTS FC™ Mobile (EA FC MOBILE).",
       "Game Mode: Head-to-Head (H2H) Friendly Match.",
       "Tournament Format: Multi-stage tournament consisting of a Group Stage (League System) followed by Knockout Rounds.",
       "Matchmaking: OVR-based matchmaking/seeding may be used where applicable.",

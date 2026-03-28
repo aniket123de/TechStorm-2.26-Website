@@ -450,6 +450,7 @@
   /* Extra side padding so card border/shadow don't touch adjacent card */
   padding-left: 10px;
   padding-right: 10px;
+  touch-action: auto;
 }
 
 .team-event-card {
@@ -458,6 +459,7 @@
   cursor: pointer;
   position: relative;
   overflow: visible;
+  touch-action: auto;
 }
 
 .event-card-header {

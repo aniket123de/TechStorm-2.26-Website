@@ -87,7 +87,7 @@ const FifaMobileRegistration = () => {
       nextErrors.emailAddress = 'Invalid email format';
     }
     if (!formData.collegeIdProof) nextErrors.collegeIdProof = 'College ID / Library Card upload is required';
-    if (!formData.fifaUsername.trim()) nextErrors.fifaUsername = 'FIFA Mobile Username is required';
+    if (!formData.fifaUsername.trim()) nextErrors.fifaUsername = 'EA FC MOBILE Username is required';
     if (!formData.teamOvr.trim()) nextErrors.teamOvr = 'Team OVR is required';
     if (!formData.deviceModel.trim()) nextErrors.deviceModel = 'Device Model is required';
     setErrors(nextErrors);
@@ -141,8 +141,8 @@ const FifaMobileRegistration = () => {
     setIsSubmitting(true);
 
     try {
-      const result = await submitEventRegistration('FIFA Mobile', formData);
-      console.log('FIFA Mobile registration successful:', result);
+      const result = await submitEventRegistration('EA FC MOBILE', formData);
+      console.log('EA FC MOBILE registration successful:', result);
       
       const regNumber = result.data?.registrationNumber || result.registrationNumber;
       
@@ -174,7 +174,7 @@ const FifaMobileRegistration = () => {
   return (
     <div className="registration-page">
       <Breadcrumb
-        pageTitle="Register for FIFA Mobile"
+        pageTitle="Register for EA FC MOBILE"
         currentPage="Registration"
         bgImage={fifaMobileBanner}
       />
@@ -182,7 +182,7 @@ const FifaMobileRegistration = () => {
       <div className="registration-container">
         <div className="registration-content">
           <div className="registration-header">
-            <h1 className="registration-title">FIFA Mobile Registration Form</h1>
+            <h1 className="registration-title">EA FC MOBILE Registration Form</h1>
             <p className="registration-subtitle">Registration Information Required from Participants</p>
           </div>
 
@@ -338,14 +338,14 @@ const FifaMobileRegistration = () => {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label required">FIFA Mobile Username (In-game Name)</label>
+                  <label className="form-label required">EA FC MOBILE Username (In-game Name)</label>
                   <input
                     type="text"
                     name="fifaUsername"
                     value={formData.fifaUsername}
                     onChange={handleInputChange}
                     className="retro-input"
-                    placeholder="FIFA Mobile Username"
+                    placeholder="EA FC MOBILE Username"
                   />
                   {errors.fifaUsername && <div className="error-message">{errors.fifaUsername}</div>}
                 </div>
@@ -551,7 +551,7 @@ const FifaMobileRegistration = () => {
                   marginBottom: '30px',
                   border: '2px solid #333'
                 }}>
-                  <h3 style={{ color: '#ffc010', marginBottom: '20px' }}>FIFA Mobile Tournament Rules</h3>
+                  <h3 style={{ color: '#ffc010', marginBottom: '20px' }}>EA FC MOBILE Tournament Rules</h3>
                   <ul style={{ color: '#ccc', lineHeight: '1.8', paddingLeft: '20px' }}>
                     <li>All participants must carry a valid college ID card</li>
                     <li>Registration is mandatory for all participants</li>
@@ -585,7 +585,7 @@ const FifaMobileRegistration = () => {
                     />
                     <span className="checkbox-custom"></span>
                     <span className="checkbox-label">
-                      I agree to the FIFA Mobile tournament rules
+                      I agree to the EA FC MOBILE tournament rules
                     </span>
                   </label>
                   {errors.agreeToRules && <div className="error-message">{errors.agreeToRules}</div>}
@@ -641,7 +641,7 @@ const FifaMobileRegistration = () => {
       {submitSuccess && registrationNumber && (
         <RegistrationSuccess 
           registrationNumber={registrationNumber}
-          eventName="FIFA Mobile"
+          eventName="EA FC MOBILE"
           onClose={() => setSubmitSuccess(false)}
         />
       )}

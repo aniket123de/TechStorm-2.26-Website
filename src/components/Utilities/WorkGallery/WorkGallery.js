@@ -146,7 +146,7 @@ const galleryItems = [
         id: '14',
         img: fifamobileImg,
         tag: 'Gaming',
-        label: 'FIFA Mobile',
+        label: 'EA FC MOBILE',
         description: 'Football tournament',
         cat: 'Gaming',
         route: '/events/fifa-mobile',

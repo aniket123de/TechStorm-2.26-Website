@@ -42,7 +42,7 @@ const MatchesAnimated = () => {
         { logo: creativeCanvas, name: 'Creative Canvas', category: 'Creative' },
         { logo: passionWithReels, name: 'Passion with Reels', category: 'Creative' },
         { logo: forzaHorizon, name: 'Forza Horizon', category: 'Games' },
-        { logo: fifaMobile, name: 'FIFA Mobile', category: 'Games' },
+        { logo: fifaMobile, name: 'EA FC MOBILE', category: 'Games' },
         { logo: khet, name: 'KHET', category: 'Games' },
         { logo: rosumo, name: 'Rosumo', category: 'Rover' },
     ];

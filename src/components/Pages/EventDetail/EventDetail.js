@@ -607,7 +607,7 @@ const EventDetail = ({ eventData }) => {
         type: "volunteer",
       },
     ],
-    "FIFA Mobile": [
+    "EA FC MOBILE": [
       {
         name: "Adrish Basak (CSE3)",
         role: "Student Co-Ordinator",
@@ -659,7 +659,7 @@ const EventDetail = ({ eventData }) => {
       "Creative Canvas": "/register/creative-canvas",
       "Passion with Reels": "/register/passion-with-reels",
       "Forza Horizon": "/register/forza-horizon",
-      "FIFA Mobile": "/register/fifa-mobile",
+      "EA FC MOBILE": "/register/fifa-mobile",
       KHET: "/register/khet",
     };
     return routeMap[eventName] || "/events";
@@ -1601,7 +1601,7 @@ const EventDetail = ({ eventData }) => {
                               );
                             }
 
-                            // Highlight FIFA Mobile rule section headers
+                            // Highlight EA FC MOBILE rule section headers
                             const fifaSectionHeaders = [
                               { label: "GENERAL GUIDELINES", icon: "📋" },
                               { label: "DEVICE POLICY", icon: "📱" },
@@ -1633,7 +1633,7 @@ const EventDetail = ({ eventData }) => {
                                 bg: "rgba(255,45,45,0.12)",
                               },
                             ];
-                            if (name === "FIFA Mobile") {
+                            if (name === "EA FC MOBILE") {
                               const ruleText = rule
                                 .trim()
                                 .replace(/:$/, "")

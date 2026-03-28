@@ -310,7 +310,7 @@ const Matches = () => {
     {
       logo: fifaMobile,
       cardBg: fifaMobileBg,
-      name: "FIFA Mobile",
+      name: "EA FC MOBILE",
       category: "Games",
       url: "/events/fifa-mobile",
       entryFeeInternal: "₹50",

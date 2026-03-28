@@ -14,7 +14,7 @@ const services = [
     {
         icon: 'flaticon-competition',
         title: 'Gaming Zone',
-        description: 'Forza Horizon racing wheels, FIFA Mobile tournaments & classic arcade showdowns.'
+        description: 'Forza Horizon racing wheels, EA FC MOBILE tournaments & classic arcade showdowns.'
     },
 ]
 

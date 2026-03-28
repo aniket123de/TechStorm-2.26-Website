@@ -11,7 +11,7 @@ const EVENTS = [
   'CREATIVE CANVAS',
   'PASSION WITH REELS',
   'FORZA HORIZON',
-  'FIFA MOBILE',
+  'EA FC MOBILE',
   'KHET',
   'RO SUMO',
 ];
