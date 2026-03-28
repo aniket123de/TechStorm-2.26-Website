@@ -55,7 +55,7 @@ const FifaMobileEvent = () => {
     category: "Gaming",
     breadcrumbBg: fifaMobileBanner,
     description:
-      "EA FC MOBILE brings the world's most popular sport to your fingertips! Compete in intense mobile football matches, build your ultimate team, and showcase your gaming skills. From tactical gameplay to lightning-fast reflexes, prove that you're the best EA FC MOBILE player in the tournament. Glory awaits the champion!",
+      "Get ready to compete in the FC Mobile Championship, where players go head-to-head in intense football battles. Test your skills, strategy, and in-game decision-making as you face off against other competitors in a high-stakes tournament setting. Every match counts—only the most skilled and consistent players will advance and fight for the top spot. Stay sharp, play smart, and prove you have what it takes to become the ultimate FC Mobile Champion.",
     teamSize: "Solo",
     entryFeeInternal: "₹50 per participant",
     entryFeeExternal: "₹60 per participant",

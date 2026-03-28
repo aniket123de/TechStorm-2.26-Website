@@ -659,7 +659,7 @@ const EventDetail = ({ eventData }) => {
       "Creative Canvas": "/register/creative-canvas",
       "Passion with Reels": "/register/passion-with-reels",
       "Forza Horizon": "/register/forza-horizon",
-      "EA FC MOBILE": "/register/fifa-mobile",
+      "EA FC MOBILE": "/register/fc-mobile",
       KHET: "/register/khet",
     };
     return routeMap[eventName] || "/events";

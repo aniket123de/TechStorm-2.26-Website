@@ -149,7 +149,7 @@ const galleryItems = [
         label: 'EA FC MOBILE',
         description: 'Football tournament',
         cat: 'Gaming',
-        route: '/events/fifa-mobile',
+        route: '/events/fc-mobile',
     },
     {
         id: '15',

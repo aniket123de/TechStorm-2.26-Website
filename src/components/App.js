@@ -1,6 +1,7 @@
 import React, { useState, lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
+  Redirect,
   Route,
   Switch,
   useLocation,
@@ -210,7 +211,12 @@ const AppContent = () => {
             path="/events/forza-horizon"
             component={ForzaHorizonEvent}
           />
-          <Route exact path="/events/fifa-mobile" component={FifaMobileEvent} />
+          <Route
+            exact
+            path="/events/fifa-mobile"
+            render={() => <Redirect to="/events/fc-mobile" />}
+          />
+          <Route exact path="/events/fc-mobile" component={FifaMobileEvent} />
           <Route exact path="/events/khet" component={KhetEvent} />
 
           {/* Registration Routes */}
@@ -281,7 +287,7 @@ const AppContent = () => {
           />
           <Route
             exact
-            path="/register/fifa-mobile"
+            path="/register/fc-mobile"
             component={FifaMobileRegistration}
           />
           <Route exact path="/register/khet" component={KhetRegistration} />
