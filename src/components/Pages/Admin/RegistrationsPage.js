@@ -294,6 +294,7 @@ const RegistrationsPage = () => {
           'Event Name': reg.eventName || 'N/A',
           'Registration Date': reg.submittedAt ? new Date(reg.submittedAt).toLocaleDateString('en-IN') + ' ' + new Date(reg.submittedAt).toLocaleTimeString('en-IN') : 'N/A',
           'Registration Status': reg.registrationStatus || 'N/A',
+          'OVR': getDisplayValue(reg, 'teamOvr') || 'N/A',
         };
 
         // Check if it's a team event
@@ -354,13 +355,20 @@ const RegistrationsPage = () => {
         return row;
       });
 
-      // Create worksheet
-      const worksheet = XLSX.utils.json_to_sheet(exportData);
-      
-      // Set column widths - adjust based on content
+      // Set column widths and headers explicitly so mixed row shapes still
+      // produce a stable Excel column order.
       const maxParticipants = Math.max(
         ...filteredRegistrations.map(reg => reg.participants?.length || 1)
       );
+      const hasTeamEvents = filteredRegistrations.some(reg => reg.teamName || (reg.participants && reg.participants.length > 1));
+      const headers = [
+        'S.No',
+        'Registration Number',
+        'Event Name',
+        'Registration Date',
+        'Registration Status',
+        'OVR',
+      ];
       
       const baseColumns = [
         { wch: 6 },  // S.No
@@ -368,17 +376,28 @@ const RegistrationsPage = () => {
         { wch: 20 }, // Event Name
         { wch: 20 }, // Registration Date
         { wch: 18 }, // Registration Status
+        { wch: 12 }, // OVR
       ];
       
-      // Add columns based on whether it's team or solo
-      const hasTeamEvents = filteredRegistrations.some(reg => reg.teamName || (reg.participants && reg.participants.length > 1));
-      
       if (hasTeamEvents) {
+        headers.push('Team Name', 'Number of Participants');
         baseColumns.push({ wch: 25 }); // Team Name
         baseColumns.push({ wch: 12 }); // Number of Participants
         
         // Add participant columns
         for (let i = 0; i < maxParticipants; i++) {
+          const num = i + 1;
+          headers.push(
+            `P${num} Name`,
+            `P${num} Email`,
+            `P${num} Contact`,
+            `P${num} College`,
+            `P${num} College Other`,
+            `P${num} Year`,
+            `P${num} Department`,
+            `P${num} ID File URL`,
+            `P${num} ID Cloudinary ID`
+          );
           baseColumns.push(
             { wch: 25 }, // Name
             { wch: 30 }, // Email
@@ -392,6 +411,17 @@ const RegistrationsPage = () => {
           );
         }
       } else {
+        headers.push(
+          'Full Name',
+          'Email',
+          'Contact',
+          'College',
+          'College Other',
+          'Year',
+          'Department',
+          'ID File URL',
+          'ID Cloudinary ID'
+        );
         baseColumns.push(
           { wch: 25 }, // Full Name
           { wch: 30 }, // Email
@@ -406,6 +436,17 @@ const RegistrationsPage = () => {
       }
       
       // Payment columns
+      headers.push(
+        'Payment Mode',
+        'Payment Date',
+        'Payment Status',
+        'Transaction ID',
+        'Payment Screenshot URL',
+        'Payment Screenshot Cloudinary ID',
+        'WhatsApp Confirmed',
+        'Agree to Rules',
+        'Source'
+      );
       baseColumns.push(
         { wch: 12 }, // Payment Mode
         { wch: 15 }, // Payment Date
@@ -417,6 +458,9 @@ const RegistrationsPage = () => {
         { wch: 12 }, // Agree to Rules
         { wch: 10 }  // Source
       );
+
+      // Create worksheet with explicit headers
+      const worksheet = XLSX.utils.json_to_sheet(exportData, { header: headers });
       
       worksheet['!cols'] = baseColumns;
 
