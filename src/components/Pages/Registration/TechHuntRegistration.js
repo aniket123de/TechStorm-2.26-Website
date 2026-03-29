@@ -228,7 +228,7 @@ const TechHuntRegistration = () => {
       const msg = error?.message || '';
       let userMessage;
       if (msg.toLowerCase().includes('failed to fetch') || msg.toLowerCase().includes('network error') || msg.toLowerCase().includes('networkerror')) {
-        userMessage = 'Unable to connect to the server. Please check your internet connection and try again.';
+        userMessage = "We're unable to submit your registration. Please try again with the same payment screenshot and event details. For further assistance, contact Anik Paul - +91 91264 26769, Protyoy Bhandary - +91 82740 34667, Aniket De - +91 90389 03850.";
       } else if (msg.includes('FUNCTION_PAYLOAD_TOO_LARGE') || msg.toLowerCase().includes('request entity too large') || msg.toLowerCase().includes('payload too large')) {
         userMessage = 'Submission is too large. Please ensure all uploaded images are under 2MB and try again.';
       } else if (msg.toLowerCase().includes('duplicate')) {
