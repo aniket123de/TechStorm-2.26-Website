@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import './Modal.css';
+import {
+  getParticipantDisplayName,
+  registrationHasParticipantRemarks
+} from './participantRemarks';
 
 /** Get first non-empty string from an object for given keys. Display only. */
 function getFromObj(obj, ...keys) {
@@ -42,7 +46,7 @@ function getEmailFromRegistration(reg) {
   return '';
 }
 
-const ViewRegistrationModal = ({ registration, onClose }) => {
+const ViewRegistrationModal = ({ registration, onClose, canManageParticipantRemarks = false, onManageParticipantRemarks }) => {
   const [activeTab, setActiveTab] = useState('basic');
 
   if (!registration) return null;
@@ -78,6 +82,8 @@ const ViewRegistrationModal = ({ registration, onClose }) => {
     );
   };
 
+  const hasParticipantRemarks = registrationHasParticipantRemarks(registration);
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content large-modal" onClick={(e) => e.stopPropagation()}>
@@ -86,7 +92,18 @@ const ViewRegistrationModal = ({ registration, onClose }) => {
             <h2>Registration Details</h2>
             <p className="modal-subtitle">{getDisplayValueFromRegistration(registration, 'registrationNumber') || registration.registrationNumber || '—'}</p>
           </div>
-          <button className="modal-close" onClick={onClose}>✕</button>
+          <div className="modal-header-actions">
+            {canManageParticipantRemarks && typeof onManageParticipantRemarks === 'function' && (
+              <button
+                type="button"
+                className={`btn-secondary modal-remarks-trigger ${hasParticipantRemarks ? 'modal-remarks-trigger--active' : ''}`}
+                onClick={() => onManageParticipantRemarks(registration)}
+              >
+                {hasParticipantRemarks ? 'View Remarks' : 'Add Remarks'}
+              </button>
+            )}
+            <button className="modal-close" onClick={onClose}>✕</button>
+          </div>
         </div>
 
         {/* Tabs */}
@@ -244,7 +261,12 @@ const ViewRegistrationModal = ({ registration, onClose }) => {
                   <h3>Participants ({registration.participants.length})</h3>
                   {registration.participants.map((participant, index) => (
                     <div key={index} className="team-member-card">
-                      <h4>Participant {index + 1}</h4>
+                      <div className="participant-card-title-row">
+                        <h4>{getParticipantDisplayName(participant, index)}</h4>
+                        {participant.remark && String(participant.remark).trim() && (
+                          <span className="remark-indicator-pill">Remark added</span>
+                        )}
+                      </div>
                       <div className="detail-grid">
                         <DetailField label="Name" value={getFromObj(participant, 'name', 'fullName', 'full_name')} />
                         <DetailField label="Email" value={getFromObj(participant, 'email', 'emailAddress')} />
@@ -253,6 +275,7 @@ const ViewRegistrationModal = ({ registration, onClose }) => {
                         <DetailField label="Year" value={getFromObj(participant, 'year', 'yearOfStudy')} />
                         <DetailField label="Department" value={getFromObj(participant, 'department')} />
                         <DetailField label="Role" value={getFromObj(participant, 'role')} />
+                        <DetailField label="Remarks" value={getFromObj(participant, 'remark')} />
                         {(participant.idFileUrl || participant.idProofUrl) && renderFileLink(participant.idFileUrl || participant.idProofUrl, participant.idFileCloudinaryId, 'ID Proof')}
                       </div>
                     </div>

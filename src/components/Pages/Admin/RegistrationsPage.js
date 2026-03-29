@@ -6,6 +6,11 @@ import './RoleDashboard.css';
 import ViewRegistrationModal from './ViewRegistrationModal';
 import EditRegistrationModal from './EditRegistrationModal';
 import AddRegistrationModal from './AddRegistrationModal';
+import ParticipantRemarksModal from './ParticipantRemarksModal';
+import {
+  getParticipantRemarkCount,
+  registrationHasParticipantRemarks
+} from './participantRemarks';
 import * as XLSX from 'xlsx';
 
 /**
@@ -60,6 +65,7 @@ const RegistrationsPage = () => {
   const [viewingRegistration, setViewingRegistration] = useState(null);
   const [editingRegistration, setEditingRegistration] = useState(null);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [remarksRegistration, setRemarksRegistration] = useState(null);
   const [user, setUser] = useState(null);
   const [registrations, setRegistrations] = useState([]);
   const [events, setEvents] = useState(['all']);
@@ -212,6 +218,10 @@ const RegistrationsPage = () => {
     setEditingRegistration(registration);
   };
 
+  const handleRemarks = (registration) => {
+    setRemarksRegistration(registration);
+  };
+
   const handleSaveEdit = async (id, updatedData) => {
     try {
       // Find the registration to get the event name
@@ -251,6 +261,30 @@ const RegistrationsPage = () => {
     } catch (err) {
       alert('Error updating status: ' + err.message);
     }
+  };
+
+  const handleSaveParticipantRemarks = async (registration, participants) => {
+    if (!registration?._id || !registration?.eventName) {
+      throw new Error('Registration details are incomplete');
+    }
+
+    await updateRegistration(registration.eventName, registration._id, { participants });
+
+    setRegistrations((prev) =>
+      prev.map((item) =>
+        item._id === registration._id ? { ...item, participants } : item
+      )
+    );
+
+    if (viewingRegistration?._id === registration._id) {
+      setViewingRegistration((prev) => (prev ? { ...prev, participants } : prev));
+    }
+
+    if (editingRegistration?._id === registration._id) {
+      setEditingRegistration((prev) => (prev ? { ...prev, participants } : prev));
+    }
+
+    setRemarksRegistration((prev) => (prev ? { ...prev, participants } : prev));
   };
 
   // Filter by event for coordinator/volunteer - now handled by API
@@ -315,6 +349,7 @@ const RegistrationsPage = () => {
               row[`P${num} Department`] = participant.department || 'N/A';
               row[`P${num} ID File URL`] = participant.idFileUrl || 'N/A';
               row[`P${num} ID Cloudinary ID`] = participant.idFileCloudinaryId || 'N/A';
+              row[`P${num} Remark`] = participant.remark || 'N/A';
             });
           }
         } else {
@@ -396,7 +431,8 @@ const RegistrationsPage = () => {
             `P${num} Year`,
             `P${num} Department`,
             `P${num} ID File URL`,
-            `P${num} ID Cloudinary ID`
+            `P${num} ID Cloudinary ID`,
+            `P${num} Remark`
           );
           baseColumns.push(
             { wch: 25 }, // Name
@@ -407,7 +443,8 @@ const RegistrationsPage = () => {
             { wch: 12 }, // Year
             { wch: 15 }, // Department
             { wch: 50 }, // ID File URL
-            { wch: 40 }  // ID Cloudinary ID
+            { wch: 40 }, // ID Cloudinary ID
+            { wch: 40 }  // Remark
           );
         }
       } else {
@@ -780,9 +817,16 @@ const RegistrationsPage = () => {
                     const displayContact = getDisplayValue(reg, 'contactNumber', 'phone', 'contact') || '—';
                     const displayCollege = getDisplayValue(reg, 'collegeName', 'college', 'institution') || '—';
                     const displayRegNumber = getDisplayValue(reg, 'registrationNumber') || '—';
+                    const hasParticipantRemarks = registrationHasParticipantRemarks(reg);
+                    const participantRemarkCount = getParticipantRemarkCount(reg);
                     return (
                     <tr key={reg._id}>
-                      <td className="reg-number cell-nowrap" title={displayRegNumber}>{displayRegNumber}</td>
+                      <td
+                        className={`reg-number cell-nowrap ${hasParticipantRemarks ? 'reg-number--remarked' : ''}`}
+                        title={displayRegNumber}
+                      >
+                        {displayRegNumber}
+                      </td>
                       <td className="name-cell">{displayName}</td>
                       <td className="email-cell" title={displayEmail}>{displayEmail}</td>
                       <td className="contact-cell cell-nowrap" title={displayContact}>{displayContact}</td>
@@ -830,6 +874,19 @@ const RegistrationsPage = () => {
                       <td>
                         <div className="action-buttons">
                           <button className="action-btn view-btn" onClick={() => handleView(reg)} title="View Details">👁️</button>
+                          {role === 'core' && (
+                            <button
+                              className={`action-btn remarks-btn ${hasParticipantRemarks ? 'remarks-btn--active' : ''}`}
+                              onClick={() => handleRemarks(reg)}
+                              title={
+                                hasParticipantRemarks
+                                  ? `${participantRemarkCount} participant remark${participantRemarkCount > 1 ? 's' : ''}`
+                                  : 'Add participant remarks'
+                              }
+                            >
+                              📝
+                            </button>
+                          )}
                           {config.canEditRegistration && (
                             <button className="action-btn edit-btn" onClick={() => handleEdit(reg)} title="Edit">✏️</button>
                           )}
@@ -857,6 +914,8 @@ const RegistrationsPage = () => {
           <ViewRegistrationModal
             registration={viewingRegistration}
             onClose={() => setViewingRegistration(null)}
+            canManageParticipantRemarks={role === 'core'}
+            onManageParticipantRemarks={handleRemarks}
           />
         )}
 
@@ -872,6 +931,14 @@ const RegistrationsPage = () => {
           <AddRegistrationModal
             onClose={() => setShowAddModal(false)}
             onAdd={handleAddRegistration}
+          />
+        )}
+
+        {remarksRegistration && role === 'core' && (
+          <ParticipantRemarksModal
+            registration={remarksRegistration}
+            onClose={() => setRemarksRegistration(null)}
+            onSave={(participants) => handleSaveParticipantRemarks(remarksRegistration, participants)}
           />
         )}
       </div>

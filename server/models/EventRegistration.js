@@ -136,6 +136,8 @@ class EventRegistrationFactory {
         idFile: String,
         idFileUrl: String,
         idFileCloudinaryId: String,
+        remark: String,
+        remarkUpdatedAt: Date,
         role: String,
         order: Number
       }],

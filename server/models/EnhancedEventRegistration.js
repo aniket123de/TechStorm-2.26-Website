@@ -178,6 +178,8 @@ class EnhancedEventRegistrationFactory {
         idFile: String,
         idFileUrl: String,
         idFileCloudinaryId: String,
+        remark: String,
+        remarkUpdatedAt: Date,
         role: String, // e.g., 'leader', 'member'
         order: Number
       }],

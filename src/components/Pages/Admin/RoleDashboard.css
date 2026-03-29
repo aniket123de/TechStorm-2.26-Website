@@ -350,6 +350,10 @@
   color: #0f766e;
 }
 
+.reg-number--remarked {
+  color: #dc2626 !important;
+}
+
 /* Prevent awkward mid-token wrapping for reg number and contact */
 .cell-nowrap {
   white-space: nowrap;
@@ -470,6 +474,27 @@
 
 .action-btn:hover {
   background: #f3f4f6;
+}
+
+.remarks-btn {
+  position: relative;
+}
+
+.remarks-btn--active {
+  background: rgba(220, 38, 38, 0.12);
+  color: #b91c1c;
+}
+
+.remarks-btn--active::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #dc2626;
+  box-shadow: 0 0 0 2px #ffffff;
 }
 
 .action-btn:focus-visible {
@@ -1356,6 +1381,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.core-table .reg-number.reg-number--remarked {
+  color: #dc2626;
 }
 
 /* Name cell bold */
