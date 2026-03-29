@@ -6,6 +6,46 @@ const roleCredentials = require('../config/loadCredentials');
 
 const router = express.Router();
 
+const EVENT_NAME_ALIASES = {
+  'fifa mobile': ['FIFA Mobile', 'EA FC MOBILE'],
+  'ea fc mobile': ['FIFA Mobile', 'EA FC MOBILE']
+};
+
+const normalizeEventName = (value = '') =>
+  String(value).trim().toLowerCase().replace(/\s+/g, ' ');
+
+const getEventAliases = (eventName) => {
+  const normalized = normalizeEventName(eventName);
+  if (EVENT_NAME_ALIASES[normalized]) {
+    return [...new Set(EVENT_NAME_ALIASES[normalized])];
+  }
+  return [eventName];
+};
+
+const eventNamesMatch = (a, b) => {
+  const aliasesA = getEventAliases(a).map(normalizeEventName);
+  const aliasesB = getEventAliases(b).map(normalizeEventName);
+  return aliasesA.some((name) => aliasesB.includes(name));
+};
+
+const isEventAccessibleForAdmin = (admin, targetEventName) => {
+  if (admin.role === 'core') return true;
+
+  if (admin.eventAbbr) {
+    const hasMatchingAbbreviation = roleCredentials.coordinator.some((eventCfg) =>
+      eventCfg.eventAbbr === admin.eventAbbr &&
+      getEventAliases(eventCfg.event).map(normalizeEventName).includes(normalizeEventName(targetEventName))
+    );
+    if (hasMatchingAbbreviation) return true;
+  }
+
+  if (admin.eventName) {
+    return eventNamesMatch(admin.eventName, targetEventName);
+  }
+
+  return false;
+};
+
 /**
  * All routes require admin authentication
  */
@@ -32,43 +72,87 @@ router.get('/stats',
     // Filter events based on role
     let eventsToQuery = uniqueEvents;
     if (admin.role !== 'core' && admin.eventName) {
-      eventsToQuery = uniqueEvents.filter(e => e.name === admin.eventName);
+      eventsToQuery = uniqueEvents.filter((e) =>
+        e.abbreviation === admin.eventAbbr || eventNamesMatch(e.name, admin.eventName)
+      );
     }
     
     // Fetch statistics for each event
     const eventStats = await Promise.all(
       eventsToQuery.map(async (event) => {
         try {
-          const model = EventRegistrationFactory.getModel(event.name);
-          
-          const [
-            totalRegistrations,
-            confirmedRegistrations,
-            pendingRegistrations,
-            pendingPayments,
-            confirmedPayments,
-            cashPayments,
-            onlinePayments
-          ] = await Promise.all([
-            model.countDocuments(),
-            model.countDocuments({ registrationStatus: 'confirmed' }),
-            model.countDocuments({ registrationStatus: 'pending' }),
-            model.countDocuments({ paymentStatus: 'pending' }),
-            model.countDocuments({ paymentStatus: 'verified' }),
-            model.countDocuments({ paymentMode: { $regex: /^(cash|offline)$/i } }), // Include "offline" as cash
-            model.countDocuments({ paymentMode: { $regex: /^online$/i } })
-          ]);
+          const candidateEventNames = getEventAliases(event.name);
+          const perCollectionStats = await Promise.all(
+            candidateEventNames.map(async (candidateEventName) => {
+              try {
+                const model = EventRegistrationFactory.getModel(candidateEventName);
+                const [
+                  totalRegistrations,
+                  confirmedRegistrations,
+                  pendingRegistrations,
+                  pendingPayments,
+                  confirmedPayments,
+                  cashPayments,
+                  onlinePayments
+                ] = await Promise.all([
+                  model.countDocuments(),
+                  model.countDocuments({ registrationStatus: 'confirmed' }),
+                  model.countDocuments({ registrationStatus: 'pending' }),
+                  model.countDocuments({ paymentStatus: 'pending' }),
+                  model.countDocuments({ paymentStatus: 'verified' }),
+                  model.countDocuments({ paymentMode: { $regex: /^(cash|offline)$/i } }),
+                  model.countDocuments({ paymentMode: { $regex: /^online$/i } })
+                ]);
+
+                return {
+                  totalRegistrations,
+                  confirmedRegistrations,
+                  pendingRegistrations,
+                  pendingPayments,
+                  confirmedPayments,
+                  cashPayments,
+                  onlinePayments
+                };
+              } catch (innerError) {
+                console.error(`Error fetching stats for ${candidateEventName}:`, innerError);
+                return {
+                  totalRegistrations: 0,
+                  confirmedRegistrations: 0,
+                  pendingRegistrations: 0,
+                  pendingPayments: 0,
+                  confirmedPayments: 0,
+                  cashPayments: 0,
+                  onlinePayments: 0
+                };
+              }
+            })
+          );
+
+          const mergedStats = perCollectionStats.reduce(
+            (acc, item) => ({
+              totalRegistrations: acc.totalRegistrations + item.totalRegistrations,
+              confirmedRegistrations: acc.confirmedRegistrations + item.confirmedRegistrations,
+              pendingRegistrations: acc.pendingRegistrations + item.pendingRegistrations,
+              pendingPayments: acc.pendingPayments + item.pendingPayments,
+              confirmedPayments: acc.confirmedPayments + item.confirmedPayments,
+              cashPayments: acc.cashPayments + item.cashPayments,
+              onlinePayments: acc.onlinePayments + item.onlinePayments
+            }),
+            {
+              totalRegistrations: 0,
+              confirmedRegistrations: 0,
+              pendingRegistrations: 0,
+              pendingPayments: 0,
+              confirmedPayments: 0,
+              cashPayments: 0,
+              onlinePayments: 0
+            }
+          );
           
           return {
             eventName: event.name,
             eventAbbr: event.abbreviation,
-            totalRegistrations,
-            confirmedRegistrations,
-            pendingRegistrations,
-            pendingPayments,
-            confirmedPayments,
-            cashPayments,
-            onlinePayments
+            ...mergedStats
           };
         } catch (error) {
           console.error(`Error fetching stats for ${event.name}:`, error);
@@ -155,7 +239,9 @@ router.get('/registrations',
     // Filter events based on role
     let eventsToQuery = uniqueEvents;
     if (admin.role !== 'core' && admin.eventName) {
-      eventsToQuery = uniqueEvents.filter(e => e.name === admin.eventName);
+      eventsToQuery = uniqueEvents.filter((e) =>
+        e.abbreviation === admin.eventAbbr || eventNamesMatch(e.name, admin.eventName)
+      );
       console.log(`🔍 [COORDINATOR FILTER] Admin: ${admin.email}`);
       console.log(`🔍 [COORDINATOR FILTER] Admin Event Name: "${admin.eventName}"`);
       console.log(`🔍 [COORDINATOR FILTER] All Events:`, uniqueEvents.map(e => `"${e.name}"`));
@@ -164,70 +250,73 @@ router.get('/registrations',
     
     // Further filter by specific event if requested
     if (eventName && eventName !== 'all') {
-      eventsToQuery = eventsToQuery.filter(e => e.name === eventName);
+      eventsToQuery = eventsToQuery.filter((e) => eventNamesMatch(e.name, eventName));
     }
     
     // Fetch registrations from all relevant events
     const allRegistrations = [];
     
     for (const event of eventsToQuery) {
-      try {
-        console.log(`📊 [QUERY] Attempting to query event: "${event.name}"`);
-        const model = EventRegistrationFactory.getModel(event.name);
-        console.log(`📊 [QUERY] Model created for: "${event.name}"`);
-        
-        // Build query
-        const query = {};
-        
-        if (paymentStatus) {
-          query.paymentStatus = paymentStatus;
-        }
-        
-        if (paymentMode) {
-          // Filter by payment mode (case-insensitive)
-          // "cash" filter includes both "cash" and "offline" payments
-          if (paymentMode.toLowerCase() === 'cash') {
-            query.paymentMode = { $regex: /^(cash|offline)$/i };
-          } else {
-            query.paymentMode = { $regex: new RegExp(`^${paymentMode}$`, 'i') };
+      const candidateEventNames = getEventAliases(event.name);
+      for (const candidateEventName of candidateEventNames) {
+        try {
+          console.log(`📊 [QUERY] Attempting to query event: "${candidateEventName}"`);
+          const model = EventRegistrationFactory.getModel(candidateEventName);
+          console.log(`📊 [QUERY] Model created for: "${candidateEventName}"`);
+
+          // Build query
+          const query = {};
+
+          if (paymentStatus) {
+            query.paymentStatus = paymentStatus;
           }
+
+          if (paymentMode) {
+            // Filter by payment mode (case-insensitive)
+            // "cash" filter includes both "cash" and "offline" payments
+            if (paymentMode.toLowerCase() === 'cash') {
+              query.paymentMode = { $regex: /^(cash|offline)$/i };
+            } else {
+              query.paymentMode = { $regex: new RegExp(`^${paymentMode}$`, 'i') };
+            }
+          }
+
+          if (registrationStatus) {
+            query.registrationStatus = registrationStatus;
+          }
+
+          if (search) {
+            query.$or = [
+              { fullName: { $regex: search, $options: 'i' } },
+              { email: { $regex: search, $options: 'i' } },
+              { emailAddress: { $regex: search, $options: 'i' } },
+              { phone: { $regex: search, $options: 'i' } },
+              { contactNumber: { $regex: search, $options: 'i' } },
+              { registrationNumber: { $regex: search, $options: 'i' } }
+            ];
+          }
+
+          const registrations = await model
+            .find(query)
+            .sort({ submittedAt: -1 })
+            .select('-paymentReceiptData -paymentScreenshotData -cashReceiptData -idProofData -idFileData')
+            .lean();
+
+          console.log(`📊 [QUERY] Found ${registrations.length} registrations for "${candidateEventName}"`);
+          if (registrations.length > 0) {
+            console.log(`📊 [QUERY] Sample registration eventName: "${registrations[0].eventName}"`);
+          }
+
+          // Keep source collection event name so edit/delete update the correct collection.
+          registrations.forEach(reg => {
+            reg.eventName = reg.eventName || candidateEventName;
+            reg.eventAbbr = event.abbreviation;
+          });
+
+          allRegistrations.push(...registrations);
+        } catch (error) {
+          console.error(`Error fetching registrations for ${candidateEventName}:`, error);
         }
-        
-        if (registrationStatus) {
-          query.registrationStatus = registrationStatus;
-        }
-        
-        if (search) {
-          query.$or = [
-            { fullName: { $regex: search, $options: 'i' } },
-            { email: { $regex: search, $options: 'i' } },
-            { emailAddress: { $regex: search, $options: 'i' } },
-            { phone: { $regex: search, $options: 'i' } },
-            { contactNumber: { $regex: search, $options: 'i' } },
-            { registrationNumber: { $regex: search, $options: 'i' } }
-          ];
-        }
-        
-        const registrations = await model
-          .find(query)
-          .sort({ submittedAt: -1 })
-          .select('-paymentReceiptData -paymentScreenshotData -cashReceiptData -idProofData -idFileData')
-          .lean();
-        
-        console.log(`📊 [QUERY] Found ${registrations.length} registrations for "${event.name}"`);
-        if (registrations.length > 0) {
-          console.log(`📊 [QUERY] Sample registration eventName: "${registrations[0].eventName}"`);
-        }
-        
-        // Add event name to each registration
-        registrations.forEach(reg => {
-          reg.eventName = event.name;
-          reg.eventAbbr = event.abbreviation;
-        });
-        
-        allRegistrations.push(...registrations);
-      } catch (error) {
-        console.error(`Error fetching registrations for ${event.name}:`, error);
       }
     }
     
@@ -266,14 +355,11 @@ router.get('/registrations/:eventName/:id',
     const admin = req.admin;
     
     // Check if admin has access to this event
-    if (admin.role !== 'core') {
-      const event = adminCredentials.events.find(e => e.name === eventName);
-      if (!event || event.abbreviation !== admin.eventAbbr) {
-        return res.status(403).json({
-          error: 'Access forbidden',
-          message: 'You do not have access to this event'
-        });
-      }
+    if (!isEventAccessibleForAdmin(admin, eventName)) {
+      return res.status(403).json({
+        error: 'Access forbidden',
+        message: 'You do not have access to this event'
+      });
     }
     
     const model = EventRegistrationFactory.getModel(eventName);
@@ -311,14 +397,11 @@ router.put('/registrations/:eventName/:id',
     }
     
     // Check if admin has access to this event
-    if (admin.role !== 'core') {
-      const event = adminCredentials.events.find(e => e.name === eventName);
-      if (!event || event.abbreviation !== admin.eventAbbr) {
-        return res.status(403).json({
-          error: 'Access forbidden',
-          message: 'You do not have access to this event'
-        });
-      }
+    if (!isEventAccessibleForAdmin(admin, eventName)) {
+      return res.status(403).json({
+        error: 'Access forbidden',
+        message: 'You do not have access to this event'
+      });
     }
     
     const model = EventRegistrationFactory.getModel(eventName);
@@ -378,14 +461,11 @@ router.patch('/registrations/:eventName/:id',
     }
     
     // Check if admin has access to this event
-    if (admin.role !== 'core') {
-      const event = adminCredentials.events.find(e => e.name === eventName);
-      if (!event || event.abbreviation !== admin.eventAbbr) {
-        return res.status(403).json({
-          error: 'Access forbidden',
-          message: 'You do not have access to this event'
-        });
-      }
+    if (!isEventAccessibleForAdmin(admin, eventName)) {
+      return res.status(403).json({
+        error: 'Access forbidden',
+        message: 'You do not have access to this event'
+      });
     }
     
     const model = EventRegistrationFactory.getModel(eventName);
@@ -436,14 +516,11 @@ router.delete('/registrations/:eventName/:id',
     }
     
     // Check if admin has access to this event
-    if (admin.role !== 'core') {
-      const event = adminCredentials.events.find(e => e.name === eventName);
-      if (!event || event.abbreviation !== admin.eventAbbr) {
-        return res.status(403).json({
-          error: 'Access forbidden',
-          message: 'You do not have access to this event'
-        });
-      }
+    if (!isEventAccessibleForAdmin(admin, eventName)) {
+      return res.status(403).json({
+        error: 'Access forbidden',
+        message: 'You do not have access to this event'
+      });
     }
     
     const model = EventRegistrationFactory.getModel(eventName);
@@ -484,14 +561,11 @@ router.post('/registrations/:eventName',
     }
     
     // Check if admin has access to this event
-    if (admin.role !== 'core') {
-      const event = adminCredentials.events.find(e => e.name === eventName);
-      if (!event || event.abbreviation !== admin.eventAbbr) {
-        return res.status(403).json({
-          error: 'Access forbidden',
-          message: 'You do not have access to this event'
-        });
-      }
+    if (!isEventAccessibleForAdmin(admin, eventName)) {
+      return res.status(403).json({
+        error: 'Access forbidden',
+        message: 'You do not have access to this event'
+      });
     }
     
     const model = EventRegistrationFactory.getModel(eventName);
@@ -626,7 +700,9 @@ router.get('/events',
     
     // Filter for event-specific admins
     if (admin.role !== 'core' && admin.eventName) {
-      events = events.filter(e => e.name === admin.eventName);
+      events = events.filter((e) =>
+        e.abbreviation === admin.eventAbbr || eventNamesMatch(e.name, admin.eventName)
+      );
     }
     
     res.json({

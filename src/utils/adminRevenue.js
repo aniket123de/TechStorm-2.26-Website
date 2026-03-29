@@ -126,6 +126,8 @@ const EVENT_ALIASES = {
   passionwithreels: 'passion with reels',
   forzahorizon: 'forza horizon',
   'forza horizon': 'forza horizon',
+  'fifa mobile': 'ea fc mobile',
+  'fifa-mobile': 'ea fc mobile',
   eafcmobile: 'ea fc mobile',
   'ea fc mobile': 'ea fc mobile',
   khet: 'khet',
