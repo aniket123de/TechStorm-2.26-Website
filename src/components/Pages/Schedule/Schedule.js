@@ -41,7 +41,7 @@ const scheduleData = {
             { timing: '02:30 P.M. - 05:30 P.M.', event: 'FIFA', venue: 'C Block Room No 201 Lab 8', round: 'Final' },
             { timing: '01:30 P.M. - 03:30 P.M.', event: 'Creative Canvas', venue: 'C Block, Room No 402', round: 'Final' },
             { timing: '02:30 P.M. - 5:30 P.M.', event: 'Tech Hunt', venue: 'C Block Auditorium, 7th Floor', round: 'Final' },
-            { timing: '2:30 P.M. - 5:30 P.M.', event: 'Ro-Terrance / Ro-Navigator / Ro-Soccer / Aqua Race / Khet', venue: 'B-Block 204 / B Block 304 / B-Block 205 / B-Block 202 / B Block 404', round: 'Final' }
+            { timing: '2:30 P.M. - 5:30 P.M.', event: 'Ro-Terrance / Ro-Navigator / Ro-Soccer / Ro-Sumo / Khet', venue: 'B-Block 204 / B Block 304 / B-Block 205 / B-Block 202 / B Block 404', round: 'Final' }
         ]
     },
     day4: {
