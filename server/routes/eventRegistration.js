@@ -76,8 +76,9 @@ router.post('/:eventName',
       console.log(`📎 Total files: ${req.files.length}`);
       
       try {
-        // Process files sequentially to avoid timeout issues
-        for (const file of req.files) {
+        const fileUploadConcurrency = Number(process.env.REGISTRATION_FILE_UPLOAD_CONCURRENCY || 2);
+
+        const processUploadedFile = async (file) => {
           const fileStartTime = Date.now();
           const fieldName = file.fieldname;
           const fileExtension = file.originalname.split('.').pop().toLowerCase();
@@ -186,6 +187,14 @@ router.post('/:eventName',
             registrationData[`${fieldName}Data`] = file.buffer.toString('base64');
             registrationData[`${fieldName}MimeType`] = file.mimetype;
           }
+        };
+
+        // Process in small batches to reduce total wall-clock time on mobile uploads
+        // while keeping memory and Cloudinary pressure controlled.
+        for (let i = 0; i < req.files.length; i += fileUploadConcurrency) {
+          const batch = req.files.slice(i, i + fileUploadConcurrency);
+          await Promise.all(batch.map(processUploadedFile));
+          console.log(`✅ Processed upload batch ${Math.floor(i / fileUploadConcurrency) + 1}`);
         }
         
         const uploadDuration = Date.now() - uploadStartTime;

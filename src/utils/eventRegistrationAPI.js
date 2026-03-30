@@ -6,20 +6,24 @@
 import API_URL from '../config/api';
 
 const API_BASE_URL = API_URL;
-const REGISTRATION_REQUEST_TIMEOUT_MS = 45000;
-const MAX_NETWORK_RETRIES = 2;
+const REGISTRATION_REQUEST_TIMEOUT_MS = 120000;
+const MAX_NETWORK_RETRIES = 1;
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const isTransientNetworkError = (error) => {
   const message = (error?.message || '').toLowerCase();
   return (
-    error?.name === 'AbortError' ||
     message.includes('failed to fetch') ||
     message.includes('network error') ||
     message.includes('networkerror') ||
     message.includes('load failed')
   );
+};
+
+const isRequestTimeoutError = (error) => {
+  const message = (error?.message || '').toLowerCase();
+  return error?.name === 'AbortError' || message.includes('timed out');
 };
 
 const fetchWithTimeout = async (url, options, timeoutMs) => {
@@ -126,15 +130,15 @@ export const submitEventRegistration = async (eventName, registrationData) => {
 
         break;
       } catch (requestError) {
+        if (isRequestTimeoutError(requestError)) {
+          throw new Error('request timeout: upload is taking too long. Please retry once with the same details.');
+        }
+
         if (isTransientNetworkError(requestError) && attempt < MAX_NETWORK_RETRIES) {
           const retryDelay = Math.min(1000 * (attempt + 1), 3000);
           console.warn(`⏳ Network/transient error. Retrying in ${retryDelay}ms...`, requestError);
           await wait(retryDelay);
           continue;
-        }
-
-        if (requestError?.name === 'AbortError') {
-          throw new Error('network error: request timed out while contacting the server');
         }
 
         throw requestError;
