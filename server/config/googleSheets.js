@@ -16,6 +16,7 @@ const MASTER_SHEET_NAME = 'Sheet2';
 // Each event gets its own sheet tab for better organization
 const EVENT_SHEET_MAPPING = {
   'FIFA Mobile': 'FIFA Mobile',
+  'EA FC MOBILE': 'FIFA Mobile',
   'Forza Horizon': 'Forza Horizon',
   'Khet': 'Khet',
   'Technomania': 'Technomania',
