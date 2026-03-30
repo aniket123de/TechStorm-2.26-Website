@@ -149,17 +149,20 @@ const KhetRegistration = () => {
       }
     } catch (error) {
       console.error('Registration error:', error);
+      console.error('Error message:', error?.message);
+      console.error('Error stack:', error?.stack);
       const msg = error?.message || '';
       let userMessage;
       if (msg.toLowerCase().includes('failed to fetch') || msg.toLowerCase().includes('network error') || msg.toLowerCase().includes('networkerror')) {
-        userMessage = "We're unable to submit your registration. Please try again with the same payment screenshot and event details. For further assistance, contact Anik Paul - +91 91264 26769, Protyoy Bhandary - +91 82740 34667, Aniket De - +91 90389 03850.";
+        userMessage = "🌐 Network Connection Issue: Unable to reach the registration server. Please:\n1. Check your internet connection\n2. Try a different browser\n3. Wait a moment and try again\n\nIf the problem persists, contact: Anik Paul - +91 91264 26769, Protyoy Bhandary - +91 82740 34667, Aniket De - +91 90389 03850.";
       } else if (msg.includes('FUNCTION_PAYLOAD_TOO_LARGE') || msg.toLowerCase().includes('request entity too large') || msg.toLowerCase().includes('payload too large')) {
-        userMessage = 'Submission is too large. Please ensure all uploaded images are under 2MB and try again.';
+        userMessage = '📦 Submission Too Large: Please ensure all uploaded images are under 2MB and try again.';
       } else if (msg.toLowerCase().includes('duplicate')) {
-        userMessage = 'You have already registered for this event with this email or phone number.';
+        userMessage = '✓ Already Registered: You have already registered for this event with this email or phone number.';
       } else {
-        userMessage = msg || 'Registration failed. Please try again or contact support if the issue persists.';
+        userMessage = msg || '❌ Registration failed. Please try again or contact support if the issue persists.';
       }
+      console.error('Displaying user message:', userMessage);
       setErrors({ submit: userMessage });
     } finally {
       setIsSubmitting(false);

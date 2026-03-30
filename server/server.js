@@ -141,11 +141,27 @@ app.use('/api/admin-dashboard', adminDashboardRoutes);
 
 console.log('✅ All routes registered successfully');
 
+// Root route handler
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'TechStorm Backend API Server',
+    status: 'running',
+    version: '1.0.0',
+    timestamp: new Date().toISOString()
+  });
+});
+
+// Favicon route (common browser request)
+app.get('/favicon.ico', (req, res) => {
+  res.status(204).send();
+});
+
 // Handle 404 errors
 app.use('*', (req, res) => {
   res.status(404).json({
     error: 'Route not found',
-    message: `Cannot ${req.method} ${req.originalUrl}`
+    message: `Cannot ${req.method} ${req.originalUrl}`,
+    availableEndpoints: '/api/health, /api/auth, /api/users, /api/events, /api/event-registration, /api/admin'
   });
 });
 

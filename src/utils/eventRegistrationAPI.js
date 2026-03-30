@@ -46,6 +46,8 @@ export const submitEventRegistration = async (eventName, registrationData) => {
   console.log('🚀 Submitting registration for:', eventName);
   console.log('📝 Data:', registrationData);
   console.log('🌐 API URL:', `${API_BASE_URL}/event-registration/${eventName}`);
+  console.log('🔗 API Base URL:', API_BASE_URL);
+  console.log('📱 Frontend URL:', window.location.href);
   
   try {
     // Create FormData for file uploads
