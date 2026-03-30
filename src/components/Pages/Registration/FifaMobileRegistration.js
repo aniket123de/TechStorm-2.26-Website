@@ -141,7 +141,7 @@ const FifaMobileRegistration = () => {
     setIsSubmitting(true);
 
     try {
-      const result = await submitEventRegistration('EA FC MOBILE', formData);
+      const result = await submitEventRegistration('FIFA Mobile', formData);
       console.log('EA FC MOBILE registration successful:', result);
       
       const regNumber = result.data?.registrationNumber || result.registrationNumber;
@@ -484,13 +484,7 @@ const FifaMobileRegistration = () => {
                             type="file"
                             name="paymentReceipt"
                             id="paymentReceipt"
-                            onChange={(e) => {
-                              const file = e.target.files[0];
-                              setFormData(prev => ({ ...prev, paymentReceipt: file }));
-                              if (errors.paymentReceipt) {
-                                setErrors(prev => ({ ...prev, paymentReceipt: '' }));
-                              }
-                            }}
+                            onChange={handleInputChange}
                             className="file-upload-input"
                             accept="image/jpeg,image/jpg,image/png,.jpg,.jpeg,.png"
                           />

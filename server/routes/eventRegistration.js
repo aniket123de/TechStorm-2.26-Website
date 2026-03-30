@@ -23,14 +23,18 @@ router.post('/:eventName',
     try {
       const { eventName } = req.params;
       let registrationData = { ...req.body };
+      const normalizedEventName = eventName ? eventName.trim() : '';
+      const canonicalEventName = normalizedEventName.toLowerCase() === 'ea fc mobile'
+        ? 'FIFA Mobile'
+        : normalizedEventName;
 
-      console.log('📥 Received registration for:', eventName);
+      console.log('📥 Received registration for:', canonicalEventName);
       console.log('📝 Body data keys:', Object.keys(req.body).join(', '));
       console.log('📎 Files:', req.files && Array.isArray(req.files) ? req.files.map(f => `${f.fieldname}(${(f.size/1024).toFixed(1)}KB)`).join(', ') : 'No files');
       console.log('📊 Total files:', req.files?.length || 0);
 
     // Validate event name
-    if (!eventName || eventName.trim().length === 0) {
+    if (!canonicalEventName || canonicalEventName.length === 0) {
       return res.status(400).json({
         error: 'Invalid event name',
         message: 'Event name is required',
@@ -103,8 +107,8 @@ router.post('/:eventName',
               file.originalname,
               `techstorm/${subfolder}/${eventName}`,
               {
-                tags: [eventName, fieldName, 'registration', 'techstorm'],
-                context: `event=${eventName}|field=${fieldName}|type=image`,
+                tags: [canonicalEventName, fieldName, 'registration', 'techstorm'],
+                context: `event=${canonicalEventName}|field=${fieldName}|type=image`,
                 timeout: 30000 // 30 second timeout per file
               }
             );
@@ -224,10 +228,10 @@ router.post('/:eventName',
     }
 
     // Add eventName to registration data
-    registrationData.eventName = eventName;
+    registrationData.eventName = canonicalEventName;
 
     // Get or create model for this event
-    const RegistrationModel = EventRegistrationFactory.getModel(eventName);
+    const RegistrationModel = EventRegistrationFactory.getModel(canonicalEventName);
 
     // Check for duplicate registration based on email or phone
     const duplicateQuery = [];
@@ -300,7 +304,7 @@ router.post('/:eventName',
       data: {
         registrationId: registration._id,
         registrationNumber: registration.registrationNumber,
-        eventName: eventName,
+        eventName: canonicalEventName,
         email: registration.email,
         phone: registration.phone,
         registrationStatus: registration.registrationStatus,
@@ -349,7 +353,7 @@ router.get('/verify/:registrationNumber',
     const eventNames = [
       'Technomania', 'Omegatrix', 'Khet', 'Tech Hunt',
       'Ro-Combat', 'Ro-Navigator', 'Ro-Soccer', 'Ro-Sumo', 'Ro-Terrance',
-      'FIFA Mobile', 'Forza Horizon', 'Creative Canvas', 'Passion With Reels'
+      'FIFA Mobile', 'EA FC MOBILE', 'Forza Horizon', 'Creative Canvas', 'Passion With Reels'
     ];
 
     for (const eventName of eventNames) {

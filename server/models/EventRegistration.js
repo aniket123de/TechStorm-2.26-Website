@@ -297,7 +297,8 @@ class EventRegistrationFactory {
       
       // Generate registration number if not exists
       if (!this.registrationNumber && this.eventName) {
-        const eventPrefix = this.eventName.substring(0, 3).toUpperCase();
+        const normalizedEvent = String(this.eventName).replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
+        const eventPrefix = (normalizedEvent.substring(0, 3) || 'REG').padEnd(3, 'X');
         const timestamp = Date.now().toString(36).toUpperCase();
         const random = Math.random().toString(36).substring(2, 5).toUpperCase();
         this.registrationNumber = `${eventPrefix}-${timestamp}-${random}`;
