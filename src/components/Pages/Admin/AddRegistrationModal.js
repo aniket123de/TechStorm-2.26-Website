@@ -13,6 +13,12 @@ const AddRegistrationModal = ({ onClose, onAdd }) => {
     numberOfParticipants: '1',
     participants: [],
     teamName: '',
+    fifaUsername: '',
+    teamOvr: '',
+    deviceModel: '',
+    gameUsername: '',
+    playerRating: '',
+    gamingPlatform: '',
     paymentMode: 'online',
     transactionId: '',
     paymentStatus: 'pending',
@@ -42,6 +48,8 @@ const AddRegistrationModal = ({ onClose, onAdd }) => {
   const getEventConfig = () => {
     return eventParticipantConfig[formData.eventName] || { min: 1, max: 1, isTeam: false };
   };
+
+  const isFifaMobileEvent = /fifa|fc mobile/i.test(formData.eventName || '');
 
   useEffect(() => {
     fetchEvents();
@@ -337,6 +345,74 @@ const AddRegistrationModal = ({ onClose, onAdd }) => {
                 </div>
               </div>
             </div>
+
+            {isFifaMobileEvent && (
+              <div className="form-section">
+                <h3>Game Details</h3>
+                <div className="form-grid">
+                  <div className="form-field">
+                    <label>FIFA Username</label>
+                    <input
+                      type="text"
+                      name="fifaUsername"
+                      value={formData.fifaUsername}
+                      onChange={handleChange}
+                      placeholder="Enter FIFA username"
+                    />
+                  </div>
+                  <div className="form-field">
+                    <label>Team OVR</label>
+                    <input
+                      type="text"
+                      name="teamOvr"
+                      value={formData.teamOvr}
+                      onChange={handleChange}
+                      placeholder="Enter team OVR"
+                    />
+                  </div>
+                  <div className="form-field">
+                    <label>Device Model</label>
+                    <input
+                      type="text"
+                      name="deviceModel"
+                      value={formData.deviceModel}
+                      onChange={handleChange}
+                      placeholder="Enter device model"
+                    />
+                  </div>
+                  <div className="form-field">
+                    <label>Game Username</label>
+                    <input
+                      type="text"
+                      name="gameUsername"
+                      value={formData.gameUsername}
+                      onChange={handleChange}
+                      placeholder="Enter game username"
+                    />
+                  </div>
+                  <div className="form-field">
+                    <label>Player Rating</label>
+                    <input
+                      type="text"
+                      name="playerRating"
+                      value={formData.playerRating}
+                      onChange={handleChange}
+                      placeholder="Enter player rating"
+                    />
+                  </div>
+                  <div className="form-field">
+                    <label>Gaming Platform</label>
+                    <input
+                      type="text"
+                      name="gamingPlatform"
+                      value={formData.gamingPlatform}
+                      onChange={handleChange}
+                      placeholder="Enter gaming platform"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div className="info-box success">
               <p>✅ Registration number will be auto-generated upon submission</p>
