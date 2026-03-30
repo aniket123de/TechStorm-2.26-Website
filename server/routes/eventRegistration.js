@@ -348,6 +348,38 @@ router.get('/verify/:registrationNumber',
       });
     }
 
+    const rawInput = registrationNumber.trim();
+    const normalizedInput = rawInput.toUpperCase();
+    const compactInput = normalizedInput.replace(/\s*-\s*/g, '-');
+
+    const registrationCandidates = new Set([
+      rawInput,
+      normalizedInput,
+      compactInput
+    ]);
+
+    if (/^EA-/.test(compactInput)) {
+      const suffix = compactInput.substring(3);
+      registrationCandidates.add(`EA-${suffix}`);
+      registrationCandidates.add(`EA -${suffix}`);
+      registrationCandidates.add(`FIF-${suffix}`);
+    }
+
+    if (/^FIF-/.test(compactInput)) {
+      const suffix = compactInput.substring(4);
+      registrationCandidates.add(`FIF-${suffix}`);
+      registrationCandidates.add(`EA-${suffix}`);
+      registrationCandidates.add(`EA -${suffix}`);
+    }
+
+    const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+    let legacyPattern = null;
+    if (/^(EA|FIF)-/.test(compactInput)) {
+      const suffix = compactInput.replace(/^(EA|FIF)-/, '');
+      legacyPattern = new RegExp(`^(EA|FIF)\\s*-\\s*${escapeRegExp(suffix)}$`, 'i');
+    }
+
     // Try to find the registration across all event models
     // We need to search through different event collections
     const eventNames = [
@@ -359,9 +391,15 @@ router.get('/verify/:registrationNumber',
     for (const eventName of eventNames) {
       try {
         const RegistrationModel = EventRegistrationFactory.getModel(eventName);
-        const registration = await RegistrationModel.findOne({ 
-          registrationNumber: registrationNumber.trim() 
+        let registration = await RegistrationModel.findOne({
+          registrationNumber: { $in: Array.from(registrationCandidates) }
         });
+
+        if (!registration && legacyPattern) {
+          registration = await RegistrationModel.findOne({
+            registrationNumber: { $regex: legacyPattern }
+          });
+        }
 
         if (registration) {
           // Found the registration
