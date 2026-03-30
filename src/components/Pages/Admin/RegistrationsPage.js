@@ -322,6 +322,7 @@ const RegistrationsPage = () => {
     try {
       // Prepare data for export
       const exportData = filteredRegistrations.map((reg, index) => {
+        const participant = reg.participants && reg.participants[0];
         const row = {
           'S.No': index + 1,
           'Registration Number': getDisplayValue(reg, 'registrationNumber') || 'N/A',
@@ -329,6 +330,14 @@ const RegistrationsPage = () => {
           'Registration Date': reg.submittedAt ? new Date(reg.submittedAt).toLocaleDateString('en-IN') + ' ' + new Date(reg.submittedAt).toLocaleTimeString('en-IN') : 'N/A',
           'Registration Status': reg.registrationStatus || 'N/A',
           'OVR': getDisplayValue(reg, 'teamOvr') || 'N/A',
+          'FIFA Username': getDisplayValue(
+            reg,
+            'fifaUsername',
+            'fifaUserName',
+            'fifa_username',
+            'gameUsername',
+            'username'
+          ) || participant?.fifaUsername || participant?.gameUsername || participant?.username || 'N/A',
         };
 
         // Check if it's a team event
@@ -354,8 +363,7 @@ const RegistrationsPage = () => {
           }
         } else {
           // Solo event - check both top-level and participants array
-          const participant = reg.participants && reg.participants[0];
-          
+
           row['Full Name'] = getDisplayValue(reg, 'fullName', 'full_name', 'name') || 
                             participant?.name || 'N/A';
           row['Email'] = getDisplayEmail(reg) || participant?.email || 'N/A';
@@ -403,6 +411,7 @@ const RegistrationsPage = () => {
         'Registration Date',
         'Registration Status',
         'OVR',
+        'FIFA Username',
       ];
       
       const baseColumns = [
@@ -412,6 +421,7 @@ const RegistrationsPage = () => {
         { wch: 20 }, // Registration Date
         { wch: 18 }, // Registration Status
         { wch: 12 }, // OVR
+        { wch: 25 }, // FIFA Username
       ];
       
       if (hasTeamEvents) {
