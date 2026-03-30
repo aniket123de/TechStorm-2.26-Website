@@ -86,8 +86,8 @@ function buildInitialFormData(reg) {
     teamMember4Email: getFromObj(reg, 'teamMember4Email') || '',
     teamMember4Phone: getFromObj(reg, 'teamMember4Phone') || '',
     participants: normalizeParticipants(reg.participants || []),
-    fifaUsername: getFromObj(reg, 'fifaUsername') || '',
-    teamOvr: getFromObj(reg, 'teamOvr') || '',
+    fifaUsername: getEditValue(reg, 'fifaUsername') || '',
+    teamOvr: getEditValue(reg, 'teamOvr', 'teamOVR', 'ovr') || '',
     deviceModel: getFromObj(reg, 'deviceModel') || '',
     gameUsername: getFromObj(reg, 'gameUsername') || '',
     playerRating: getFromObj(reg, 'playerRating') || '',
@@ -104,6 +104,8 @@ const EditRegistrationModal = ({ registration, onClose, onSave }) => {
   const [formData, setFormData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [fetchError, setFetchError] = useState(null);
+  const [saveError, setSaveError] = useState(null);
+  const [saving, setSaving] = useState(false);
   const [activeTab, setActiveTab] = useState('basic');
 
   // Fetch full registration from API when modal opens so the form has complete data
@@ -144,6 +146,16 @@ const EditRegistrationModal = ({ registration, onClose, onSave }) => {
   }, [registration]);
 
   const displayReg = fullRegistration || registration;
+  const hasGameDetails = !!(
+    formData?.fifaUsername ||
+    formData?.teamOvr ||
+    formData?.gameUsername ||
+    formData?.playerRating ||
+    formData?.deviceModel ||
+    formData?.gamingPlatform ||
+    getFromObj(displayReg, 'fifaUsername', 'teamOvr', 'teamOVR', 'ovr', 'gameUsername', 'playerRating', 'deviceModel', 'gamingPlatform') ||
+    (displayReg?.eventName && String(displayReg.eventName).toLowerCase().includes('fifa'))
+  );
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -173,9 +185,11 @@ const EditRegistrationModal = ({ registration, onClose, onSave }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData) return;
+    setSaveError(null);
+    setSaving(true);
 
     // Clean up data - remove empty fields
     const cleanedData = Object.entries(formData).reduce((acc, [key, value]) => {
@@ -184,9 +198,15 @@ const EditRegistrationModal = ({ registration, onClose, onSave }) => {
       }
       return acc;
     }, {});
-    
-    onSave(registration._id, cleanedData);
-    onClose();
+
+    try {
+      await onSave(registration._id, cleanedData);
+      onClose();
+    } catch (err) {
+      setSaveError(err?.message || 'Failed to update registration');
+    } finally {
+      setSaving(false);
+    }
   };
 
   const teamSize = formData ? parseInt(formData.teamSize) || 1 : 0;
@@ -243,6 +263,12 @@ const EditRegistrationModal = ({ registration, onClose, onSave }) => {
 
         <form onSubmit={handleSubmit}>
           <div className="modal-body">
+            {saveError && (
+              <div className="admin-error-state" style={{ maxWidth: 'none', marginBottom: '16px' }}>
+                <p className="admin-error-message">{saveError}</p>
+              </div>
+            )}
+
             {/* Basic Info Tab */}
             {activeTab === 'basic' && (
               <>
@@ -346,7 +372,7 @@ const EditRegistrationModal = ({ registration, onClose, onSave }) => {
                 </div>
 
                 {/* Game-specific fields */}
-                {(registration.fifaUsername || registration.gameUsername) && (
+                {hasGameDetails && (
                   <div className="form-section">
                     <h3>Game Details</h3>
                     <div className="form-grid">
@@ -680,8 +706,8 @@ const EditRegistrationModal = ({ registration, onClose, onSave }) => {
           </div>
 
           <div className="modal-footer">
-            <button type="button" className="btn-secondary" onClick={onClose}>Cancel</button>
-            <button type="submit" className="btn-primary">Save Changes</button>
+            <button type="button" className="btn-secondary" onClick={onClose} disabled={saving}>Cancel</button>
+            <button type="submit" className="btn-primary" disabled={saving}>{saving ? 'Saving…' : 'Save Changes'}</button>
           </div>
         </form>
         </>

@@ -227,8 +227,7 @@ const RegistrationsPage = () => {
       // Find the registration to get the event name
       const registration = registrations.find(r => r._id === id);
       if (!registration) {
-        alert('Registration not found');
-        return;
+        throw new Error('Registration not found');
       }
       
       await updateRegistration(registration.eventName, id, updatedData);
@@ -236,6 +235,7 @@ const RegistrationsPage = () => {
       alert('Registration updated successfully!');
     } catch (err) {
       alert('Error updating registration: ' + err.message);
+      throw err;
     }
   };
 
