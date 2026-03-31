@@ -360,12 +360,12 @@ const OmegatrixRegistration = () => {
                   <label className="form-label required">Join Official WhatsApp Group</label>
                   <p style={{ margin: '10px 0' }}>
                     <a
-                      href="https://chat.whatsapp.com/C0C0alA0SsjJC3vI0XoRfc?mode=gi_t"
+                      href="https://chat.whatsapp.com/GX5lrda3fgl10nsOAFWdIn?mode=gi_t"
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{ color: '#ffc010' }}
                     >
-                      https://chat.whatsapp.com/C0C0alA0SsjJC3vI0XoRfc?mode=gi_t
+                      https://chat.whatsapp.com/GX5lrda3fgl10nsOAFWdIn?mode=gi_t
                     </a>
                   </p>
                   <label className="checkbox-group" style={{ marginTop: '12px' }}>
