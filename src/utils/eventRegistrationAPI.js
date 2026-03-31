@@ -8,6 +8,7 @@ import API_URL from '../config/api';
 const API_BASE_URL = API_URL;
 const REGISTRATION_REQUEST_TIMEOUT_MS = 120000;
 const MAX_NETWORK_RETRIES = 1;
+const FILE_UPLOAD_CONCURRENCY = 2;
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -40,6 +41,80 @@ const fetchWithTimeout = async (url, options, timeoutMs) => {
   }
 };
 
+const uploadRegistrationFile = async (eventName, fieldName, file) => {
+  const endpoint = `${API_BASE_URL}/event-registration/upload-file`;
+  const uploadFormData = new FormData();
+  uploadFormData.append('eventName', eventName);
+  uploadFormData.append('fieldName', fieldName);
+  uploadFormData.append(fieldName, file);
+
+  const response = await fetchWithTimeout(endpoint, {
+    method: 'POST',
+    body: uploadFormData
+  }, REGISTRATION_REQUEST_TIMEOUT_MS);
+
+  const result = await response.json();
+  if (!response.ok || !result?.success || !result?.data) {
+    throw new Error(result?.message || 'Failed to upload file before registration submission');
+  }
+
+  return result.data;
+};
+
+const prepareRegistrationPayload = async (eventName, registrationData) => {
+  const preparedData = {
+    ...registrationData,
+    participants: Array.isArray(registrationData.participants)
+      ? registrationData.participants.map((participant) => ({ ...participant }))
+      : registrationData.participants
+  };
+
+  const uploadTasks = [];
+
+  Object.keys(preparedData).forEach((key) => {
+    if (preparedData[key] instanceof File) {
+      uploadTasks.push({
+        fieldName: key,
+        file: preparedData[key],
+        applyResult: (uploadResult) => {
+          preparedData[key] = uploadResult.originalName;
+          preparedData[`${key}Url`] = uploadResult.secureUrl;
+          preparedData[`${key}CloudinaryId`] = uploadResult.cloudinaryId;
+        }
+      });
+    }
+  });
+
+  if (Array.isArray(preparedData.participants)) {
+    preparedData.participants.forEach((participant, index) => {
+      if (participant?.idFile instanceof File) {
+        const fieldName = `participants[${index}].idFile`;
+        uploadTasks.push({
+          fieldName,
+          file: participant.idFile,
+          applyResult: (uploadResult) => {
+            preparedData.participants[index].idFile = uploadResult.originalName;
+            preparedData.participants[index].idFileUrl = uploadResult.secureUrl;
+            preparedData.participants[index].idFileCloudinaryId = uploadResult.cloudinaryId;
+          }
+        });
+      }
+    });
+  }
+
+  for (let i = 0; i < uploadTasks.length; i += FILE_UPLOAD_CONCURRENCY) {
+    const batch = uploadTasks.slice(i, i + FILE_UPLOAD_CONCURRENCY);
+    const batchResults = await Promise.all(
+      batch.map((task) => uploadRegistrationFile(eventName, task.fieldName, task.file))
+    );
+    batchResults.forEach((result, index) => {
+      batch[index].applyResult(result);
+    });
+  }
+
+  return preparedData;
+};
+
 /**
  * Submit event registration
  * @param {string} eventName - Name of the event (e.g., 'Technomania', 'Omegatrix')
@@ -54,6 +129,8 @@ export const submitEventRegistration = async (eventName, registrationData) => {
   console.log('📱 Frontend URL:', window.location.href);
   
   try {
+    const preparedData = await prepareRegistrationPayload(eventName, registrationData);
+
     // Create FormData for file uploads
     const formData = new FormData();
     
@@ -105,8 +182,8 @@ export const submitEventRegistration = async (eventName, registrationData) => {
     };
     
     // Process all registration data
-    Object.keys(registrationData).forEach(key => {
-      appendToFormData(key, registrationData[key]);
+    Object.keys(preparedData).forEach(key => {
+      appendToFormData(key, preparedData[key]);
     });
 
     const endpoint = `${API_BASE_URL}/event-registration/${encodeURIComponent(eventName)}`;

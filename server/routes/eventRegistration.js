@@ -7,6 +7,82 @@ const { uploadRegistrationFiles, handleMulterError } = require('../middleware/up
 const { uploadToCloudinary, deleteFromCloudinary } = require('../config/cloudinary');
 const { appendToSheet } = require('../config/googleSheets');
 
+const getUploadSubfolder = (fieldName = '') => {
+  if (fieldName.includes('payment') || fieldName.includes('receipt') || fieldName.includes('cash')) {
+    return 'payments';
+  }
+  if (fieldName.includes('id') || fieldName.includes('Id') || fieldName.toLowerCase().includes('proof')) {
+    return 'id-proofs';
+  }
+  return 'registrations';
+};
+
+router.post('/upload-file',
+  uploadRegistrationFiles,
+  handleMulterError,
+  asyncHandler(async (req, res) => {
+    const file = Array.isArray(req.files) && req.files.length > 0 ? req.files[0] : null;
+    const eventName = (req.body?.eventName || '').trim();
+    const fieldName = (req.body?.fieldName || file?.fieldname || '').trim();
+
+    if (!file) {
+      return res.status(400).json({
+        success: false,
+        message: 'No file received for upload'
+      });
+    }
+
+    if (!eventName) {
+      return res.status(400).json({
+        success: false,
+        message: 'eventName is required for file upload'
+      });
+    }
+
+    if (!fieldName) {
+      return res.status(400).json({
+        success: false,
+        message: 'fieldName is required for file upload'
+      });
+    }
+
+    const fileExtension = file.originalname.split('.').pop().toLowerCase();
+    const isImage = ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(fileExtension);
+
+    if (!isImage) {
+      return res.status(400).json({
+        success: false,
+        message: 'Only image files can be pre-uploaded. Please upload JPG/PNG/WebP/GIF images.'
+      });
+    }
+
+    const normalizedEventName = eventName.toLowerCase() === 'ea fc mobile' ? 'FIFA Mobile' : eventName;
+    const subfolder = getUploadSubfolder(fieldName);
+    const uploadResult = await uploadToCloudinary(
+      file.buffer,
+      file.originalname,
+      `techstorm/${subfolder}/${normalizedEventName}`,
+      {
+        tags: [normalizedEventName, fieldName, 'registration', 'techstorm', 'pre-upload'],
+        context: `event=${normalizedEventName}|field=${fieldName}|type=image|mode=pre-upload`,
+        timeout: 30000
+      }
+    );
+
+    return res.status(201).json({
+      success: true,
+      message: 'File uploaded successfully',
+      data: {
+        fieldName,
+        originalName: file.originalname,
+        secureUrl: uploadResult.secure_url,
+        cloudinaryId: uploadResult.public_id,
+        bytes: file.size
+      }
+    });
+  })
+);
+
 /**
  * Register for an event
  * POST /api/event-registration/:eventName
