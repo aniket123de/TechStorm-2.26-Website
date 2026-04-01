@@ -20,7 +20,7 @@ const scheduleData = {
         date: '10TH APRIL',
         events: [
             { timing: '10:30 A.M. - 01:30 P.M.', event: 'Code-Bee', venue: 'C Block Lab 101, 102, 104, 105, 601, 602', round: 'External Prelims & Mains' },
-            { timing: '10:30 A.M. - 1:30 P.M.', event: 'FIFA Mobile', venue: 'C Block Auditorium, 7th Floor', round: 'Prelims' },
+            { timing: '10:30 A.M. - 1:30 P.M.', event: 'FC Mobile', venue: 'C Block Auditorium, 7th Floor', round: 'Prelims' },
             { timing: '10:30 A.M. - 1:30 P.M.', event: 'Passion with Reels', venue: 'B Block Seminar Hall', round: 'Final' },
             { timing: '11:30 A.M. - 05:30 P.M.', event: 'Forza Horizon', venue: 'C Block 201', round: 'Final' },
             { timing: '10:30 A.M. - 1:30 P.M.', event: 'Ro-Terrance / Ro-Navigator / Ro-Soccer / Ro Sumo / Khet', venue: 'B-Block 204 / B Block 304 / B-Block 205 / B-Block 202 / B Block 404', round: 'Qualifier Round' },
@@ -34,13 +34,14 @@ const scheduleData = {
         date: '11TH APRIL',
         events: [
             { timing: '10:30 A.M. - 12:00 P.M.', event: 'Code-Bee', venue: 'C Block Lab 101, 102, 104, 105, 601, 602', round: 'Final' },
-            { timing: '10:30 A.M. - 01:00 P.M.', event: 'Tech Hunt', venue: 'C Block Auditorium, 7th Floor', round: 'Prelims' },
+            { timing: '10:30 A.M. - 01:30 P.M.', event: 'Tech Hunt', venue: 'C Block Auditorium, 7th Floor', round: 'Prelims' },
             { timing: '10:30 A.M. - 1:30 P.M.', event: 'Ro-Terrance / Ro-Navigator / Ro-Soccer / Ro Sumo / Khet', venue: 'B-Block 204 / B Block 304 / B-Block 205 / B-Block 202 / B Block 404', round: 'Final' },
+            { timing: '10:30 A.M. - 5:30 P.M.', event: 'Ro-Combat', venue: 'C Block', round: 'Final' },
             { timing: '1:00 P.M. - 02:30 P.M.', event: 'Omegatrix', venue: 'C Block Auditorium, 7th Floor', round: 'Final' },
             { timing: '1:30 P.M. - 2:30 P.M.', event: 'LUNCH BREAK', venue: '-', round: '-' },
-            { timing: '02:30 P.M. - 05:30 P.M.', event: 'FIFA', venue: 'C Block Room No 201 Lab 8', round: 'Final' },
+            { timing: '02:30 P.M. - 05:00 P.M.', event: 'FC Mobile', venue: 'C Block Auditorium, 7th Floor', round: 'Final' },
             { timing: '01:30 P.M. - 03:30 P.M.', event: 'Creative Canvas', venue: 'C Block, Room No 402', round: 'Final' },
-            { timing: '02:30 P.M. - 5:30 P.M.', event: 'Tech Hunt', venue: 'C Block Auditorium, 7th Floor', round: 'Final' },
+            { timing: '02:30 P.M. - 5:30 P.M.', event: 'Tech Hunt', venue: 'B Block Seminar Hall', round: 'Final' },
             { timing: '2:30 P.M. - 5:30 P.M.', event: 'Ro-Terrance / Ro-Navigator / Ro-Soccer / Ro-Sumo / Khet', venue: 'B-Block 204 / B Block 304 / B-Block 205 / B-Block 202 / B Block 404', round: 'Final' }
         ]
     },
