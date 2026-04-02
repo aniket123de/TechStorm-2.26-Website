@@ -96,12 +96,57 @@
         0 0 0 6px #FFD700;
 }
 
+/* Closed registration variant with the same 8-bit geometry */
+.button-default.button-closed-pixel {
+    color: #ffffff;
+    background: #d90429;
+    box-shadow:
+        0 0 0 3px #14142A,
+        0 0 0 6px #d90429;
+    clip-path: polygon(
+        0 8px, 8px 8px, 8px 0,
+        calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px,
+        100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px),
+        calc(100% - 8px) 100%, 8px 100%, 8px calc(100% - 8px),
+        0 calc(100% - 8px)
+    );
+    width: min(96vw, 680px);
+    max-width: 100%;
+    min-height: 56px;
+    height: auto;
+    padding: 12px 16px;
+    text-transform: none;
+}
+
+.button-default.button-closed-pixel:hover,
+.button-default.button-closed-pixel:active,
+.button-default.button-closed-pixel:disabled:hover {
+    background: #d90429;
+    box-shadow:
+        0 0 0 3px #14142A,
+        0 0 0 6px #d90429;
+    transform: none;
+}
+
 /* Disabled state */
 .button-8bit:disabled {
     opacity: 0.5;
     cursor: not-allowed;
 }
 
+.button-8bit.button-closed-pixel:disabled {
+    opacity: 1;
+}
+
 .button-8bit:disabled:hover {
     transform: none;
+}
+
+@media (max-width: 576px) {
+    .button-default.button-closed-pixel {
+        width: 94vw;
+        min-height: 68px;
+        padding: 10px 12px;
+        letter-spacing: 0.2px;
+    }
 }

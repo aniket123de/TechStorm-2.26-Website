@@ -1054,37 +1054,54 @@ const EventDetail = ({ eventData }) => {
                   ) : registerButton && (
                     <Button
                       variant="default"
+                      className={registerButton.className || ""}
+                      disabled={Boolean(registerButton.disabled)}
                       onClick={
-                        registerButton.onClick ||
-                        (() => {
-                          // Check if it's an external link (starts with http:// or https://)
-                          if (
-                            registerButton.link &&
-                            (registerButton.link.startsWith("http://") ||
-                              registerButton.link.startsWith("https://"))
-                          ) {
-                            // Open external link in new tab
-                            window.open(
-                              registerButton.link,
-                              "_blank",
-                              "noopener,noreferrer",
-                            );
-                          } else if (registerButton.link) {
-                            // Internal route
-                            history.push(registerButton.link);
-                          } else {
-                            // Default: Navigate to specific event registration page
-                            history.push(getRegistrationRoute(name));
-                          }
-                        })
+                        registerButton.disabled
+                          ? undefined
+                          : registerButton.onClick ||
+                            (() => {
+                              // Check if it's an external link (starts with http:// or https://)
+                              if (
+                                registerButton.link &&
+                                (registerButton.link.startsWith("http://") ||
+                                  registerButton.link.startsWith("https://"))
+                              ) {
+                                // Open external link in new tab
+                                window.open(
+                                  registerButton.link,
+                                  "_blank",
+                                  "noopener,noreferrer",
+                                );
+                              } else if (registerButton.link) {
+                                // Internal route
+                                history.push(registerButton.link);
+                              } else {
+                                // Default: Navigate to specific event registration page
+                                history.push(getRegistrationRoute(name));
+                              }
+                            })
                       }
                       style={{
                         fontSize: "12px",
                         padding: "0 24px",
                         height: "42px",
+                        ...registerButton.style,
                       }}
                     >
-                      {registerButton.text || "Register Now"}
+                      <span
+                        style={{
+                          display: "block",
+                          width: "100%",
+                          whiteSpace: "pre-wrap",
+                          overflowWrap: "anywhere",
+                          wordBreak: "break-word",
+                          textAlign: "center",
+                          lineHeight: 1.35,
+                        }}
+                      >
+                        {registerButton.text || "Register Now"}
+                      </span>
                     </Button>
                   )}
 

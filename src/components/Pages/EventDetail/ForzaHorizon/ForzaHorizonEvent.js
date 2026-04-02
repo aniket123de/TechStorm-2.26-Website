@@ -158,7 +158,19 @@ const ForzaHorizonEvent = () => {
       },
     ],
     registerButton: {
-      text: "Register Now",
+      text: "Registration Closed.\nOnly On spot registration will now take place",
+      className: "button-closed-pixel",
+      disabled: true,
+      style: {
+        width: "min(96vw, 640px)",
+        maxWidth: "100%",
+        height: "auto",
+        minHeight: "64px",
+        padding: "10px 14px",
+        lineHeight: "1.25",
+        textAlign: "center",
+        fontSize: "clamp(9px, 2.8vw, 11px)",
+      },
     },
   };
 
