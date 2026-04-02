@@ -12,7 +12,10 @@ const khetBanner = "https://res.cloudinary.com/ds3vepmkd/image/upload/f_auto,q_a
 
 const YEAR_OPTIONS = ['1st Year', '2nd Year', '3rd Year', '4th Year'];
 const DEPARTMENT_OPTIONS = ["CSE", "IT", "ECE", "EE", "BCA", "MCA", "Others"];
-const COLLEGE_NAME = 'B. P. Poddar Institute of Management & Technology';
+const COLLEGE_OPTIONS = [
+  'B. P. Poddar Institute of Management & Technology',
+  'Others'
+];
 
 const KhetRegistration = () => {
   const history = useHistory();
@@ -22,7 +25,8 @@ const KhetRegistration = () => {
     fullName: '',
     year: '',
     department: '',
-    collegeName: COLLEGE_NAME,
+    collegeName: '',
+    collegeOther: '',
     collegeIdProof: null,
     contactNumber: '',
     emailAddress: '',
@@ -70,6 +74,10 @@ const KhetRegistration = () => {
     }
     if (!formData.fullName.trim()) nextErrors.fullName = 'Full Name is required';
     if (!formData.year) nextErrors.year = 'Year is required';
+    if (!formData.collegeName) nextErrors.collegeName = 'College selection is required';
+    if (formData.collegeName === 'Others' && !formData.collegeOther.trim()) {
+      nextErrors.collegeOther = 'Please specify your college name';
+    }
     if (!formData.collegeIdProof) nextErrors.collegeIdProof = 'College ID / Library Card upload is required';
     if (!formData.contactNumber.trim()) {
       nextErrors.contactNumber = 'Contact Number is required';
@@ -248,27 +256,37 @@ const KhetRegistration = () => {
 
                 <div className="form-group">
                   <label className="form-label required">College Name</label>
-                  <input
-                    type="text"
-                    name="collegeName"
-                    value={formData.collegeName}
-                    className="retro-input"
-                    disabled
-                    style={{ 
-                      backgroundColor: 'rgba(255, 192, 16, 0.1)',
-                      cursor: 'not-allowed',
-                      color: '#ffc010'
-                    }}
-                  />
-                  <p style={{ 
-                    margin: '8px 0 0', 
-                    color: '#00ffea', 
-                    fontSize: '11px', 
-                    fontFamily: 'Press Start 2P, monospace' 
-                  }}>
-                    ⚠️ This event is only for BPPIMT students
-                  </p>
+                  <div className="mcq-group">
+                    {COLLEGE_OPTIONS.map((option) => (
+                      <label className="mcq-option" key={option}>
+                        <input
+                          type="radio"
+                          name="collegeName"
+                          value={option}
+                          checked={formData.collegeName === option}
+                          onChange={handleInputChange}
+                        />
+                        <span className="mcq-option-label">{option}</span>
+                      </label>
+                    ))}
+                  </div>
+                  {errors.collegeName && <div className="error-message">{errors.collegeName}</div>}
                 </div>
+
+                {formData.collegeName === 'Others' && (
+                  <div className="form-group">
+                    <label className="form-label required">Specify College Name</label>
+                    <input
+                      type="text"
+                      name="collegeOther"
+                      value={formData.collegeOther}
+                      onChange={handleInputChange}
+                      className="retro-input"
+                      placeholder="Enter your college name"
+                    />
+                    {errors.collegeOther && <div className="error-message">{errors.collegeOther}</div>}
+                  </div>
+                )}
 
                 <div className="form-group">
                   <label className="form-label required">College ID / Library Card Upload</label>
@@ -341,8 +359,6 @@ const KhetRegistration = () => {
                   </h4>
                   <p style={{ color: '#fff', lineHeight: '1.8', margin: 0, fontSize: '16px' }}>
                     <strong style={{ color: '#ffc010' }}>Fee:</strong> ₹50 per participant
-                    <br />
-                    <span style={{ color: '#ff6b6b', fontSize: '14px' }}>⚠️ This event is only for BPPIMT students</span>
                   </p>
                 </div>
 
