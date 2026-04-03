@@ -12,6 +12,46 @@ const FILE_UPLOAD_CONCURRENCY = 2;
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+const parseApiResponse = async (response) => {
+  const contentType = (response.headers.get('content-type') || '').toLowerCase();
+  const rawText = await response.text();
+
+  if (!rawText) {
+    return {
+      contentType,
+      rawText: '',
+      data: null
+    };
+  }
+
+  // Try JSON first when content-type suggests JSON, then fallback to best-effort parse.
+  if (contentType.includes('application/json')) {
+    try {
+      return {
+        contentType,
+        rawText,
+        data: JSON.parse(rawText)
+      };
+    } catch (error) {
+      console.warn('⚠️ Failed to parse JSON response despite JSON content-type');
+    }
+  }
+
+  try {
+    return {
+      contentType,
+      rawText,
+      data: JSON.parse(rawText)
+    };
+  } catch {
+    return {
+      contentType,
+      rawText,
+      data: null
+    };
+  }
+};
+
 const isTransientNetworkError = (error) => {
   const message = (error?.message || '').toLowerCase();
   return (
@@ -50,12 +90,18 @@ const uploadRegistrationFile = async (eventName, fieldName, file) => {
 
   const response = await fetchWithTimeout(endpoint, {
     method: 'POST',
+    headers: {
+      Accept: 'application/json'
+    },
     body: uploadFormData
   }, REGISTRATION_REQUEST_TIMEOUT_MS);
 
-  const result = await response.json();
+  const { data: result, rawText } = await parseApiResponse(response);
   if (!response.ok || !result?.success || !result?.data) {
-    throw new Error(result?.message || 'Failed to upload file before registration submission');
+    const fallbackMessage = rawText
+      ? `File upload failed: ${rawText.substring(0, 200)}`
+      : 'Failed to upload file before registration submission';
+    throw new Error(result?.message || fallbackMessage);
   }
 
   return result.data;
@@ -193,6 +239,9 @@ export const submitEventRegistration = async (eventName, registrationData) => {
       try {
         response = await fetchWithTimeout(endpoint, {
           method: 'POST',
+          headers: {
+            Accept: 'application/json'
+          },
           body: formData
           // Don't set Content-Type header - browser will set it automatically with boundary
         }, REGISTRATION_REQUEST_TIMEOUT_MS);
@@ -224,15 +273,10 @@ export const submitEventRegistration = async (eventName, registrationData) => {
 
     console.log('📡 Response status:', response.status);
     
-    // Try to parse as JSON, but handle plain text errors
-    let result;
-    const contentType = response.headers.get('content-type');
-    
-    if (contentType && contentType.includes('application/json')) {
-      result = await response.json();
-    } else {
-      // Server returned plain text error
-      const textError = await response.text();
+    const { data: result, rawText } = await parseApiResponse(response);
+
+    if (!response.ok && !result) {
+      const textError = rawText || 'Unknown server response';
       console.error('❌ Server returned non-JSON error:', textError);
       throw new Error(`Server error: ${textError.substring(0, 200)}`);
     }
@@ -244,10 +288,13 @@ export const submitEventRegistration = async (eventName, registrationData) => {
       if (response.status === 409) {
         throw new Error('duplicate: ' + (result.message || 'You have already registered for this event'));
       } else if (response.status === 400) {
-        const errorDetails = result.details ? result.details.map(d => d.message).join(', ') : '';
+        const detailsList = Array.isArray(result?.details)
+          ? result.details.map((detail) => (typeof detail === 'string' ? detail : detail?.message)).filter(Boolean)
+          : [];
+        const errorDetails = detailsList.join(', ');
         throw new Error('validation: ' + (result.message || 'Invalid registration data') + (errorDetails ? ': ' + errorDetails : ''));
       } else {
-        throw new Error(result.message || 'Registration failed');
+        throw new Error((result && result.message) || (rawText && rawText.substring(0, 200)) || 'Registration failed');
       }
     }
 

@@ -17,6 +17,83 @@ const getUploadSubfolder = (fieldName = '') => {
   return 'registrations';
 };
 
+const normalizeEventName = (value = '') => String(value).trim().toLowerCase().replace(/\s+/g, ' ');
+
+const isTechHuntEvent = (eventName = '') => normalizeEventName(eventName) === 'tech hunt';
+
+const hasUploadedFileValue = (value) => typeof value === 'string' && value.trim().length > 0;
+
+const validateTechHuntRegistration = (registrationData = {}) => {
+  const details = [];
+  const participantCount = Number(registrationData.numberOfParticipants);
+  const participants = Array.isArray(registrationData.participants) ? registrationData.participants : [];
+
+  if (!registrationData.teamName || !String(registrationData.teamName).trim()) {
+    details.push('Team name is required for Tech Hunt registrations');
+  }
+
+  if (!Number.isInteger(participantCount) || participantCount < 3 || participantCount > 5) {
+    details.push('Number of participants must be an integer between 3 and 5 for Tech Hunt');
+  }
+
+  if (participants.length < 3) {
+    details.push('At least 3 participant records are required for Tech Hunt');
+  }
+
+  for (let i = 0; i < Math.min(Math.max(participantCount, 0), participants.length); i += 1) {
+    const participant = participants[i] || {};
+    const prefix = `Participant ${i + 1}`;
+
+    if (!participant.name || !String(participant.name).trim()) details.push(`${prefix}: name is required`);
+    if (!participant.contact || !String(participant.contact).trim()) details.push(`${prefix}: contact is required`);
+    if (!participant.email || !String(participant.email).trim()) details.push(`${prefix}: email is required`);
+    if (!participant.year || !String(participant.year).trim()) details.push(`${prefix}: year is required`);
+    if (!participant.college || !String(participant.college).trim()) details.push(`${prefix}: college is required`);
+
+    const hasIdFile =
+      hasUploadedFileValue(participant.idFile) ||
+      hasUploadedFileValue(participant.idFileUrl) ||
+      hasUploadedFileValue(participant.idFileData);
+    if (!hasIdFile) details.push(`${prefix}: ID card file is required`);
+  }
+
+  if (!registrationData.paymentMode || !String(registrationData.paymentMode).trim()) {
+    details.push('Payment mode is required for Tech Hunt');
+  }
+
+  if (String(registrationData.paymentMode || '').toLowerCase() === 'online') {
+    if (!registrationData.transactionId || !String(registrationData.transactionId).trim()) {
+      details.push('Transaction ID is required for online payment');
+    }
+
+    const hasPaymentProof =
+      hasUploadedFileValue(registrationData.paymentReceipt) ||
+      hasUploadedFileValue(registrationData.paymentReceiptUrl) ||
+      hasUploadedFileValue(registrationData.paymentReceiptData);
+    if (!hasPaymentProof) {
+      details.push('Payment receipt is required for online payment');
+    }
+  }
+
+  if (registrationData.whatsappConfirmed !== true) {
+    details.push('WhatsApp confirmation is required');
+  }
+
+  if (registrationData.declarationRulesRead !== true) {
+    details.push('Declaration for rules and regulations is required');
+  }
+
+  if (registrationData.declarationFairPlay !== true) {
+    details.push('Declaration for fair play is required');
+  }
+
+  if (registrationData.declarationLogistics !== true) {
+    details.push('Declaration for logistics understanding is required');
+  }
+
+  return details;
+};
+
 router.post('/upload-file',
   uploadRegistrationFiles,
   handleMulterError,
@@ -141,6 +218,12 @@ router.post('/:eventName',
         }
       } catch (e) {
         console.error('Error parsing participants:', e);
+        return res.status(400).json({
+          error: 'Validation Error',
+          message: 'participants payload must be valid JSON',
+          details: ['Unable to parse participants array from request payload'],
+          timestamp: new Date().toISOString()
+        });
       }
     }
 
@@ -312,6 +395,18 @@ router.post('/:eventName',
       });
     }
 
+    if (isTechHuntEvent(canonicalEventName)) {
+      const validationErrors = validateTechHuntRegistration(registrationData);
+      if (validationErrors.length > 0) {
+        return res.status(400).json({
+          error: 'Validation Error',
+          message: 'Invalid registration data for Tech Hunt',
+          details: validationErrors,
+          timestamp: new Date().toISOString()
+        });
+      }
+    }
+
     // Add eventName to registration data
     registrationData.eventName = canonicalEventName;
 
@@ -320,31 +415,42 @@ router.post('/:eventName',
 
     // Check for duplicate registration based on email or phone
     const duplicateQuery = [];
-    
-    // Handle email from different sources
-    const email = registrationData.email || registrationData.emailAddress;
-    // Handle phone from different sources
-    const phone = registrationData.phone || registrationData.contactNumber || registrationData.contact;
-    
-    // Check participants array for email/phone
-    if (registrationData.participants && Array.isArray(registrationData.participants)) {
-      const firstParticipant = registrationData.participants[0];
-      if (firstParticipant) {
-        if (!email && firstParticipant.email) {
-          registrationData.email = firstParticipant.email;
+    const emailCandidates = new Set();
+    const phoneCandidates = new Set();
+
+    const topLevelEmail = registrationData.email || registrationData.emailAddress;
+    const topLevelPhone = registrationData.phone || registrationData.contactNumber || registrationData.contact;
+
+    if (topLevelEmail) {
+      emailCandidates.add(String(topLevelEmail).toLowerCase().trim());
+    }
+    if (topLevelPhone) {
+      phoneCandidates.add(String(topLevelPhone).trim());
+    }
+
+    if (Array.isArray(registrationData.participants)) {
+      registrationData.participants.forEach((participant, index) => {
+        const participantEmail = participant?.email ? String(participant.email).toLowerCase().trim() : '';
+        const participantPhone = participant?.contact ? String(participant.contact).trim() : '';
+
+        if (participantEmail) {
+          emailCandidates.add(participantEmail);
+          if (index === 0 && !registrationData.email) {
+            registrationData.email = participantEmail;
+          }
         }
-        if (!phone && firstParticipant.contact) {
-          registrationData.phone = firstParticipant.contact;
+
+        if (participantPhone) {
+          phoneCandidates.add(participantPhone);
+          if (index === 0 && !registrationData.phone) {
+            registrationData.phone = participantPhone;
+          }
         }
-      }
+      });
     }
-    
-    if (email) {
-      duplicateQuery.push({ email: email.toLowerCase().trim() });
-    }
-    if (phone) {
-      duplicateQuery.push({ phone: phone.trim() });
-    }
+
+    emailCandidates.forEach((emailValue) => duplicateQuery.push({ email: emailValue }));
+    phoneCandidates.forEach((phoneValue) => duplicateQuery.push({ phone: phoneValue }));
 
     if (duplicateQuery.length > 0) {
       const existingRegistration = await RegistrationModel.findOne({
