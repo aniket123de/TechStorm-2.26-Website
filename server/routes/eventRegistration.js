@@ -21,6 +21,15 @@ const normalizeEventName = (value = '') => String(value).trim().toLowerCase().re
 
 const isTechHuntEvent = (eventName = '') => normalizeEventName(eventName) === 'tech hunt';
 
+const isAffirmativeValue = (value) => {
+  if (value === true) return true;
+  if (typeof value === 'number') return value === 1;
+  if (typeof value !== 'string') return false;
+
+  const normalized = value.trim().toLowerCase();
+  return normalized === 'true' || normalized === '1' || normalized === 'yes' || normalized === 'on';
+};
+
 const hasUploadedFileValue = (value) => typeof value === 'string' && value.trim().length > 0;
 
 const validateTechHuntRegistration = (registrationData = {}) => {
@@ -75,19 +84,19 @@ const validateTechHuntRegistration = (registrationData = {}) => {
     }
   }
 
-  if (registrationData.whatsappConfirmed !== true) {
+  if (!isAffirmativeValue(registrationData.whatsappConfirmed)) {
     details.push('WhatsApp confirmation is required');
   }
 
-  if (registrationData.declarationRulesRead !== true) {
+  if (!isAffirmativeValue(registrationData.declarationRulesRead)) {
     details.push('Declaration for rules and regulations is required');
   }
 
-  if (registrationData.declarationFairPlay !== true) {
+  if (!isAffirmativeValue(registrationData.declarationFairPlay)) {
     details.push('Declaration for fair play is required');
   }
 
-  if (registrationData.declarationLogistics !== true) {
+  if (!isAffirmativeValue(registrationData.declarationLogistics)) {
     details.push('Declaration for logistics understanding is required');
   }
 
@@ -396,6 +405,11 @@ router.post('/:eventName',
     }
 
     if (isTechHuntEvent(canonicalEventName)) {
+      registrationData.whatsappConfirmed = isAffirmativeValue(registrationData.whatsappConfirmed);
+      registrationData.declarationRulesRead = isAffirmativeValue(registrationData.declarationRulesRead);
+      registrationData.declarationFairPlay = isAffirmativeValue(registrationData.declarationFairPlay);
+      registrationData.declarationLogistics = isAffirmativeValue(registrationData.declarationLogistics);
+
       const validationErrors = validateTechHuntRegistration(registrationData);
       if (validationErrors.length > 0) {
         return res.status(400).json({
