@@ -104,7 +104,9 @@ const FifaMobileEvent = () => {
         ],
     venue: "Gaming Zone B",
     registerButton: {
-      text: "Register Now",
+      text: "Registration Closed",
+      className: "button-closed-pixel button-closed-compact",
+      disabled: true,
     },
     rules: [
       "GENERAL GUIDELINES:",
