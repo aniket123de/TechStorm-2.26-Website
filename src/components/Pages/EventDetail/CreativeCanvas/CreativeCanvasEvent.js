@@ -57,7 +57,9 @@ const CreativeCanvasEvent = () => {
     duration: "3 Hours",
     venue: "Design Studio",
     registerButton: {
-      text: "Register Now",
+      text: "Registration Closed.\nOnly On spot registration will now take place",
+      className: "button-closed-pixel button-closed-compact",
+      disabled: true,
     },
     rules: [
       "Creative Canvas is a dynamic poster-making competition for students to showcase their artistic talent, visual storytelling, and innovative thinking. Step forward, create fearlessly, and elevate your design journey!",

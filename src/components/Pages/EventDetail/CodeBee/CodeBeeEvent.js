@@ -44,8 +44,9 @@ const CodeBeeEvent = () => {
     qrCode: "", // Add QR code image path here
     paymentLink: "", // Add online payment link here
     registerButton: {
-      text: "Register Now",
-      link: "https://unstop.com/o/4YMPlkW?utm_medium=Share&utm_source=codebtec36887&utm_campaign=Online_coding_challenge",
+      text: "Registration Closed",
+      className: "button-closed-pixel button-closed-compact",
+      disabled: true,
     },
     // galleryImages is not a prop for EventDetail, must use previousYearImages
     previousYearImages: galleryImages,

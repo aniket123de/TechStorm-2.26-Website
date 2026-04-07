@@ -82,7 +82,11 @@ const HackStormEvent = () => {
             a: `No. This is an offline event and requires physical presence at the venue for participation.`
           }
         ],
-    devfolioSlug: "hack-storm",
+    registerButton: {
+      text: "Registration Closed",
+      className: "button-closed-pixel button-closed-compact",
+      disabled: true,
+    },
     rules: [
       "HACKSTORM HACKATHON RULES",
       "",

@@ -77,7 +77,9 @@ const PassionWithReelsEvent = () => {
     duration: "10 Minutes (max)",
     venue: "Media Lab & Campus",
     registerButton: {
-      text: "Register Now",
+      text: "Registration Closed",
+      className: "button-closed-pixel button-closed-compact",
+      disabled: true,
     },
     rules: themedRules,
     prizes: [

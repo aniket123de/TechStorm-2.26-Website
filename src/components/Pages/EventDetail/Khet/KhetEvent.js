@@ -69,7 +69,9 @@ const KhetEvent = () => {
           }
         ],
     registerButton: {
-      text: "Register Now",
+      text: "Registration Closed.\nOnly On spot registration will now take place",
+      className: "button-closed-pixel button-closed-compact",
+      disabled: true,
     },
     rules: [
       "GENERAL RULES",

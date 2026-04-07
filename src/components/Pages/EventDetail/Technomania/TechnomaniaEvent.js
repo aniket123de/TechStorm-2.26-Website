@@ -77,7 +77,9 @@ const TechnomaniaEvent = () => {
     duration: "Single Round",
     venue: "VIP Campus, B. P. Poddar Institute of Management and Technology",
     registerButton: {
-      text: "Register Now",
+      text: "Registration Closed.\nOnly On spot registration will now take place",
+      className: "button-closed-pixel button-closed-compact",
+      disabled: true,
     },
     rules: [
       "THEME: ROLE OF ARTIFICIAL INTELLIGENCE IN SUSTAINABLE DEVELOPMENT",

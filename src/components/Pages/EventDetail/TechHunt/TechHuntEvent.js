@@ -15,7 +15,6 @@ const TechHuntEvent = () => {
         "w_800,h_600,c_fill,q_auto:good,f_auto",
       ),
       getCloudinaryUrl(
-        "pictures_of_gallery/Tech- Hunt",
         "DSC02955.jpeg",
         "w_800,h_600,c_fill,q_auto:good,f_auto",
       ),
@@ -55,6 +54,11 @@ const TechHuntEvent = () => {
     entryFee: "₹200 per team",
     duration: "3 Hours",
     venue: "Campus-wide",
+    registerButton: {
+      text: "Registration Closed.\nOnly On spot registration will now take place",
+      className: "button-closed-pixel button-closed-compact",
+      disabled: true,
+    },
         faqs: [
           {
             q: "What is the team size?",
@@ -109,9 +113,6 @@ const TechHuntEvent = () => {
             a: `You can contact the Student Coordinators mentioned in the rulebook.`
           }
         ],
-    registerButton: {
-      text: "Register Now",
-    },
     rules: [
       "Inter-college event.",
       "Team Size = 3-5 members .",
