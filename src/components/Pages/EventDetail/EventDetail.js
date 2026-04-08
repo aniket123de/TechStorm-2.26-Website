@@ -3350,7 +3350,7 @@ const EventDetail = ({ eventData }) => {
                       >
                         <img
                           src={sponsor.logo}
-                          alt={sponsor.partnerType}
+                          alt={sponsor.partnerType || "Sponsor logo"}
                           style={{
                             maxWidth: "100%",
                             maxHeight: "100%",
@@ -3360,9 +3360,11 @@ const EventDetail = ({ eventData }) => {
                         />
                       </div>
                       {/* partner type badge — same style as coordinator-role */}
-                      <p className="coordinator-role" style={{ marginBottom: 0 }}>
-                        {sponsor.partnerType}
-                      </p>
+                      {!sponsor.hidePartnerType && sponsor.partnerType && (
+                        <p className="coordinator-role" style={{ marginBottom: 0 }}>
+                          {sponsor.partnerType}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>

@@ -168,6 +168,7 @@ const HackStormEvent = () => {
       {
         logo: featherlessLogo,
         partnerType: "Educational Partner",
+        hidePartnerType: true,
       },
       {
         logo: hackstormsponsor1,
