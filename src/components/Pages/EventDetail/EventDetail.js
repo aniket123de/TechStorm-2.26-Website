@@ -3343,7 +3343,7 @@ const EventDetail = ({ eventData }) => {
                           alignItems: "center",
                           justifyContent: "center",
                           flexShrink: 0,
-                          background: "rgba(0,0,0,0.35)",
+                          background: sponsor.partnerType === "Educational Partner" ? "#ffffff" : "rgba(0,0,0,0.35)",
                           border: "2px solid rgba(255,192,16,0.2)",
                           padding: "8px",
                         }}

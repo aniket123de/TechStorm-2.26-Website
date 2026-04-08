@@ -1,5 +1,6 @@
 .sponsor-preview-section {
-    height: clamp(295px, 41vw, 500px);
+    height: auto;
+    min-height: clamp(720px, 75vw, 1100px);
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -8,9 +9,16 @@
     background-position: center;
     background-size: cover;
     background-color: #050b16;
+    background-image:
+        linear-gradient(to bottom, rgba(5, 11, 22, 0) 42%, rgba(5, 11, 22, 0.88) 50%, rgba(5, 11, 22, 0) 58%),
+        url('../../../../assets/img/sponserbg.png'),
+        url('../../../../assets/img/sponserbg.png');
+    background-size: 100% 100%, 100% 55%, 100% 55%;
+    background-position: center center, center 25%, center 115%;
+    background-repeat: no-repeat, no-repeat, no-repeat;
     margin-top: 0;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 /* Soft top fade on the sponsors section so the background image fades in gently */
@@ -37,12 +45,12 @@
     left: 0;
     right: 0;
     bottom: 0;
-    height: 160px;
+    height: 90px;
     background: linear-gradient(
         to bottom,
         transparent 0%,
-        rgba(0, 0, 0, 0.7) 60%,
-        rgba(0, 0, 0, 0.98) 100%
+        rgba(0, 0, 0, 0.45) 65%,
+        rgba(0, 0, 0, 0.75) 100%
     );
     pointer-events: none;
     z-index: 1;
@@ -50,7 +58,7 @@
 
 .sponsor-preview-section .container {
     padding-top: 60px;
-    padding-bottom: 0;
+    padding-bottom: 120px;
     position: relative;
     z-index: 2;
 }
@@ -105,26 +113,144 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: nowrap;
-    gap: 1px;
-    margin-top: 14px;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 20px;
 }
 
-.sponsor-mystery-box {
+.sponsor-group-block {
+    margin: 20px 0;
+}
+
+.sponsor-group-block + .sponsor-group-block {
+    margin-top: 50px;
+}
+
+.sponsor-section-title {
+    text-align: center;
+    color: #ffd700;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    text-shadow: 
+        3px 3px 0 #ff6b00,
+        0 0 15px rgba(255, 107, 0, 0.6);
+}
+
+/* PixelCard base */
+.pixel-card {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: 8px;
+    border: 4px solid #ff6b00;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    background: linear-gradient(145deg, rgba(10, 10, 10, 0.95), rgba(26, 10, 46, 0.92));
+    box-shadow: 
+        0 0 0 2px #0a0a0a,
+        0 0 0 6px #ffd700,
+        0 0 20px rgba(255, 107, 0, 0.4),
+        0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+.pixel-card-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.pixel-card-content {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sponsor-pixel-card {
     width: 220px;
-    height: auto;
+    height: 220px;
     flex: 0 0 auto;
-    image-rendering: pixelated;
-    opacity: 0.95;
-    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
-    transition: transform 0.15s ease, filter 0.15s ease, opacity 0.15s ease;
-    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    background: #1a0e22;
+    background-image:
+        linear-gradient(135deg, rgba(10, 10, 10, 0.6) 0%, rgba(26, 10, 46, 0.7) 100%),
+        url('../../../../assets/img/footerbg.webp');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    border: 3px solid #ffc010;
+    box-shadow:
+        0 0 0 2px #0f0819,
+        4px 4px 0 #0f0819,
+        0 0 0 6px #ffc010;
+    clip-path: polygon(0 10px, 10px 10px, 10px 0,
+        calc(100% - 10px) 0, calc(100% - 10px) 10px, 100% 10px,
+        100% calc(100% - 10px), calc(100% - 10px) calc(100% - 10px),
+        calc(100% - 10px) 100%, 10px 100%, 10px calc(100% - 10px),
+        0 calc(100% - 10px));
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.sponsor-mystery-box:hover {
-    animation: mystery-box-bounce 0.4s cubic-bezier(0.36, 0.07, 0.12, 1.2) forwards;
-    filter: drop-shadow(0 0 18px rgba(255, 192, 16, 0.85)) drop-shadow(0 10px 18px rgba(0, 0, 0, 0.55));
-    opacity: 1;
+.sponsor-pixel-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 0 0 2px #0f0819,
+        6px 8px 0 #0f0819,
+        0 0 0 6px #ffc010,
+        0 0 20px rgba(255, 192, 16, 0.35);
+}
+
+.sponsor-placeholder-box {
+    width: 74%;
+    height: 42%;
+    object-fit: contain;
+    border: none;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    opacity: 0.96;
+    filter: 
+        drop-shadow(0 0 8px rgba(255, 215, 0, 0.3))
+        drop-shadow(0 10px 16px rgba(0, 0, 0, 0.6));
+    transition: filter 0.3s ease;
+}
+
+.sponsor-pixel-card:hover .sponsor-placeholder-box {
+    filter: 
+        drop-shadow(0 0 12px rgba(255, 215, 0, 0.5))
+        drop-shadow(0 0 20px rgba(255, 107, 0, 0.4))
+        drop-shadow(0 10px 20px rgba(0, 0, 0, 0.7));
+}
+
+.sponsor-card-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.sponsor-card-category {
+    margin: 0;
+    text-align: center;
+    color: #ffd700;
+    font-size: 9px;
+    line-height: 1.4;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 
+        2px 2px 0 #ff6b00,
+        0 0 10px rgba(255, 107, 0, 0.8),
+        0 0 20px rgba(255, 215, 0, 0.4);
 }
 
 @keyframes mystery-box-bounce {
@@ -174,20 +300,26 @@
 @media (max-width: 767px) {
     .sponsor-preview-section {
         height: auto;
-        min-height: clamp(360px, 90vw, 520px);
+        min-height: unset;
+        /* Mobile stacks the same artwork vertically until the section ends. */
+        background-image: url('../../../../assets/img/sponser-mobile.webp') !important;
+        background-size: 100% auto !important;
+        background-position: center top !important;
+        background-repeat: repeat-y !important;
+        background-attachment: scroll !important;
     }
 
     .sponsor-preview-section .container {
-        padding-top: 36px;
-        padding-bottom: 120px;
-        padding-left: 12px;
-        padding-right: 12px;
+        padding-top: 40px;
+        padding-bottom: 60px;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     .sponsor-preview-title {
         font-size: 1rem;
-        line-height: 1.5;
-        margin-bottom: 12px !important;
+        line-height: 1.6;
+        margin-bottom: 20px !important;
     }
 
     .sponsor-coming-soon {
@@ -197,35 +329,82 @@
         margin-bottom: 12px !important;
     }
 
-    .sponsor-mystery-row {
-        gap: 2%;
-        margin-top: 6px;
-        flex-wrap: nowrap;
+    .sponsor-group-block {
+        margin: 12px 0;
     }
 
-    .sponsor-mystery-box {
-        width: 18%;
-        max-width: 95px;
+    .sponsor-group-block + .sponsor-group-block {
+        margin-top: 32px;
+    }
+
+    .sponsor-mystery-row {
+        gap: 12px;
+        margin-top: 14px;
+        justify-content: center;
+    }
+
+    .sponsor-section-title {
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+
+    /* Two-column grid on mobile */
+    .sponsor-pixel-card {
+        width: calc(50% - 8px);
+        height: auto;
+        aspect-ratio: 1 / 1;
+        max-width: 180px;
+        /* Use the bg image as a subtle texture on each card */
+        background-position: center center;
+        background-size: 150%;
+    }
+
+    .sponsor-placeholder-box {
+        width: 70%;
+        height: 45%;
+        object-fit: contain;
+    }
+
+    .sponsor-card-category {
+        font-size: 7px;
+        letter-spacing: 0.5px;
     }
 
     .sponsor-preview-label {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .sponsor-preview-card {
-        min-height: 170px;
-        gap: 12px;
+        min-height: 160px;
+        gap: 10px;
         margin-bottom: 8px;
     }
 
     .sponsor-preview-card img {
-        max-height: 60px;
+        max-height: 55px;
     }
 }
 
-@media (max-width: 420px) {
-    .sponsor-mystery-box {
-        width: 17%;
-        max-width: 75px;
+@media (max-width: 480px) {
+    .sponsor-preview-title {
+        font-size: 0.85rem;
+    }
+
+    /* Still two columns but slightly smaller gap */
+    .sponsor-mystery-row {
+        gap: 10px;
+    }
+
+    .sponsor-pixel-card {
+        width: calc(50% - 6px);
+        max-width: 160px;
+    }
+}
+
+@media (max-width: 360px) {
+    /* Very small screens: single column */
+    .sponsor-pixel-card {
+        width: 80%;
+        max-width: 220px;
     }
 }
