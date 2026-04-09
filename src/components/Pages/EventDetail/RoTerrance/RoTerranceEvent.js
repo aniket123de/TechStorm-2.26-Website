@@ -61,7 +61,7 @@ const RoTerranceEvent = () => {
     },
     rules: [
       "BOT SPECIFICATIONS:",
-      "The dimension of the bot must not exceed  30 cm (no tolerance) throughout the event.",
+      "Bot specification: 25cm(width)×30cm(length).",
       "The maximum weight of the bot must not exceed 3 Kg (no tolerance).",
       "The maximum allowable voltage for the bot is 18V.",
       "Use of LEGO kits is strictly prohibited.",
@@ -124,7 +124,7 @@ const RoTerranceEvent = () => {
       },
       {
         q: "What are the size and weight limits?",
-        a: `Maximum dimensions: 30 × 30 cm\nMaximum weight: 3 kg\nThese limits must not be exceeded at any time.`
+        a: `Maximum dimensions: 25cm(width)×30cm(length)\nMaximum weight: 3 kg\nThese limits must not be exceeded at any time.`
       },
       {
         q: "What power supply is allowed?",

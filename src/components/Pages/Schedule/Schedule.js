@@ -46,7 +46,7 @@ const scheduleData = {
         ]
     },
     day4: {
-        date: '18TH APRIL',
+        date: '25TH APRIL',
         events: [
             { timing: '01:00 P.M. - 02:00 P.M.', event: 'Prize Distribution Ceremony', venue: '-', round: '-' },
             { timing: '02:00 P.M. - 02:15 P.M.', event: 'Vote of Thanks', venue: '-', round: '-' },
@@ -114,7 +114,7 @@ const Schedule = () => {
                         <div className="row mb-5" key={day.date}>
                             <div className="col-12">
                                 {(() => {
-                                    const hideRoundColumn = day.date === '18TH APRIL';
+                                    const hideRoundColumn = day.date === '25TH APRIL';
                                     return (
                                         <>
                                 <h3 className="schedule-day-title">
